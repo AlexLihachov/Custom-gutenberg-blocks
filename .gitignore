@@ -1,0 +1,69 @@
+# -----------------------------------------------------------------
+# WordPress .gitignore for Tony Robbins
+# Cortney Ray
+#
+# This is a WordPress-specific .gitignore for ThirdHome Adventures
+# The repo should be the root of our WordPress install, but we are
+# excluding everything EXCEPT for custom & premium plugins, and our
+# theme.
+#
+# Even though this file is tracked on Github, please also log changes
+# to the list below.
+#
+# Change Log:
+# 12/10/2019 - Initial Creation
+#
+# -----------------------------------------------------------------
+
+# ignore everything in the root except the "wp-content" directory.
+/*
+!wp-content/
+
+# ignore all files starting with . recursively
+.*
+
+# track .gitignore
+!.gitignore
+
+# ignore all files that start with ~
+~*
+
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
+
+# ignore map & log files, and databases
+*.log
+*.sql
+*.map
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins" directory
+# "plugins" directory
+# "themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
+
+# ignore these plugins from the core
+wp-content/plugins/hello.php
+wp-content/plugins/index.php
+wp-content/plugins/akismet/
+
+# ignore added plugins
+wp-content/plugins/advanced-custom-fields-pro
+wp-content/plugins/gutenbooster-addons
+wp-content/plugins/kioken-blocks-pro
+wp-content/plugins/wordpress-importer
+
+# ignore default wordpress themes
+wp-content/themes/twenty*/
+wp-content/themes/gutenbooster/
+wp-content/themes/index.php
+
+# ignore these files from within our theme
+wp-content/themes/adventures/*.scssc
+wp-content/themes/adventures/.sass-cache/
+wp-content/themes/adventures/style.css.map
+wp-content/themes/adventures/style.css
