@@ -47,7 +47,10 @@
 
 	var _group_block = blocks.registerBlockType( 'rri/rri-group-block', {
 		title: __( 'RRI Group', 'rri' ),
-		icon: 'grid-view',
+		icon: {
+			foreground: '#14ACEF',
+			src: 'grid-view',
+		},
 		category: 'layout',
 		attributes: {
 			width: {
@@ -68,35 +71,35 @@
 			},
 			margin_top: {
 				type: 'number',
-				default: null
+				default: 0
 			},
 			margin_right: {
 				type: 'number',
-				default: null
+				default: 0
 			},
 			margin_bottom: {
 				type: 'number',
-				default: null
+				default: 0
 			},
 			margin_left: {
 				type: 'number',
-				default: null
+				default: 0
 			},
 			padding_top: {
 				type: 'number',
-				default: null
+				default: 0
 			},
 			padding_right: {
 				type: 'number',
-				default: null
+				default: 0
 			},
 			padding_bottom: {
 				type: 'number',
-				default: null
+				default: 0
 			},
 			padding_left: {
 				type: 'number',
-				default: null
+				default: 0
 			},
 			z_index: {
 				type: 'number',
@@ -180,6 +183,7 @@
 							]
 						})
 					), element.createElement('button', {
+						className: 'components-button is-button is-default is-small',
 						onClick: function() {
 							resetControls( 'size', props );
 						}
@@ -197,6 +201,8 @@
 						element.createElement(RangeControl, {
 							label: element.createElement('img', {src: rri.image_url + 'Top.svg', width: '20px'}),
 							value: props.attributes.margin_top,
+							min: -200,
+							max: 200,
 							onChange: function( val ){
 								props.setAttributes( { margin_top: Number( val ) } );
 							}
@@ -204,6 +210,8 @@
 						element.createElement(RangeControl, {
 							label: element.createElement('img', {src: rri.image_url + 'Right.svg', width: '20px'}),
 							value: props.attributes.margin_right,
+							min: -200,
+							max: 200,
 							onChange: function( val ) {
 								props.setAttributes( { margin_right: Number( val ) } );
 							}
@@ -211,6 +219,8 @@
 						element.createElement(RangeControl, {
 							label: element.createElement('img', {src: rri.image_url + 'Bottom.svg', width: '20px' }),
 							value: props.attributes.margin_bottom,
+							min: -200,
+							max: 200,
 							onChange: function( val ) {
 								props.setAttributes( { margin_bottom: Number( val ) } );
 							}
@@ -218,6 +228,8 @@
 						element.createElement(RangeControl, {
 							label: element.createElement('img', {src: rri.image_url + 'Left.svg', width: '20px' }),
 							value: props.attributes.margin_left,
+							min: -200,
+							max: 200,
 							onChange: function( val ) {
 								props.setAttributes( { margin_left: Number( val ) } );
 							}
@@ -227,6 +239,8 @@
 						element.createElement(RangeControl, {
 							label: element.createElement('img', {src: rri.image_url + 'Top.svg', width: '20px'}),
 							value: props.attributes.padding_top,
+							min: 0,
+							max: 200,
 							onChange: function( val ) {
 								props.setAttributes( { padding_top: Number( val ) } );
 							}
@@ -234,6 +248,8 @@
 						element.createElement(RangeControl, {
 							label: element.createElement('img', { src: rri.image_url + 'Right.svg', width: '20px' }),
 							value: props.attributes.padding_right,
+							min: 0,
+							max: 200,
 							onChange: function( val ) {
 								props.setAttributes( { padding_right: Number( val ) } );
 							}
@@ -241,6 +257,8 @@
 						element.createElement(RangeControl, {
 							label: element.createElement('img', { src: rri.image_url + 'Bottom.svg', width: '20px' }),
 							value: props.attributes.padding_bottom,
+							min: 0,
+							max: 200,
 							onChange: function( val ) {
 								props.setAttributes( { padding_bottom: Number( val ) } );
 							}
@@ -248,6 +266,8 @@
 						element.createElement(RangeControl, {
 							label: element.createElement('img', { src: rri.image_url + 'Left.svg', width: '20px' }),
 							value: props.attributes.padding_left,
+							min: 0,
+							max: 200,
 							onChange: function( val ) {
 								props.attributes( { padding_left: Number( val ) } );
 							}
@@ -263,6 +283,7 @@
 							}
 						})
 					), element.createElement('button', {
+						className: 'components-button is-button is-default is-small',
 						onClick: function() {
 							resetControls( 'space', props );
 						}
@@ -347,6 +368,7 @@
 						}
 					})
 				), element.createElement('button', {
+						className: 'components-button is-button is-default is-small',
 						onClick: function() {
 							resetControls( 'background', props );
 						}

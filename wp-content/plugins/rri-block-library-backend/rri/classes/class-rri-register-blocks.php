@@ -63,35 +63,35 @@ if ( ! class_exists( 'Rri_Register_Blocks' ) ) {
 							'type'    => 'string',
 						),
 						'margin_top'           => array(
-							'default' => null,
+							'default' => 0,
 							'type'    => 'number',
 						),
 						'margin_right'         => array(
-							'default' => null,
+							'default' => 0,
 							'type'    => 'number',
 						),
 						'margin_bottom'        => array(
-							'default' => null,
+							'default' => 0,
 							'type'    => 'number',
 						),
 						'margin_left'          => array(
-							'default' => null,
+							'default' => 0,
 							'type'    => 'number',
 						),
 						'padding_top'          => array(
-							'default' => null,
+							'default' => 0,
 							'type'    => 'number',
 						),
 						'padding_right'        => array(
-							'default' => null,
+							'default' => 0,
 							'type'    => 'number',
 						),
 						'padding_bottom'       => array(
-							'default' => null,
+							'default' => 0,
 							'type'    => 'number',
 						),
 						'padding_left'         => array(
-							'default' => null,
+							'default' => 0,
 							'type'    => 'number',
 						),
 						'z_index'              => array(

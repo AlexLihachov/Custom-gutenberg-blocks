@@ -44,6 +44,23 @@
     position: absolute;
     top: 18px;
     right: 40px;
-    border: 3px solid blue;
+    border: 3px solid #14ACEF;
     border-radius: 50%;
+}
+
+.editor-block-list-item-rri-rri-group-block .editor-block-types-list__item-title {
+    color: #14ACEF;
+}
+
+.size-selector input::-webkit-outer-spin-button,
+.size-selector input::-webkit-inner-spin-button,
+.spacing-selector input::-webkit-outer-spin-button,
+.spacing-selector input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.size-selector input[type=number], .spacing-selector input[type=number] {
+  -moz-appearance:textfield;
 }
