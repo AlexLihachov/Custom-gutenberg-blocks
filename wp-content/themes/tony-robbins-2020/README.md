@@ -1,4 +1,4 @@
-# [Tony Robbins 2020](https://2020.tonyrobbins.com.t)
+# [Tony Robbins 2020](https://2020.tonyrobbins.com/)
 
 Tony Robbins 2020 is the new WordPress theme for 2020 and beyond.
 
