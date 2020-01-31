@@ -67,3 +67,6 @@ wp-content/themes/adventures/*.scssc
 wp-content/themes/adventures/.sass-cache/
 wp-content/themes/adventures/style.css.map
 wp-content/themes/adventures/style.css
+
+#ingnore npm packages
+node_modules

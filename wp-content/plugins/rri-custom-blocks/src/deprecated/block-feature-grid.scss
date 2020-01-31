@@ -1,0 +1,99 @@
+@import "common";
+
+/**
+ * Deprecated < v2
+ */
+.rri-feature-grid:not([class*="rri-feature-grid--v"]) {
+	@include baseBlock();
+	display: flex;
+	flex-wrap: nowrap;
+	margin: 0 (-$box-hori-padding / 2);
+	> div {
+		flex: 1;
+		&,
+		&:first-child,
+		&:last-child {
+			margin: ($box-hori-padding / 2) !important;
+		}
+	}
+	.rri-feature-grid__item {
+		@include box();
+	}
+	.rri-feature-grid__content {
+		text-align: center;
+		@include baseBlock();
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.rri-feature-grid__image {
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+	.rri-button {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+.rri-feature-grid--design-plain:not([class*="rri-feature-grid--v"]) {
+	.rri-feature-grid__item,
+	.rri-feature-grid-item {
+		box-shadow: none;
+		padding: 0;
+		border-radius: 0;
+
+		@media screen and (max-width: $break-medium) {
+			padding: 0;
+		}
+		@media screen and (max-width: $break-small) {
+			padding-left: 0;
+			padding-right: 0;
+			padding-top: #{($box-hori-padding / 2)};
+			padding-bottom: #{($box-hori-padding / 2)};
+		}
+	}
+}
+
+.rri-feature-grid--design-basic:not([class*="rri-feature-grid--v"]),
+.rri-feature-grid--design-plain:not([class*="rri-feature-grid--v"]) {
+	.rri-feature-grid__item {
+		@include baseBlock();
+	}
+}
+
+// For 3 columns, make sure the images are still seen if columns are narrow.
+@media screen and (max-width: $break-large) {
+	.rri-feature-grid:not([class*="rri-feature-grid--v"]).rri-feature-grid--columns-3 {
+		.rri-feature-grid__content > img,
+		.rri-feature-grid-item > img {
+			width: 100% !important;
+		}
+	}
+}
+
+// For small screens, collapse & make sure our images aren't too large.
+@media screen and (max-width: $break-small) {
+	.rri-feature-grid:not([class*="rri-feature-grid--v"]) {
+		.rri-feature-grid__content > img,
+		.rri-feature-grid-item > img {
+			max-width: 30vw;
+		}
+	}
+	.rri-feature-grid:not([class*="rri-feature-grid--v"]) {
+		flex-direction: column;
+	}
+}
+
+/**
+ * Deprecated < v1.11
+ */
+.rri-feature-grid {
+	.rri-feature-grid-item {
+		text-align: center;
+		@include baseBlock();
+		@include box();
+	}
+}

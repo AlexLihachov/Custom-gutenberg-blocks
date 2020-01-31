@@ -1,0 +1,33 @@
+@import "common";
+
+/**
+ * Deprecated < v2
+ */
+.rri-expand:not([class*="rri-expand--v"]) {
+	@include baseBlock();
+}
+
+/**
+ * Deprecated < 1.10
+ */
+.rri-expand:not([class*="rri-expand--v"]) {
+	@include baseBlock();
+	p:last-child {
+		margin-bottom: 0;
+	}
+	&.rri-more {
+		.rri-expand-less-text,
+		.rri-expand-more {
+			display: none;
+		}
+		.rri-expand-more-text,
+		.rri-expand-less {
+			display: block !important;
+		}
+	}
+
+	.rri-expand__less-text p:last-child,
+	.rri-expand__more-text p:last-child {
+		margin-bottom: 0;
+	}
+}
