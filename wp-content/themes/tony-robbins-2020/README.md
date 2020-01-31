@@ -16,7 +16,7 @@ Tony Robbins 2020 is the new WordPress theme for 2020 and beyond.
 
 Make sure all dependencies have been installed before moving on:
 
-* [WordPress](https://wordpress.org/) >= 4.7
+* [WordPress](https://wordpress.org/) >= 5.3
 * [PHP](https://secure.php.net/manual/en/install.php) >= 7.1.3 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 * [Composer](https://getcomposer.org/download/)
 * [Node.js](http://nodejs.org/) >= 8.0.0
