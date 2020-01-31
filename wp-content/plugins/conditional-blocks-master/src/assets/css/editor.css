@@ -1,0 +1,11 @@
+.conblock-hidden-control {
+	display: none;
+}
+.conblock-date-wrapper {
+	background: #f5f4f4;
+	padding: 10px 15px;
+}
+svg.conditional-blocks-svg {
+	margin-left: 6px;
+    max-height: 16px;
+}
