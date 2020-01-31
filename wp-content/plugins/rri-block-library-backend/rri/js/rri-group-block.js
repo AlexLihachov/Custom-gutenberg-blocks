@@ -294,7 +294,7 @@
 			var backgroundInspector = element.createElement( InspectorControls, null,
 				element.createElement(PanelBody, {
 					title: __('Background Settings', 'rri'),
-					initialOpen: true,
+					initialOpen: false,
 					className: checkDirty( 'background', props ),
 				},element.createElement('div', null,
 						element.createElement('h2', null,

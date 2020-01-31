@@ -33,14 +33,19 @@ function conditional_blocks_render_user_roles( $render_block, $conditions, $bloc
 		$user          = wp_get_current_user();
 		$current_roles = (array) $user->roles;
 
-		$allow_user = false;
+		$showUserRole  = isset( $conditions['showUserRoles'] ) ? $conditions['showUserRoles'] : true;
+		
+		/*$allow_user = false;*/
+		$allow_user    = $showUserRole ? false : true;
 
 		foreach ( $conditions['userRoles'] as $conditon_role ) {
 			if ( in_array( $conditon_role, $current_roles, true ) ) {
-				$allow_user = true;
+				/*$allow_user = true;*/
+				$allow_user = $showUserRole ? true : false;
 				break;
 			}
 		} // end foreach.
+
 
 		// If allowed displayed the content.
 		if ( true === $allow_user ) {
@@ -66,6 +71,8 @@ add_filter( 'conditional_blocks_render_conditions', 'conditional_blocks_render_u
  */
 function conditonal_blocks_check_referer( $render_block, $conditions, $block ) {
 
+	$showHttpReferer = ( isset( $conditions['showDomainReferer'] ) ? $conditions['showDomainReferer'] : true );
+
 	// Exit if no condition.
 	if ( empty( $conditions['httpReferer'] ) ) {
 		$render_block['httpReferer'] = 'yes';
@@ -74,7 +81,8 @@ function conditonal_blocks_check_referer( $render_block, $conditions, $block ) {
 
 	// No referer, don't show.
 	if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
-		$render_block['httpReferer'] = 'no';
+		/*$render_block['httpReferer'] = 'no';*/
+		$render_block['httpReferer'] =  $showHttpReferer ? 'no' : 'yes';
 		return $render_block;
 	}
 
@@ -84,18 +92,21 @@ function conditonal_blocks_check_referer( $render_block, $conditions, $block ) {
 
 	// No referer.
 	if ( empty( $referer_parse ) ) {
-		$render_block['httpReferer'] = 'no';
+		/*$render_block['httpReferer'] = 'no';*/
+		$render_block['httpReferer'] =  $showHttpReferer ? 'no' : 'yes';
 		return $render_block;
 	}
 
 	// Check if referer is allowed by the block.
 	if ( isset( $referer_parse['host'] ) && ( in_array( $referer_parse['host'], $accepted_referers, true ) ) ) {
-		$render_block['httpReferer'] = 'yes';
+		/*$render_block['httpReferer'] = 'yes';*/
+		$render_block['httpReferer'] = $showHttpReferer ? 'yes' : 'no';
 		return $render_block;
 	}
 
 	// Default No.
-	$render_block['httpReferer'] = 'no';
+	/*$render_block['httpReferer'] = 'no';*/
+	$render_block['httpReferer'] = $showHttpReferer ? 'no' : 'yes';
 	return $render_block;
 }
 
@@ -112,6 +123,8 @@ add_filter( 'conditional_blocks_render_conditions', 'conditonal_blocks_check_ref
  */
 function conditonal_blocks_check_user_agent( $render_block, $conditions, $block ) {
 
+	$showUserAgent = isset( $conditions['showUserAgent'] ) ? $conditions['showUserAgent'] : true;
+
 	if ( empty( $conditions['httpUserAgent'] ) ) {
 		$render_block['httpUserAgent'] = 'yes';
 		return $render_block;
@@ -127,7 +140,8 @@ function conditonal_blocks_check_user_agent( $render_block, $conditions, $block 
 	$current_agent = conblock_parse_user_agent();
 
 	if ( empty( $current_agent['platform'] ) ) {
-		$render_block['httpUserAgent'] = 'no';
+		/*$render_block['httpUserAgent'] = 'no';*/
+		$render_block['httpUserAgent'] = $showUserAgent ? 'no' : 'yes';
 		return $render_block;
 	}
 
@@ -135,11 +149,13 @@ function conditonal_blocks_check_user_agent( $render_block, $conditions, $block 
 
 	// Check if referer is allowed by the block.
 	if ( isset( $allowed_agents ) && ( in_array( $current_agent, $allowed_agents, true ) ) ) {
-		$render_block['httpUserAgent'] = 'yes';
+		/*$render_block['httpUserAgent'] = 'yes';*/
+		$render_block['httpUserAgent'] = $showUserAgent ? 'yes' : 'no';
 		return $render_block;
 	}
 
-	$render_block['httpUserAgent'] = 'no';
+	/*$render_block['httpUserAgent'] = 'no';*/
+	$render_block['httpUserAgent'] = $showUserAgent ? 'no' : 'yes';
 	return $render_block;
 }
 

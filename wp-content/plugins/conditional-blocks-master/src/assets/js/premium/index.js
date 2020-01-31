@@ -86,10 +86,15 @@ function conblockProControls( controlsArray, props ) {
 	>
 		<Tooltip text={ __( 'Blocks will display to everyone by default, limit display to selected user roles.' ) }>
 			<div>
-				<PanelRow >
+				<PanelRow className="conditions-pro-block" >
+					<ToggleControl
+						checked={ (conditionalBlocksAttributes && ( conditionalBlocksAttributes.showUserRoles == undefined || conditionalBlocksAttributes.showUserRoles == true )) ? true : false }
+						onChange={ (option) => updateAttribute( props, 'showUserRoles', option ) }
+						className="conditions-pro-toggle"
+					/>
 					<SelectControl
 						multiple
-						label={ __( 'Show for User Roles' ) }
+						label={ (conditionalBlocksAttributes && ( conditionalBlocksAttributes.showUserRoles == undefined || conditionalBlocksAttributes.showUserRoles == true )) ?  __( 'Show for User Roles' ) : __( 'Hide for User Roles' ) }
 						value={ conditionalBlocksAttributes && conditionalBlocksAttributes.userRoles ? conditionalBlocksAttributes.userRoles : '' }
 						onChange={ ( option ) => updateAttribute( props, 'userRoles', option ) }
 						options={ userRoles }
@@ -100,21 +105,33 @@ function conblockProControls( controlsArray, props ) {
 		</Tooltip>
 		<p className="conblock-description">Click and hold<code>Command</code> or <code>Control</code> to deselect or multiselect</p>
 
-		<TextControl
-			label="Domain Referer"
-			help="Show block if visitor has arrived from specific domains. Comma separate for multiple."
-			placeholder="conditionalblocks.com, puri.io"
-			value={ conditionalBlocksAttributes && conditionalBlocksAttributes.httpReferer ? conditionalBlocksAttributes.httpReferer : '' } // Make a function to get value.
-			onChange={ ( option ) => updateAttribute( props, 'httpReferer', option ) }
-		/>
+		<PanelRow className="conditions-pro-block">
+			<ToggleControl
+				checked={ conditionalBlocksAttributes && ( conditionalBlocksAttributes.showDomainReferer == undefined || conditionalBlocksAttributes.showDomainReferer == true ) ? true : false }
+				onChange={ (option) => updateAttribute( props, 'showDomainReferer', option ) }
+				className="conditions-pro-toggle"
+			/>
+			<TextControl
+				label="Domain Referer"
+				help= { (conditionalBlocksAttributes && (conditionalBlocksAttributes.showDomainReferer == undefined || conditionalBlocksAttributes.showDomainReferer == true ) ? "Show" : "Hide") + " block if visitor has arrived from specific domains. Comma separate for multiple." }
+				placeholder="conditionalblocks.com, puri.io"
+				value={ conditionalBlocksAttributes && conditionalBlocksAttributes.httpReferer ? conditionalBlocksAttributes.httpReferer : '' } // Make a function to get value.
+				onChange={ ( option ) => updateAttribute( props, 'httpReferer', option ) }
+			/>
+		</PanelRow>
 
 		<Tooltip text={ __( 'Click and hold Command or Control to deselect or multiselect' ) }>
 			<div>
-				<PanelRow >
+				<PanelRow className="conditions-pro-block">
+					<ToggleControl
+						checked={ (conditionalBlocksAttributes && (conditionalBlocksAttributes.showUserAgent == undefined || conditionalBlocksAttributes.showUserAgent == true )) ? true : false }
+						onChange={ (option) => updateAttribute( props, 'showUserAgent', option ) }
+						className="conditions-pro-toggle"
+					/>
 					<SelectControl
 						multiple
 						label={ __( 'Devices' ) }
-						help={ __( 'Show only for specific devices' ) }
+						help={ (conditionalBlocksAttributes && (conditionalBlocksAttributes.showUserAgent == undefined || conditionalBlocksAttributes.showUserAgent == true)) ? __( 'Show only for specific devices' ) : __( 'Hide only for specific devices' ) }
 						value={ conditionalBlocksAttributes && conditionalBlocksAttributes.httpUserAgent ? conditionalBlocksAttributes.httpUserAgent : '' } // e.g: value = [ 'a', 'c' ]
 						onChange={ ( option ) => updateAttribute( props, 'httpUserAgent', option ) }
 						options={ [
@@ -280,7 +297,7 @@ function conblockProDates( controlsArray, props ) {
 				label="Show Block between Dates"
 			/>
 			<div className="conblock-date-info">
-				<span>WP Timezone: <strong><a href="options-general.php" target="_blank"> UTC { currentTimezone }</a></strong></span><br />
+				<span>WP Timezone: <strong> UTC { currentTimezone }</strong></span><br />
 				<span>Selected block has <strong>{ dateCount ? dateCount : 'no' }</strong> date conditions</span>
 			</div>
 
