@@ -172,9 +172,12 @@ add_filter( 'conditional_blocks_render_conditions', 'conditonal_blocks_check_use
  */
 function conditional_blocks_render_post_meta( $render_block, $conditions, $block ) {
 
+	$showMeta = ( isset( $conditions['showMetaKey'] ) ? $conditions['showMetaKey'] : true );
+
 	// Exit if condition is not needed.
 	if ( empty( $conditions['postMeta'] ) || ! is_array( $conditions['postMeta'] ) ) {
-		$render_block['postMeta'] = 'yes';
+		/*$render_block['postMeta'] = 'yes';*/
+		$render_block['postMeta'] = $showMeta ? 'yes' : 'no';
 		return $render_block;
 	}
 
@@ -186,7 +189,8 @@ function conditional_blocks_render_post_meta( $render_block, $conditions, $block
 
 	// Exit if none is set.
 	if ( empty( $condition_key ) || empty( $condition_operator ) ) {
-		$render_block['postMeta'] = 'yes';
+		/*$render_block['postMeta'] = 'yes';*/
+		$render_block['postMeta'] = $showMeta ? 'yes' : 'no';
 		return $render_block;
 	}
 
@@ -199,35 +203,41 @@ function conditional_blocks_render_post_meta( $render_block, $conditions, $block
 	$selected_meta = is_array( $selected_meta ) ? $selected_meta[0] : '';
 
 	if ( '===' === $condition_operator ) {
+
 		if ( $selected_meta === $condition_value ) {
-			$render_block['postMeta'] = 'yes';
+			/*$render_block['postMeta'] = 'yes';*/
+			$render_block['postMeta'] =  $showMeta ? 'yes' : 'no';
 			return $render_block;
 		}
 	}
 
 	if ( '!==' === $condition_operator ) {
 		if ( $selected_meta !== $condition_value ) {
-			$render_block['postMeta'] = 'yes';
+			/*$render_block['postMeta'] = 'yes';*/
+			$render_block['postMeta'] = $showMeta ? 'yes' : 'no';
 			return $render_block;
 		}
 	}
 
 	if ( 'true' === $condition_operator ) {
 		if ( $selected_meta ) {
-			$render_block['postMeta'] = 'yes';
+			/*$render_block['postMeta'] = 'yes';*/
+			$render_block['postMeta'] = $showMeta ? 'yes' : 'no';
 			return $render_block;
 		}
 	}
 
 	if ( 'false' === $condition_operator ) {
 		if ( empty( $selected_meta ) ) {
-			$render_block['postMeta'] = 'yes';
+			/*$render_block['postMeta'] = 'yes';*/
+			$render_block['postMeta'] = $showMeta ? 'yes' : 'no';
 			return $render_block;
 		}
 	}
 
 		// Failed all check hide block.
-		$render_block['postMeta'] = 'no';
+		/*$render_block['postMeta'] = 'no';*/
+		$render_block['postMeta'] = $showMeta ? 'no' : 'yes';
 		return $render_block;
 }
 
@@ -245,7 +255,8 @@ function conditonal_blocks_check_date_ranges( $render_block, $conditions, $block
 
 	if ( empty( $conditions['dates'] ) || ! is_array( $conditions['dates'] ) ) {
 		// Failed all check hide block.
-		$render_block['postMeta'] = 'yes';
+		/*$render_block['postMeta'] = 'yes';*/
+		$render_block['dates'] = 'yes';
 		return $render_block;
 	}
 
@@ -278,3 +289,115 @@ function conditonal_blocks_check_date_ranges( $render_block, $conditions, $block
 }
 
 add_filter( 'conditional_blocks_render_conditions', 'conditonal_blocks_check_date_ranges', 10, 3 );
+
+/**
+ * Check UTM Source for Block.
+ *
+ * @param array $render_block array containing condition name and 'yes'/'no' if blocks should be rendered.
+ * @param array $conditions Block block conditions array.
+ * @param array $block the whole block object.
+ * @return array render_block
+ */
+function conditional_blocks_check_utm_source( $render_block, $conditions, $block ) {
+	$showUtmSource = isset( $conditions['showUtmSource'] ) ? $conditions['showUtmSource'] : '';
+
+	if( empty( $conditions['utmSource'] ) && empty( $conditions['utmSourceValue'] ) ) {
+		$render_block['utm_source'] = $showUtmSource ? 'yes' : 'no';
+		return $render_block;
+	} else if( ! empty( $conditions['utmSource'] ) && empty( $conditions['utmSourceValue'] ) ) {
+		if( isset( $_REQUEST[ $conditions['utmSource'] ] ) ) {
+			$render_block['utm_source'] = $showUtmSource ? 'yes' : 'no';
+		} else {
+			$render_block['utm_source'] = $showUtmSource ? 'no' : 'yes';
+		}
+		
+		return $render_block;
+	} else if( ! empty( $conditions['utmSource'] ) && ! empty( $conditions['utmSourceValue'] ) ) {
+		if( isset( $_REQUEST[ $conditions['utmSource'] ] ) && $_REQUEST[ $conditions['utmSource'] ] == $conditions['utmSourceValue'] ) {
+			$render_block['utm_source'] = $showUtmSource ? 'yes' : 'no';
+		} else {
+			$render_block['utm_source'] = $showUtmSource ? 'no' : 'yes';
+		}
+		
+		return $render_block;
+	}
+
+	return $render_block;
+}
+
+add_filter( 'conditional_blocks_render_conditions', 'conditional_blocks_check_utm_source', 10, 3 );
+
+/**
+ * Check URL Param for Block.
+ *
+ * @param array $render_block array containing condition name and 'yes'/'no' if blocks should be rendered.
+ * @param array $conditions Block block conditions array.
+ * @param array $block the whole block object.
+ * @return array render_block
+ */
+function conditional_blocks_check_url_param( $render_block, $conditions, $block ) {
+	$showUrlParam = ( isset( $conditions['showUrlParam'] ) ? $conditions['showUrlParam'] : true );
+
+	if( empty( $conditions['urlParam'] ) && empty( $conditions['urlParamValue'] ) ){
+		$render_block['url_param'] = $showUrlParam ? 'yes' : 'no';
+		return $render_block;
+	} else if( ! empty( $conditions['urlParam'] ) && empty( $conditions['urlParamValue'] ) ){
+		if( isset( $_REQUEST[ $conditions['urlParam'] ] ) ) {
+			$render_block['url_param'] = $showUrlParam ? 'yes' : 'no';
+		} else {
+			$render_block['url_param'] = $showUrlParam ? 'no' : 'yes';
+		}
+		
+		return $render_block;
+	} else if( ! empty( $conditions['urlParam'] ) && ! empty( $conditions['urlParamValue'] ) ) {
+		if( isset( $_REQUEST[ $conditions['urlParam'] ] ) && $_REQUEST[ $conditions['urlParam'] ] == $conditions['urlParamValue'] ) {
+			$render_block['url_param'] = $showUrlParam ? 'yes' : 'no';
+		} else {
+			$render_block['url_param'] = $showUrlParam ? 'no' : 'yes';
+		}
+
+		return $render_block;
+	}
+
+	return $render_block;
+}
+
+add_filter( 'conditional_blocks_render_conditions', 'conditional_blocks_check_url_param', 10, 3 );
+
+/**
+ * Check Cookie for Block.
+ *
+ * @param array $render_block array containing condition name and 'yes'/'no' if blocks should be rendered.
+ * @param array $conditions Block block conditions array.
+ * @param array $block the whole block object.
+ * @return array render_block
+ */
+
+function conditional_block_check_cookie( $render_block, $conditions, $block ) {
+	$showCookie = ( isset( $conditions['showCookieParam'] ) ? $conditions['showCookieParam'] : true );
+
+	if( empty( $conditions['cookieParam'] ) && empty( $conditions['cookieParamValue'] ) ) {
+		$render_block['cookie_param'] = $showCookie ? 'yes' : 'no';
+		return $render_block;
+	} else if( ! empty( $conditions['cookieParam'] ) && empty( $conditions['cookieParamValue'] ) ) {
+		if( isset( $_COOKIE[ $conditions['cookieParam'] ] ) ) {
+			$render_block['cookie_param'] = $showCookie ? 'yes' : 'no';
+		} else {
+			$render_block['cookie_param'] = $showCookie ? 'no' : 'yes';
+		}
+
+		return $render_block;
+	} else if( ! empty( $conditions['cookieParam'] ) && ! empty( $conditions['cookieParamValue'] ) ) {
+		if( isset( $_COOKIE[ $conditions['cookieParam'] ] ) && $_COOKIE[ $conditions['cookieParam'] ] == $conditions['cookieParamValue'] ) {
+			$render_block['cookie_param'] = $showCookie ? 'yes' : 'no';
+		} else {
+			$render_block['cookie_param'] = $showCookie ? 'no' : 'yes';
+		}
+
+		return $render_block;
+	}
+
+	return $render_block;
+}
+
+add_filter( 'conditional_blocks_render_conditions', 'conditional_block_check_cookie', 10, 3 );

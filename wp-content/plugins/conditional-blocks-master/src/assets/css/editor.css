@@ -11,6 +11,7 @@ svg.conditional-blocks-svg {
 }
 .conditions-pro-block {
     position: relative;
+    flex-wrap: wrap;
 }
 .conditions-pro-block .conditions-pro-toggle {
     position: absolute;
@@ -23,4 +24,9 @@ svg.conditional-blocks-svg {
 }
 .conditions-pro-block .conditions-pro-toggle label {
     display: none !important;
+}
+
+.conditions-pro-block .full-width {
+    width: 100%;
+    margin-bottom: 5px !important;
 }

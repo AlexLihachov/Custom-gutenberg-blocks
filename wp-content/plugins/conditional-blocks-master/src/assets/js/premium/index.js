@@ -148,9 +148,14 @@ function conblockProControls( controlsArray, props ) {
 			</div>
 		</Tooltip>
 
-		<Tooltip text={ __( 'Advanced: Show block if this post has the specific Custom Field Post Meta. Suited for Reusable Blocks.' ) }>
+		<Tooltip text={ __( 'Advanced: ' + ( (conditionalBlocksAttributes && (conditionalBlocksAttributes.showMetaKey == undefined || conditionalBlocksAttributes.showMetaKey == true)) ? 'Show' : 'Hide' ) + ' block if this post has the specific Custom Field Post Meta. Suited for Reusable Blocks.' ) }>
 			<div>
-				<PanelRow>
+				<PanelRow className="conditions-pro-block">
+					<ToggleControl
+						checked={ ( conditionalBlocksAttributes && ( conditionalBlocksAttributes.showMetaKey == undefined || conditionalBlocksAttributes.showMetaKey == true ) ) ? true : false }
+						onChange={ (option) => updateAttribute( props, 'showMetaKey', option ) }
+						className="conditions-pro-toggle"
+					/>
 
 					<SelectControl
 						label="Post Meta: Key"
@@ -191,6 +196,69 @@ function conblockProControls( controlsArray, props ) {
 				onChange={ ( option ) => updateAttribute( props, 'postMeta.value', option ) }
 			/>
 
+		</PanelRow>
+
+		<PanelRow className="conditions-pro-block">
+			<ToggleControl
+				checked={ (conditionalBlocksAttributes && ( conditionalBlocksAttributes.showUtmSource == undefined || conditionalBlocksAttributes.showUtmSource == true )) ? true : false }
+				onChange={ (option) => updateAttribute( props, 'showUtmSource', option ) }
+				className="conditions-pro-toggle"
+			/>
+			<TextControl
+				label={ ( (conditionalBlocksAttributes && ( conditionalBlocksAttributes.showUtmSource == undefined || conditionalBlocksAttributes.showUtmSource == true )) ? "Show" : 'Hide' ) + " for UTM Source"}
+				value={ conditionalBlocksAttributes && conditionalBlocksAttributes.utmSource ? conditionalBlocksAttributes.utmSource : '' }
+				onChange={ ( option ) => updateAttribute( props, 'utmSource', option ) }
+				placeholder="UTM Source Key"
+				className="full-width"
+			/>
+			<TextControl
+				value={ conditionalBlocksAttributes && conditionalBlocksAttributes.utmSourceValue ? conditionalBlocksAttributes.utmSourceValue : '' }
+				onChange={ ( option ) => updateAttribute( props, 'utmSourceValue', option ) }
+				placeholder="UTM Source Value"
+				className="full-width"
+			/>
+		</PanelRow>
+
+		<PanelRow className="conditions-pro-block">
+			<ToggleControl
+				checked={ (conditionalBlocksAttributes && ( conditionalBlocksAttributes.showUrlParam == undefined || conditionalBlocksAttributes.showUrlParam == true ) ? true : false ) }
+				onChange={ (option) => updateAttribute( props, 'showUrlParam', option ) }
+				className="conditions-pro-toggle"
+			/>
+			<TextControl
+				label={ ( (conditionalBlocksAttributes && (conditionalBlocksAttributes.showUrlParam == undefined || conditionalBlocksAttributes.showUrlParam == true)) ? 'Show' : 'Hide' ) + ' for URL Param' }
+				value={ conditionalBlocksAttributes && conditionalBlocksAttributes.urlParam ? conditionalBlocksAttributes.urlParam : '' }
+				onChange={ (option) => updateAttribute( props, 'urlParam', option ) }
+				placeholder="URL Param Key"
+				className="full-width"
+			/>
+			<TextControl
+				value={ conditionalBlocksAttributes && conditionalBlocksAttributes.urlParamValue ? conditionalBlocksAttributes.urlParamValue : '' }
+				onChange={ ( option ) => updateAttribute( props, 'urlParamValue', option ) }
+				placeholder="URL Param Value"
+				className="full-width"
+			/>
+		</PanelRow>
+
+		<PanelRow className="conditions-pro-block">
+			<ToggleControl
+				checked={ ( conditionalBlocksAttributes && (conditionalBlocksAttributes.showCookieParam == undefined || conditionalBlocksAttributes.showCookieParam == true) ? true : false ) }
+				onChange={ (option) => updateAttribute( props, 'showCookieParam', option ) }
+				className="conditions-pro-toggle"
+			/>
+			<TextControl
+				label={ ( ( conditionalBlocksAttributes && (conditionalBlocksAttributes.showCookieParam == undefined || conditionalBlocksAttributes.showCookieParam == true) ) ? 'Show' : 'Hide' ) + ' for Cookie' }
+				value={ conditionalBlocksAttributes && conditionalBlocksAttributes.cookieParam ? conditionalBlocksAttributes.cookieParam : '' }
+				onChange={ (option) => updateAttribute( props, 'cookieParam', option ) }
+				placeholder="Cookie Key"
+				className="full-width"
+			/>
+			<TextControl
+				value={ conditionalBlocksAttributes && conditionalBlocksAttributes.cookieParamValue ? conditionalBlocksAttributes.cookieParamValue : '' }
+				onChange={ (option) => updateAttribute( props, 'cookieParamValue', option ) }
+				placeholder="Cookie Value"
+				className="full-width"
+			/>
 		</PanelRow>
 
 	</PanelBody> );
