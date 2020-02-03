@@ -24,6 +24,8 @@ html {
 body {
 	background: #fff;
 	/* Fallback for when there is no custom background color defined. */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 /* stylelint-enable */
 
