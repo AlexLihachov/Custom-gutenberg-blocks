@@ -23,9 +23,6 @@ if ( ! wp_rig()->is_primary_nav_menu_active() ) {
 	?>
 >
 <!-- ### -->
-<div class="nav-logo">
-	<a href="/"><img src="<?php echo( get_stylesheet_directory_uri() ); ?>/assets/images/src/logo.svg" alt="logo" /></a>
-</div>
 	<?php
 	if ( wp_rig()->is_amp() ) {
 		?>
