@@ -186,7 +186,7 @@ export const schema = {
 	},
 	titleTag: {
 		type: 'string',
-		defualt: '',
+		default: '',
 	},
 	...createTypographyAttributes('title%s'),
 	titleColor: {
@@ -276,6 +276,7 @@ export const settings = {
 	modules: {
 		'advanced-general': true,
 		'advanced-block-spacing': true,
+		// Just in premium version
 		'advanced-column-spacing': true,
 		'advanced-responsive': true,
 		'block-background': true,
@@ -283,9 +284,10 @@ export const settings = {
 		'block-title': true,
 		'content-align': true,
 		'block-designs': true,
-		'custom-css': {
-			default: applyFilters('stackable.image-box.custom-css.default', ''),
-		},
+		// Hide as premium feature
+		// 'custom-css': {
+		// 	default: applyFilters('stackable.image-box.custom-css.default', ''),
+		// },
 	},
 };
 

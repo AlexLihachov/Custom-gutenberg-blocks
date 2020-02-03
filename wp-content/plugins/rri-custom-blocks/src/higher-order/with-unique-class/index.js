@@ -22,7 +22,7 @@ const withUniqueClass = createHigherOrderComponent(
 			const {
 				attributes, setAttributes, clientId,
 			} = this.props;
-			console.log(clientId);
+
 			const newUniqueClass = createUniqueClass(clientId);
 
 			if (typeof attributes.uniqueClass === 'undefined' || attributes.uniqueClass !== newUniqueClass) {

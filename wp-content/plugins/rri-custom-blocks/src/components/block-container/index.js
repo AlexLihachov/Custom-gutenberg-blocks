@@ -27,7 +27,7 @@ BlockContainer.Edit = props => {
 
     const mainClasses = classnames([
         props.className,
-    ], applyFilters(`rri.${blockName}.main-block.classes`, {
+    ], applyFilters(`stackable.${blockName}.main-block.classes`, {
         'rri-main-block': mainClass,
     }, blockProps));
 
@@ -36,14 +36,14 @@ BlockContainer.Edit = props => {
     return (
         <BlockTag {...containerProps} id={anchor} className={mainClasses}>
             {blockProps.styles}
-            {applyFilters(`rri.${blockName}.edit.output.outer`, null, design, blockProps)}
+            {applyFilters(`stackable.${blockName}.edit.output.outer`, null, design, blockProps)}
             {render &&
             <div className="rri-inner-block">
-                {applyFilters(`rri.${blockName}.edit.output.before`, null, design, blockProps)}
+                {applyFilters(`stackable.${blockName}.edit.output.before`, null, design, blockProps)}
                 <div className="rri-block-content">
                     {render(blockProps)}
                 </div>
-                {applyFilters(`rri.${blockName}.edit.output.after`, null, design, blockProps)}
+                {applyFilters(`stackable.${blockName}.edit.output.after`, null, design, blockProps)}
             </div>
             }
         </BlockTag>
@@ -67,7 +67,7 @@ BlockContainer.Save = props => {
 
     const mainClasses = classnames([
         props.className,
-    ], applyFilters(`rri.${blockName}.main-block.classes`, {
+    ], applyFilters(`stackable.${blockName}.main-block.classes`, {
         'rri-main-block': mainClass,
     }, blockProps));
 
@@ -76,14 +76,14 @@ BlockContainer.Save = props => {
     return (
         <BlockTag {...containerProps} id={anchor} className={mainClasses}>
             {blockProps.styles}
-            {applyFilters(`rri.${blockName}.save.output.outer`, null, design, blockProps)}
+            {applyFilters(`stackable.${blockName}.save.output.outer`, null, design, blockProps)}
             {render &&
             <div className="rri-inner-block">
-                {applyFilters(`rri.${blockName}.save.output.before`, null, design, blockProps)}
+                {applyFilters(`stackable.${blockName}.save.output.before`, null, design, blockProps)}
                 <div className="rri-block-content">
                     {render(blockProps)}
                 </div>
-                {applyFilters(`rri.${blockName}.save.output.after`, null, design, blockProps)}
+                {applyFilters(`stackable.${blockName}.save.output.after`, null, design, blockProps)}
             </div>
             }
         </BlockTag>

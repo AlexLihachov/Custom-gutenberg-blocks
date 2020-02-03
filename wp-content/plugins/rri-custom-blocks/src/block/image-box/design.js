@@ -10,7 +10,7 @@ import { i18n } from '../../constants';
 import { __ } from '@wordpress/i18n'
 import { addFilter } from '@wordpress/hooks'
 
-addFilter( 'rri.image-box.design.apply-block-attributes', 'rri/image-box', ( attributes, blockAttributes = null ) => {
+addFilter( 'stackable.image-box.design.apply-block-attributes', 'rri/image-box', ( attributes, blockAttributes = null ) => {
     return omit( attributes, [
         'link1Url',
         'link2Url',
@@ -47,7 +47,7 @@ addFilter( 'rri.image-box.design.apply-block-attributes', 'rri/image-box', ( att
     ] )
 } );
 
-addFilter( 'rri.image-box.edit.designs', 'rri/image-box', designs => {
+addFilter( 'stackable.image-box.edit.designs', 'rri/image-box', designs => {
     return {
         ...designs,
         corporateLight1: {

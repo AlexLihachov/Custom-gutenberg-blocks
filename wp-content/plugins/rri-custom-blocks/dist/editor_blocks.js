@@ -32654,7 +32654,6 @@ var withUniqueClass = Object(__WEBPACK_IMPORTED_MODULE_2__wordpress_compose__["b
             attributes = _this$props.attributes,
             setAttributes = _this$props.setAttributes,
             clientId = _this$props.clientId;
-        console.log(clientId);
         var newUniqueClass = createUniqueClass(clientId);
 
         if (typeof attributes.uniqueClass === 'undefined' || attributes.uniqueClass !== newUniqueClass) {
@@ -33190,7 +33189,7 @@ BlockContainer.Edit = function (props) {
       design = _blockProps$attribute.design,
       _blockProps$attribute3 = _blockProps$attribute.blockTag,
       blockTag = _blockProps$attribute3 === void 0 ? 'div' : _blockProps$attribute3;
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_1_classnames___default()([props.className], Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("rri.".concat(blockName, ".main-block.classes"), {
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_1_classnames___default()([props.className], Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("stackable.".concat(blockName, ".main-block.classes"), {
     'rri-main-block': mainClass
   }, blockProps));
   var BlockTag = blockTag || blockTagProp || 'div'; // Allow the advanced block settings to override the HTML Tag.
@@ -33199,11 +33198,11 @@ BlockContainer.Edit = function (props) {
   return wp.element.createElement(BlockTag, _extends({}, containerProps, {
     id: anchor,
     className: mainClasses
-  }), blockProps.styles, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("rri.".concat(blockName, ".edit.output.outer"), null, design, blockProps), render && wp.element.createElement("div", {
+  }), blockProps.styles, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("stackable.".concat(blockName, ".edit.output.outer"), null, design, blockProps), render && wp.element.createElement("div", {
     className: "rri-inner-block"
-  }, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("rri.".concat(blockName, ".edit.output.before"), null, design, blockProps), wp.element.createElement("div", {
+  }, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("stackable.".concat(blockName, ".edit.output.before"), null, design, blockProps), wp.element.createElement("div", {
     className: "rri-block-content"
-  }, render(blockProps)), Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("rri.".concat(blockName, ".edit.output.after"), null, design, blockProps)));
+  }, render(blockProps)), Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("stackable.".concat(blockName, ".edit.output.after"), null, design, blockProps)));
 };
 
 BlockContainer.Save = function (props) {
@@ -33220,7 +33219,7 @@ BlockContainer.Save = function (props) {
       design = _blockProps$attribute4.design,
       _blockProps$attribute6 = _blockProps$attribute4.blockTag,
       blockTag = _blockProps$attribute6 === void 0 ? 'div' : _blockProps$attribute6;
-  var mainClasses = __WEBPACK_IMPORTED_MODULE_1_classnames___default()([props.className], Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("rri.".concat(blockName, ".main-block.classes"), {
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_1_classnames___default()([props.className], Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("stackable.".concat(blockName, ".main-block.classes"), {
     'rri-main-block': mainClass
   }, blockProps)); // TODO Remove `design` from the filters below.
 
@@ -33229,11 +33228,11 @@ BlockContainer.Save = function (props) {
   return wp.element.createElement(BlockTag, _extends({}, containerProps, {
     id: anchor,
     className: mainClasses
-  }), blockProps.styles, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("rri.".concat(blockName, ".save.output.outer"), null, design, blockProps), render && wp.element.createElement("div", {
+  }), blockProps.styles, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("stackable.".concat(blockName, ".save.output.outer"), null, design, blockProps), render && wp.element.createElement("div", {
     className: "rri-inner-block"
-  }, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("rri.".concat(blockName, ".save.output.before"), null, design, blockProps), wp.element.createElement("div", {
+  }, Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("stackable.".concat(blockName, ".save.output.before"), null, design, blockProps), wp.element.createElement("div", {
     className: "rri-block-content"
-  }, render(blockProps)), Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("rri.".concat(blockName, ".save.output.after"), null, design, blockProps)));
+  }, render(blockProps)), Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_hooks__["applyFilters"])("stackable.".concat(blockName, ".save.output.after"), null, design, blockProps)));
 };
 
 BlockContainer.Save.defaultProps = {
@@ -41050,7 +41049,7 @@ var schema = _objectSpread({
   },
   titleTag: {
     type: 'string',
-    defualt: ''
+    "default": ''
   }
 }, Object(__WEBPACK_IMPORTED_MODULE_5__util__["r" /* createTypographyAttributes */])('title%s'), {
   titleColor: {
@@ -41113,16 +41112,18 @@ var settings = {
   modules: {
     'advanced-general': true,
     'advanced-block-spacing': true,
+    // Just in premium version
     'advanced-column-spacing': true,
     'advanced-responsive': true,
     'block-background': true,
     'block-separators': true,
     'block-title': true,
     'content-align': true,
-    'block-designs': true,
-    'custom-css': {
-      "default": Object(__WEBPACK_IMPORTED_MODULE_7__wordpress_hooks__["applyFilters"])('stackable.image-box.custom-css.default', '')
-    }
+    'block-designs': true // Hide as premium feature
+    // 'custom-css': {
+    // 	default: applyFilters('stackable.image-box.custom-css.default', ''),
+    // },
+
   }
 }; // The "height" option is really the "columnHeight" option. @see edit.js
 // Disable the default column height.
@@ -41177,11 +41178,11 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 
-Object(__WEBPACK_IMPORTED_MODULE_3__wordpress_hooks__["addFilter"])('rri.image-box.design.apply-block-attributes', 'rri/image-box', function (attributes) {
+Object(__WEBPACK_IMPORTED_MODULE_3__wordpress_hooks__["addFilter"])('stackable.image-box.design.apply-block-attributes', 'rri/image-box', function (attributes) {
   var blockAttributes = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   return Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["omit"])(attributes, ['link1Url', 'link2Url', 'link3Url', 'link4Url', 'link1NewTab', 'link2NewTab', 'link3NewTab', 'link4NewTab', 'link1NoFollow', 'link2NoFollow', 'link3NoFollow', 'link4NoFollow', 'image1Id'].concat(_toConsumableArray(blockAttributes && blockAttributes.image1Id ? ['image1Url'] : []), ['image2Id'], _toConsumableArray(blockAttributes && blockAttributes.image2Id ? ['image2Url'] : []), ['image3Id'], _toConsumableArray(blockAttributes && blockAttributes.image3Id ? ['image3Url'] : []), ['image4Id'], _toConsumableArray(blockAttributes && blockAttributes.image4Id ? ['image4Url'] : []), ['subtitle1', 'subtitle2', 'subtitle3', 'subtitle4', 'title1', 'title2', 'title3', 'title4', 'description1', 'description2', 'description3', 'description4']));
 });
-Object(__WEBPACK_IMPORTED_MODULE_3__wordpress_hooks__["addFilter"])('rri.image-box.edit.designs', 'rri/image-box', function (designs) {
+Object(__WEBPACK_IMPORTED_MODULE_3__wordpress_hooks__["addFilter"])('stackable.image-box.edit.designs', 'rri/image-box', function (designs) {
   return _objectSpread({}, designs, {
     corporateLight1: {
       label: Object(__WEBPACK_IMPORTED_MODULE_2__wordpress_i18n__["__"])('Corporate Light 1', __WEBPACK_IMPORTED_MODULE_1__constants__["a" /* i18n */]),
