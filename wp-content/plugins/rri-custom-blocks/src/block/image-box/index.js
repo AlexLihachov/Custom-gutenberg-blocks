@@ -263,6 +263,7 @@ export const settings = {
 		__('Image Box', i18n)
 	],
 	supports: {
+		anchor: true,
 		align: ['center', 'wide', 'full'],
 		inserter: true,
 	},

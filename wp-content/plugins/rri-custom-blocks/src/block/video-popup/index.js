@@ -91,6 +91,7 @@ export const settings = {
 	],
 	attributes: schema,
 	supports: {
+		anchor: true,
 		align: [ 'center', 'wide', 'full' ],
 		inserter: true,
 	},

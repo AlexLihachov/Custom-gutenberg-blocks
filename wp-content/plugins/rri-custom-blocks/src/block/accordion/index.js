@@ -149,6 +149,7 @@ export const settings = {
 	save,
 
 	supports: {
+		anchor: true,
 		inserter: true
 	},
 
