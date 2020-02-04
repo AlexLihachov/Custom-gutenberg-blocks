@@ -61,12 +61,12 @@ var frontend_blocks =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 362);
+/******/ 	return __webpack_require__(__webpack_require__.s = 378);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 32:
+/***/ 26:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -115,12 +115,12 @@ function domReady(callback) {
 
 /***/ }),
 
-/***/ 362:
+/***/ 378:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(379);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfill__);
 /**
  * All frontend scripts required by our blocks should be included here.
@@ -133,7 +133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 
-var context = __webpack_require__(364); // Import.
+var context = __webpack_require__(380); // Import.
 
 
 context.keys().forEach(function (key) {
@@ -142,7 +142,7 @@ context.keys().forEach(function (key) {
 
 /***/ }),
 
-/***/ 363:
+/***/ 379:
 /***/ (function(module, exports) {
 
 /**
@@ -155,11 +155,12 @@ if (window.NodeList && !window.NodeList.prototype.forEach) {
 
 /***/ }),
 
-/***/ 364:
+/***/ 380:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./video-popup/frontend.js": 365
+	"./accordion/frontend.js": 381,
+	"./video-popup/frontend.js": 382
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -175,18 +176,111 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 364;
+webpackContext.id = 380;
 
 /***/ }),
 
-/***/ 365:
+/***/ 381:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(366);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initAll", function() { return initAll; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(26);
+/**
+ * WordPress dependencies
+ */
+
+
+var toggleAccordion = function toggleAccordion(el) {
+  el.classList.toggle('rri-accordion--open');
+  el.setAttribute('aria-expanded', el.classList.contains('rri-accordion--open') ? 'true' : 'false'); // Close other adjacent accordions if needed.
+
+  if (el.classList.contains('rri-accordion--single-open')) {
+    var adjacent = el.nextElementSibling;
+
+    while (adjacent && adjacent.classList.contains('rri-accordion')) {
+      forceCloseAccordion(adjacent);
+      adjacent = adjacent.nextElementSibling;
+    }
+
+    adjacent = el.previousElementSibling;
+
+    while (adjacent && adjacent.classList.contains('rri-accordion')) {
+      forceCloseAccordion(adjacent);
+      adjacent = adjacent.previousElementSibling;
+    }
+  }
+};
+
+var forceCloseAccordion = function forceCloseAccordion(el) {
+  el.classList.remove('rri-accordion--open');
+  el.setAttribute('aria-expanded', 'false');
+};
+
+var detectMaxHeight = function detectMaxHeight(el) {
+  var isOpen = el.classList.contains('rri-accordion--open'); // Open the accordion if needed.
+
+  if (!isOpen) {
+    el.style.display = 'none';
+    el.classList.toggle('rri-accordion--open');
+    el.style.display = '';
+  } // Get the height in its open state.
+
+
+  var contentHeight = el.querySelector('.rri-accordion__text, .rri-accordion__content').clientHeight; // Bring back the previous state.
+
+  if (!isOpen) {
+    el.style.display = 'none';
+    el.classList.toggle('rri-accordion--open');
+    el.style.display = '';
+  } // Set the max height that we'll use
+
+
+  el.style.setProperty('--max-height', "".concat(contentHeight + 50, "px"));
+};
+
+var instanceID = 1;
+
+var init = function init(el) {
+  // Set our max-height variable.
+  detectMaxHeight(el);
+  var a = el.querySelector('.rri-accordion__heading');
+  a.addEventListener('click', function (ev) {
+    ev.preventDefault();
+    toggleAccordion(el);
+  });
+  a.addEventListener('keypress', function (ev) {
+    ev.preventDefault();
+    toggleAccordion(el);
+  }); // Accessibility: https://www.w3.org/TR/wai-aria-practices/examples/accordion/accordion.html
+
+  var heading = el.querySelector('.rri-accordion__heading h4, .rri-accordion__title');
+  var content = el.querySelector('.rri-accordion__text, .rri-accordion__content');
+  heading.setAttribute('id', "rri-accordion-".concat(instanceID, "__heading"));
+  content.setAttribute('id', "rri-accordion-".concat(instanceID, "__content"));
+  heading.setAttribute('aria-controls', "rri-accordion-".concat(instanceID, "__content"));
+  content.setAttribute('aria-labelledby', "rri-accordion-".concat(instanceID, "__heading"));
+  instanceID++;
+};
+
+var initAll = function initAll() {
+  document.querySelectorAll('.rri-accordion').forEach(function (el) {
+    return init(el);
+  });
+};
+Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(initAll);
+
+/***/ }),
+
+/***/ 382:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(383);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bigpicture__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__ = __webpack_require__(26);
 /**
  * External dependencies
  */
@@ -234,7 +328,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 366:
+/***/ 383:
 /***/ (function(module, exports) {
 
 // BigPicture.js | license MIT | henrygd.me/bigpicture
