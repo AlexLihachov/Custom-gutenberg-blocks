@@ -58,63 +58,50 @@ class Component implements Component_Interface {
 		 * Add the line below to disable the custom color picker in the editor.
 		 * add_theme_support( 'disable-custom-colors' );
 		 */
+		add_theme_support( 'disable-custom-colors' );
+
 		add_theme_support(
 			'editor-color-palette',
 			[
 				[
-					'name'  => __( 'Primary', 'wp-rig' ),
-					'slug'  => 'theme-primary',
-					'color' => '#e36d60',
+					'name'  => __( 'TR Blue', 'wp-rig' ),
+					'slug'  => 'tr-blue',
+					'color' => '#14AECF',
 				],
 				[
-					'name'  => __( 'Secondary', 'wp-rig' ),
-					'slug'  => 'theme-secondary',
-					'color' => '#41848f',
+					'name'  => __( 'Header Gray', 'wp-rig' ),
+					'slug'  => 'header-gray',
+					'color' => '#201E1D',
 				],
 				[
-					'name'  => __( 'Red', 'wp-rig' ),
-					'slug'  => 'theme-red',
-					'color' => '#C0392B',
+					'name'  => __( 'Body Gray', 'wp-rig' ),
+					'slug'  => 'body-gray',
+					'color' => '#38484F',
 				],
 				[
-					'name'  => __( 'Green', 'wp-rig' ),
-					'slug'  => 'theme-green',
-					'color' => '#27AE60',
+					'name'  => __( 'Muted Gray', 'wp-rig' ),
+					'slug'  => 'muted-gray',
+					'color' => '#96A2A7',
 				],
 				[
-					'name'  => __( 'Blue', 'wp-rig' ),
-					'slug'  => 'theme-blue',
-					'color' => '#2980B9',
+					'name'  => __( 'Light Gray', 'wp-rig' ),
+					'slug'  => 'light-gray',
+					'color' => '#F7F8F8',
 				],
 				[
-					'name'  => __( 'Yellow', 'wp-rig' ),
-					'slug'  => 'theme-yellow',
-					'color' => '#F1C40F',
+					'name'  => __( 'Section Gray', 'wp-rig' ),
+					'slug'  => 'section-gray',
+					'color' => '#E5EEF1',
 				],
 				[
-					'name'  => __( 'Black', 'wp-rig' ),
-					'slug'  => 'theme-black',
-					'color' => '#1C2833',
-				],
-				[
-					'name'  => __( 'Grey', 'wp-rig' ),
-					'slug'  => 'theme-grey',
-					'color' => '#95A5A6',
+					'name'  => __( 'TR Black', 'wp-rig' ),
+					'slug'  => 'tr-black',
+					'color' => '#101E1D',
 				],
 				[
 					'name'  => __( 'White', 'wp-rig' ),
-					'slug'  => 'theme-white',
-					'color' => '#ECF0F1',
-				],
-				[
-					'name'  => __( 'Dusty daylight', 'wp-rig' ),
-					'slug'  => 'custom-daylight',
-					'color' => '#97c0b7',
-				],
-				[
-					'name'  => __( 'Dusty sun', 'wp-rig' ),
-					'slug'  => 'custom-sun',
-					'color' => '#eee9d1',
+					'slug'  => 'white',
+					'color' => '#FFFFFF',
 				],
 			]
 		);
@@ -125,6 +112,8 @@ class Component implements Component_Interface {
 		 * Add the line below to disable the custom color picker in the editor.
 		 * add_theme_support( 'disable-custom-font-sizes' );
 		 */
+		add_theme_support( 'disable-custom-font-sizes' );
+		
 		add_theme_support(
 			'editor-font-sizes',
 			[
