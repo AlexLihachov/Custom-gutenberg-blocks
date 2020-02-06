@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="86px" height="86px" viewBox="0 0 86 86" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Top</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-60.000000, -30.000000)" stroke="#504F4F">
+            <g id="Top" transform="translate(64.000000, 34.000000)">
+                <rect id="Rectangle" stroke-width="7" fill="#504F4F" x="0" y="0" width="78" height="78" rx="8"></rect>
+                <path d="M8,-2.66453526e-15 L70,-2.66453526e-15 C74.418278,-3.47615976e-15 78,3.581722 78,8 L78,15.1113281 L78,15.1113281 L0,15.1113281 L0,8 C-5.41083001e-16,3.581722 3.581722,-1.85291076e-15 8,-2.66453526e-15 Z" id="Rectangle" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

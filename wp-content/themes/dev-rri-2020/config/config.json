@@ -1,0 +1,16 @@
+{
+    "theme": {
+        "slug": "rri-2020",
+        "name": "RRI 2020",
+        "author": "Cortney Ray",
+        "PHPNamespace": "RRI_2020\\RRI_2020"
+    },
+    "dev": {
+        "browserSync": {
+          "live": false,
+          "proxyURL": "www.tonyrobbins.local",
+          "bypassPort": "8181",
+          "https": false
+        }
+      }
+  }

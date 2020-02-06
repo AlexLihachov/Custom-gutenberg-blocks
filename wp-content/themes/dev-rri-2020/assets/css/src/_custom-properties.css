@@ -1,0 +1,73 @@
+/**
+ * Custom Properties
+ * aka CSS variables.
+ *
+ * @link: https://developer.mozilla.org/en-US/docs/Web/CSS/--*
+ **/
+
+@font-face {
+	font-family: "Proxima Nova Bold";
+	src: url("../fonts/proximanova-bold-webfont.eot");
+	src:
+		url("../fonts/proximanova-bold-webfont.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/proximanova-bold-webfont.woff2") format("woff2"),
+		url("../fonts/proximanova-bold-webfont.woff") format("woff"),
+		url("../fonts/proximanova-bold-webfont.ttf") format("truetype"),
+		url("../fonts/proximanova-bold-webfont.svg#proxima_nova_rgbold") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Proxima Nova";
+	src: url("../fonts/proximanova-regular-webfont.eot");
+	src:
+		url("../fonts/proximanova-regular-webfont.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/proximanova-regular-webfont.woff2") format("woff2"),
+		url("../fonts/proximanova-regular-webfont.woff") format("woff"),
+		url("../fonts/proximanova-regular-webfont.ttf") format("truetype"),
+		url("../fonts/proximanova-regular-webfont.svg#proxima_nova_rgregular") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+
+:root {
+	--global-font-color: #38484f;
+	--heading-font-color: #201e1d;
+	--global-font-family: "Proxima Nova", serif;
+	--global-font-size: 18;
+	--global-font-line-height: 1.4;
+	--highlight-font-family: "Proxima Nova", "Helvetica Neue", "Arial Narrow", sans-serif;
+	--heading-font-family: "Proxima Nova Bold", "Helvetica Neue", "Arial Narrow", sans-serif;
+	--h5-font-family: "Playfair Display", "Helvetica Neue", "Arial Narrow", sans-serif;
+	--content-width: 70rem;
+	--full-width: 100%;
+	--dropdown-symbol-width: 0.7em;
+
+	/* Custom editor colors */
+	--color-theme-primary: #14aecf;
+	--color-theme-secondary: #41848f;
+	--color-theme-red: #c0392b;
+	--color-theme-green: #27ae60;
+	--color-theme-blue: #2980b9;
+	--color-theme-yellow: #f1c40f;
+	--color-theme-black: #101e1d;
+	--color-theme-grey: #f7f8f8;
+	--color-theme-white: #ecf0f1;
+	--color-custom-daylight: #97c0b7;
+	--color-custom-sun: #eee9d1;
+	--color-footer-text: #96a2a7;
+
+	--color-link: #14aecf;
+	--color-link-visited: #333;
+	--color-link-active: #14aecf;
+
+	--color-quote-border: #000;
+	--color-quote-citation: #6c7781;
+
+	/* Custom editor font sizes */
+	--font-size-small: calc(16 / var(--global-font-size) * 1rem);
+	--font-size-regular: calc(var(--global-font-size) / 16 * 1rem);
+	--font-size-large: calc(36 / var(--global-font-size) * 1rem);
+	--font-size-larger: calc(48 / var(--global-font-size) * 1rem);
+}
