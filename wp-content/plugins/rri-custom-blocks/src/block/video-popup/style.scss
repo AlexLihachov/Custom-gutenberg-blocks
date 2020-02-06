@@ -1,0 +1,91 @@
+/**
+ * Frontend styles for the Video Popup Block.
+ *
+ * Enqueued in the editor & frontend.
+ */
+
+@import "common";
+
+.rri-video-popup--v3 {
+	.rri-video-popup__wrapper {
+		@include box();
+		margin-left: auto;
+		margin-right: auto;
+		padding: 0;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		height: 400px;
+		padding: 0;
+		background: #000;
+		background-size: cover;
+		background-position: center;
+		border-radius: 12px;
+		&::before {
+			transition: all 0.3s ease-in-out;
+		}
+	}
+
+	.rri-video-popup__play-button {
+		position: absolute;
+		svg {
+			fill: #fff;
+		}
+	}
+}
+.rri-video-popup.rri-video-popup--v3.alignfull {
+	&.rri-main-block--inner-full.rri--has-block-background,
+	&:not(.rri--has-block-background) {
+		.rri-video-popup__wrapper {
+			border-radius: 0;
+			// Escape and make it full-screen.
+			margin-left: #{ -$box-hori-padding };
+			margin-right: #{ -$box-hori-padding };
+			width: calc(100% + #{ 2 * $box-hori-padding });
+		}
+	}
+}
+
+.rri-video-popup__overlay {
+	position: absolute !important;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 6 !important;
+}
+
+.rri-video-popup__play-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	svg {
+		fill: #fff;
+		width: 10%;
+		height: 10%;
+		min-width: 30px;
+		min-height: 30px;
+	}
+}
+.rri-video-popup--button-outline,
+.rri-video-popup--button-circle {
+	.rri-video-popup__play-button svg {
+		min-width: 50px;
+		min-height: 50px;
+	}
+}
+
+// Don't add a background color to the popup's close button.
+#bp_container .bp-x {
+	&,
+	&:hover {
+		background: none !important;
+	}
+}

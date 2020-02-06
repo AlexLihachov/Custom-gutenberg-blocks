@@ -46,6 +46,11 @@ wp-content/*
 !wp-content/plugins/
 !wp-content/themes/
 
+# except Gutenberg custom blocks plugin config files
+!wp-content/plugins/rri-custom-blocks/.editorconfig
+!wp-content/plugins/rri-custom-blocks/.eslintignore
+!wp-content/plugins/rri-custom-blocks/.eslintrc.json
+!wp-content/plugins/rri-custom-blocks/.svgrrc
 # ignore these plugins from the core
 wp-content/plugins/hello.php
 wp-content/plugins/index.php
@@ -68,3 +73,6 @@ wp-content/themes/adventures/*.scssc
 wp-content/themes/adventures/.sass-cache/
 wp-content/themes/adventures/style.css.map
 wp-content/themes/adventures/style.css
+
+#ingnore npm packages
+node_modules

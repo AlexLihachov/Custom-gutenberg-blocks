@@ -1,0 +1,11 @@
+@import "common";
+
+// Always show in the editor.
+.rri--hide-desktop.rri--hide-desktop.rri--hide-desktop,
+.rri--hide-tablet.rri--hide-tablet.rri--hide-tablet,
+.rri--hide-mobile.rri--hide-mobile.rri--hide-mobile {
+	display: block !important;
+	&.rri-main-block {
+		display: flex !important;
+	}
+}

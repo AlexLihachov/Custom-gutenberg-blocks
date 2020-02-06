@@ -1,0 +1,16 @@
+// Limit the height of the design picker.
+.rri-top-block-separator-panel,
+.rri-bottom-block-separator-panel {
+	.rri-design-control {
+		max-height: 270px;
+	}
+}
+.rri-top-block-separator-panel .rri-design-panel-item__image {
+	transform: scaleY(-1);
+}
+.rri-top-separator,
+.rri-bottom-separator {
+	svg {
+		transition: none !important;
+	}
+}

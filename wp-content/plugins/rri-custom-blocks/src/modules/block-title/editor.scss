@@ -1,0 +1,13 @@
+.editor-styles-wrapper [data-type^="rri/"] {
+	.rri-main-block {
+		.rri-block-title {
+			margin: 0 0 64px;
+			&.rri-block-title--with-subtitle {
+				margin-bottom: 16px;
+			}
+		}
+		.rri-block-description {
+			margin: 0 0 64px;
+		}
+	}
+}
