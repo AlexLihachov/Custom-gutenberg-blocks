@@ -16,6 +16,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 defined( 'RRI_FILE' ) || define( 'RRI_FILE', __FILE__ );
 
 /**
+ * Create RRI Block category
+ * @param $categories
+ * @param $post
+ * @return array
+ */
+function rri_blocks_category( $categories, $post ) {
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug'  => 'rri-blocks',
+				'title' => 'RRI Blocks',
+			),
+		)
+	);
+}
+
+add_filter( 'block_categories', 'rri_blocks_category', 10, 2 );
+
+/**
  * Enqueue block assets for both frontend + backend.
  *
  * @since 0.1

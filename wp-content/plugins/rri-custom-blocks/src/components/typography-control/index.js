@@ -33,14 +33,15 @@ const TypographyControl = props => {
                 }
                 className="rri--help-tip-typography"
             >
-                {props.onChangeFontFamily && (
-                    <FontFamilyControl
-                        label={__('Font Family', i18n)}
-                        onChange={props.onChangeFontFamily}
-                        value={props.fontFamily}
-                        className="rri--help-tip-typography-family"
-                    />
-                )}
+	            {/* Hide Font family select as font-family property will be inherit */}
+                {/*{props.onChangeFontFamily && (*/}
+                {/*    <FontFamilyControl*/}
+                {/*        label={__('Font Family', i18n)}*/}
+                {/*        onChange={props.onChangeFontFamily}*/}
+                {/*        value={props.fontFamily}*/}
+                {/*        className="rri--help-tip-typography-family"*/}
+                {/*    />*/}
+                {/*)}*/}
                 {props.onChangeFontSize && (
                     <Fragment>
                         <WhenResponsiveScreen>
