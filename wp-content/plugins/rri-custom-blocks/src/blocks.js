@@ -19,7 +19,8 @@ import './format-types';
  * External dependencies
  */
 import registerBlock from './register-block';
-
+// Extensions
+import './extensions/copy';
 
 /**
  * Blocks

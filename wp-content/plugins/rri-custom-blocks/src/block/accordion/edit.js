@@ -26,6 +26,7 @@ import {
 	FourRangeControl,
 	PanelSpacingBody,
 	DivBackground,
+	AdvancedPanelBody
 } from '../../components';
 
 import {
@@ -35,7 +36,7 @@ import {
 	withSetAttributeHook,
 	withTabbedInspector,
 	withUniqueClass,
-	withClickOpenInspector,
+	withClickOpenInspector
 } from '../../higher-order';
 import {descriptionPlaceholder} from '../../util';
 import {i18n} from '../../constants';
@@ -110,7 +111,7 @@ addFilter('stackable.accordion.edit.inspector.style.before', 'stackable/accordio
 	return (
 		<Fragment>
 			{output}
-			<PanelBody title={__('General', i18n)}>
+			<AdvancedPanelBody title={__('General', i18n)}>
 				<ToggleControl
 					label={__('Close adjacent on open', i18n)}
 					checked={onlyOnePanelOpen}
@@ -155,7 +156,7 @@ addFilter('stackable.accordion.edit.inspector.style.before', 'stackable/accordio
 					setAttributes={setAttributes}
 					blockAttributes={props.attributes}
 				/>
-			</PanelBody>
+			</AdvancedPanelBody>
 
 			{(show.headerBackground || show.containerBackground) &&
 			<PanelAdvancedSettings

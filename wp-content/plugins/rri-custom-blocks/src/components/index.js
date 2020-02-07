@@ -1,4 +1,5 @@
 export {default as AdvancedAutosuggestControl} from './advanced-autosuggest-control';
+export {default as AdvancedPanelBody} from './advanced-panel-bogy';
 export {default as AdvancedRangeControl} from './advanced-range-control';
 export {default as AdvancedSelectControl} from './advanced-select-control';
 export {default as AdvancedToolbarControl} from './advanced-toolbar-control';

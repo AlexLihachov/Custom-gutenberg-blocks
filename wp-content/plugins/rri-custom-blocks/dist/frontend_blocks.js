@@ -61,7 +61,7 @@ var frontend_blocks =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 386);
+/******/ 	return __webpack_require__(__webpack_require__.s = 390);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -115,12 +115,12 @@ function domReady(callback) {
 
 /***/ }),
 
-/***/ 386:
+/***/ 390:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(387);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(391);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfill__);
 /**
  * All frontend scripts required by our blocks should be included here.
@@ -133,7 +133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 
-var context = __webpack_require__(388); // Import.
+var context = __webpack_require__(392); // Import.
 
 
 context.keys().forEach(function (key) {
@@ -142,7 +142,7 @@ context.keys().forEach(function (key) {
 
 /***/ }),
 
-/***/ 387:
+/***/ 391:
 /***/ (function(module, exports) {
 
 /**
@@ -155,12 +155,12 @@ if (window.NodeList && !window.NodeList.prototype.forEach) {
 
 /***/ }),
 
-/***/ 388:
+/***/ 392:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./accordion/frontend.js": 389,
-	"./video-popup/frontend.js": 390
+	"./accordion/frontend.js": 393,
+	"./video-popup/frontend.js": 394
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -176,11 +176,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 388;
+webpackContext.id = 392;
 
 /***/ }),
 
-/***/ 389:
+/***/ 393:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -273,12 +273,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(in
 
 /***/ }),
 
-/***/ 390:
+/***/ 394:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bigpicture__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__ = __webpack_require__(26);
 /**
@@ -328,7 +328,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 391:
+/***/ 395:
 /***/ (function(module, exports) {
 
 // BigPicture.js | license MIT | henrygd.me/bigpicture
