@@ -62,5 +62,38 @@ if ( file_exists( get_template_directory() . '/vendor/autoload.php' ) ) {
 // Load the `wp_rig()` entry point function.
 require get_template_directory() . '/inc/functions.php';
 
+/**
+ * Add a block category for "RRI Blocks"
+ *
+ * @param array $categories Array of block categories.
+ *
+ * @return array
+ */
+function rri_block_categories( $categories ) {
+    return array_merge(
+        $categories,
+        array(
+            array(
+                'slug'  => 'rri-blocks',
+                'title' => 'RRI Blocks',
+            ),
+        )
+    );
+}
+add_filter( 'block_categories', 'rri_block_categories', 10, 2 );
+
+/**
+ * Filter Force Login to allow exceptions for specific URLs.
+ *
+ * @param array $whitelist An array of URLs. Must be absolute.
+ * 
+ * @return array
+ */
+function my_forcelogin_whitelist( $whitelist ) {
+	$whitelist[] = home_url( '/tim-hooker-qa/' );
+	return $whitelist;
+  }
+  add_filter( 'v_forcelogin_whitelist', 'my_forcelogin_whitelist' );
+
 // Initialize the theme.
 call_user_func( 'WP_Rig\WP_Rig\wp_rig' );

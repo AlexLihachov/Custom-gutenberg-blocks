@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'RRI';
-  src:  url('fonts/RRI.eot?1jelkv');
+  src:  url('../fonts/RRI.eot?1jelkv');
   src:  
-    url('fonts/RRI.eot?1jelkv#iefix') format('embedded-opentype'),
-    url('fonts/RRI.woff2?1jelkv') format('woff2'),
-    url('fonts/RRI.ttf?1jelkv') format('truetype'),
-    url('fonts/RRI.woff?1jelkv') format('woff'),
-    url('fonts/RRI.svg?1jelkv#RRI') format('svg');
+    url('../fonts/RRI.eot?1jelkv#iefix') format('embedded-opentype'),
+    url('../fonts/RRI.woff2?1jelkv') format('woff2'),
+    url('../fonts/RRI.ttf?1jelkv') format('truetype'),
+    url('../fonts/RRI.woff?1jelkv') format('woff'),
+    url('../fonts/RRI.svg?1jelkv#RRI') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
