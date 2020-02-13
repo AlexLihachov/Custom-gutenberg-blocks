@@ -10,7 +10,7 @@ namespace WP_Rig\WP_Rig;
 $_ID = get_the_ID();
 
 $taxonomies =get_taxonomies('','names');
-$post_terms = get_the_terms($_ID, $taxonomies);
+$post_terms = wp_get_object_terms( get_the_ID(), $taxonomies );
 
 $tax_query = array();
 if( is_array( $post_terms ) && count( $post_terms ) > 0 ) {
@@ -48,7 +48,7 @@ if( $query->have_posts() ) {
 			$query->the_post();
 ?>
 			<?php
-				get_template_part( 'template-parts/content/related_posts_block', get_post_type() );
+				get_template_part( 'template-parts/content/posts_block', get_post_type() );
 			?>
 <?php
 		}

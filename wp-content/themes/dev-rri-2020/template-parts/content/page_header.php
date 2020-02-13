@@ -49,6 +49,16 @@ if ( is_404() ) {
 	?>
 	<header class="page-header">
 		<?php
+		
+		add_filter( 'get_the_archive_title', function( $title ) {
+			if( is_category() ) {
+				$title = single_cat_title( '', false );
+			} else if( is_tax() ) {
+				$title = single_term_title( '', false );
+			}
+			return $title;
+		} );
+
 		the_archive_title( '<h1 class="page-title">', '</h1>' );
 		the_archive_description( '<div class="archive-description">', '</div>' );
 		?>

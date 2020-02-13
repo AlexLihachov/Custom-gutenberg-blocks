@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts
+ * The template for displaying all story posts
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -20,6 +20,7 @@ wp_rig()->print_styles( 'wp-rig-content' );
 				the_post();
 
 				get_template_part( 'template-parts/content/entry_hero', get_post_type() );
+
 		?>
 				<header class="entry-header">
 		<?php
