@@ -18,6 +18,7 @@ export {default as DesignPanelBody} from './design-panel-body';
 export {default as DesignPanelItem} from './design-panel-item';
 export {default as DesignSeparatorControl} from './design-separator-control';
 export {default as DivBackground} from './div-background';
+export {default as DragImages} from './drag-images';
 export {default as FontFamilyControl} from './font-family-control';
 export {default as FontSizeControl} from './font-size-control';
 export {default as FourRangeControl} from './four-range-control';

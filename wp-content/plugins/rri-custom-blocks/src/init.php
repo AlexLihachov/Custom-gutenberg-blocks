@@ -62,7 +62,6 @@ function rri_blocks_frontend_assets() {
 		plugins_url( 'src/plugins/slick/slick-theme.css', dirname( __FILE__ ) )
 	);
 
-	// todo remove
 	wp_enqueue_script(
 		'slick-script',
 		plugins_url( 'src/plugins/slick/slick.min.js', dirname( __FILE__ ) ),

@@ -5,102 +5,42 @@
 /**
  * Internal dependencies
  */
-import './design'
-import deprecated from './deprecated'
-import edit from './edit'
-import save from './save'
-
-/**
- * External dependencies
- */
-import {
-	createBackgroundAttributes,
-	createTypographyAttributes,
-	createResponsiveAttributes,
-	createAllCombinationAttributes,
-	createImageAttributes,
-	createImageBackgroundAttributes,
-} from '../../util';
+import edit from './edit';
+import save from './save';
 
 /**
  * WordPress dependencies
  */
 import {__} from '@wordpress/i18n';
-import {addFilter, applyFilters} from '@wordpress/hooks';
 import {i18n} from '../../constants';
 
 export const schema = {
-	slides: {
-		type: 'number',
-		default: 1,
+	slidesData: {
+		type: 'array',
+		default: [
+			{
+				title: __('Title', i18n),
+				quote: __('Quote', i18n),
+				author: __('Author', i18n),
+				image: {
+					url: '',
+					id: ''
+				}
+			}
+		]
 	},
 
-	// Title
-	...createAllCombinationAttributes(
-		'title%s', {
-			type: 'string',
-			source: 'html',
-			selector: '.rri-generic-slide%d .rri-generic-slide__titles',
-			default: __('Title', i18n),
-		},
-		['1']
-	),
-
-	// Quote
-	...createAllCombinationAttributes(
-		'quote%s', {
-			type: 'string',
-			source: 'html',
-			selector: '.rri-generic-slide%d blockquote',
-			default: __('Quote', i18n),
-		},
-		['1']
-	),
-
-	// Author
-	...createAllCombinationAttributes(
-		'author%s', {
-			type: 'string',
-			source: 'html',
-			selector: '.rri-generic-slide%d .rri-generic-slide__author',
-			default: __('Author', i18n),
-		},
-		['1']
-	),
-
-	// Image.
-	...createImageAttributes('image%s', {
-		exclude: [
-			'Url',
-			'Id',
-			'Alt',
-			'BlendMode',
-		],
-	}),
-
-	...createImageBackgroundAttributes('image%s'),
-	imageSize: {
-		type: 'string',
-		default: 'large',
-	},
-
-	...createAllCombinationAttributes(
-		'image%s%s', {
-			type: 'number',
-			default: '',
-		},
-		['1'],
-		['Id', 'FullWidth', 'FullHeight']
-	),
-
-	...createAllCombinationAttributes(
-		'image%s%s', {
-			type: 'string',
-			default: '',
-		},
-		['1'],
-		['Url', 'FullUrl']
-	),
+	settings: {
+		type: 'object',
+		default: {
+			infinite: true,
+			adaptiveHeight: true,
+			autoplay: false,
+			autoplaySpeed: 0,
+			speed: 300,
+			slidesToShow: 1
+		}
+	}
 };
 
 export const name = 'rri/generic-slider';
@@ -121,7 +61,6 @@ export const settings = {
 		inserter: true,
 	},
 	attributes: schema,
-	// deprecated,
 	edit,
 	save,
 

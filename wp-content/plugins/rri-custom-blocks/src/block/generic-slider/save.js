@@ -4,78 +4,73 @@
 import {withBlockStyles, withUniqueClass} from '../../higher-order';
 import {BlockContainer} from '../../components';
 import classnames from 'classnames';
-import {range} from 'lodash';
 
 /**
  * WordPress dependencies
  */
-import {applyFilters} from '@wordpress/hooks';
 import {RichText} from '@wordpress/block-editor';
 import {compose} from '@wordpress/compose';
-import {Fragment, Component, createRef} from '@wordpress/element';
+import {Fragment} from '@wordpress/element';
 import createStyles from "./style";
 
-class Save extends Component {
-	render() {
-		const {className, attributes} = this.props;
-		const {
-			slides
-		} = attributes;
+const save = (props) => {
+	const {className, attributes} = props;
+	const {slidesData, settings} = attributes;
 
-		return (
-			<BlockContainer.Save
-				className={className}
-				blockProps={this.props}
-				render={() => (
-					<Fragment>
-						<div className="rri-generic-slider__inner">
-							{range(1, slides + 1).map((i) => {
-								const itemClasses = classnames([
-									'rri-generic-slide',
-									`rri-generic-slide${i}`,
-								]);
-								const title = attributes[`title${i}`];
-								const quote = attributes[`quote${i}`];
-								const author = attributes[`author${i}`];
-
-								return (
-									<div
-										className={itemClasses}
-										key={i}
-										style={{
-											backgroundImage: `url(${attributes[`image${i}Url`]})`
-										}}>
-										<div className="rri-generic-slide__wrapper">
-											<div className="rri-generic-slide__copy">
-												<RichText.Content
-													tagName="h5"
-													className="rri-generic-slide__titles"
-													value={title}
-												/>
-												<RichText.Content
-													tagName="blockquote"
-													className="rri-generic-slide__quote"
-													value={quote}
-												/>
-												<RichText.Content
-													tagName="h5"
-													className="rri-generic-slide__author"
-													value={author}
-												/>
-											</div>
+	return (
+		<BlockContainer.Save
+			className={className}
+			blockProps={props}
+			data-settings={JSON.stringify(settings)}
+			render={() => (
+				<Fragment>
+					<div className="rri-generic-slider__inner">
+						{slidesData.map((slide, index) => {
+							const itemClasses = classnames([
+								'rri-generic-slide',
+								`rri-generic-slide${index}`,
+							]);
+							const title = slide.title;
+							const quote = slide.quote;
+							const author = slide.author;
+							const imageUrl = slide.image.url;
+							return (
+								<div
+									className={itemClasses}
+									key={index}
+									style={{
+										backgroundImage: `url(${imageUrl})`
+									}}>
+									<div className="rri-generic-slide__wrapper">
+										<div className="rri-generic-slide__copy">
+											<RichText.Content
+												tagName="h5"
+												className="rri-generic-slide__titles"
+												value={title}
+											/>
+											<RichText.Content
+												tagName="blockquote"
+												className="rri-generic-slide__quote"
+												value={quote}
+											/>
+											<RichText.Content
+												tagName="h5"
+												className="rri-generic-slide__author"
+												value={author}
+											/>
 										</div>
 									</div>
-								);
-							})}
-						</div>
-					</Fragment>
-				)}
-			/>
-		);
-	}
-}
+								</div>
+							);
+						})}
+					</div>
+				</Fragment>
+			)}
+		/>
+	);
+};
 
 export default compose(
 	withUniqueClass,
 	withBlockStyles(createStyles)
-)(Save);
+)(save);

@@ -61,7 +61,7 @@ var frontend_blocks =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 400);
+/******/ 	return __webpack_require__(__webpack_require__.s = 398);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -115,12 +115,12 @@ function domReady(callback) {
 
 /***/ }),
 
-/***/ 400:
+/***/ 398:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(399);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfill__);
 /**
  * All frontend scripts required by our blocks should be included here.
@@ -133,7 +133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 
-var context = __webpack_require__(402); // Import.
+var context = __webpack_require__(400); // Import.
 
 
 context.keys().forEach(function (key) {
@@ -142,7 +142,7 @@ context.keys().forEach(function (key) {
 
 /***/ }),
 
-/***/ 401:
+/***/ 399:
 /***/ (function(module, exports) {
 
 /**
@@ -155,13 +155,13 @@ if (window.NodeList && !window.NodeList.prototype.forEach) {
 
 /***/ }),
 
-/***/ 402:
+/***/ 400:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./accordion/frontend.js": 403,
-	"./generic-slider/frontend.js": 404,
-	"./video-popup/frontend.js": 405
+	"./accordion/frontend.js": 401,
+	"./generic-slider/frontend.js": 402,
+	"./video-popup/frontend.js": 403
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -177,11 +177,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 402;
+webpackContext.id = 400;
 
 /***/ }),
 
-/***/ 403:
+/***/ 401:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -274,7 +274,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(in
 
 /***/ }),
 
-/***/ 404:
+/***/ 402:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -289,21 +289,20 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
   if (typeof jQuery.fn.slick === 'function' && $sliders.length) {
     $sliders.each(function (i, item) {
-      jQuery(item).find('.rri-generic-slider__inner').slick({
-        adaptiveHeight: true
-      });
+      var settings = jQuery(this).data('settings');
+      jQuery(item).find('.rri-generic-slider__inner').slick(settings);
     });
   }
 });
 
 /***/ }),
 
-/***/ 405:
+/***/ 403:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(406);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(404);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bigpicture__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__ = __webpack_require__(24);
 /**
@@ -353,7 +352,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 406:
+/***/ 404:
 /***/ (function(module, exports) {
 
 // BigPicture.js | license MIT | henrygd.me/bigpicture
