@@ -14,6 +14,11 @@ import save from './save';
 import {__} from '@wordpress/i18n';
 import {i18n} from '../../constants';
 
+/**
+ * External dependencies
+ */
+import {SliderIcon} from '../../icons';
+
 export const schema = {
 	slidesData: {
 		type: 'array',
@@ -48,7 +53,7 @@ export const name = 'rri/generic-slider';
 export const settings = {
 	title: __('Generic slider', i18n),
 	description: __('Slick generic slider', i18n),
-	// icon: 'dashicons-admin-media',
+	icon: SliderIcon,
 	category: 'rri-blocks',
 	keywords: [
 		__('Slider', i18n),
