@@ -1,0 +1,68 @@
+// Fix for buttons giong left align when migrating from v1 to v2.
+.wp-block-rri-button.rri-button-wrapper:not(.rri-main-block) {
+	margin-left: auto;
+	margin-right: auto;
+	.rri-button--align-center {
+		text-align: center;
+	}
+	.rri-button--align-left {
+		text-align: left;
+	}
+	.rri-button--align-right {
+		text-align: right;
+	}
+	.rri-button--align-full {
+		.rri-button {
+			width: 100%;
+		}
+	}
+}
+
+// Deprecated < v2
+.rri-button-wrapper:not(.rri-main-block) {
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+	display: flex !important;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-left: -0.5em;
+	margin-right: -0.5em;
+	.rri-button {
+		margin: 0 0.5em 0.5em;
+		display: block;
+	}
+	.rri-button.rri-button--has-icon,
+	.rri-button.rri-has-icon {
+		display: flex;
+	}
+
+	&.rri-button--align-left {
+		justify-content: flex-start;
+	}
+	&.rri-button--align-right {
+		justify-content: flex-end;
+	}
+	&.rri-button--align-full {
+		> div {
+			flex: 1;
+			text-align: center;
+		}
+	}
+}
+
+// Deprecated < v1.11
+.rri-button-wrapper:not(.rri-main-block) {
+	&.rri-button-left {
+		justify-content: flex-start;
+	}
+	&.rri-button-right {
+		justify-content: flex-end;
+	}
+	&.rri-button-full {
+		> div {
+			flex: 1;
+			text-align: center;
+		}
+	}
+}

@@ -1,0 +1,42 @@
+.rri-design-control {
+    // Fix for visual issue in Windows where the scrollbar rapidly appears/disappears when hovering over options.
+    max-height: 450px;
+
+    // Hide the radio button.
+    input {
+        opacity: 0;
+        height: 0;
+        width: 0;
+        margin: 0;
+        padding: 0;
+        position: fixed;
+        top: 0;
+    }
+    .components-radio-control__option {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+    }
+    label > span {
+        padding: 5px;
+        display: block;
+        border-radius: 8px;
+        > img {
+            border-radius: 4px;
+        }
+    }
+    input:checked + label > span {
+        box-shadow: inset 0 0 0 2px #888;
+    }
+    input:not(:checked) + label > span:hover {
+        box-shadow: inset 0 0 0 2px #f1f1f1;
+    }
+
+    .design-label {
+        svg {
+            height: 12px;
+            margin: 0 0 0 5px;
+            fill: #ffad00;
+        }
+    }
+}

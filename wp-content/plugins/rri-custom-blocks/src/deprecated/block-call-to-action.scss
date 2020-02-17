@@ -1,0 +1,31 @@
+// Deprecated version < 2
+
+@import "common";
+
+.rri-cta:not([class*="rri-cta--v"]) {
+	text-align: center;
+	background-color: #f4f4f4;
+	@include baseBlock();
+	@include box();
+	.rri-content-wrapper {
+		@include baseBlock();
+	}
+	.rri-button {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+.rri-cta:not([class*="rri-cta--v"]).rri-cta--design-plain,
+.rri-cta:not([class*="rri-cta--v"]).rri-design-plain {
+	box-shadow: none;
+	border-radius: 0;
+	padding: 0;
+	overflow: visible;
+	background: transparent;
+}
+
+// Backward compatibility version < 1.0
+.wp-block-rri-button .wp-rri-button:hover {
+	color: #fff;
+}
