@@ -16,6 +16,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 defined( 'RRI_FILE' ) || define( 'RRI_FILE', __FILE__ );
 
 /**
+ * Create RRI Block category
+ * @param $categories
+ * @param $post
+ * @return array
+ */
+function rri_blocks_category( $categories, $post ) {
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug' => 'rri-blocks',
+				'title' => 'RRI Blocks',
+			),
+		)
+	);
+}
+
+add_filter( 'block_categories', 'rri_blocks_category', 10, 2 );
+
+/**
  * Enqueue block assets for both frontend + backend.
  *
  * @since 0.1
@@ -29,6 +49,23 @@ function rri_blocks_frontend_assets() {
 		'rri-blocks-front-js',
 		plugins_url( 'dist/frontend_blocks.js', dirname( __FILE__ ) ),
 		null,
+		true
+	);
+
+	wp_enqueue_style(
+		'slick-styles',
+		plugins_url( 'src/plugins/slick/slick.css', dirname( __FILE__ ) )
+	);
+
+	wp_enqueue_style(
+		'slick-theme-styles',
+		plugins_url( 'src/plugins/slick/slick-theme.css', dirname( __FILE__ ) )
+	);
+
+	wp_enqueue_script(
+		'slick-script',
+		plugins_url( 'src/plugins/slick/slick.min.js', dirname( __FILE__ ) ),
+		array( 'jquery' ),
 		true
 	);
 }
@@ -74,9 +111,9 @@ function rri_blocks_assets() {
 		'rriData',
 		[
 			'pluginDirPath' => plugin_dir_path( __DIR__ ),
-			'pluginDirUrl'  => plugin_dir_url( __DIR__ ),
-			'srcUrl'        => plugins_url( '/', __DIR__ ),
-			'locale'        => get_locale(),
+			'pluginDirUrl' => plugin_dir_url( __DIR__ ),
+			'srcUrl' => plugins_url( '/', __DIR__ ),
+			'locale' => get_locale(),
 		]
 	);
 
@@ -89,7 +126,7 @@ function rri_blocks_assets() {
 	register_block_type(
 		'rri/blocks', array(
 			'editor_script' => 'rri-blocks-editor-js',
-			'editor_style'  => 'rri-blocks-editor-css',
+			'editor_style' => 'rri-blocks-editor-css',
 		)
 	);
 }

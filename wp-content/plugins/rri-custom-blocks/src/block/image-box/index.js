@@ -258,7 +258,7 @@ export const settings = {
 	title: __('Image Box', i18n),
 	description: __('Display an image that shows more information when hovered on. Can be used as a fancy link to other pages.', i18n),
 	icon: ImageBoxIcon,
-	category: 'common',
+	category: 'rri-blocks',
 	keywords: [
 		__('Image Box', i18n)
 	],

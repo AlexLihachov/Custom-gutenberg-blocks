@@ -26,6 +26,7 @@ import SVGTeamMemberIcon from './images/team-member-icon.svg';
 import SVGTestimonialIcon from './images/testimonial-icon.svg';
 import SVGVideoPopupIcon from './images/video-popup-icon.svg';
 import SVGUngroupContainerIcon from './images/ungroup-container-icon.svg';
+import SVGSliderIcon from './images/slider-icon.svg';
 
 /**
  * WordPress dependencies
@@ -36,40 +37,16 @@ import {updateCategory} from '@wordpress/blocks';
 
 export const colorizeIcon = SvgIcon => {
 	return cloneElement(SvgIcon, {
-		fill: 'url(#stackable-gradient)',
-		className: 'rri-stackable-icon-gradient',
+		className: 'rri-icon-accent',
 	})
 };
 
 // Add an icon to our block category.
-if (typeof window.wp.blocks !== 'undefined' && typeof window.wp.blocks.updateCategory !== 'undefined') {
-	updateCategory('stackable', {
-		icon: colorizeIcon(<StackableIcon className="components-panel__icon" width="20" height="20"/>),
-	})
-}
-
-// Add our SVG gradient placeholder definition that we'll reuse.
-domReady(() => {
-	const stackableGradient = document.createElement('DIV');
-	document.querySelector('body').appendChild(stackableGradient);
-	render(
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			className="rri-stackable-gradient"
-			height="0"
-			width="0"
-			style={{opacity: 0}}
-		>
-			<defs>
-				<linearGradient id="stackable-gradient">
-					<stop offset="0%" stopColor="#8c33da" stopOpacity="1"/>
-					<stop offset="100%" stopColor="#f34957" stopOpacity="1"/>
-				</linearGradient>
-			</defs>
-		</svg>,
-		stackableGradient
-	)
-});
+// if (typeof window.wp.blocks !== 'undefined' && typeof window.wp.blocks.updateCategory !== 'undefined') {
+// 	updateCategory('stackable', {
+// 		icon: colorizeIcon(<StackableIcon className="components-panel__icon" width="20" height="20"/>),
+// 	})
+// }
 
 export const AccordionIcon = () => {
 	return colorizeIcon(<SVGAccordionIcon width="20" height="20"/>)
@@ -164,6 +141,10 @@ export const VideoPopupIcon = () => {
 
 export const UngroupContainerIcon = () => {
 	return colorizeIcon(<SVGUngroupContainerIcon width="20" height="20"/>)
+};
+
+export const SliderIcon = () => {
+	return colorizeIcon(<SVGSliderIcon width="20" height="20"/>)
 };
 
 export const GhostButtonIcon = () => <ButtonIcon/>;
