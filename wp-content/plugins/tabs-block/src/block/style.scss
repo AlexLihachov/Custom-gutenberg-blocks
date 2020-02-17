@@ -1,0 +1,295 @@
+.rri-vertical-tabs{
+  min-height: 400px;
+  .rri-vertical-tabs-inner{
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    background: $white;
+    font-family: inherit;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: $line-height;
+  }
+  /* Alignments */
+  &.alignleft,
+  &.alignright{
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    float: none;
+  }
+  .rri-tabs-panels{
+    width: 100%;
+    flex: 0 0 100%;
+    height: inherit;
+    overflow: hidden;
+    .rri-tabs-pane{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      height: inherit;
+      z-index: 1;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      transition: all .3s ease-in-out;
+      &.active{
+        visibility: visible;
+        opacity: 1;
+      }
+      .rri-tabs-media{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        .media-image,
+        .media-video{
+          display: block;
+          position: relative;
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          img, iframe{
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%!important;
+            width: 100%!important;
+            object-fit: cover;
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+      .rri-tabs-content{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        flex-direction: column;
+        position: relative;
+        z-index: 3;
+        height: 100%;
+        width: 100%;
+        padding: map-get($spacers, 4) map-get($spacers, 2);
+        color: $white;
+        h1,h2,h3,h4,h5,h6,p{
+          line-height: inherit;
+          margin: 0 0 map-get($spacers, 2);
+        }
+        &:last-child{
+          margin-bottom: 0;
+        }
+        @media(min-width:768px){
+          width: calc( 100% - 260px);
+          margin-left: 260px;
+          padding: map-get($spacers, 4);
+        }
+      }
+    }
+    
+  }
+  .rri-tabs-nav{
+    position: relative;
+    width: 100%;
+    
+    order: 2;
+    .rri-nav{
+      background-color: $secondary;
+      list-style-type: none;
+      padding: map-get($spacers, 0);
+      margin: map-get($spacers, 0);
+      .rri-nav-item{
+        margin: map-get($spacers, 0);
+        .rri-nav-link{
+          display: block;
+          color: $white;
+          font-size: ($font-size * 1.15);
+          letter-spacing: .5px;
+          text-decoration: none;
+          padding: (map-get( $spacers, 1 ) * 1.6) map-get( $spacers, 3 );
+          transition: all .15s linear;
+          &:hover{
+            background: rgba(17,17,17,0.3);
+            color: $primary;
+          }
+          &:active{
+            background-color: $primary;
+            color: $white;
+          }
+        }
+        &.active .rri-nav-link{
+          background-color: $primary;
+          color: $white;
+        }
+      }
+    }
+    @media(min-width:768px){
+      position: absolute;
+      left: 0;
+      top:0;
+      z-index: 3;
+      width: 272px;
+      height: 100%;
+      .rri-nav{
+        width: 100%;
+        min-height: 100%;
+        background: rgba(17, 17, 17, 0.47);
+        .rri-nav-item{
+          .rri-nav-link{
+            font-size: $font-size;
+          }
+        }
+      }
+      .rri-nav-wrap{
+        overflow: scroll;
+        -ms-overflow-style: none;
+        width: 100%;
+        height: 100%;
+        padding-right: 15px;
+        &::-webkit-scrollbar{
+          display: none;
+        }
+        .thumb{
+          z-index: -1;
+          position: absolute;
+          right: 2px;
+          top: 2px;
+          background-color: rgba(218, 218, 218, 0.5);
+          width:8px;
+          height: 100px;
+          border-radius: 4px;
+        }
+      }
+      
+    }
+  }
+}
+
+
+
+
+/*
+
+.rri-tabs-panels{
+  height: 400px;
+  position: relative;
+  width: 100%;
+  order: 1;
+  .rri-tabs-pane{
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    .rri-tabs-media{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .rri-tabs-content{
+      position: relative;
+      z-index: 3;
+      flex: 0 0 100%;
+      padding: map-get( $spacers, 2);
+      color: $white;
+      h1,h2,h3,h4,h5,h6,p,.wp-block-button{
+        margin: 0 0 map-get( $spacers, 2);
+        line-height: $line-height;
+        &:last-child{
+          margin-bottom: 0;
+        }
+      }
+      
+    }
+  }
+}
+
+.media-image{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  &:before{
+    content: '';
+    display: block;
+    padding-top: 400px;
+  }
+  img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}*/
+
+/* Responsive */
+/*@media(min-width:768px){
+  .rri-vertical-tabs{
+    .rri-vertical-tabs-inner{
+      flex-wrap: nowrap;
+    }
+  }
+
+  .rri-tabs-nav{
+    order: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    height: 100%;
+    max-width: 250px;
+    flex: 0 0 250px;
+    background-color: rgba(0,0,0,.4);
+    .rri-nav{
+      .rri-nav-item{
+        .rri-nav-link{
+          font-size: $font-size;
+          &:hover{
+            background: rgba(0,0,0,.3);
+            color: $primary;
+          }
+          &:active{
+            background-color: $primary;
+            color: $white;
+          }
+        }
+        &.active{
+          .rri-nav-link:hover{
+            background-color: $primary;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  .rri-tabs-panels{
+    height: 600px;
+    order: 2;
+    .rri-tabs-pane{
+      .rri-tabs-content{
+        padding: 50px 50px 50px 300px;
+      }
+    }
+  } 
+
+  .media-image{
+    &:before{
+      padding-top: 600px;
+    }
+  }
+}*/
