@@ -1,0 +1,148 @@
+@import "common";
+
+/**
+ * Deprecated < v2
+ */
+.rri-pricing-box.rri-pricing-box--v2 {
+	@include baseBlock();
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	grid-gap: $box-hori-padding;
+
+	&.rri-pricing-box--columns-3 {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+	}
+	&.rri-pricing-box--columns-1 {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	@media screen and (max-width: $break-medium) {
+		&.rri-pricing-box--columns-3 {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+	@media screen and (max-width: $break-small) {
+		&.rri-pricing-box--columns-2 {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+}
+
+.rri-pricing-box.rri-pricing-box--v2 {
+	.rri-pricing-box__item {
+		@include box();
+		margin-bottom: 0 !important;
+		text-align: center;
+		flex: 1;
+		.rri-pricing-box__price {
+			font-size: 3.5em;
+			line-height: 100% !important;
+		}
+	}
+
+	.rri-pricing-box__price-wrapper {
+		@include baseBlock();
+	}
+
+	.rri-pricing-box__image {
+		img {
+			margin: 0 auto;
+		}
+		margin-bottom: 2em !important;
+	}
+	.rri-pricing-box__price-line {
+		display: flex;
+		justify-content: center;
+	}
+	.rri-pricing-box__price-prefix {
+		align-self: flex-start;
+		font-size: 1.2em;
+	}
+	.rri-pricing-box__price-suffix {
+		align-self: flex-end;
+		font-size: 1.5em;
+	}
+
+	.rri-pricing-box__price {
+		font-size: 3.5em;
+		line-height: 100% !important;
+	}
+	.rri-pricing-box__subprice {
+		font-size: 0.75em;
+		opacity: 0.3;
+		text-transform: uppercase;
+		line-height: 100% !important;
+	}
+}
+
+.rri-pricing-box.rri-pricing-box--v2.rri-pricing-box--design-plain {
+	.rri-pricing-box__item {
+		@include baseBlock();
+		box-shadow: none;
+		padding: 0;
+		border-radius: 0;
+	}
+}
+.rri-pricing-box.rri-pricing-box--v2.rri-pricing-box--design-basic {
+	.rri-pricing-box__item {
+		@include baseBlock();
+		&.rri-pricing-box--highlighted {
+			*:not(.rri-button--inner) {
+				color: #222;
+			}
+			&.rri-pricing-box--is-dark {
+				*:not(.rri-button--inner) {
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+/**
+ * Compatibility < v1.11
+ */
+.rri-pricing-box:not([class*="rri-pricing-box--v"]) {
+	@include baseBlock();
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 (-$box-hori-padding / 2);
+	> div {
+		text-align: center;
+		@include baseBlock();
+		@include box();
+		flex: 1;
+		min-width: 250px;
+		&,
+		&:first-child,
+		&:last-child {
+			margin: ($box-hori-padding / 2) !important;
+		}
+	}
+	h3 {
+		line-height: 100% !important;
+	}
+	.rri-pricing-box-pricing {
+		font-size: 3.5em;
+		line-height: 100% !important;
+	}
+	.rri-pricing-box-per-month-label {
+		font-size: 0.75em;
+		opacity: 0.3;
+		text-transform: uppercase;
+		line-height: 100% !important;
+	}
+}
+.rri-pricing-box.column-1 {
+	.rri-pricing-box-column-two,
+	.rri-pricing-box-column-three {
+		display: none;
+	}
+}
+.rri-pricing-box.column-2 {
+	.rri-pricing-box-column-three {
+		display: none;
+	}
+}
+.blocks-button__inline-link.pricing-box {
+	margin: 5px auto 0 auto;
+}

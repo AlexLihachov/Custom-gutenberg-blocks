@@ -1,0 +1,36 @@
+@import "common";
+
+// Lots of alignfulls to force our margins!
+.rri-main-block.rri--has-block-background.alignfull.alignfull.alignfull.alignfull {
+	margin-top: 0;
+	margin-bottom: 0;
+
+	padding-top: 70px;
+	padding-bottom: 70px;
+
+	&.rri-main-block--inner-center {
+		@media screen and (min-width: $break-large) {
+			.rri-inner-block {
+				max-width: var(--content-width);
+			}
+		}
+	}
+	&.rri-main-block--inner-wide {
+		@media screen and (min-width: $break-wide) {
+			.rri-inner-block {
+				width: 75vw;
+				min-width: 1200px;
+			}
+		}
+	}
+	&.rri-main-block--inner-full {
+		.rri-inner-block {
+			width: 100%;
+		}
+	}
+}
+
+.rri-main-block.rri--has-block-background {
+	background-size: cover;
+	background-position: center;
+}

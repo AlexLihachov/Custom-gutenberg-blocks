@@ -1,0 +1,194 @@
+/**
+ * Deprecated < v2
+ */
+
+@import "common";
+
+.rri-blog-posts:not([class*="rri-blog-posts--v"]) {
+	@include baseBlock();
+	.rri-blog-posts__item {
+		@include baseBlock();
+	}
+	time {
+		display: inline-block;
+	}
+	.rri-blog-posts__title {
+		a,
+		a:hover {
+			box-shadow: none;
+			text-decoration: none;
+		}
+	}
+
+	// Last paragraph of excerpts interfere with margins.
+	.rri-blog-posts__excerpt > *:last-child {
+		margin-bottom: 0;
+	}
+
+	&.rri-blog-posts--align-right {
+		text-align: right;
+	}
+	&.rri-blog-posts--align-left {
+		text-align: left;
+	}
+	&.rri-blog-posts--align-center {
+		text-align: center;
+	}
+
+	// Add side paddings to wide & fullwidth.
+	&.alignwide,
+	&.alignfull {
+		padding-left: $box-hori-padding;
+		padding-right: $box-hori-padding;
+	}
+
+	.rri-blog-posts__featured-image {
+		@include box();
+		padding: 0 !important;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	&.rri-blog-posts--feature-image-shape-full {
+		.rri-blog-posts__featured-image {
+			a {
+				display: block;
+			}
+			img {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+		}
+	}
+	&.rri-blog-posts--feature-image-shape-square,
+	&.rri-blog-posts--feature-image-shape-landscape,
+	&.rri-blog-posts--feature-image-shape-portrait {
+		.rri-blog-posts__featured-image {
+			a {
+				position: relative;
+				height: 0;
+				padding-bottom: 50%;
+				display: block;
+			}
+			img {
+				position: absolute;
+				max-height: none;
+				max-width: none;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				object-fit: cover;
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+	&.rri-blog-posts--feature-image-shape-square {
+		.rri-blog-posts__featured-image a {
+			padding-bottom: 100%;
+		}
+	}
+	&.rri-blog-posts--feature-image-shape-portrait {
+		.rri-blog-posts__featured-image a {
+			padding-bottom: 150%;
+		}
+	}
+	&.rri-blog-posts--feature-image-shape-landscape {
+		.rri-blog-posts__featured-image a {
+			padding-bottom: 50%;
+		}
+	}
+
+	.rri-blog-posts__category-list {
+		font-size: 0.75em;
+		text-transform: uppercase;
+		a,
+		a:hover {
+			text-decoration: none;
+			box-shadow: none;
+		}
+	}
+
+	.rri-blog-posts__meta {
+		font-size: 0.75em;
+		text-transform: uppercase;
+		color: var(--s-accent-color, var(--s-primary-color, #2091e1));
+		> *:not(.rri-blog-posts__sep) {
+			margin: 0;
+		}
+		> .rri-blog-posts__sep {
+			margin: 0 0.25em;
+		}
+	}
+
+	&.rri-blog-posts--columns-1 {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	&.rri-blog-posts--columns-2 {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	}
+	&.rri-blog-posts--columns-3 {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+	}
+	&.rri-blog-posts--columns-4 {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+	}
+	display: grid;
+	grid-column-gap: $box-hori-padding;
+	grid-row-gap: $box-vert-padding;
+
+	@media screen and (max-width: $break-wide) {
+		&.rri-blog-posts--columns-4 {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		}
+	}
+	@media screen and (max-width: $break-medium) {
+		&.rri-blog-posts--columns-3 {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+	@media screen and (max-width: $break-small) {
+		&.rri-blog-posts--columns-2,
+		&.rri-blog-posts--columns-4 {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+
+	/**
+     * List design.
+     */
+	&.rri-blog-posts--design-list {
+		.rri-blog-posts__item {
+			display: grid;
+			grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+			grid-gap: $box-hori-padding;
+		}
+		.rri-blog-posts__featured-image {
+			align-self: flex-start;
+		}
+		.rri-blog-posts__side {
+			@include baseBlock();
+		}
+		@media screen and (max-width: $break-huge) {
+			&.rri-blog-posts--columns-3,
+			&.rri-blog-posts--columns-4 {
+				grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			}
+		}
+		@media screen and (max-width: $break-large) {
+			&.rri-blog-posts--columns-2,
+			&.rri-blog-posts--columns-3,
+			&.rri-blog-posts--columns-4 {
+				grid-template-columns: minmax(0, 1fr);
+			}
+		}
+		@media screen and (max-width: $break-small) {
+			.rri-blog-posts__item {
+				grid-template-columns: minmax(0, 1fr);
+				grid-gap: 0;
+			}
+		}
+	}
+}

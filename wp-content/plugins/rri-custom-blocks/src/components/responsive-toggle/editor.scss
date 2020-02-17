@@ -1,0 +1,28 @@
+.rri-base-control-multi-label__responsive {
+	display: flex;
+	margin-left: 6px;
+	align-items: center;
+	button {
+		height: 11px;
+		width: 11px;
+		padding: 3px;
+		box-sizing: content-box;
+		background: #eee;
+		border-radius: 100%;
+		margin: 0 2px 0 3px;
+		svg {
+			height: 100%;
+			width: 100%;
+		}
+		&:hover,
+		&.is-active {
+			background: #999 !important;
+			color: #fff !important;
+			border: none !important;
+			box-shadow: none !important;
+		}
+		&.is-active:not(:first-child) {
+			background: #ab5af1 !important;
+		}
+	}
+}

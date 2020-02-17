@@ -1,0 +1,36 @@
+.rri-toggle-panel-form-toggle {
+	margin-right: 12px;
+}
+.rri-panel-advanced-button {
+	text-transform: uppercase;
+	font-size: 9px;
+	background: transparent;
+	width: 100%;
+	display: block;
+	border: 0;
+	outline: none;
+	position: relative;
+	cursor: pointer;
+	padding-bottom: 15px;
+	&::after {
+		content: "❯";
+		position: absolute;
+		transform: translateX(-50%) rotate(90deg);
+		left: 50%;
+		bottom: 0;
+	}
+	&:hover {
+		color: #999;
+	}
+}
+.rri-toggle-panel-body--advanced {
+	.rri-panel-advanced-button {
+		padding-bottom: 0;
+		padding-top: 15px;
+		&::after {
+			top: 0;
+			bottom: auto;
+			transform: translate(-50%) rotate(-90deg);
+		}
+	}
+}
