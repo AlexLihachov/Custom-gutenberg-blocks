@@ -111,6 +111,8 @@ if ( ! class_exists( 'RRI_Content_Addon_Loader' ) ) {
             require_once RRI_CONTENT_ADDON_DIR . 'modules/class-rri-podcast-post-type.php';
             require_once RRI_CONTENT_ADDON_DIR . 'modules/class-rri-story-post-type.php';
 
+            require_once RRI_CONTENT_ADDON_DIR . 'modules/class-rri-term-meta.php';
+
 		}
     }
 

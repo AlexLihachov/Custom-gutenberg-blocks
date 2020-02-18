@@ -19,19 +19,20 @@ $counter = $wp_query->current_post;
 	}
 ?>
 	<div class="post-content-inner">
-		<div class="post-category">
 		<?php
 			$taxonomies =get_taxonomies('','names');
 			$post_terms = wp_get_object_terms( get_the_ID(), $taxonomies );
 			if( is_array( $post_terms ) && count( $post_terms ) > 0 ) {
 				foreach ( $post_terms as $term ) {
+					$color = get_term_meta( $term->term_id, 'term_color', true );
 		?>
-					<a href="<?php echo get_term_link($term); ?>"><?php echo $term->name; ?></a>
+					<div class="post-category" <?php echo ( $color != '' ? 'style="color: '.$color.';"' : '' ); ?>>
+						<a href="<?php echo get_term_link($term); ?>"><?php echo $term->name; ?></a>
+					</div>
 		<?php
 				}
 			}
 		?>
-		</div>
 		<h4><a href="<?php echo $_the_permalink; ?>"><?php the_title(); ?></a></h4>
 		<p><a href="<?php echo $_the_permalink; ?>"><?php _e( 'Read More', wp_get_theme()->get( 'TextDomain' ) ); ?></a></p>
 	</div>

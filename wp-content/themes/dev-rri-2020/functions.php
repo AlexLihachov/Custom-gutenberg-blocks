@@ -82,6 +82,14 @@ function rri_block_categories( $categories ) {
 }
 add_filter( 'block_categories', 'rri_block_categories', 10, 2 );
 
+
+function rri_pre_get_posts( $query ) {
+	if( is_archive() && $query->is_main_query() ) {
+		$query->set('offset', 1);
+	}
+}
+add_action( 'pre_get_posts', 'rri_pre_get_posts' );
+
 /**
  * Filter Force Login to allow exceptions for specific URLs.
  *
