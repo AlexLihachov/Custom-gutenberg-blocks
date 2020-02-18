@@ -1,0 +1,20 @@
+/**
+ * Editor styles for the Video Popup Block.
+ *
+ * Enqueued in the editor only.
+ */
+
+@import "common";
+
+#editor [data-type="rri/video-popup"][data-align="full"] > .editor-block-list__block-edit > [data-block] > .rri-video-popup.rri-main-block {
+	&.rri-main-block--inner-full.rri--has-block-background,
+	&:not(.rri--has-block-background) {
+		.rri-video-popup__wrapper {
+			border-radius: 0;
+			// Escape and make it full-screen.
+			margin-left: #{ -$box-hori-padding };
+			margin-right: #{ -$box-hori-padding };
+			width: calc(100% + #{ 2 * $box-hori-padding });
+		}
+	}
+}

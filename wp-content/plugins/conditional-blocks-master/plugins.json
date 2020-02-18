@@ -1,0 +1,49 @@
+{
+	"plugins": [
+		{
+			"name": "Conditional Blocks",
+			"slug": "conditional-blocks",
+			"author": "Morgan Hvidt",
+			"version": "1.0.2",
+			"description": "Conditional Blocks",
+			"text_domain": "conditional-blocks",
+			"prefix": "conblock",
+			"prefix_capital": "CONBLOCK",
+			"type": "free",
+			"exclude": [
+				"!src/assets/js/**/*"
+			],
+			"webpack_entry": {
+				"blocks-free": "./src/assets/js/blocks-free.js"
+			},
+			"webpack_output": {
+				"filename": "[name].js",
+				"path": "dist/conditional-blocks/assets/js/"
+			}
+		},
+		{
+			"name": "Conditional Blocks Pro",
+			"slug": "conditional-blocks-pro",
+			"version": "1.0.2",
+			"author": "Morgan H",
+			"description": "Conditional Blocks Pro",
+			"text_domain": "conditional-blocks",
+			"prefix": "conblockpro",
+			"prefix_capital": "CONBLOCKPRO",
+			"type": "premium",
+			"edd_store_url": "https://conditionalblocks.com/",
+			"edd_item_id": "708",
+			"exclude": [
+				"!src/assets/js/**/*"
+			],
+			"webpack_entry": {
+				"blocks-free": "./src/assets/js/blocks-free.js",
+				"blocks-premium": "./src/assets/js/blocks-premium.js"
+			},
+			"webpack_output": {
+				"filename": "[name].js",
+				"path": "dist/conditional-blocks-pro/assets/js/"
+			}
+		}
+	]
+}

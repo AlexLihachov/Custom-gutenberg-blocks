@@ -1,0 +1,101 @@
+// Deprecated < v2
+
+@import "common";
+
+.rri-countup,
+.rri-countup .rri-content-wrapper {
+
+	// Collapse to 4 columns to 2 rows of 2-columns.
+	@media screen and (max-width: $break-medium) {
+		&.rri-countup--columns-4 .rri-content-wrapper,
+		&.columns-4 {
+			display: grid !important;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			justify-content: center;
+			align-items: center;
+			grid-gap: $box-hori-padding;
+			.rri-countup-item {
+				margin: 0 !important;
+			}
+		}
+
+		// Resize numbers to make them smaller in small screens.
+		.rri-countup__counter,
+		.rri-counter {
+			font-size: calc(1rem + 4vw);
+		}
+	}
+
+	// Collapse 3 columns to 1 column.
+	@media screen and (max-width: $break-small) {
+		&.rri-countup--columns-3 .rri-content-wrapper,
+		&.columns-3 {
+			flex-direction: column;
+			.rri-countup__item:not(:last-child),
+			.rri-countup-item:not(:last-child) {
+				margin-bottom: $box-hori-padding !important;
+			}
+		}
+	}
+}
+
+.rri-countup.rri-countup--v3 {
+	@include baseBlock();
+	text-align: center;
+	.rri-countup--hide,
+	.rri-countup-hide {
+		visibility: hidden;
+	}
+	.rri-countup__counter,
+	.rri-counter {
+		line-height: 1em !important;
+	}
+	.rri-content-wrapper {
+		width: 100%;
+	}
+	&.alignfull {
+		border-radius: 0 !important;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+.rri-countup.rri-countup--v3,
+.rri-countup.rri-countup--v3 .rri-content-wrapper {
+	@include baseBlock();
+	text-align: center;
+	display: flex !important;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	justify-content: center;
+	.rri-countup__item,
+	.rri-countup-item {
+		@include baseBlock();
+		flex: 1;
+		margin: 0 ($box-hori-padding / 2) !important;
+	}
+}
+
+.rri-countup.rri-countup--v3 {
+	&.rri-countup--design-basic {
+		@include box();
+	}
+}
+.rri-countup.rri-countup-v3 {
+	&.rri-design-basic {
+		@include box();
+	}
+}
+
+// Backward compatibility. < 1.10 when we didn't have a "plain" design.
+.rri-countup.rri-countup-v2 {
+	&:not(.rri-has-background):not(.alignwide) {
+		margin-left: (- $box-hori-padding / 2);
+		margin-right: (- $box-hori-padding / 2);
+	}
+}
+
+// Backward compatibility. < v1.5 when we only had 1 column.
+.rri-countup:not([class*="rri-countup-v"]) {
+	flex-direction: column;
+}
