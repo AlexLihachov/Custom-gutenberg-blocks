@@ -45,6 +45,7 @@ img {
 
   &__grid {
     display        : flex;
+    justify-content: center;
     position       : relative;
     font-size      : 0;
     margin-left    : -40px;
@@ -96,8 +97,8 @@ img {
       margin-bottom : 40px;
     }
 
-    .rri-two-tone-text__title {
-      color              : $color_two_tone_second;
+    .rri-two-tone-text__title.rri-two-tone-text__mask {
+      color              : $color_two_tone_second !important;
       transition         : opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       -webkit-transition : opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -145,7 +146,7 @@ img {
   }
 
   &__title {
-    color       : #000000;
+    color       : $color_two_tone;
     margin      : 0;
     padding     : 0;
     position    : absolute;
@@ -246,12 +247,12 @@ img {
       -webkit-transform-origin : right center;
       -ms-transform-origin     : right center;
       transform-origin         : right center;
-      background               : #000000;
+      background               : $color_two_tone;
     }
 
   }
 
-  &__btn.rri-two-tone-text__mask {
+  &__btn.rri-two-tone-text__link {
     color              : $color_two_tone;
     border             : 1px solid $color_two_tone;
     display            : inline-block;
@@ -267,7 +268,6 @@ img {
     letter-spacing     : 3px;
     -webkit-transition : color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transition         : color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-	box-shadow         : none;
 
     @media (min-width : 1024px) {
       padding    : 1.125rem 1.75rem;
@@ -280,8 +280,7 @@ img {
     }
 
     &:hover {
-      color              : $color_two_tone_second;
-	  box-shadow         : none;
+      color : $color_two_tone_second;
 
       &:before {
         -webkit-transform        : scale(1, 1);

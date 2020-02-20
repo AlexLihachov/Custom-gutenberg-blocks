@@ -42,12 +42,13 @@ const save = (props) => {
             className = {className}
             blockProps = {props}
             data-speed = {JSON.stringify(settings.speed)}
+            data-width = {JSON.stringify(settings.imagewidth)}
             render = {() => (
                 <Fragment>
                     <div className = {itemClasses}>
                         <div className = "rri-two-tone-text__grid" id = {twoTone}>
                             <div className = "rri-two-tone-text__third"></div>
-                            <div className = "rri-two-tone-text__third">
+                            <div className = "rri-two-tone-text__third rri-two-tone-text__third-main">
                                 <a href = {url_link}
                                    target = {newTab ? '_blank' : undefined}
                                    rel = {rel.join(' ') || undefined}
@@ -88,7 +89,7 @@ const save = (props) => {
                                 </a>
                             </div>
                             <div className = "rri-two-tone-text__btn-wrap rri-two-tone-text__third">
-                                <a className = "rri-two-tone-text__btn rri-two-tone-text__mask"
+                                <a className = "rri-two-tone-text__btn rri-two-tone-text__mask  rri-two-tone-text__link"
                                    href = {url_link}
                                    target = {newTab ? '_blank' : undefined}
                                    rel = {rel.join(' ') || undefined}

@@ -50353,6 +50353,19 @@ Object(__WEBPACK_IMPORTED_MODULE_9__wordpress_hooks__["addFilter"])('stackable.t
     },
     min: 0,
     max: 4
+  }), wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components__["c" /* AdvancedRangeControl */], {
+    label: Object(__WEBPACK_IMPORTED_MODULE_8__wordpress_i18n__["__"])('Image Width (%) ', __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* i18n */]),
+    value: settings.imagewidth,
+    step: 1,
+    onChange: function onChange(value) {
+      var settingsClone = Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["cloneDeep"])(settings);
+      settingsClone.imagewidth = value;
+      setAttributes({
+        settings: settingsClone
+      });
+    },
+    min: 20,
+    max: 100
   })), wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__wordpress_components__["PanelBody"], {
     title: Object(__WEBPACK_IMPORTED_MODULE_8__wordpress_i18n__["__"])('Title left', __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* i18n */])
   }, wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components__["O" /* TypographyControlHelper */], {
@@ -50541,7 +50554,7 @@ function (_Component) {
             placeholder: Object(__WEBPACK_IMPORTED_MODULE_8__wordpress_i18n__["__"])('Title Right', __WEBPACK_IMPORTED_MODULE_4__constants__["a" /* i18n */]),
             keepPlaceholderOnFocus: true
           }), wp.element.createElement("div", {
-            className: "rri-two-tone-text__edit-text rri-two-tone-text__btn ",
+            className: "rri-two-tone-text__edit-text rri-two-tone-text__btn rri-two-tone-text__link",
             onClick: _this2.handleClick
           }, wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__wordpress_block_editor__["RichText"], {
             tagName: "span",
@@ -50651,6 +50664,7 @@ var save = function save(props) {
     className: className,
     blockProps: props,
     "data-speed": JSON.stringify(settings.speed),
+    "data-width": JSON.stringify(settings.imagewidth),
     render: function render() {
       return wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__wordpress_element__["Fragment"], null, wp.element.createElement("div", {
         className: itemClasses
@@ -50660,7 +50674,7 @@ var save = function save(props) {
       }, wp.element.createElement("div", {
         className: "rri-two-tone-text__third"
       }), wp.element.createElement("div", {
-        className: "rri-two-tone-text__third"
+        className: "rri-two-tone-text__third rri-two-tone-text__third-main"
       }, wp.element.createElement("a", {
         href: url_link,
         target: newTab ? '_blank' : undefined,
@@ -50697,7 +50711,7 @@ var save = function save(props) {
       })))), wp.element.createElement("div", {
         className: "rri-two-tone-text__btn-wrap rri-two-tone-text__third"
       }, wp.element.createElement("a", {
-        className: "rri-two-tone-text__btn rri-two-tone-text__mask",
+        className: "rri-two-tone-text__btn rri-two-tone-text__mask  rri-two-tone-text__link",
         href: url_link,
         target: newTab ? '_blank' : undefined,
         rel: rel.join(' ') || undefined
@@ -50746,9 +50760,11 @@ var schema = {
   settings: {
     type: 'object',
     "default": {
-      speed: 2000
+      speed: 2000,
+      imagewidth: 33.33
     }
   },
+  // Above Title
   titleleftTag: {
     type: 'string',
     "default": 'h3'
@@ -50817,6 +50833,7 @@ var schema = {
     type: 'string',
     "default": ''
   },
+  // Title
   titlerightTag: {
     type: 'string',
     "default": 'h3'

@@ -23,6 +23,38 @@ export const schema = {
 					text: 'Learn more'
 
 				}
+			},
+			{
+				above_title: __('Above title', i18n),
+				name: __('Name', i18n),
+				number: __('Number', i18n),
+				image: {
+					url: '',
+					id: ''
+				},
+				link: {
+					url: '',
+					newTab: false,
+					noFollow: false,
+					text: 'Learn more'
+
+				}
+			},
+			{
+				above_title: __('Above title', i18n),
+				name: __('Name', i18n),
+				number: __('Number', i18n),
+				image: {
+					url: '',
+					id: ''
+				},
+				link: {
+					url: '',
+					newTab: false,
+					noFollow: false,
+					text: 'Learn more'
+
+				}
 			}
 		]
 	},

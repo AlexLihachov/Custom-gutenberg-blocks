@@ -328,6 +328,7 @@ class Edit extends Component {
 														slides_data: slider_data_clone
 													});
 												}}
+												keepPlaceholderOnFocus
 											/>
 											<RichText
 												tagName="p"
@@ -340,6 +341,7 @@ class Edit extends Component {
 														slides_data: slider_data_clone
 													});
 												}}
+												keepPlaceholderOnFocus
 											/>
 											<div className="rri-gift-slide__cta"
 												 onClick={this.handleClick}>
@@ -354,6 +356,7 @@ class Edit extends Component {
 															slides_data: slider_data_clone
 														});
 													}}
+													keepPlaceholderOnFocus
 												/>
 												{this.state.openUrlPopover && <UrlInputPopover
 													value={slide.link.url}

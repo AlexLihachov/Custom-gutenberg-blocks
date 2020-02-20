@@ -8,6 +8,10 @@ domReady(() => {
 
     const element = document.querySelector('.rri-two-tone-text');
 
+    const width = element.dataset.width;
+
+    jQuery('.rri-two-tone-text__third-main').css("width", width + "%")
+
     if(element){
         let Visible = function(target){
             let firstLine  = document.querySelectorAll('.first-line');

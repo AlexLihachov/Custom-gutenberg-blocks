@@ -71,6 +71,20 @@ addFilter('stackable.two-tone-text.edit.inspector.style.before', 'stackable/two-
                     min = {0}
                     max = {4}
                 />
+                <AdvancedRangeControl
+                    label = {__('Image Width (%) ', i18n)}
+                    value = {(settings.imagewidth)}
+                    step = {1}
+                    onChange = {(value) => {
+                        const settingsClone = cloneDeep(settings);
+                        settingsClone.imagewidth = value;
+                        setAttributes({
+                            settings : settingsClone
+                        });
+                    }}
+                    min = {20}
+                    max = {100}
+                />
             </PanelBody>
             <PanelBody title = {__('Title left', i18n)}>
                 <TypographyControlHelper
@@ -234,7 +248,7 @@ class Edit extends Component{
                                     keepPlaceholderOnFocus
                                 />
 
-                                <div className = "rri-two-tone-text__edit-text rri-two-tone-text__btn "
+                                <div className = "rri-two-tone-text__edit-text rri-two-tone-text__btn rri-two-tone-text__link"
                                      onClick = {this.handleClick}>
                                     <RichText
                                         tagName = "span"

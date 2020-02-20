@@ -1,0 +1,17 @@
+.rri-buttons__link {
+  display    : inline-block;
+  min-width  : 167px;
+  margin-top : 40px;
+  border     : 1px solid #14aecf;
+  padding    : 8px 16px;
+  text-align : center;
+
+  span {
+    font-size      : 12px;
+    line-height    : 1.5;
+    letter-spacing : 0.5px;
+    color          : #14aecf;
+    text-transform : uppercase;
+  }
+}
+

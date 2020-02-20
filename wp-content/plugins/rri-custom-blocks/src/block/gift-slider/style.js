@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import {appendImportant, __getValue} from '../../util';
+import {appendImportant, __getValue, createTypographyStyles} from '../../util';
 import deepmerge from 'deepmerge';
 
 export const createStyles = (props) => {
@@ -11,23 +11,17 @@ export const createStyles = (props) => {
 	// Above title
 	styles.push({
 		'.rri-gift-slide__above-title': {
-			fontSize: appendImportant(`${getValue('abovetitleFontSize')}${getValue('abovetitleFontSizeUnit')}`),
-			fontWeight: appendImportant(`${getValue('abovetitleFontWeight')}`),
-			textTransform: appendImportant(`${getValue('abovetitleTextTransform')}`),
-			lineHeight: appendImportant(`${getValue('abovetitleLineHeight')}${getValue('abovetitleLineHeightUnit')}`),
-			letterSpacing: appendImportant(`${getValue('abovetitleLetterSpacing')}px`),
+			...createTypographyStyles('abovetitle%s', 'desktop', props.attributes, {importantSize: true}),
 			color: appendImportant(`${getValue('abovetitleColor')}`)
 		},
 		tablet: {
 			'.rri-gift-slide__above-title': {
-				fontSize: appendImportant(`${getValue('abovetitleTabletFontSize')}${getValue('abovetitleTabletFontSizeUnit')}`),
-				lineHeight: appendImportant(`${getValue('abovetitleTabletLineHeight')}${getValue('abovetitleTabletLineHeightUnit')}`)
+				...createTypographyStyles('abovetitle%s', 'tablet', props.attributes, {importantSize: true}),
 			}
 		},
 		mobile: {
 			'.rri-gift-slide__above-title': {
-				fontSize: appendImportant(`${getValue('abovetitleMobileFontSize')}${getValue('abovetitleMobileFontSizeUnit')}`),
-				lineHeight: appendImportant(`${getValue('abovetitleMobileLineHeight')}${getValue('abovetitleMobileLineHeightUnit')}`)
+				...createTypographyStyles('abovetitle%s', 'mobile', props.attributes, {importantSize: true}),
 			}
 		}
 	});
@@ -35,23 +29,17 @@ export const createStyles = (props) => {
 	// Title
 	styles.push({
 		'.rri-gift-slide__title': {
-			fontSize: appendImportant(`${getValue('titleFontSize')}${getValue('titleFontSizeUnit')}`),
-			fontWeight: appendImportant(`${getValue('titleFontWeight')}`),
-			textTransform: appendImportant(`${getValue('titleTextTransform')}`),
-			lineHeight: appendImportant(`${getValue('titleLineHeight')}${getValue('titleLineHeightUnit')}`),
-			letterSpacing: appendImportant(`${getValue('titleLetterSpacing')}px`),
+			...createTypographyStyles('title%s', 'desktop', props.attributes, {importantSize: true}),
 			color: appendImportant(`${getValue('titleColor')}`)
 		},
 		tablet: {
 			'.rri-gift-slide__title': {
-				fontSize: appendImportant(`${getValue('titleTabletFontSize')}${getValue('titleTabletFontSizeUnit')}`),
-				lineHeight: appendImportant(`${getValue('titleTabletLineHeight')}${getValue('titleTabletLineHeightUnit')}`)
+				...createTypographyStyles('title%s', 'tablet', props.attributes, {importantSize: true}),
 			}
 		},
 		mobile: {
 			'.rri-gift-slide__title': {
-				fontSize: appendImportant(`${getValue('titleMobileFontSize')}${getValue('titleMobileFontSizeUnit')}`),
-				lineHeight: appendImportant(`${getValue('titleMobileLineHeight')}${getValue('titleMobileLineHeightUnit')}`)
+				...createTypographyStyles('title%s', 'mobile', props.attributes, {importantSize: true}),
 			}
 		}
 	});
@@ -59,23 +47,17 @@ export const createStyles = (props) => {
 	// Number
 	styles.push({
 		'.rri-gift-slide__number': {
-			fontSize: appendImportant(`${getValue('numberFontSize')}${getValue('numberFontSizeUnit')}`),
-			fontWeight: appendImportant(`${getValue('numberFontWeight')}`),
-			textTransform: appendImportant(`${getValue('numberTextTransform')}`),
-			lineHeight: appendImportant(`${getValue('numberLineHeight')}${getValue('numberLineHeightUnit')}`),
-			letterSpacing: appendImportant(`${getValue('numberLetterSpacing')}px`),
+			...createTypographyStyles('number%s', 'desktop', props.attributes, {importantSize: true}),
 			color: appendImportant(`${getValue('numberColor')}`)
 		},
 		tablet: {
 			'.rri-gift-slide__number': {
-				fontSize: appendImportant(`${getValue('numberTabletFontSize')}${getValue('numberTabletFontSizeUnit')}`),
-				lineHeight: appendImportant(`${getValue('numberTabletLineHeight')}${getValue('numberTabletLineHeightUnit')}`)
+				...createTypographyStyles('number%s', 'tablet', props.attributes, {importantSize: true}),
 			}
 		},
 		mobile: {
 			'.rri-gift-slide__number': {
-				fontSize: appendImportant(`${getValue('numberMobileFontSize')}${getValue('numberMobileFontSizeUnit')}`),
-				lineHeight: appendImportant(`${getValue('numberMobileLineHeight')}${getValue('numberMobileLineHeightUnit')}`)
+				...createTypographyStyles('number%s', 'mobile', props.attributes, {importantSize: true}),
 			}
 		}
 	});
