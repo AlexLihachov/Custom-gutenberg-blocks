@@ -10,6 +10,12 @@ img {
   overflow   : hidden;
   min-height : 550px;
 
+  @media (min-width : 1023px) {
+    .rri-inner-block {
+      min-width : 500px !important;
+    }
+  }
+
   @media (min-width : 1024px) {
     padding : 0 40px;
   }
@@ -22,6 +28,7 @@ img {
 
     @media (min-width : 1680px) {
       max-width     : 100rem;
+      min-width     : 500px !important;
       padding-left  : 100px;
       padding-right : 100px;
     }
@@ -29,6 +36,10 @@ img {
     @media (max-width : 1679px) and (min-width : 1280px) {
       padding-left  : 12%;
       padding-right : 12%;
+    }
+
+    @media (min-width : 1023px) {
+      min-width : 500px !important;
     }
   }
 
@@ -121,6 +132,16 @@ img {
   &__parallax-src {
     min-height          : 663px;
     background-position : 50% 0;
+    background-size     : cover;
+
+    @media (max-width : 1025px) {
+      min-height : 390px;
+    }
+
+    @media (max-width : 767px) {
+      min-height : 290px;
+    }
+
   }
 
   &__title {
@@ -230,36 +251,37 @@ img {
 
   }
 
-  &__btn {
-    position           : relative;
-    display            : inline-block;
+  &__btn.rri-two-tone-text__mask {
+    color              : $color_two_tone;
     border             : 1px solid $color_two_tone;
+    display            : inline-block;
+    padding            : 0;
+    position           : relative;
     background         : none;
+    min-height         : 50px;
+    text-align         : center;
+    box-sizing         : border-box;
     font-weight        : 700;
     line-height        : 1;
     text-transform     : uppercase;
     letter-spacing     : 3px;
-    min-height         : 50px;
-    color              : $color_two_tone;
-    box-sizing         : border-box;
     -webkit-transition : color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transition         : color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    padding            : 0;
-    position           : relative;
-    text-align         : center;
+	box-shadow         : none;
 
     @media (min-width : 1024px) {
-      margin-top : 55%;
       padding    : 1.125rem 1.75rem;
+      margin-top : 55%;
     }
 
     @media (max-width : 1023px) {
-      font-size : 10px;
       padding   : 18px 28px;
+      font-size : 10px;
     }
 
     &:hover {
-      color : $color_two_tone_second;
+      color              : $color_two_tone_second;
+	  box-shadow         : none;
 
       &:before {
         -webkit-transform        : scale(1, 1);
@@ -272,17 +294,17 @@ img {
     }
 
     span {
+      z-index  : 2;
       display  : inline-block;
       position : relative;
-      z-index  : 2;
     }
 
   }
 
   &__btn-wrap {
-    max-width : 340px;
     margin    : 0 auto;
     display   : block;
+    max-width : 340px;
 
     @media (max-width : 1023px) {
       text-align : center;

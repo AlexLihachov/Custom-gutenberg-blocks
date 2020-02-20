@@ -54,20 +54,20 @@ class ResponsiveToggle extends Component {
             this.setState( { isScreenPickerOpen: true } );
             if ( typeof instanceIdOwner === 'undefined' ) {
                 setIsScreenPickerOpen( true );
-                doAction( 'rri.responsive-toggle.screen.open' )
+                doAction( 'stackable.responsive-toggle.screen.open' )
             }
         } else if ( this.state.isScreenPickerOpen && value === firstScreenOption ) {
             this.setState( { isScreenPickerOpen: false } );
             if ( typeof instanceIdOwner === 'undefined' ) {
                 setIsScreenPickerOpen( false );
-                doAction( 'rri.responsive-toggle.screen.close' )
+                doAction( 'stackable.responsive-toggle.screen.close' )
             }
         }
 
         this.props.onChangeScreen( value );
         this.setState( { screen: value } );
         setSelectedScreen( value );
-        doAction( 'rri.responsive-toggle.screen.change', value )
+        doAction( 'stackable.responsive-toggle.screen.change', value )
     }
 
     onOtherScreenChange( screen ) {
@@ -85,16 +85,16 @@ class ResponsiveToggle extends Component {
 
     componentDidMount() {
         const { instanceId } = this.props;
-        addAction( 'rri.responsive-toggle.screen.change', `rri/responsive-toggle-${ instanceId }`, this.onOtherScreenChange.bind( this ) )
-        addAction( 'rri.responsive-toggle.screen.open', `rri/responsive-toggle-${ instanceId }`, this.onOtherScreenOpen.bind( this ) )
-        addAction( 'rri.responsive-toggle.screen.close', `rri/responsive-toggle-${ instanceId }`, this.onOtherScreenClose.bind( this ) )
+        addAction( 'stackable.responsive-toggle.screen.change', `stackable/responsive-toggle-${ instanceId }`, this.onOtherScreenChange.bind( this ) )
+        addAction( 'stackable.responsive-toggle.screen.open', `stackable/responsive-toggle-${ instanceId }`, this.onOtherScreenOpen.bind( this ) )
+        addAction( 'stackable.responsive-toggle.screen.close', `stackable/responsive-toggle-${ instanceId }`, this.onOtherScreenClose.bind( this ) )
     }
 
     componentWillUnmount() {
         const { instanceId } = this.props;
-        removeAction( 'rri.responsive-toggle.screen.change', `rri/responsive-toggle-${ instanceId }` )
-        removeAction( 'rri.responsive-toggle.screen.open', `rri/responsive-toggle-${ instanceId }` )
-        removeAction( 'rri.responsive-toggle.screen.close', `rri/responsive-toggle-${ instanceId }` )
+        removeAction( 'stackable.responsive-toggle.screen.change', `stackable/responsive-toggle-${ instanceId }` )
+        removeAction( 'stackable.responsive-toggle.screen.open', `stackable/responsive-toggle-${ instanceId }` )
+        removeAction( 'stackable.responsive-toggle.screen.close', `stackable/responsive-toggle-${ instanceId }` )
     }
 
     render() {

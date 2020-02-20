@@ -19,9 +19,9 @@ const PanelSpacingBody = props => {
             {...props}
             className={classnames(['rri--help-tip-spacing', props.className])}
         >
-            {applyFilters('rri.panel-spacing-body.edit.before', null, blockProps)}
+            {applyFilters('stackable.panel-spacing-body.edit.before', null, blockProps)}
             {props.children}
-            {applyFilters('rri.panel-spacing-body.edit.after', null, blockProps)}
+            {applyFilters('stackable.panel-spacing-body.edit.after', null, blockProps)}
         </PanelAdvancedSettings>
     )
 };

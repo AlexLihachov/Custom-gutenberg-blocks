@@ -13,7 +13,7 @@
  * Internal dependencies
  */
 import './fontawesome.js';
-import './format-types';
+import './extensions/format-types';
 
 /**
  * External dependencies

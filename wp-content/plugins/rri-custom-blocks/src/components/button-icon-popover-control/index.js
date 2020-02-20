@@ -63,11 +63,11 @@ class ButtonIconPopoverControl extends Component {
 
     componentDidMount() {
         // Watch for attribute changes.
-        addFilter('rri.setAttributes', `rri/button-icon-popover-control-${this.instanceId}`, this.checkIfAttributeShouldToggleOn.bind(this), 9)
+        addFilter('stackable.setAttributes', `rri/button-icon-popover-control-${this.instanceId}`, this.checkIfAttributeShouldToggleOn.bind(this), 9)
     }
 
     componentWillUnmount() {
-        removeFilter('rri.setAttributes', `rri/button-icon-popover-control-${this.instanceId}`)
+        removeFilter('stackable.setAttributes', `rri/button-icon-popover-control-${this.instanceId}`)
     }
 
     handleOpen() {

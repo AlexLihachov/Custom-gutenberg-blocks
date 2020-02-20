@@ -68,11 +68,11 @@ class PanelAdvancedSettings extends Component {
     }
 
     componentDidMount() {
-        addFilter('rri.setAttributes', `rri/panel-advanced-settings-${this.instanceId}`, this.checkIfAttributeShouldToggleOn.bind(this), 9)
+        addFilter('stackable.setAttributes', `rri/panel-advanced-settings-${this.instanceId}`, this.checkIfAttributeShouldToggleOn.bind(this), 9)
     }
 
     componentWillUnmount() {
-        removeFilter('rri.setAttributes', `rri/panel-advanced-settings-${this.instanceId}`)
+        removeFilter('stackable.setAttributes', `rri/panel-advanced-settings-${this.instanceId}`)
     }
 
     onToggle() {

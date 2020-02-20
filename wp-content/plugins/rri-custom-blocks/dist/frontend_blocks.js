@@ -161,8 +161,9 @@ if (window.NodeList && !window.NodeList.prototype.forEach) {
 var map = {
 	"./accordion/frontend.js": 407,
 	"./generic-slider/frontend.js": 408,
-	"./two-tone-text/frontend.js": 409,
-	"./video-popup/frontend.js": 410
+	"./gift-slider/frontend.js": 409,
+	"./two-tone-text/frontend.js": 410,
+	"./video-popup/frontend.js": 411
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -309,6 +310,68 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(function () {
+  var $sliders = jQuery('.rri-gift-slider__inner');
+
+  if (typeof jQuery.fn.slick === 'function' && $sliders.length) {
+    $sliders.each(function (i, item) {
+      var settings = Object.assign({}, jQuery(this).data('settings'), {
+        prevArrow: jQuery('.rri-gift-prev'),
+        nextArrow: jQuery('.rri-gift-next')
+      });
+
+      var animatedSlide = function animatedSlide() {
+        jQuery('.slick-current .rri-gift-slide__title').addClass('animated');
+        jQuery('.slick-current .rri-gift-slide__above-title').addClass('animated');
+        jQuery('.slick-current .rri-gift-slide__number').addClass('animated');
+        jQuery('.slick-current .rri-gift-slide__image').addClass('animated');
+      };
+
+      var removeAnimatedSlide = function removeAnimatedSlide() {
+        jQuery('.slick-current .rri-gift-slide__title').removeClass('animated');
+        jQuery('.slick-current .rri-gift-slide__above-title').removeClass('animated');
+        jQuery('.slick-current .rri-gift-slide__number').removeClass('animated');
+        jQuery('.slick-current .rri-gift-slide__image').removeClass('animated');
+      };
+
+      jQuery(this).on('init', function (event, slick) {
+        animatedSlide();
+        jQuery('.slick-active').prev().removeClass('is-next').addClass('is-prev');
+        jQuery('.slick-active').next().removeClass('is-prev').addClass('is-next');
+      });
+      jQuery(this).slick(settings);
+      jQuery(this).on('swipe', function (event, slick, currentSlide, direction) {
+        animatedSlide();
+      });
+      jQuery('.rri-gift-prev').on('click', function () {
+        animatedSlide();
+      });
+      jQuery('.rri-gift-next').on('click', function () {
+        animatedSlide();
+      });
+      jQuery(this).on('afterChange', function (event, slick, currentSlide, nextSlide) {
+        jQuery(".slick-active").prev().removeClass('is-next').addClass('is-prev');
+        jQuery(".slick-active").next().removeClass('is-prev').addClass('is-next');
+      });
+      jQuery(this).on('beforeChange', function () {
+        removeAnimatedSlide();
+      });
+    });
+  }
+});
+
+/***/ }),
+
+/***/ 410:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(19);
+/**
+ * WordPress dependencies
+ */
+
+Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(function () {
   jQuery('.js-parallax').addClass('is-show');
   var element = document.querySelector('.rri-two-tone-text');
 
@@ -354,12 +417,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 410:
+/***/ 411:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(411);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(412);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bigpicture__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__ = __webpack_require__(19);
 /**
@@ -409,7 +472,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 411:
+/***/ 412:
 /***/ (function(module, exports) {
 
 // BigPicture.js | license MIT | henrygd.me/bigpicture

@@ -1,12 +1,56 @@
 /**
  * External dependencies
  */
-import {appendImportant, __getValue} from '../../util';
+import {
+	createResponsiveStyles,
+	createTypographyStyles,
+	appendImportant,
+	createBackgroundStyles,
+	createBackgroundOverlayStyles,
+	__getValue,
+} from '../../util';
 import deepmerge from 'deepmerge';
 
 export const createStyles = (props) => {
 	const getValue = __getValue(props.attributes);
 	const styles = [];
+
+
+	// Title left
+	styles.push({
+		'.first-line': {
+			...createTypographyStyles('titleleft%s', 'desktop', props.attributes, {importantSize: true}),
+			color: appendImportant(`${getValue('titleleftColor')}`)
+		},
+		tablet: {
+			'.first-line': {
+				...createTypographyStyles('titleleft%s', 'tablet', props.attributes, {importantSize: true}),
+			}
+		},
+		mobile: {
+			'.first-line': {
+				...createTypographyStyles('titleleft%s', 'mobile', props.attributes, {importantSize: true}),
+			}
+		}
+	});
+
+	// Title right
+	styles.push({
+		'.second-line': {
+			...createTypographyStyles('titleright%s', 'desktop', props.attributes, {importantSize: true}),
+			color: appendImportant(`${getValue('titlerightColor')}`)
+		},
+		tablet: {
+			'.second-line': {
+				...createTypographyStyles('titleright%s', 'tablet', props.attributes, {importantSize: true}),
+			}
+		},
+		mobile: {
+			'.second-line': {
+				...createTypographyStyles('titleright%s', 'mobile', props.attributes, {importantSize: true}),
+			}
+		}
+	});
 
 	//Block Min-height
 	styles.push({
@@ -53,7 +97,7 @@ export const createStyles = (props) => {
 			},
 		},
 		mobile: {
-			'.rri-two-tone-text__containerr': {
+			'.rri-two-tone-text__container': {
 				alignItems: appendImportant(getValue('mobileBlockVerticalAlign'))
 			},
 		}
