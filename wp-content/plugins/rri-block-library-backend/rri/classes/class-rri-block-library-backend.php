@@ -47,6 +47,9 @@ if ( ! class_exists( 'Rri_Block_Library_Backend' ) ) {
 
 			/* Group block */
 			require_once RRI_DIR . 'classes/class-rri-group-block.php';
+
+			/* Related posts block */
+			require_once RRI_DIR . 'classes/class-rri-related-posts-block.php';
 		}
 
 		/**

@@ -84,7 +84,7 @@ add_filter( 'block_categories', 'rri_block_categories', 10, 2 );
 
 
 function rri_pre_get_posts( $query ) {
-	if( is_archive() && $query->is_main_query() ) {
+	if( !is_admin() && is_archive() && $query->is_main_query() ) {
 		$query->set('offset', 1);
 	}
 }

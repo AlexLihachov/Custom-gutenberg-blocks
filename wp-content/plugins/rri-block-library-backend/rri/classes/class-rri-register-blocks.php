@@ -24,6 +24,7 @@ if ( ! class_exists( 'Rri_Register_Blocks' ) ) {
 		public static function init() {
 			add_action( 'init', __CLASS__ . '::init_hook' );
 			add_action( 'enqueue_block_editor_assets', __CLASS__ . '::block_editor_assets' );
+			add_action( 'wp_enqueue_scripts', __CLASS__ . '::wp_enqueue_scripts' );
 		}
 
 		/**
@@ -121,6 +122,38 @@ if ( ! class_exists( 'Rri_Register_Blocks' ) ) {
 					),
 				)
 			);
+
+			wp_enqueue_script('jquery-ui-accordion');
+
+			wp_register_script( 'rri-related-posts-block-js', RRI_URL . 'js/rri-related-posts-block.js', array( 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor', 'jquery-ui-accordion' ), filemtime( RRI_DIR . 'js/rri-related-posts-block.js' ), false );
+
+			register_block_type(
+				RRI_TEXTDOMAIN . '/rri-related-posts-block',
+				array(
+					'editor_script'   => 'rri-related-posts-block-js',
+					'render_callback' => 'Rri_Related_Posts_Block::render_related_posts_block',
+					'attributes'      => array(
+						'post_types'    => array(
+							'type'    => 'array',
+							'default' => array(),
+							'items'   => array(
+								'type' => 'object',
+							),
+						),
+						'related_posts' => array(
+							'type'    => 'object',
+							'default' => json_decode(''),
+							'items'   => array(
+								'type' => 'object',
+							)
+						),
+						'align'         => array(
+							'type'    => 'string',
+							'default' => ''
+						)
+					)
+				)
+			);
 		}
 
 		/**
@@ -135,6 +168,20 @@ if ( ! class_exists( 'Rri_Register_Blocks' ) ) {
 			$ver      = $my_theme->get( 'Version' );
 
 			wp_enqueue_style( 'rri-editor-style', RRI_URL . 'css/rri-editor-style.css', array(), $ver );
+		}
+
+		/**
+		 * Function to handle wp_enqueue_scripts action
+		 *
+		 * @since 1.0.0
+		 * @static
+		 * @access public
+		 */
+		public static function wp_enqueue_scripts() {
+			$my_theme = wp_get_theme();
+			$ver      = $my_theme->get( 'Version' );
+
+			wp_enqueue_style( 'rri-front-style', RRI_URL . 'css/rri-front-style.css', array(), $ver );
 		}
 	}
 

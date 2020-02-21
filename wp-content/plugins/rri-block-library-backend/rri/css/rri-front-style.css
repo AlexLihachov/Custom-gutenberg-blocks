@@ -1,80 +1,4 @@
-.size-selector {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.size-selector > label {
-    width: 100%;
-    margin: 0 0 5px 0;
-}
-
-.size-selector > .components-base-control {
-    width: calc(50% - 5px);
-    margin-bottom: 0 !important;
-}
-
-.size-selector > .components-base-control input, .size-selector > .components-base-control select {
-    margin: 0 0 5px 0;
-}
-
-.spacing-selector {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.spacing-selector .components-base-control .components-base-control__label {
-	width: 30px;
-    margin: 0;
-}
-
-.bg-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.dirty .components-button.components-panel__body-toggle::after {
-    content: '';
-    height: 13px;
-    width: 13px;
-    position: absolute;
-    top: 18px;
-    right: 40px;
-    border: 3px solid #14ACEF;
-    border-radius: 50%;
-}
-
-.editor-block-list-item-rri-rri-group-block .editor-block-types-list__item-title {
-    color: #14ACEF;
-}
-
-.size-selector input::-webkit-outer-spin-button,
-.size-selector input::-webkit-inner-spin-button,
-.spacing-selector input::-webkit-outer-spin-button,
-.spacing-selector input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-.size-selector input[type=number], .spacing-selector input[type=number] {
-  -moz-appearance:textfield;
-}
-
-.hide {
-    display: none;
-}
-
-/* Related Posts - Start */
-.rri-related-posts-panel .components-base-control {
-    margin: 0 0 10px 0 !important;
-}
-
-.rri-related-posts-container{
+.rri-related-posts-content{
     border: 1px solid #ddd;
     background: #F7F8F8;
     box-shadow: 0px 0px 5px #ddd;
@@ -87,7 +11,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: var(--content-width);
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 .rri-related-posts-blocks .rri-related-post-block {
@@ -146,11 +70,11 @@
 }
 
 .related-post-content span {
-    font-style: italic;
+	font-style: italic;
 }
 
 .rri-related-post-block .related-post-date {
-    padding: 10px;
+	padding: 10px;
 }
 
 .rri-related-post-block .read-more {
@@ -165,4 +89,19 @@
     color: var(--color-link);
 }
 
-/* Related Posts - End */
+@media screen and (max-width: 1024px) {
+	.rri-related-posts-content {
+	    max-width: calc(100% - 40px) !important;
+	    padding-left: 20px !important;
+	    padding-right: 20px !important;
+	}
+
+	.rri-related-posts-blocks .rri-related-post-block {
+	    width: 100%;
+	    margin: 0 0 40px 0;
+	}
+
+	.rri-related-posts-blocks .rri-related-post-block:last-child{
+		margin: 0;
+	}
+}
