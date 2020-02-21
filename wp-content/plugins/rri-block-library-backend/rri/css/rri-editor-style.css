@@ -60,7 +60,50 @@
   margin: 0;
 }
 
-/* Firefox */
+/*Rri banner styles*/
+.rri-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.rri-banner a.cta-button {
+    padding: 15px 35px;
+    text-transform: unset;
+    text-decoration: none;
+    color: #fff;
+    background-color: #14aecf;
+}
+
+/*.entry-content .rri-banner h2, .entry-content .rri-banner h1,  .entry-content .rri-banner h3, .entry-content .rri-banner h4, .entry-content .rri-banner h5 {*/
+/*    margin: 0;*/
+/*}*/
+
+.rri-banner.full-width {
+    max-width: 100vw !important;
+    width: 100vw !important;
+}
+
+.rri-banner .editor-rich-text {
+    color: #fff;
+}
+.rri-banner.reverse {
+    flex-direction: row-reverse;
+}
+.rri-banner.center {
+    flex-direction: column;
+}
+.rri-banner.center > div {
+    text-align: center;
+}
+.rri-banner > div {
+    width: 35%;
+}
+
+    /* Firefox */
 .size-selector input[type=number], .spacing-selector input[type=number] {
   -moz-appearance:textfield;
 }

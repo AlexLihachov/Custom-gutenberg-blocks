@@ -3,7 +3,7 @@
  * Plugin Name: RRI Block Library - Backend
  * Plugin URI: http://www.tonyrobbins.com/
  * Description: Gutenberg blocks for RRI
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Chandni Patel
  * Author URI: http://phpwebdev.in/
  * Developer: Chandni Patel

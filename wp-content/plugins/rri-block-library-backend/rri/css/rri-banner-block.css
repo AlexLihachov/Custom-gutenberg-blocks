@@ -1,0 +1,144 @@
+/*Rri banner styles*/
+.rri-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.rri-banner a.rri-cta {
+    padding: 10px 35px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    background-color: #14aecf;
+    font-size: 16px;
+    border-radius: 2px;
+}
+
+.rri-banner h1 {
+    margin-bottom: 30px;
+    line-height: 1;
+}
+
+.rri-banner.alignfull h1 {
+    font-size: 80px;
+}
+
+.rri-banner.alignright {
+    float: unset;
+    margin-right: 1.5rem;
+    margin-left: auto;
+}
+.rri-banner.alignleft {
+    float: unset;
+    margin-left: 1.5rem;
+    margin-right: auto;
+}
+
+.rri-banner p {
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.rri-banner.full-width {
+    max-width: 100vw !important;
+    width: 100vw !important;
+}
+.rri-block.reverse {
+    flex-direction: row-reverse;
+}
+.rri-banner.center {
+    flex-direction: column;
+}
+.rri-banner.center > div {
+    text-align: center;
+}
+
+
+.rri-banner > div {
+    width: 40%;
+}
+
+.block-editor .rri-banner > div {
+    width: 45%;
+}
+
+.editor-block-list__block[data-type="rri/rri-banner-block"][data-align="full"] .rri-banner {
+    min-height: 655px;
+}
+
+.rri-banner.alignfull {
+    min-height: 860px;
+}
+
+.rri-banner.alignfull > div {
+    width: 40%;
+}
+
+.editor-block-list__block .rri-banner {
+    background-size: cover;
+
+}
+.editor-block-list__block .rri-banner > div {
+    display: block;
+
+}
+
+.rri-banner {
+    background-size: cover !important;
+}
+
+@media(max-width: 991px) {
+    .rri-banner, .rri-banner.reverse {
+        flex-direction: column;
+    }
+
+    .rri-banner > div {
+        width: 70%;
+    }
+
+    .rri-banner.alignfull > div {
+        width: 70%;
+    }
+}
+
+@media(max-width: 768px) {
+    .rri-banner > div {
+        text-align: center;
+        width: 90%;
+    }
+
+    .rri-banner br {
+        display: none;
+    }
+    .rri-banner {
+        padding-top: 335px !important;
+        padding-bottom: 68px !important;
+    }
+
+    .rri-banner.alignfull > div {
+        width: 90%;
+    }
+}
+
+@media(max-width: 480px) {
+    .rri-banner > div {
+        width: 100%;
+    }
+
+    .rri-banner.alignfull {
+        min-height: unset;
+    }
+    .rri-banner.alignfull > div {
+        width: 100%;
+    }
+
+    .rri-banner.alignfull h1 {
+        font-size: 2em;
+    }
+}
+

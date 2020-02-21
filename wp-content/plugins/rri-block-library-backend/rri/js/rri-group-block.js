@@ -138,7 +138,8 @@
 						title: __('Size', 'rri'),
 						initialOpen: false,
 						className: checkDirty( 'size', props ),
-					}, element.createElement('div', {className: 'size-selector'},
+					},
+						element.createElement('div', {className: 'size-selector'},
 						element.createElement('label', null, __('Width', 'rri')),
 						element.createElement(TextControl, {
 							name : 'width',
@@ -378,7 +379,6 @@
 
 			_style = {};
 			_element_style = '';
-
 			Object.keys( props.attributes ).forEach( function(key){
 				_val = props.attributes[key];
 
@@ -454,6 +454,7 @@
 				spacingInspector,
 				backgroundInspector
 			);
+
 		},
 		save: function(props) {
 			return element.createElement( InnerBlocks.Content );

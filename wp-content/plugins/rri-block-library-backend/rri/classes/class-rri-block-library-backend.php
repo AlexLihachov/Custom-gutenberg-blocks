@@ -47,6 +47,12 @@ if ( ! class_exists( 'Rri_Block_Library_Backend' ) ) {
 
 			/* Group block */
 			require_once RRI_DIR . 'classes/class-rri-group-block.php';
+
+            /* Banner block */
+            require_once RRI_DIR . 'classes/class-rri-banner-block.php';
+
+            /* Header block */
+            require_once RRI_DIR . 'classes/class-rri-header-block.php';
 		}
 
 		/**
