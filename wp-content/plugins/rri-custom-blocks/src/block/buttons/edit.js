@@ -5,7 +5,8 @@ import {cloneDeep, isEqual} from 'lodash';
 
 import {
     BlockContainer,
-    UrlInputPopover, TypographyControlHelper, HeadingButtonsControl, ColorPaletteControl
+    UrlInputPopover,
+    AdvancedRangeControl,
 } from '../../components';
 
 import {
@@ -27,9 +28,9 @@ import createStyles from './style'
  * WordPress dependencies
  */
 import {RichText} from '@wordpress/block-editor'
-import {PanelBody, withFocusOutside, ToggleControl} from '@wordpress/components'
+import {PanelBody, SelectControl, withFocusOutside, ToggleControl} from '@wordpress/components'
 import {__} from '@wordpress/i18n'
-import {addFilter} from '@wordpress/hooks'
+import {addFilter, applyFilters} from '@wordpress/hooks'
 import {Component, Fragment, createRef} from '@wordpress/element'
 import {compose} from '@wordpress/compose'
 import {withSelect} from '@wordpress/data'
@@ -38,33 +39,86 @@ import {withSelect} from '@wordpress/data'
  * Tabs Render
  */
 
-addFilter('stackable.two-tone-text.edit.inspector.layout.before', 'stackable/two-tone-text', (output, props) => {
-    return (
-        <Fragment>
-            {output}
-        </Fragment>
-    )
-});
-
-addFilter('stackable.two-tone-text.edit.inspector.style.before', 'stackable/two-tone-text', (output, props) => {
-    const {setAttributes}                                                          = props;
-    const {buttonColor} = props.attributes;
+addFilter('stackable.buttons.edit.inspector.style.before', 'stackable/buttons', (output, props) => {
+    const {setAttributes} = props;
+    const {
+              buttons
+          }               = props.attributes;
 
     return (
         <Fragment>
             {output}
-            <PanelBody title = {__('Title right', i18n)}>
-                <ColorPaletteControl
-                    value = {buttonColor}
-                    onChange = {value => setAttributes({
-                        buttonColor : value
-                    })}
-                    label = {__('Title right Color', i18n)}
+            <PanelBody title = {__('General', i18n)}>
+                <AdvancedRangeControl
+                    label = {__('Number of buttons', i18n)}
+                    value = {buttons.length}
+                    onChange = {(value) => {
+                        const button_data_clone = cloneDeep(buttons);
+
+                        if(buttons.length < value){
+                            button_data_clone.push({
+                                url      : '',
+                                newTab   : false,
+                                noFollow : false,
+                                text     : 'Link',
+                                design   : 'primary',
+                                size     : "small"
+                            });
+                        } else{
+                            button_data_clone.pop();
+                        }
+
+                        setAttributes({
+                            buttons : button_data_clone
+                        });
+                    }}
+                    min = {1}
+                    max = {2}
                 />
             </PanelBody>
+
+            {buttons.map((button, index) => {
+
+                return (
+                    <PanelBody title = {__(`Button ${index}`, i18n)} initialOpen = {false}>
+                        <SelectControl label = {__('Design', i18n)}
+                                       options = {[
+                                           {value : 'primary', label : __('Primary', i18n)},
+                                           {value : 'secondary', label : __('Secondary', i18n)}
+                                       ]}
+                                       value = {button.design}
+                                       onChange = {(value) => {
+                                           const buttonsClone         = cloneDeep(buttons);
+                                           buttonsClone[index].design = value;
+                                           setAttributes({
+                                               buttons : buttonsClone
+                                           });
+                                       }}
+                        />
+                        <SelectControl label = {__('Size', i18n)}
+                                       options = {[
+                                           {value : 'small', label : __('Small', i18n)},
+                                           {value : 'medium', label : __('Medium', i18n)},
+                                           {value : 'large', label : __('Large', i18n)}
+                                       ]}
+                                       value = {button.size}
+                                       onChange = {(value) => {
+                                           const buttonsClone       = cloneDeep(buttons);
+                                           buttonsClone[index].size = value;
+                                           setAttributes({
+                                               buttons : buttonsClone
+                                           });
+                                       }}
+                        />
+                    </PanelBody>
+                );
+            })}
+
+
         </Fragment>
     );
 });
+
 
 class Edit extends Component{
     constructor(){
@@ -73,56 +127,45 @@ class Edit extends Component{
             openUrlPopover : false
         };
         this.scrollRef        = createRef();
-        this.handleClick      = this.handleClick.bind(this);
-        this.handleInnerClick = this.handleInnerClick.bind(this);
         this.onChangeUrl      = this.onChangeUrl.bind(this);
         this.onChangeNewTab   = this.onChangeNewTab.bind(this);
         this.onChangeNoFollow = this.onChangeNoFollow.bind(this);
     }
 
-    handleClick(){
-        this.setState({
-            openUrlPopover : true
-        });
-    }
 
-    handleInnerClick(){
-        this.setState({
-            openUrlPopover : false
-        });
-    }
-
-    onChangeUrl(value){
+    onChangeUrl(value, index){
         const {setAttributes, attributes} = this.props;
         const buttonsClone                = cloneDeep(attributes.buttons);
-        buttonsClone.link.url             = value;
+        buttonsClone[index].url           = value;
         setAttributes({
             buttons : buttonsClone
         });
     }
 
-    onChangeNewTab(value){
+    onChangeNewTab(value, index){
         const {setAttributes, attributes} = this.props;
         const buttonsClone                = cloneDeep(attributes.buttons);
-        buttonsClone.link.newTab          = value;
+        buttonsClone[index].newTab        = value;
         setAttributes({
             buttons : buttonsClone
         });
     }
 
-    onChangeNoFollow(value){
+    onChangeNoFollow(value, index){
         const {setAttributes, attributes} = this.props;
         const buttonsClone                = cloneDeep(attributes.buttons);
-        buttonsClone.link.noFollow        = value;
+        buttonsClone[index].noFollow      = value;
         setAttributes({
             buttons : buttonsClone
         });
     }
+
 
     render(){
         const {className, setAttributes, attributes} = this.props;
-        const {buttons} = attributes;
+        const {buttons}                              = attributes;
         const mainClasses                            = classnames([className]);
+
         return (
             <BlockContainer.Edit
                 className = {mainClasses}
@@ -130,33 +173,51 @@ class Edit extends Component{
                 render = {() => (
                     <Fragment>
                         <div className = "rri-buttons__container"
-                             onMouseDown = {this.handleInnerClick}
                              role = "button">
+                            {buttons.map((button, index) => {
 
-                                <div className = "rri-buttons__link"
-                                     onClick = {this.handleClick}>
-                                    <RichText
-                                        tagName = "span"
-                                        value = {buttons.link.text}
-                                        onChange = {text => {
-                                            const buttonsDataClone     = cloneDeep(buttons);
-                                            buttonsDataClone.link.text = text;
-                                            setAttributes({
-                                                buttons : buttonsDataClone
-                                            });
-                                        }}
-                                        placeholder = {__('URL', i18n)}
-                                        keepPlaceholderOnFocus
-                                    />
-                                    {this.state.openUrlPopover && <UrlInputPopover
-                                        value = {buttons.link.url}
-                                        newTab = {buttons.link.newTab}
-                                        noFollow = {buttons.link.noFollow}
-                                        onChange = {value => this.onChangeUrl(value)}
-                                        onChangeNewTab = {value => this.onChangeNewTab(value)}
-                                        onChangeNoFollow = {value => this.onChangeNoFollow(value)}
-                                    />}
-                                </div>
+                                    const {
+                                              buttons,
+                                          } = attributes;
+                                    const itemClasses
+                                            = classnames([
+                                        `rri-buttons__item`,
+                                        `rri-buttons__item_${button.design}`,
+                                        `rri-buttons__item_${button.size}`
+                                    ]);
+
+                                    return (
+                                        <div className = {itemClasses}
+                                             key = {index}
+                                             onMouseDown = {() => this.setState({openUrlPopover : index})}
+                                             onClick = {this.handleClick}>
+
+                                            <RichText
+                                                tagName = "span"
+                                                className = "rri-gift-slide__cta-text"
+                                                value = {button.text}
+                                                onChange = {(value) => {
+                                                    const buttonsClone       = cloneDeep(buttons);
+                                                    buttonsClone[index].text = value;
+                                                    setAttributes({
+                                                        buttons : buttonsClone
+                                                    });
+                                                }}
+                                                keepPlaceholderOnFocus
+                                            />
+                                            {this.state.openUrlPopover === index && <UrlInputPopover
+                                                value = {button.url}
+                                                newTab = {button.newTab}
+                                                noFollow = {button.noFollow}
+                                                onChange = {value => this.onChangeUrl(value, index)}
+                                                onChangeNewTab = {value => this.onChangeNewTab(value, index)}
+                                                onChangeNoFollow = {value => this.onChangeNoFollow(value, index)}
+                                            />}
+                                        </div>
+
+                                    )
+                                }
+                            )}
                         </div>
                     </Fragment>
                 )} />

@@ -16,77 +16,73 @@ domReady(() => {
 					nextArrow: jQuery('.rri-gift-next'),
 				});
 
-			let slideCount = 0;
-			let slides = null;
-
-			const animatedSlide = () => {
-				jQuery('.slick-current .rri-gift-slide__title').addClass('animated');
-				jQuery('.slick-current .rri-gift-slide__above-title').addClass('animated');
-				jQuery('.slick-current .rri-gift-slide__number').addClass('animated');
-				jQuery('.slick-current .rri-gift-slide__image').addClass('animated');
+			const animatedSlide = (element) => {
+				element.find('.rri-gift-slide__above-title').addClass('animated');
+				element.find('.rri-gift-slide__title').addClass('animated');
+				element.find('.rri-gift-slide__number').addClass('animated');
+				element.find('.rri-gift-slide__image').addClass('animated');
 			};
 
-			const removeAnimatedSlide = () => {
-				jQuery('.slick-current .rri-gift-slide__title').removeClass('animated');
-				jQuery('.slick-current .rri-gift-slide__above-title').removeClass('animated');
-				jQuery('.slick-current .rri-gift-slide__number').removeClass('animated');
-				jQuery('.slick-current .rri-gift-slide__image').removeClass('animated');
+			const removeAnimatedSlide = (element) => {
+				element.find('.rri-gift-slide__above-title').removeClass('animated');
+				element.find('.rri-gift-slide__title').removeClass('animated');
+				element.find('.rri-gift-slide__number').removeClass('animated');
+				element.find('.rri-gift-slide__image').removeClass('animated');
+			};
+
+			const toggleSlidesClasses = (currentSlideIndex, slides) => {
+				let slideCount = slides.length;
+				let nextSlideIndex, prevSlideIndex;
+
+				if (currentSlideIndex + 1 === slideCount) {
+					nextSlideIndex = 0;
+				} else {
+					nextSlideIndex = currentSlideIndex + 1;
+				}
+
+
+				if (currentSlideIndex - 1 < 0) {
+					prevSlideIndex = slideCount - 1;
+				} else {
+					prevSlideIndex = currentSlideIndex - 1;
+				}
+
+				slides.each(function (index, item) {
+					const slideIndex = jQuery(item).data('slick-index');
+					jQuery(item).removeClass('is-prev').removeClass('is-next');
+
+					if (slideIndex === prevSlideIndex) {
+						jQuery(item).addClass('is-prev');
+					} else if (slideIndex === nextSlideIndex) {
+						jQuery(item).addClass('is-next');
+					}
+				});
 			};
 
 			jQuery(this).on('init', function (event, slick) {
-				console.log(slick);
-				let prevSlide = null;
-				let nextSlide = null;
-
-				slideCount = slick.slideCount;
-				slides = jQuery('.slick-slide');
-
-				console.log(slick.currentSlide + 1);
-
-				if (slick.currentSlide + 1 === slideCount) {
-					nextSlide = slides.eq(0);
-				} else {
-					nextSlide = slides.eq(slick.currentSlide + 1);
+				if (slick.slideCount <= 1) {
+					return;
 				}
 
-				console.log(slides.eq(slick.currentSlide + 1));
-
-				if (slick.currentSlide - 1 < 0) {
-					prevSlide = slides.eq(slideCount - 1);
-				} else {
-					prevSlide = slides.eq(slick.currentSlide - 1);
-				}
-
-				nextSlide.addClass('is-next');
-				prevSlide.addClass('is-prev');
-
-				// animatedSlide();
-				// jQuery('.slick-active').prev().removeClass('is-next').addClass('is-prev');
-				// jQuery('.slick-active').next().removeClass('is-prev').addClass('is-next');
+				toggleSlidesClasses(slick.currentSlide, slick.$slides);
 			});
 
 			jQuery(this).slick(settings);
 
-			jQuery(this).on('swipe', function (event, slick, currentSlide, direction) {
-				// animatedSlide();
-			});
+			jQuery(this).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+				slick.$slides.each(function (index, item) {
+					const slideIndex = jQuery(item).data('slick-index');
 
-			jQuery('.rri-gift-prev').on('click', function () {
-				// animatedSlide();
-			});
-
-			jQuery('.rri-gift-next').on('click', function () {
-				// animatedSlide();
+					if (slideIndex === currentSlide) {
+						removeAnimatedSlide(jQuery(item));
+					} else if (slideIndex === nextSlide) {
+						animatedSlide(jQuery(item));
+					}
+				});
 			});
 
 			jQuery(this).on('afterChange', function (event, slick, currentSlide) {
-				// jQuery(".slick-active").prev().removeClass('is-next').addClass('is-prev');
-				// jQuery(".slick-active").next().removeClass('is-prev').addClass('is-next');
-			});
-
-			jQuery(this).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-				// console.log(currentSlide, nextSlide);
-				// removeAnimatedSlide();
+				toggleSlidesClasses(currentSlide, slick.$slides);
 			});
 		});
 	}

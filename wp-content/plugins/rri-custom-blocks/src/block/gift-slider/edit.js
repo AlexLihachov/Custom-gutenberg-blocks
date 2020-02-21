@@ -94,11 +94,48 @@ addFilter('stackable.gift-slider.edit.inspector.style.before', 'stackable/gift-s
 					min={1}
 					max={20}
 				/>
+				<ToggleControl
+					label={__('Infinite Loop?', i18n)}
+					checked={settings.infinite}
+					onChange={() => {
+						const settingsClone = cloneDeep(settings);
+						settingsClone.infinite = !settingsClone.infinite;
+						setAttributes({
+							settings: settingsClone
+						});
+					}}
+				/>
+				<ToggleControl
+					label={__('Touch Move?', i18n)}
+					checked={settings.touchMove}
+					onChange={() => {
+						const settingsClone = cloneDeep(settings);
+						settingsClone.touchMove = !settingsClone.touchMove;
+						setAttributes({
+							settings: settingsClone
+						});
+					}}
+				/>
+				<AdvancedRangeControl
+					label={__('Autoplay (second)', i18n)}
+					value={(settings.autoplaySpeed / 1000)}
+					step={0.3}
+					onChange={(value) => {
+						const settingsClone = cloneDeep(settings);
+						settingsClone.autoplay = value > 0;
+						settingsClone.autoplaySpeed = value * 1000;
+						setAttributes({
+							settings: settingsClone
+						});
+					}}
+					min={0}
+					max={4.5}
+				/>
 			</PanelBody>
-			<PanelBody title={__('Ordering', i18n)}>
-				<DragImages items={slides_data} setAttributes={setAttributes}/>
+			<PanelBody title={__('Ordering', i18n)} initialOpen={false}>
+				<DragImages items={slides_data} setAttributes={setAttributes} propName="slides_data"/>
 			</PanelBody>
-			<PanelBody title={__('Above Title', i18n)}>
+			<PanelBody title={__('Above Title', i18n)} initialOpen={false}>
 				<TypographyControlHelper
 					attrNameTemplate="abovetitle%s"
 					setAttributes={setAttributes}
@@ -118,7 +155,7 @@ addFilter('stackable.gift-slider.edit.inspector.style.before', 'stackable/gift-s
 					label={__('Above title Color', i18n)}
 				/>
 			</PanelBody>
-			<PanelBody title={__('Title', i18n)}>
+			<PanelBody title={__('Title', i18n)} initialOpen={false}>
 				<TypographyControlHelper
 					attrNameTemplate="title%s"
 					setAttributes={setAttributes}
@@ -138,7 +175,7 @@ addFilter('stackable.gift-slider.edit.inspector.style.before', 'stackable/gift-s
 					label={__('Title Color', i18n)}
 				/>
 			</PanelBody>
-			<PanelBody title={__('Number', i18n)}>
+			<PanelBody title={__('Number', i18n)} initialOpen={false}>
 				<TypographyControlHelper
 					attrNameTemplate="number%s"
 					setAttributes={setAttributes}
@@ -171,6 +208,7 @@ class Edit extends Component {
 		this.onChangeNoFollow = this.onChangeNoFollow.bind(this);
 		this.animatedSlides = this.animatedSlides.bind(this);
 		this.removeAnimatedSlides = this.removeAnimatedSlides.bind(this);
+		this.toggleSlidesClasses = this.toggleSlidesClasses.bind(this);
 	}
 
 	handleClick(ev) {
@@ -212,51 +250,79 @@ class Edit extends Component {
 		});
 	}
 
-	animatedSlides() {
-		jQuery('.slick-current .rri-gift-slide__title').addClass('animated');
-		jQuery('.slick-current .rri-gift-slide__above-title').addClass('animated');
-		jQuery('.slick-current .rri-gift-slide__number').addClass('animated');
-		jQuery('.slick-current .rri-gift-slide__image').addClass('animated');
+	animatedSlides(element) {
+		element.find('.rri-gift-slide__above-title').addClass('animated');
+		element.find('.rri-gift-slide__title').addClass('animated');
+		element.find('.rri-gift-slide__number').addClass('animated');
+		element.find('.rri-gift-slide__image').addClass('animated');
 	}
 
-	removeAnimatedSlides() {
-		jQuery('.slick-current .rri-gift-slide__title').removeClass('animated');
-		jQuery('.slick-current .rri-gift-slide__above-title').removeClass('animated');
-		jQuery('.slick-current .rri-gift-slide__number').removeClass('animated');
-		jQuery('.slick-current .rri-gift-slide__image').removeClass('animated');
+	removeAnimatedSlides(element) {
+		element.find('.rri-gift-slide__above-title').removeClass('animated');
+		element.find('.rri-gift-slide__title').removeClass('animated');
+		element.find('.rri-gift-slide__number').removeClass('animated');
+		element.find('.rri-gift-slide__image').removeClass('animated');
+	}
+
+	toggleSlidesClasses(currentSlideIndex, slides) {
+		let nextSlideIndex, prevSlideIndex;
+		const slideCount = slides.length;
+
+		if (currentSlideIndex + 1 === slideCount) {
+			nextSlideIndex = 0;
+		} else {
+			nextSlideIndex = currentSlideIndex + 1;
+		}
+
+		if (currentSlideIndex - 1 < 0) {
+			prevSlideIndex = slideCount - 1;
+		} else {
+			prevSlideIndex = currentSlideIndex - 1;
+		}
+
+		jQuery(slides).each(function (index, item) {
+			jQuery(item).removeClass('is-prev').removeClass('is-next');
+
+			if (index === prevSlideIndex) {
+				jQuery(item).addClass('is-prev');
+			} else if (index === nextSlideIndex) {
+				jQuery(item).addClass('is-next');
+			}
+		});
 	}
 
 	componentDidMount() {
 		const self = this;
 		const sliderNode = this.sliderRef.current;
+		const settings = Object.assign({}, this.props.attributes.settings, {
+			prevArrow: jQuery('.rri-gift-prev'),
+			nextArrow: jQuery('.rri-gift-next'),
+		});
 
 		jQuery(sliderNode).on('init', function (event, slick) {
-			self.animatedSlides();
-			jQuery('.slick-active').prev().removeClass('is-next').addClass('is-prev');
-			jQuery('.slick-active').next().removeClass('is-prev').addClass('is-next');
+			if (slick.slideCount <= 1) {
+				return;
+			}
+
+			self.toggleSlidesClasses(slick.currentSlide, slick.$slides);
 		});
 
-		jQuery(sliderNode).slick(this.props.attributes.settings);
+		jQuery(sliderNode).slick(settings);
 
-		jQuery(sliderNode).on('swipe', function (event, slick, currentSlide, direction) {
-			self.animatedSlides();
+		jQuery(sliderNode).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+			slick.$slides.each(function (index, item) {
+				const slideIndex = jQuery(item).data('slick-index');
+
+				if (slideIndex === currentSlide) {
+					self.removeAnimatedSlides(jQuery(item));
+				} else if (slideIndex === nextSlide) {
+					self.animatedSlides(jQuery(item));
+				}
+			});
 		});
 
-		jQuery('.rri-gift-prev').on('click', function () {
-			self.animatedSlides();
-		});
-
-		jQuery('.rri-gift-next').on('click', function () {
-			self.animatedSlides();
-		});
-
-		jQuery(sliderNode).on('afterChange', function (event, slick, currentSlide, nextSlide) {
-			jQuery(".slick-active").prev().removeClass('is-next').addClass('is-prev');
-			jQuery(".slick-active").next().removeClass('is-prev').addClass('is-next');
-		});
-
-		jQuery(sliderNode).on('beforeChange', function () {
-			self.removeAnimatedSlides();
+		jQuery(sliderNode).on('afterChange', function (event, slick, currentSlide) {
+			self.toggleSlidesClasses(currentSlide, slick.$slides);
 		});
 	}
 
@@ -264,13 +330,17 @@ class Edit extends Component {
 		const isAddNewSlides = prevProps.attributes.slides_data.length < this.props.attributes.slides_data.length;
 		const isDifferentSettings = !isEqual(prevProps.attributes.settings, this.props.attributes.settings);
 		const slideNode = this.sliderRef.current;
+		const settings = Object.assign({}, this.props.attributes.settings, {
+			prevArrow: jQuery('.rri-gift-prev'),
+			nextArrow: jQuery('.rri-gift-next'),
+		});
 
 		if (isAddNewSlides || isDifferentSettings) {
 			jQuery(slideNode).slick('destroy');
-			jQuery(slideNode).slick(this.props.attributes.settings);
+			jQuery(slideNode).slick(settings);
 
 		} else if (this.decreasesSlides) {
-			jQuery(slideNode).slick(this.props.attributes.settings);
+			jQuery(slideNode).slick(settings);
 			this.decreasesSlides = false;
 		}
 	}
@@ -315,7 +385,6 @@ class Edit extends Component {
 														slides_data: slider_data_clone
 													});
 												}}
-												keepPlaceholderOnFocus
 											/>
 											<RichText
 												tagName={titleTag}
@@ -328,7 +397,6 @@ class Edit extends Component {
 														slides_data: slider_data_clone
 													});
 												}}
-												keepPlaceholderOnFocus
 											/>
 											<RichText
 												tagName="p"
@@ -341,7 +409,6 @@ class Edit extends Component {
 														slides_data: slider_data_clone
 													});
 												}}
-												keepPlaceholderOnFocus
 											/>
 											<div className="rri-gift-slide__cta"
 												 onClick={this.handleClick}>
@@ -356,7 +423,6 @@ class Edit extends Component {
 															slides_data: slider_data_clone
 														});
 													}}
-													keepPlaceholderOnFocus
 												/>
 												{this.state.openUrlPopover && <UrlInputPopover
 													value={slide.link.url}
@@ -407,12 +473,12 @@ export default compose(
 	withSetAttributeHook,
 	withTabbedInspector(),
 	withBlockStyles(createStyles, {editorMode: true}),
-	// withSelect((select, {clientId}) => {
-	// 	const {getBlock} = select('core/block-editor');
-	// 	const block = getBlock(clientId);
-	// 	return {
-	// 		hasInnerBlocks: !!(block && block.innerBlocks.length),
-	// 	}
-	// }),
-	// withFocusOutside,
+	withSelect((select, {clientId}) => {
+		const {getBlock} = select('core/block-editor');
+		const block = getBlock(clientId);
+		return {
+			hasInnerBlocks: !!(block && block.innerBlocks.length),
+		}
+	}),
+	withFocusOutside,
 )(Edit);

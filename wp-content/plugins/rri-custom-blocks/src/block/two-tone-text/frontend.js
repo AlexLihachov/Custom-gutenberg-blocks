@@ -4,15 +4,14 @@
 import domReady from '@wordpress/dom-ready';
 
 domReady(() => {
-    jQuery('.js-parallax').addClass('is-show');
-
-    const element = document.querySelector('.rri-two-tone-text');
-
-    const width = element.dataset.width;
-
-    jQuery('.rri-two-tone-text__third-main').css("width", width + "%")
+	const element = document.querySelector('.rri-two-tone-text');
 
     if(element){
+		jQuery('.js-parallax').addClass('is-show');
+		jQuery('.rri-two-tone-text__third-main').css("width", width + "%")
+
+		const width = element.dataset.width;
+
         let Visible = function(target){
             let firstLine  = document.querySelectorAll('.first-line');
             let secondLine = document.querySelectorAll('.second-line');

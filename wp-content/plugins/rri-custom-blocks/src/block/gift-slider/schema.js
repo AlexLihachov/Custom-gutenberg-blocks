@@ -23,38 +23,6 @@ export const schema = {
 					text: 'Learn more'
 
 				}
-			},
-			{
-				above_title: __('Above title', i18n),
-				name: __('Name', i18n),
-				number: __('Number', i18n),
-				image: {
-					url: '',
-					id: ''
-				},
-				link: {
-					url: '',
-					newTab: false,
-					noFollow: false,
-					text: 'Learn more'
-
-				}
-			},
-			{
-				above_title: __('Above title', i18n),
-				name: __('Name', i18n),
-				number: __('Number', i18n),
-				image: {
-					url: '',
-					id: ''
-				},
-				link: {
-					url: '',
-					newTab: false,
-					noFollow: false,
-					text: 'Learn more'
-
-				}
 			}
 		]
 	},
@@ -64,8 +32,12 @@ export const schema = {
 			vertical: true,
 			slidesToShow: 1,
 			slidesToScroll: 1,
-			infinite: true,
-			verticalSwiping: true
+			infinite: false,
+			verticalSwiping: true,
+			touchMove: true,
+			pauseOnFocus: false,
+			autoplaySpeed: 0,
+			autoplay: false
 		}
 	},
 	// Above Title

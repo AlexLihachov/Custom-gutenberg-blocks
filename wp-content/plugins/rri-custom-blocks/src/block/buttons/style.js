@@ -16,25 +16,6 @@ export const createStyles = (props) => {
 	const styles = [];
 
 
-	// Title left
-	styles.push({
-		'.rri-buttons': {
-			...createTypographyStyles('buttons%s', 'desktop', props.attributes, {importantSize: true}),
-			color: appendImportant(`${getValue('butonsColor')}`)
-		},
-		tablet: {
-			'.rri-buttons': {
-				...createTypographyStyles('buttons%s', 'tablet', props.attributes, {importantSize: true}),
-			}
-		},
-		mobile: {
-			'.rri-buttons': {
-				...createTypographyStyles('buttons%s', 'mobile', props.attributes, {importantSize: true}),
-			}
-		}
-	});
-
-
 	return deepmerge.all(styles)
 
 };

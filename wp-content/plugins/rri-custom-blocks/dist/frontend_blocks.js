@@ -61,7 +61,7 @@ var frontend_blocks =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 404);
+/******/ 	return __webpack_require__(__webpack_require__.s = 414);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -115,12 +115,12 @@ function domReady(callback) {
 
 /***/ }),
 
-/***/ 404:
+/***/ 414:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(405);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(415);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfill__);
 /**
  * All frontend scripts required by our blocks should be included here.
@@ -133,7 +133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 
-var context = __webpack_require__(406); // Import.
+var context = __webpack_require__(416); // Import.
 
 
 context.keys().forEach(function (key) {
@@ -142,7 +142,7 @@ context.keys().forEach(function (key) {
 
 /***/ }),
 
-/***/ 405:
+/***/ 415:
 /***/ (function(module, exports) {
 
 /**
@@ -155,16 +155,16 @@ if (window.NodeList && !window.NodeList.prototype.forEach) {
 
 /***/ }),
 
-/***/ 406:
+/***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./accordion/frontend.js": 407,
-	"./buttons/frontend.js": 408,
-	"./generic-slider/frontend.js": 409,
-	"./gift-slider/frontend.js": 410,
-	"./two-tone-text/frontend.js": 411,
-	"./video-popup/frontend.js": 412
+	"./accordion/frontend.js": 417,
+	"./buttons/frontend.js": 418,
+	"./generic-slider/frontend.js": 419,
+	"./gift-slider/frontend.js": 420,
+	"./two-tone-text/frontend.js": 421,
+	"./video-popup/frontend.js": 422
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -180,11 +180,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 406;
+webpackContext.id = 416;
 
 /***/ }),
 
-/***/ 407:
+/***/ 417:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -277,21 +277,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(in
 
 /***/ }),
 
-/***/ 408:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 418:
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(19);
-/**
- * WordPress dependencies
- */
 
-Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(function () {});
 
 /***/ }),
 
-/***/ 409:
+/***/ 419:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -314,7 +307,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 410:
+/***/ 420:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -333,62 +326,70 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
         prevArrow: jQuery('.rri-gift-prev'),
         nextArrow: jQuery('.rri-gift-next')
       });
-      var slideCount = 0;
-      var slides = null;
 
-      var animatedSlide = function animatedSlide() {
-        jQuery('.slick-current .rri-gift-slide__title').addClass('animated');
-        jQuery('.slick-current .rri-gift-slide__above-title').addClass('animated');
-        jQuery('.slick-current .rri-gift-slide__number').addClass('animated');
-        jQuery('.slick-current .rri-gift-slide__image').addClass('animated');
+      var animatedSlide = function animatedSlide(element) {
+        element.find('.rri-gift-slide__above-title').addClass('animated');
+        element.find('.rri-gift-slide__title').addClass('animated');
+        element.find('.rri-gift-slide__number').addClass('animated');
+        element.find('.rri-gift-slide__image').addClass('animated');
       };
 
-      var removeAnimatedSlide = function removeAnimatedSlide() {
-        jQuery('.slick-current .rri-gift-slide__title').removeClass('animated');
-        jQuery('.slick-current .rri-gift-slide__above-title').removeClass('animated');
-        jQuery('.slick-current .rri-gift-slide__number').removeClass('animated');
-        jQuery('.slick-current .rri-gift-slide__image').removeClass('animated');
+      var removeAnimatedSlide = function removeAnimatedSlide(element) {
+        element.find('.rri-gift-slide__above-title').removeClass('animated');
+        element.find('.rri-gift-slide__title').removeClass('animated');
+        element.find('.rri-gift-slide__number').removeClass('animated');
+        element.find('.rri-gift-slide__image').removeClass('animated');
+      };
+
+      var toggleSlidesClasses = function toggleSlidesClasses(currentSlideIndex, slides) {
+        var slideCount = slides.length;
+        var nextSlideIndex, prevSlideIndex;
+
+        if (currentSlideIndex + 1 === slideCount) {
+          nextSlideIndex = 0;
+        } else {
+          nextSlideIndex = currentSlideIndex + 1;
+        }
+
+        if (currentSlideIndex - 1 < 0) {
+          prevSlideIndex = slideCount - 1;
+        } else {
+          prevSlideIndex = currentSlideIndex - 1;
+        }
+
+        slides.each(function (index, item) {
+          var slideIndex = jQuery(item).data('slick-index');
+          jQuery(item).removeClass('is-prev').removeClass('is-next');
+
+          if (slideIndex === prevSlideIndex) {
+            jQuery(item).addClass('is-prev');
+          } else if (slideIndex === nextSlideIndex) {
+            jQuery(item).addClass('is-next');
+          }
+        });
       };
 
       jQuery(this).on('init', function (event, slick) {
-        console.log(slick);
-        var prevSlide = null;
-        var nextSlide = null;
-        slideCount = slick.slideCount;
-        slides = jQuery('.slick-slide');
-        console.log(slick.currentSlide + 1);
-
-        if (slick.currentSlide + 1 === slideCount) {
-          nextSlide = slides.eq(0);
-        } else {
-          nextSlide = slides.eq(slick.currentSlide + 1);
+        if (slick.slideCount <= 1) {
+          return;
         }
 
-        console.log(slides.eq(slick.currentSlide + 1));
-
-        if (slick.currentSlide - 1 < 0) {
-          prevSlide = slides.eq(slideCount - 1);
-        } else {
-          prevSlide = slides.eq(slick.currentSlide - 1);
-        }
-
-        nextSlide.addClass('is-next');
-        prevSlide.addClass('is-prev'); // animatedSlide();
-        // jQuery('.slick-active').prev().removeClass('is-next').addClass('is-prev');
-        // jQuery('.slick-active').next().removeClass('is-prev').addClass('is-next');
+        toggleSlidesClasses(slick.currentSlide, slick.$slides);
       });
       jQuery(this).slick(settings);
-      jQuery(this).on('swipe', function (event, slick, currentSlide, direction) {// animatedSlide();
+      jQuery(this).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        slick.$slides.each(function (index, item) {
+          var slideIndex = jQuery(item).data('slick-index');
+
+          if (slideIndex === currentSlide) {
+            removeAnimatedSlide(jQuery(item));
+          } else if (slideIndex === nextSlide) {
+            animatedSlide(jQuery(item));
+          }
+        });
       });
-      jQuery('.rri-gift-prev').on('click', function () {// animatedSlide();
-      });
-      jQuery('.rri-gift-next').on('click', function () {// animatedSlide();
-      });
-      jQuery(this).on('afterChange', function (event, slick, currentSlide) {// jQuery(".slick-active").prev().removeClass('is-next').addClass('is-prev');
-        // jQuery(".slick-active").next().removeClass('is-prev').addClass('is-next');
-      });
-      jQuery(this).on('beforeChange', function (event, slick, currentSlide, nextSlide) {// console.log(currentSlide, nextSlide);
-        // removeAnimatedSlide();
+      jQuery(this).on('afterChange', function (event, slick, currentSlide) {
+        toggleSlidesClasses(currentSlide, slick.$slides);
       });
     });
   }
@@ -396,7 +397,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 411:
+/***/ 421:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -407,12 +408,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(function () {
-  jQuery('.js-parallax').addClass('is-show');
   var element = document.querySelector('.rri-two-tone-text');
-  var width = element.dataset.width;
-  jQuery('.rri-two-tone-text__third-main').css("width", width + "%");
 
   if (element) {
+    jQuery('.js-parallax').addClass('is-show');
+    jQuery('.rri-two-tone-text__third-main').css("width", width + "%");
+    var width = element.dataset.width;
+
     var Visible = function Visible(target) {
       var firstLine = document.querySelectorAll('.first-line');
       var secondLine = document.querySelectorAll('.second-line');
@@ -454,12 +456,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 412:
+/***/ 422:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(423);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bigpicture__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__ = __webpack_require__(19);
 /**
@@ -509,7 +511,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 413:
+/***/ 423:
 /***/ (function(module, exports) {
 
 // BigPicture.js | license MIT | henrygd.me/bigpicture

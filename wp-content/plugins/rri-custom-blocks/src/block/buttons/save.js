@@ -2,7 +2,7 @@
  * External dependencies
  */
 import {withBlockStyles, withUniqueClass} from '../../higher-order';
-import {BlockContainer} from '../../components';
+import {BlockContainer, UrlInputPopover} from '../../components';
 import classnames from 'classnames';
 
 /**
@@ -15,23 +15,11 @@ import createStyles from "./style";
 
 const save = (props) => {
     const {className, attributes} = props;
-    const {buttons, settings}     = attributes;
+    const {buttons}               = attributes;
     const itemClasses             = classnames([
-        'rri-buttons__container'
+        'rri-buttons__container',
+        `rri-buttons__item`
     ]);
-    const url_text                = buttons.link.text;
-    const url_link                = buttons.link.url;
-    const newTab                  = buttons.link.newTab;
-    const noFollow                = buttons.link.noFollow;
-    const rel                     = [];
-
-    if(newTab){
-        rel.push('noopener');
-        rel.push('noreferrer')
-    }
-    if(noFollow){
-        rel.push('nofollow')
-    }
 
     return (
         <BlockContainer.Save
@@ -39,9 +27,33 @@ const save = (props) => {
             blockProps = {props}
             render = {() => (
                 <Fragment>
-                    <div className = {itemClasses}>
-                        <div className = "rri-buttons__container" id = {buttons}>
-                                <a className = "rri-buttons__link"
+                    <div>
+                        {buttons.map((button, index) => {
+                            const itemClasses
+                                      = classnames([
+                                `rri-buttons__item`,
+                                `rri-buttons__item_${button.design}`,
+                                `rri-buttons__item_${button.size}`
+                            ]);
+
+                            const url_text = button.text;
+                            const url_link = button.url;
+                            const newTab   = button.newTab;
+                            const noFollow = button.noFollow;
+                            const rel      = [];
+
+                            if(newTab){
+                                rel.push('noopener');
+                                rel.push('noreferrer')
+                            }
+                            if(noFollow){
+                                rel.push('nofollow')
+                            }
+
+                            return (
+
+                                <a className = {itemClasses}
+                                   key = {index}
                                    href = {url_link}
                                    target = {newTab ? '_blank' : undefined}
                                    rel = {rel.join(' ') || undefined}
@@ -51,11 +63,13 @@ const save = (props) => {
                                         value = {url_text}
                                     />
                                 </a>
-                        </div>
+                            );
+                        })}
                     </div>
                 </Fragment>
-            )}
-        />
+            )
+            } />
+
     );
 };
 

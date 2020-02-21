@@ -3,28 +3,27 @@
  */
 import {__} from '@wordpress/i18n';
 import {i18n} from '../../constants';
+import {
+    createAllCombinationAttributes,
+    createBackgroundAttributes,
+    createImageAttributes,
+    createImageBackgroundAttributes, createResponsiveAttributes, createTypographyAttributes
+} from "../../util";
 
 export const schema = {
     buttons : {
-        type    : 'object',
-        default : {
-            buttons  : __('Link', i18n),
-            link       : {
+        type    : 'array',
+        default : [
+            {
                 url      : '',
                 newTab   : false,
                 noFollow : false,
-                text     : 'Link'
+                text     : 'Link',
+                design   : 'primary',
+                size     : 'small'
             }
-        }
+        ]
     },
-
-// Buttons
-
-    buttonColor                : {
-        type    : 'string',
-        default :
-            '#000'
-    }
 
 };
 

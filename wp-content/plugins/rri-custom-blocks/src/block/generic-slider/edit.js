@@ -149,8 +149,8 @@ addFilter('stackable.generic-slider.edit.inspector.style.before', 'stackable/gen
 					}}
 				/>
 			</PanelBody>
-			<PanelBody title={__('Ordering', i18n)}>
-				<DragImages items={slidesData} setAttributes={setAttributes}/>
+			<PanelBody title={__('Ordering', i18n)} initialOpen={false}>
+				<DragImages items={slidesData} setAttributes={setAttributes} propName="slidesData"/>
 			</PanelBody>
 		</Fragment>
 	);
