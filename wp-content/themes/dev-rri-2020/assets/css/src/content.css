@@ -158,6 +158,27 @@
 	position: relative;
 }
 
+.entry-header .content-top .post-category {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.entry-header .content-top .entry-meta {
+    display: inline-block;
+    float: right;
+    vertical-align: top;
+    margin: 0;
+}
+
+.clearfix {
+    clear: both;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+}
+
 .post-category::after {
     content: '';
     height: 2px;
