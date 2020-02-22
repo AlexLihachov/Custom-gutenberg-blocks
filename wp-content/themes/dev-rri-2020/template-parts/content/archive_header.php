@@ -9,31 +9,36 @@ namespace WP_Rig\WP_Rig;
 
 $query_object = get_queried_object();
 
+$args = array(
+	'post_type'      => 'post',
+	'posts_per_page' => 1,
+);
+
 if( !empty( $query_object->term_id ) && ! empty( $query_object->taxonomy ) ) {
 
 	$taxonomy = get_taxonomy( $query_object->taxonomy );
-
-	$query = new \WP_Query(
-		array(
-			'post_type'      => ! empty( $taxonomy->object_type ) ?  $taxonomy->object_type : 'any',
-			'posts_per_page' => 1,
-			'tax_query'      => array(
-				array(
-					'taxonomy' => $query_object->taxonomy,
-					'field'    => 'term_id',
-					'terms'    => $query_object->term_id
-				)
+	$args = array(
+		'post_type'      => ! empty( $taxonomy->object_type ) ?  $taxonomy->object_type : 'any',
+		'posts_per_page' => 1,
+		'tax_query'      => array(
+			array(
+				'taxonomy' => $query_object->taxonomy,
+				'field'    => 'term_id',
+				'terms'    => $query_object->term_id
 			)
 		)
 	);
+}
+	
+$query = new \WP_Query( $args );
 
-	if( $query->have_posts() ) {
-		$query->the_post();
+if( $query->have_posts() ) {
+	$query->the_post();
 
-		global $archive_header_post_id;
-		$archive_header_post_id = get_the_ID();
+	global $archive_header_post_id;
+	$archive_header_post_id = get_the_ID();
 
-		$feature_image = ( has_post_thumbnail() ? get_the_post_thumbnail_url() : '' );
+	$feature_image = ( has_post_thumbnail() ? get_the_post_thumbnail_url() : '' );
 
 ?>
 		<div class="archive-header" style="<?php echo ( $feature_image != '' ? "background-image: url('" . $feature_image . "');" : '' ); ?>">
@@ -50,8 +55,5 @@ if( !empty( $query_object->term_id ) && ! empty( $query_object->taxonomy ) ) {
 		</div>
 <?php
 
-		wp_reset_postdata();
-	}
+	wp_reset_postdata();
 }
-
-?>

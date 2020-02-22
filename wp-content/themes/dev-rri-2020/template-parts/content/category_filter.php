@@ -10,12 +10,16 @@ namespace WP_Rig\WP_Rig;
 $queriedObj = get_queried_object();
 $arrTerms = array();
 
+$taxonomies = get_object_taxonomies( 'post' );
+
 if( !empty( $queriedObj->taxonomy ) ) {
-	$arrTerms = get_terms( array(
-		'taxonomy' => $queriedObj->taxonomy,
-		'hide_empty' => false
-	) );
+	$taxonomies = array( $queriedObj->taxonomy );
 }
+
+$arrTerms = get_terms( array(
+	'taxonomy' => $taxonomies,
+	'hide_empty' => false
+) );
 
 if( is_array( $arrTerms ) && count( $arrTerms ) > 0 ) {
 ?>

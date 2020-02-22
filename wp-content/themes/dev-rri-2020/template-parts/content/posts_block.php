@@ -6,10 +6,12 @@
  */
 
 namespace WP_Rig\WP_Rig;
+global $wp_query, $showBlog;
+
 $counter = $wp_query->current_post;
 
 ?>
-<div class="posts-block <?php echo ( is_archive() && in_array($counter, array(0, 6) ) ? 'big' : '' ); ?>">
+<div class="posts-block <?php echo ( ( is_archive() ) && in_array($counter, array(0, 6) ) ? 'big' : ( ! empty( $showBlog ) && $showBlog && in_array( $counter, array(1,7) ) ? 'big' : '' ) ); ?>">
 <?php
 	$_the_permalink = get_the_permalink();
 	if( has_post_thumbnail() ) {
