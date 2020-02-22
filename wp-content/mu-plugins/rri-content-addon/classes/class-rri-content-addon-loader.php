@@ -78,12 +78,15 @@ if ( ! class_exists( 'RRI_Content_Addon_Loader' ) ) {
 			define( 'RRI_CONTENT_ADDON_VER', '1.0.0' );
 			define( 'RRI_CONTENT_ADDON_SLUG', 'rri-content-addon' );
 			define( 'RRI_CONTENT_ADDON_SETTINGS', 'rri_content_addon_settings' );
-            
+
             define( 'RRI_CONTENT_ADDON_PODCAST_POST_TYPE', 'podcast' );
 		    define( 'RRI_CONTENT_ADDON_TAXONOMY_PODCAST_CATEGEGORY', 'podcast-category' );
-            
+
             define( 'RRI_CONTENT_ADDON_STORY_POST_TYPE', 'story' );
-		    define( 'RRI_CONTENT_ADDON_TAXONOMY_STORY_CATEGEGORY', 'story-category' );
+			define( 'RRI_CONTENT_ADDON_TAXONOMY_STORY_CATEGEGORY', 'story-category' );
+
+            define( 'RRI_CONTENT_ADDON_BOOK_POST_TYPE', 'book' );
+		    define( 'RRI_CONTENT_ADDON_TAXONOMY_BOOK_CATEGEGORY', 'book-category' );
 		
 		}
 
@@ -110,6 +113,7 @@ if ( ! class_exists( 'RRI_Content_Addon_Loader' ) ) {
 
             require_once RRI_CONTENT_ADDON_DIR . 'modules/class-rri-podcast-post-type.php';
             require_once RRI_CONTENT_ADDON_DIR . 'modules/class-rri-story-post-type.php';
+            require_once RRI_CONTENT_ADDON_DIR . 'modules/class-rri-book-post-type.php';
 
             require_once RRI_CONTENT_ADDON_DIR . 'modules/class-rri-term-meta.php';
 
