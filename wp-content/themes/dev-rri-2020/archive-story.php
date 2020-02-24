@@ -16,10 +16,9 @@ wp_rig()->print_styles( 'wp-rig-content' );
 ?>
 	<main id="primary" class="site-main">
 		<?php
+		get_template_part( 'template-parts/content/archive_header' );
+
 		if ( have_posts() ) {
-
-			get_template_part( 'template-parts/content/page_header' );
-
 			get_template_part( 'template-parts/content/category_filter' );
 		?>
 			<div id="archive_container" class="archive-container">

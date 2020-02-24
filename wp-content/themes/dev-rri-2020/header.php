@@ -92,7 +92,7 @@ namespace WP_Rig\WP_Rig;
                 <div class="right-items rri-top-bar-items">
 					<div class="search-box">
 						<form>
-							<input type="text" class="field searchfield" name="s" value="" placeholder="Search...">
+							<input type="text" class="field searchfield" id="ajax_search" name="s" value="" placeholder="Search...">
 							<input type="submit" value="Search" />
 							<span class="icon icon-Search"></span>
 						</form>

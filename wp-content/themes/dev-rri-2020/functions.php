@@ -80,13 +80,29 @@ function rri_block_categories( $categories ) {
         )
     );
 }
-//add_filter( 'block_categories', 'rri_block_categories', 10, 2 );
+add_filter( 'block_categories', 'rri_block_categories', 10, 2 );
+
+
+function rri_pre_get_posts( $query ) {
+	if( !is_admin() && is_archive() && $query->is_main_query() ) {
+		$temp = $query->query_vars;
+		$temp['posts_per_page'] = 1;
+		$temp['fields'] = 'ids';
+
+		$arrPosts = get_posts($temp);
+
+		if( is_array( $arrPosts ) ) {
+			$query->set('post__not_in', $arrPosts );
+		}
+	}
+}
+add_action( 'pre_get_posts', 'rri_pre_get_posts' );
 
 /**
  * Filter Force Login to allow exceptions for specific URLs.
  *
  * @param array $whitelist An array of URLs. Must be absolute.
- *
+ * 
  * @return array
  */
 function my_forcelogin_whitelist( $whitelist ) {
