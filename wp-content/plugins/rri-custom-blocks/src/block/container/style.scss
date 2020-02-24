@@ -1,0 +1,68 @@
+/**
+ * Frontend styles for the Container Block.
+ *
+ * Enqueued in the editor & frontend.
+ */
+
+@import "common";
+
+.rri-container.rri-container--v2 {
+	&.alignfull:not(.rri-container--design-plain):not(.rri--has-block-background) {
+		padding-left: 0;
+		padding-right: 0;
+		> .rri-inner-block > .rri-block-content > .rri-container__wrapper {
+			border-radius: 0 !important;
+		}
+	}
+
+	// We need to write this the specific way so that we don't affect nested containers.
+	> .rri-inner-block > .rri-block-content > .rri-container__wrapper {
+		@include box();
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.rri-container__side {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.rri-container__side,
+	.rri-container__content-wrapper {
+		width: 100%;
+	}
+
+	// Adjust the edge content blocks.
+	.rri-container__content-wrapper > *:first-child {
+		margin-top: 0;
+	}
+	.rri-container__content-wrapper > *:last-child {
+		margin-bottom: 0;
+	}
+
+	&.rri-container--width-small {
+		@media screen and (max-width: $break-small) {
+			.rri-container__content-wrapper {
+				width: 70%;
+			}
+		}
+	}
+
+	.rri-main-block.alignfull,
+	.rri--has-block-background {
+		width: auto !important;
+		margin-left: 0;
+	}
+}
+
+.rri-container.rri-container--v2.rri-container--design-plain {
+	> .rri-inner-block > .rri-block-content > .rri-container__wrapper {
+		background: none;
+		padding-left: 0;
+		padding-right: 0;
+		box-shadow: none;
+		border-radius: 0;
+		overflow: visible;
+	}
+}

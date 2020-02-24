@@ -1,0 +1,99 @@
+.rri-panel-tabs {
+	.rri-panel-tabs__wrapper {
+		display: flex !important;
+		transition: all 0.3s ease-in-out;
+		background: #fff;
+		box-shadow: none;
+		flex-wrap: nowrap;
+	}
+	button {
+		outline: none !important;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 80px;
+		padding: 0 !important;
+		flex: 1;
+		margin: 0 !important;
+		svg {
+			margin: 5px;
+			height: 20px;
+			color: #555d66;
+		}
+		&.is-active {
+			background: #fafafa;
+			background: linear-gradient(to bottom, #fafafa, #fff 70%);
+			border-bottom: 0;
+			box-shadow: inset 0 -3px #0085ba;
+		}
+	}
+}
+
+// Panels can become hard to decipher, separate them a bit to make things easier to see.
+.rri-panel-tabs {
+	border-bottom: 1px solid #e2e4e7 !important;
+}
+[data-rri-tab] > * {
+	.components-panel__body:not(.rri-panel-tabs) {
+		box-shadow: 0 -12px 0 #f0f3f5;
+		margin-top: 12px;
+		border-bottom: 1px solid #e2e4e7;
+	}
+}
+.edit-post-sidebar.rri--has-panel-tabs {
+	background-color: #f0f3f5;
+	> .components-panel {
+		border: 0;
+	}
+	.edit-post-settings-sidebar__panel-block .components-panel__body:last-child {
+		margin-bottom: 0;
+	}
+}
+
+// Fixes the small gap at the bottom of the panel tabs
+// when other panels further below are hidden.
+[data-rri-tab] > * {
+	padding-bottom: 0 !important;
+}
+
+[data-rri-tab="layout"] {
+	.rri-inspector-panel-controls:not(.rri-panel-layout) {
+		display: none;
+	}
+	// Advanced Gutenberg tab is always in advanced, hide it.
+	.editor-block-inspector__advanced {
+		display: none;
+	}
+}
+
+[data-rri-tab="style"] {
+	.rri-inspector-panel-controls:not(.rri-panel-style) {
+		display: none;
+	}
+	// Advanced Gutenberg tab is always in advanced, hide it.
+	.editor-block-inspector__advanced {
+		display: none;
+	}
+}
+
+[data-rri-tab="advanced"] {
+	.rri-inspector-panel-controls:not(.rri-panel-advanced) {
+		display: none;
+	}
+}
+
+// WithSticky HOC. Make the tabs stick to the top.
+.rri--panel-tabs-dummy {
+	height: 80px;
+	margin-top: 16px;
+}
+.rri--fixed-tabs {
+	position: fixed;
+	top: 136px; // This is recomputed in JS for accuracy.
+	width: 279px; // This is recomputed in JS for accuracy.
+	background: #fff;
+	z-index: 2;
+	box-shadow: 0 20px 30px -20px rgba(0, 0, 0, 0.1);
+	margin-top: 0 !important;
+}

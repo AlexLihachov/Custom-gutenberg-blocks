@@ -1,0 +1,449 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Imports
+	# Blocks
+	# Media
+		# Captions
+		# Galleries (Legacy)
+# Post and page content
+	# Alignments
+	# Custom block colors
+	# Custom font sizes
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Imports
+--------------------------------------------------------------*/
+@import "_blocks.css";
+@import "_media.css";
+
+/*--------------------------------------------------------------
+# Post and page content
+--------------------------------------------------------------*/
+
+/* Custom rule  for sticky posts:
+.sticky {
+
+}
+*/
+
+.rri-topbar {
+	background-color: var(--color-theme-black);
+	padding: 0.5rem 0;
+	height: 50px;
+	text-align: center;
+	color: var(--color-theme-grey);
+	font-size: var(--font-size-small);
+}
+
+.rri-topbar p {
+	max-width: var(--content-width);
+}
+
+.entry {
+	margin-bottom: 1rem;
+}
+
+.entry-meta,
+.entry-footer {
+	font-family: var(--highlight-font-family);
+	font-stretch: condensed;
+	font-size: 80%;
+}
+
+.entry-meta {
+	margin: 1em 0;
+}
+
+/* Hides the update date and time. */
+.updated:not(.published) {
+	display: none;
+}
+
+.post-thumbnail img {
+	margin: 0 auto;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
+
+.page-content > *,
+.entry-content > *,
+.entry-summary > * {
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 1.5rem;
+	padding-left: 1.5rem;
+	max-width: var(--content-width);
+}
+
+.page-header,
+.entry-header,
+.entry-footer,
+.site-info,
+.post-navigation,
+.page-navigation,
+.comments-area,
+.related-posts {
+	margin: 1.5em auto;
+	padding-right: 1.5rem;
+	padding-left: 1.5rem;
+	max-width: var(--content-width);
+}
+
+.entry-hero {
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.related-posts h2{
+	font-size: 2em;
+	font-weight: 900;
+	text-align: center;
+}
+
+.related-posts .related-posts-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.posts-block {
+    width: calc(33.33% - 10px);
+    padding: 0 5px;
+}
+
+.posts-block.big {
+    width: calc(66.66% - 20px);
+}
+
+.posts-block .post-image {
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+}
+
+.posts-block .post-content-inner {
+    padding: 20px;
+}
+
+.post-content-inner .post-category a {
+    color: var(--color-theme-red);
+    text-decoration: none;
+    font-style: italic;
+}
+
+.post-content-inner h4 a{
+	color: var(--global-font-color);
+	text-decoration: none;
+}
+
+.post-content-inner p a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var( --color-theme-darkgrey );
+    font-size: var(--font-size-small);
+}
+
+.post-category{
+	position: relative;
+}
+
+.post-category::after {
+    content: '';
+    height: 2px;
+    width: 20px;
+    background: var(--color-theme-red);
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+}
+
+.post-category a {
+    text-decoration: none;
+    color: var(--color-theme-red);
+    font-style: italic;
+    font-size: var(--font-size-small);
+}
+
+.archive-container {
+    width: var(--content-width);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.ajax-pagination {
+    max-width: var(--content-width);
+    margin: 0 auto 30px;
+    text-align: center;
+}
+
+.button-primary {
+    border: 1px solid var(--color-theme-primary);
+    background: #FFF;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    border-radius: 2px;
+    padding: 9.5px 21.5px;
+    display: inline-block;
+    font-size: var(--font-size-small);
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--color-link);
+}
+
+.category-filter-container {
+    text-align: center;
+    margin: 30px 0;
+    background: var(--color-theme-grey);
+    padding: 30px;
+}
+
+.category-filter-container .category-filter {
+    display: inline-block;
+    position: relative;
+}
+
+.category-filter-container .category-filter::after {
+    content: '\e90b';
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-family: 'RRI';
+    font-size: var(--dropdown-symbol-width);
+}
+
+.category-filter-container .category-filter select{
+    border: 1px solid var(--color-theme-black);
+	background: var(--color-theme-grey);
+	text-transform: uppercase;
+	padding: 5px 30px 5px 10px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	position: relative;
+}
+
+@media (--content-query) {
+
+	.page-content > *,
+	.entry-content > *,
+	.entry-summary > *,
+	.page-header,
+	.entry-header,
+	.entry-footer,
+	.site-info,
+	.post-navigation,
+	.page-navigation,
+	.comments-area,
+	.related-posts {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.entry-content ul,
+.entry-content ol {
+	padding-right: 2.5em;
+	padding-left: 2.5em;
+}
+
+.entry-content ul ul,
+.entry-content ol ol {
+	margin-right: 0;
+	margin-left: 0;
+	padding-right: 1.5em;
+	padding-left: 1.5em;
+}
+
+/* Align .more-link with the content. */
+.entry-content > .more-link {
+	display: block;
+}
+
+.page-links {
+	clear: both;
+	margin-bottom: 1.5em;
+}
+
+.entry-footer span {
+	margin-right: 1em;
+}
+
+.entry-footer {
+	clear: both;
+	padding: 1.5em 1.5rem 3em;
+	border-bottom: 1px solid #111;
+}
+
+@media (--content-query) {
+
+	.entry-footer {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+}
+
+/*--------------------------------------------------------------
+## Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	float: left;
+	margin-right: 1.5rem;
+}
+
+.alignright {
+	float: right;
+	margin-left: 1.5rem;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.alignwide {
+	max-width: calc(50% + var(--content-width) / 2);
+}
+
+.alignfull {
+	max-width: 100%;
+	padding: 0;
+}
+
+/*--------------------------------------------------------------
+## Custom block colors.
+--------------------------------------------------------------*/
+
+.has-theme-primary-color,
+.has-theme-primary-color a {
+	color: var(--color-theme-primary);
+}
+
+.has-theme-primary-background-color {
+	background-color: var(--color-theme-primary);
+}
+
+.has-theme-secondary-color,
+.has-theme-secondary-color a {
+	color: var(--color-theme-secondary);
+}
+
+.has-theme-secondary-background-color {
+	background-color: var(--color-theme-secondary);
+}
+
+.has-theme-red-color,
+.has-theme-red-color a {
+	color: var(--color-theme-red);
+}
+
+.has-theme-red-background-color {
+	background-color: var(--color-theme-red);
+}
+
+.has-theme-green-color,
+.has-theme-green-color a {
+	color: var(--color-theme-green);
+}
+
+.has-theme-green-background-color {
+	background-color: var(--color-theme-green);
+}
+
+.has-theme-blue-color,
+.has-theme-blue-color a {
+	color: var(--color-theme-blue);
+}
+
+.has-theme-blue-background-color {
+	background-color: var(--color-theme-blue);
+}
+
+.has-theme-yellow-color,
+.has-theme-yellow-color a {
+	color: var(--color-theme-yellow);
+}
+
+.has-theme-yellow-background-color {
+	background-color: var(--color-theme-yellow);
+}
+
+.has-theme-black-color,
+.has-theme-black-color a {
+	color: var(--color-theme-black);
+}
+
+.has-theme-black-background-color {
+	background-color: var(--color-theme-black);
+}
+
+.has-theme-grey-color,
+.has-theme-grey-color a {
+	color: var(--color-theme-grey);
+}
+
+.has-theme-grey-background-color {
+	background-color: var(--color-theme-grey);
+}
+
+.has-theme-white-color,
+.has-theme-white-color a {
+	color: var(--color-theme-white);
+}
+
+.has-theme-white-background-color {
+	background-color: var(--color-theme-white);
+}
+
+.has-custom-daylight-color,
+.has-custom-daylight-color a {
+	color: var(--color-custom-daylight);
+}
+
+.has-custom-daylight-background-color {
+	background-color: var(--color-custom-daylight);
+}
+
+.has-custom-sun-color,
+.has-custom-sun-color a {
+	color: var(--color-custom-sun);
+}
+
+.has-custom-sun-background-color {
+	background-color: var(--color-custom-sun);
+}
+
+/*--------------------------------------------------------------
+## Custom block font sizes.
+--------------------------------------------------------------*/
+
+.has-small-font-size {
+	font-size: var(--font-size-small);
+}
+
+.has-regular-font-size {
+	font-size: var(--font-size-regular);
+}
+
+.has-large-font-size {
+	font-size: var(--font-size-large);
+}
+
+.has-larger-font-size {
+	font-size: var(--font-size-larger);
+}

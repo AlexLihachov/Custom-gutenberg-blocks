@@ -1,0 +1,32 @@
+.conblock-hidden-control {
+	display: none;
+}
+.conblock-date-wrapper {
+	background: #f5f4f4;
+	padding: 10px 15px;
+}
+svg.conditional-blocks-svg {
+	margin-left: 6px;
+    max-height: 16px;
+}
+.conditions-pro-block {
+    position: relative;
+    flex-wrap: wrap;
+}
+.conditions-pro-block .conditions-pro-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0 !important;
+}
+.conditions-pro-block .conditions-pro-toggle .components-form-toggle {
+    margin: 0;
+}
+.conditions-pro-block .conditions-pro-toggle label {
+    display: none !important;
+}
+
+.conditions-pro-block .full-width {
+    width: 100%;
+    margin-bottom: 5px !important;
+}

@@ -1,0 +1,110 @@
+/**
+ * Frontend styles for the Accordion Block.
+ *
+ * Enqueued in the editor & frontend.
+ */
+
+@import "common";
+
+.rri-accordion.rri-accordion--v2 {
+	&.rri-accordion--open .rri-accordion__heading .rri-accordion__arrow {
+		transform: rotate(180deg);
+	}
+
+	&.rri-accordion.rri-accordion--design-basic {
+		.rri-accordion__heading {
+			@include box();
+			padding: ($box-hori-padding / 2) $box-hori-padding;
+		}
+	}
+
+	.rri-accordion__heading {
+		margin: 0;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		cursor: pointer;
+		transition: margin 0.3s ease-in-out;
+		will-change: margin;
+		.rri-accordion__title {
+			flex: 1;
+			margin: 0 !important;
+			order: 1;
+		}
+		.rri-accordion__arrow {
+			flex-shrink: 0;
+			order: 3;
+			transition: transform 0.3s ease-in-out;
+			transform: rotate(0deg);
+		}
+		// This is a make-shift gap.
+		&::after {
+			content: "";
+			width: #{ $box-hori-padding * 3/4 };
+			display: block;
+			order: 2;
+			flex-shrink: 0;
+		}
+		&:focus {
+			outline-width: 1px;
+			outline-style: dotted;
+		}
+
+		// Common shadow #9 doesn't show up since notification is too short.
+		&.rri--shadow-9 {
+			box-shadow: 0 25px 60px -15px rgba(72, 73, 121, 0.38) !important;
+		}
+	}
+
+	.rri-accordion__content {
+		max-height: 800px;
+		max-height: var(--max-height, none); // Dynamic max-height set by JS.
+		transition: max-height 0.3s ease-in-out, transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+		transform: translateY(0);
+		opacity: 1;
+		will-change: max-height, transform, opacity;
+		overflow: hidden;
+		.rri-accordion__content-inner {
+			padding: $box-hori-padding $box-hori-padding 0;
+			> *:first-child {
+				margin-top: 0 !important;
+			}
+			> *:last-child {
+				margin-bottom: 0 !important;
+			}
+		}
+
+		// Fix for native image blocks surpassing the width of accordions.
+		.wp-block-image.wp-block-image.wp-block-image > img {
+			max-width: 100%;
+		}
+	}
+	&:not(.rri-accordion--open) .rri-accordion__heading {
+		margin-bottom: 0;
+	}
+	&:not(.rri-accordion--open) .rri-accordion__content {
+		max-height: 0;
+		transform: translateY(25px);
+		opacity: 0;
+	}
+
+	&.rri-accordion--design-plain {
+		.rri-accordion__item {
+			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		}
+		.rri-accordion__heading {
+			box-shadow: none;
+			border-radius: 0;
+			padding: 0;
+			margin-bottom: 35px;
+			&:focus {
+				outline-offset: 10px;
+			}
+		}
+		.rri-accordion__content {
+			.rri-accordion__content-inner {
+				padding: 0 0 $box-hori-padding;
+			}
+		}
+	}
+}

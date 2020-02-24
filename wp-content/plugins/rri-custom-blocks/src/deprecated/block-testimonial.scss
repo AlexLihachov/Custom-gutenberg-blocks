@@ -1,0 +1,139 @@
+@import "common";
+
+/**
+ * Compatibility < v.11
+ */
+.rri-testimonial:not([class*="rri-testimonial--v"]) {
+	@include baseBlock();
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 (-$box-hori-padding / 2);
+	.testimonial-image {
+		height: 75px;
+		width: 75px;
+		background-size: cover;
+		background-position: center;
+		border-radius: 100%;
+		margin: 0 auto 1.3rem;
+	}
+	> div {
+		text-align: center;
+		@include baseBlock();
+		p {
+			text-align: center;
+		}
+		flex: 1;
+		min-width: 250px;
+		&,
+		&:first-child,
+		&:last-child {
+			margin: ($box-hori-padding / 2) !important;
+		}
+	}
+	h4 {
+		margin: 0 0 0.5rem !important;
+		padding-top: 0;
+	}
+	.rri-testimonial-position {
+		opacity: 0.5;
+	}
+}
+
+/**
+ * Deprecated. < v1.5
+ */
+.rri-testimonial {
+	.rri-testimonial-position,
+	.rri-testimonial-position-two,
+	.rri-testimonial-position-three {
+		// opacity: 0.3;
+		font-size: 0.75em;
+		margin: 0 0 1rem;
+		text-transform: uppercase;
+	}
+	.rri-testimonial-body,
+	.rri-testimonial-body-two,
+	.rri-testimonial-body-three {
+		// opacity: 0.5;
+		margin: 0 0 1rem;
+		left: 0;
+	}
+	.quote-icon {
+		height: 75px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		svg {
+			height: 50px;
+			width: auto;
+			fill: #e6e6e6;
+		}
+	}
+}
+
+/**
+ * Deprecated < v2
+ */
+.rri-testimonial--v2.rri-testimonial {
+	@include baseBlock();
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+	grid-gap: $box-hori-padding;
+	text-align: center;
+
+	.rri-testimonial__item {
+		margin-bottom: 0 !important;
+	}
+	.rri-testimonial__body-wrapper {
+		margin-bottom: 1em;
+	}
+	&.rri-testimonial--serif .rri-testimonial__body {
+		font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif !important;
+		font-style: italic;
+		font-size: 20px;
+		line-height: 1.7em !important;
+		font-weight: 400;
+		color: #555;
+	}
+
+	&.rri-testimonial--columns-2 {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	}
+	&.rri-testimonial--columns-1 {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	@media screen and (max-width: $break-medium) {
+		&.rri-testimonial--columns-3 {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+	@media screen and (max-width: $break-small) {
+		&.rri-testimonial--columns-2 {
+			grid-template-columns: minmax(0, 1fr);
+		}
+	}
+
+	.rri-testimonial__person {
+		@include baseBlock();
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	.rri-testimonial.rri-testimonial--design-basic {
+		.rri-testimonial__item {
+			@include box();
+		}
+	}
+	.rri-testimonial__image {
+		height: 75px;
+		width: 75px;
+		background-size: cover;
+		background-position: center;
+		border-radius: 100%;
+		margin: 0 auto 1.3rem;
+	}
+	.rri-testimonial__position {
+		font-size: 0.75em;
+		text-transform: uppercase;
+		opacity: 0.7;
+	}
+}

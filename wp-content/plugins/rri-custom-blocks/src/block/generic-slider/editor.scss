@@ -1,0 +1,19 @@
+.rri-generic-slider .rri-image-upload-placeholder {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	background-size: cover;
+	background-position: center;
+	background-color: #2B2B2B;
+
+	&:hover {
+		background-color: #323232;
+	}
+}
+
+.rri-generic-slide {
+	position: relative;
+}

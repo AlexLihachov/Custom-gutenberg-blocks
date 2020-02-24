@@ -1,0 +1,49 @@
+# ignore everything in the root except the "wp-content" directory.
+/*
+!wp-content/
+wp-content/uploads.bak/
+wp-content/uploads
+
+# track .gitignore
+!.gitignore
+
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
+.idea
+.DS_Store
+
+# ignore map & log files, and databases
+*.log
+*.sql
+*.map
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins" directory
+# "plugins" directory
+# "themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
+
+# ignore added plugins
+wp-content/plugins/index.php
+wp-content/plugins/admin-menu-editor
+wp-content/plugins/amazon-s3-and-cloudfront
+wp-content/plugins/amazon-web-services
+wp-content/plugins/better-wp-security
+wp-content/plugins/kioken-blocks
+wp-content/plugins/pods
+wp-content/plugins/simple-301-redirects
+wp-content/plugins/sx-easy-going-smtp
+wp-content/plugins/sx-photo-gallery
+wp-content/plugins/wordpress-seo
+
+# ignore default wordpress themes
+wp-content/themes/twenty*/
+wp-content/themes/gutenbooster/
+wp-content/themes/index.php
+
+#ingnore npm packages
+node_modules
