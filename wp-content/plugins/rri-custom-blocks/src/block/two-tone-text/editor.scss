@@ -5,7 +5,7 @@
     position            : absolute;
     top                 : 0;
     left                : 0;
-    width               : 100%;
+    right               : 0;
     height              : 663px;
     background-size     : cover;
     background-color    : #2b2b2b;
@@ -17,7 +17,8 @@
   }
 
   .editor-rich-text {
-    color       : #ffffff;
+    color : #ffffff;
+
     .rri-two-tone-text {
 
       &__edit-text {
@@ -28,11 +29,11 @@
         font-weight : 700;
         font-family : Roboto, sans-serif;
 
-        &.first-line {
+        &.rri-two-tone-text__first-line {
           right : 100px;
         }
 
-        &.second-line {
+        &.rri-two-tone-text__second-line {
           left : 100px;
         }
       }
@@ -40,6 +41,6 @@
   }
 
   .rri-two-tone-text__btn.rri-two-tone-text__link {
-    border-color : #fff ;
+    border-color : #ffffff;
   }
 }

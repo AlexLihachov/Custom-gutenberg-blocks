@@ -12,7 +12,8 @@ export const schema = {
             titleright : __('Title right', i18n),
             image      : {
                 url : '',
-                id  : ''
+                id  : '',
+
             },
             link       : {
                 url      : '',
