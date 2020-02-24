@@ -17,6 +17,7 @@ import SVGFeatureIcon from './images/feature-icon.svg';
 import SVGHeaderIcon from './images/header-icon.svg';
 import SVGIconListIcon from './images/icon-list-icon.svg';
 import SVGImageBoxIcon from './images/image-box-icon.svg';
+import SVGTwoToneIcon from './images/two-tone-icon.svg';
 import SVGNotificationIcon from './images/notification-icon.svg';
 import SVGNumberBoxIcon from './images/number-box-icon.svg';
 import SVGPricingBoxIcon from './images/pricing-box-icon.svg';
@@ -105,6 +106,10 @@ export const IconListIcon = () => {
 
 export const ImageBoxIcon = () => {
 	return colorizeIcon(<SVGImageBoxIcon width="20" height="20"/>)
+};
+
+export const TwoToneIcon = () => {
+	return colorizeIcon(<SVGTwoToneIcon width="20" height="20"/>)
 };
 
 export const NotificationIcon = () => {
