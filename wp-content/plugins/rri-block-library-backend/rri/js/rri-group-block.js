@@ -51,7 +51,7 @@
 			foreground: '#14ACEF',
 			src: 'grid-view',
 		},
-		category: 'layout',
+		category: 'rri-blocks',
 		attributes: {
 			width: {
 				type: 'number',

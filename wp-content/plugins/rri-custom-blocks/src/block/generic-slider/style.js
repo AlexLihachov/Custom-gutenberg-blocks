@@ -1,14 +1,7 @@
 /**
  * External dependencies
  */
-import {
-	createResponsiveStyles,
-	createTypographyStyles,
-	appendImportant,
-	createBackgroundStyles,
-	createBackgroundOverlayStyles,
-	__getValue,
-} from '../../util';
+import {appendImportant, __getValue} from '../../util';
 import deepmerge from 'deepmerge';
 
 export const createStyles = (props) => {

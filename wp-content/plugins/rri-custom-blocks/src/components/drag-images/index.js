@@ -22,7 +22,7 @@ export default class DragImages extends Component {
 		cloneItems.splice(newIndex, 0, cloneItems.splice(oldIndex, 1)[0]);
 
 		this.props.setAttributes({
-			slidesData: cloneItems
+			[this.props.propName]: cloneItems
 		});
 	}
 

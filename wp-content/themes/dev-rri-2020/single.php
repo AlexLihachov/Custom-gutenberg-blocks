@@ -22,10 +22,15 @@ wp_rig()->print_styles( 'wp-rig-content' );
 				get_template_part( 'template-parts/content/entry_hero', get_post_type() );
 		?>
 				<header class="entry-header">
+					<div class="content-top">
+						<?php
+							get_template_part( 'template-parts/content/entry_category', get_post_type() );
+							get_template_part( 'template-parts/content/entry_meta', get_post_type() );
+						?>	
+						<div class="clearfix"></div>
+					</div>
 		<?php
-					get_template_part( 'template-parts/content/entry_category', get_post_type() );
 					get_template_part( 'template-parts/content/entry_title', get_post_type() );
-					get_template_part( 'template-parts/content/entry_meta', get_post_type() );
 		?>
 				</header>
 		<?php

@@ -68,7 +68,14 @@ class Component implements Component_Interface {
 	 */
 	public function ajax_pagination() {	
 		$query_vars = ( isset( $_REQUEST['vars'] ) ? json_decode( stripslashes( $_REQUEST['vars'] ), true ) : array() );
-			$query_vars['paged'] = ( isset( $_REQUEST['page'] ) ? $_REQUEST['page'] + 1 : 1 );
+		$page = ( isset( $_REQUEST['page'] ) ? $_REQUEST['page'] + 1 : 1 );
+		
+		$query_vars['paged'] = $page;
+		$query_vars['page'] = $page;
+
+		if( isset( $query_vars['offset'] ) ) {
+			unset( $query_vars['offset'] );
+		}
 
 		query_posts( $query_vars );
 

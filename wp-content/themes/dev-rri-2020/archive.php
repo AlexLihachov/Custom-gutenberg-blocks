@@ -16,24 +16,27 @@ wp_rig()->print_styles( 'wp-rig-content' );
 ?>
 	<main id="primary" class="site-main">
 		<?php
+		get_template_part( 'template-parts/content/archive_header' );
+
 		if ( have_posts() ) {
 
-			get_template_part( 'template-parts/content/page_header' );
 
-			get_template_part( 'template-parts/content/category_filter' );
+				get_template_part( 'template-parts/content/category_filter' );
 		?>
-			<div id="archive_container" class="archive-container">
+				<div id="archive_container" class="archive-container">
 		<?php
-				while ( have_posts() ) {
-					the_post();
-
-					get_template_part( 'template-parts/content/posts_block', get_post_type() );
-				}
+					while ( have_posts() ) {
+						the_post();
+					
+						if( $archive_header_post_id != get_the_ID() ){
+							get_template_part( 'template-parts/content/posts_block', get_post_type() );
+						}
+					}
 		?>
-			</div>
+				</div>
 		<?php
 
-			get_template_part( 'template-parts/content/ajax_pagination' );
+				get_template_part( 'template-parts/content/ajax_pagination' );
 
 		} else {
 			get_template_part( 'template-parts/content/error' );
