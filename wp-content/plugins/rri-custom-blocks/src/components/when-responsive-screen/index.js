@@ -25,12 +25,12 @@ class WhenResponsiveScreen extends Component {
 
     componentDidMount() {
         const { instanceId } = this.props;
-        addAction( 'rri.responsive-toggle.screen.change', `rri/when-responsive-screen-${ instanceId }`, this.onScreenChange )
+        addAction( 'stackable.responsive-toggle.screen.change', `stackable/when-responsive-screen-${ instanceId }`, this.onScreenChange )
     }
 
     componentWillUnmount() {
         const { instanceId } = this.props;
-        removeAction( 'rri.responsive-toggle.screen.change', `rri/when-responsive-screen-${ instanceId }` )
+        removeAction( 'stackable.responsive-toggle.screen.change', `stackable/when-responsive-screen-${ instanceId }` )
     }
 
     render() {
