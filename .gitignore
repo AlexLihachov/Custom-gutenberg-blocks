@@ -61,6 +61,7 @@ wp-content/plugins/advanced-custom-fields-pro
 wp-content/plugins/gutenbooster-addons
 wp-content/plugins/kioken-blocks-pro
 wp-content/plugins/wordpress-importer
+wp-content/plugins/conditional-blocks-pro
 
 # ignore default wordpress themes
 wp-content/themes/twenty*/

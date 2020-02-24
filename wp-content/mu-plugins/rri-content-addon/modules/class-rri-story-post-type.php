@@ -88,7 +88,7 @@ class RRI_Stories_Post_Type {
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
-		'menu_position'         => 5,
+		'menu_position'         => 23,
 		'menu_icon'             => 'dashicons-id-alt',
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
