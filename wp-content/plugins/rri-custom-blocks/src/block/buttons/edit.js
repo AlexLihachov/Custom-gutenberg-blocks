@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import {cloneDeep, isEqual} from 'lodash';
+import {cloneDeep} from 'lodash';
 
 import {
     BlockContainer,
@@ -41,9 +41,7 @@ import {withSelect} from '@wordpress/data'
 
 addFilter('stackable.buttons.edit.inspector.style.before', 'stackable/buttons', (output, props) => {
     const {setAttributes} = props;
-    const {
-              buttons
-          }               = props.attributes;
+    const {buttons}       = props.attributes;
 
     return (
         <Fragment>
@@ -126,40 +124,34 @@ class Edit extends Component{
         this.state            = {
             openUrlPopover : false
         };
-        this.scrollRef        = createRef();
-        this.onChangeUrl      = this.onChangeUrl.bind(this);
-        this.onChangeNewTab   = this.onChangeNewTab.bind(this);
-        this.onChangeNoFollow = this.onChangeNoFollow.bind(this);
     }
 
-
-    onChangeUrl(value, index){
+    onChangeUrl = (value, index) => {
         const {setAttributes, attributes} = this.props;
         const buttonsClone                = cloneDeep(attributes.buttons);
         buttonsClone[index].url           = value;
         setAttributes({
             buttons : buttonsClone
         });
-    }
+    };
 
-    onChangeNewTab(value, index){
+    onChangeNewTab = (value, index) => {
         const {setAttributes, attributes} = this.props;
         const buttonsClone                = cloneDeep(attributes.buttons);
         buttonsClone[index].newTab        = value;
         setAttributes({
             buttons : buttonsClone
         });
-    }
+    };
 
-    onChangeNoFollow(value, index){
+    onChangeNoFollow = (value, index) => {
         const {setAttributes, attributes} = this.props;
         const buttonsClone                = cloneDeep(attributes.buttons);
         buttonsClone[index].noFollow      = value;
         setAttributes({
             buttons : buttonsClone
         });
-    }
-
+    };
 
     render(){
         const {className, setAttributes, attributes} = this.props;
@@ -214,7 +206,6 @@ class Edit extends Component{
                                                 onChangeNoFollow = {value => this.onChangeNoFollow(value, index)}
                                             />}
                                         </div>
-
                                     )
                                 }
                             )}

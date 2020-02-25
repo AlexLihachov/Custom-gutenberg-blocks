@@ -2,125 +2,126 @@
  * External dependencies
  */
 import {
-	createResponsiveStyles,
-	createTypographyStyles,
-	appendImportant,
-	createBackgroundStyles,
-	createBackgroundOverlayStyles,
-	__getValue,
+    createResponsiveStyles,
+    createTypographyStyles,
+    appendImportant,
+    createBackgroundStyles,
+    createBackgroundOverlayStyles,
+    __getValue,
 } from '../../util';
 import deepmerge from 'deepmerge';
 
 export const createStyles = (props) => {
-	const getValue = __getValue(props.attributes);
-	const styles = [];
+    const getValue = __getValue(props.attributes);
+    const styles   = [];
 
 
-	// Title left
-	styles.push({
-		'.first-line': {
-			...createTypographyStyles('titleleft%s', 'desktop', props.attributes, {importantSize: true}),
-			color: appendImportant(`${getValue('titleleftColor')}`)
-		},
-		tablet: {
-			'.first-line': {
-				...createTypographyStyles('titleleft%s', 'tablet', props.attributes, {importantSize: true}),
-			}
-		},
-		mobile: {
-			'.first-line': {
-				...createTypographyStyles('titleleft%s', 'mobile', props.attributes, {importantSize: true}),
-			}
-		}
-	});
+    // Title left
+    styles.push({
+        '.rri-two-tone-text__first-line' : {
+            ...createTypographyStyles('titleleft%s', 'desktop', props.attributes, {importantSize : true}),
+            color : appendImportant(`${getValue('titleleftColor')}`)
+        },
+        tablet        : {
+            '.rri-two-tone-text__first-line' : {
+                ...createTypographyStyles('titleleft%s', 'tablet', props.attributes, {importantSize : true}),
+            }
+        },
+        mobile        : {
+            '.rri-two-tone-text__first-line' : {
+                ...createTypographyStyles('titleleft%s', 'mobile', props.attributes, {importantSize : true}),
+            }
+        }
+    });
 
-	// Title right
-	styles.push({
-		'.second-line': {
-			...createTypographyStyles('titleright%s', 'desktop', props.attributes, {importantSize: true}),
-			color: appendImportant(`${getValue('titlerightColor')}`)
-		},
-		tablet: {
-			'.second-line': {
-				...createTypographyStyles('titleright%s', 'tablet', props.attributes, {importantSize: true}),
-			}
-		},
-		mobile: {
-			'.second-line': {
-				...createTypographyStyles('titleright%s', 'mobile', props.attributes, {importantSize: true}),
-			}
-		}
-	});
+    // Title right
+    styles.push({
+        '.rri-two-tone-text__second-line' : {
+            ...createTypographyStyles('titleright%s', 'desktop', props.attributes, {importantSize : true}),
+            color : appendImportant(`${getValue('titlerightColor')}`),
 
-	//Block Min-height
-	styles.push({
-		'.rri-two-tone-text__parallax-src': {
-			minHeight: appendImportant(getValue('blockHeight', '%spx'))
-		},
-		tablet: {
-			'.rri-two-tone-text__parallax-src': {
-				minHeight: appendImportant(getValue('tabletBlockHeight', '%spx'))
-			}
-		},
-		mobile: {
-			'.rri-two-tone-text__parallax-src': {
-				minHeight: appendImportant(getValue('mobileBlockHeight', '%spx'))
-			}
-		}
-	});
+        },
+        tablet         : {
+            '.rri-two-tone-text__second-line' : {
+                ...createTypographyStyles('titleright%s', 'tablet', props.attributes, {importantSize : true}),
+            }
+        },
+        mobile         : {
+            '.rri-two-tone-text__second-line' : {
+                ...createTypographyStyles('titleright%s', 'mobile', props.attributes, {importantSize : true}),
+            }
+        }
+    });
 
-	// Block width
-	styles.push({
-		'.rri-two-tone-text__container': {
-			maxWidth: appendImportant(getValue('blockWidth', '%spx'))
-		},
-		tablet: {
-			'.rri-two-tone-text__container': {
-				maxWidth: appendImportant(getValue('tabletBlockWidth', '%spx'))
-			}
-		},
-		mobile: {
-			'.rri-two-tone-text__container': {
-				maxWidth: appendImportant(getValue('mobileBlockWidth', '%spx'))
-			}
-		}
-	});
+    //Block Min-height
+    styles.push({
+        '.rri-two-tone-text__parallax-src' : {
+            minHeight : appendImportant(getValue('blockHeight', '%spx'))
+        },
+        tablet                             : {
+            '.rri-two-tone-text__parallax-src' : {
+                minHeight : appendImportant(getValue('tabletBlockHeight', '%spx'))
+            }
+        },
+        mobile                             : {
+            '.rri-two-tone-text__parallax-src' : {
+                minHeight : appendImportant(getValue('mobileBlockHeight', '%spx'))
+            }
+        }
+    });
 
-	// Vertical alignment
-	styles.push({
-		'.rri-two-tone-text__container': {
-			alignItems: appendImportant(getValue('blockVerticalAlign'))
-		},
-		tablet: {
-			'.rri-two-tone-text__container': {
-				alignItems: appendImportant(getValue('tabletBlockVerticalAlign'))
-			},
-		},
-		mobile: {
-			'.rri-two-tone-text__container': {
-				alignItems: appendImportant(getValue('mobileBlockVerticalAlign'))
-			},
-		}
-	});
+    // Block width
+    styles.push({
+        '.rri-two-tone-text__container' : {
+            maxWidth : appendImportant(getValue('blockWidth', '%spx'))
+        },
+        tablet                          : {
+            '.rri-two-tone-text__container' : {
+                maxWidth : appendImportant(getValue('tabletBlockWidth', '%spx'))
+            }
+        },
+        mobile                          : {
+            '.rri-two-tone-text__container' : {
+                maxWidth : appendImportant(getValue('mobileBlockWidth', '%spx'))
+            }
+        }
+    });
 
-	// Horizontal alignment
-	styles.push({
-		'.rri-two-tone-text__container': {
-			justifyContent: appendImportant(getValue('blockHorizontalAlign'))
-		},
-		tablet: {
-			'.rri-two-tone-text__container': {
-				justifyContent: appendImportant(getValue('tabletBlockHorizontalAlign'))
-			},
-		},
-		mobile: {
-			'.rri-two-tone-text__container': {
-				justifyContent: appendImportant(getValue('mobileBlockHorizontalAlign'))
-			},
-		}
-	});
+    // Vertical alignment
+    styles.push({
+        '.rri-two-tone-text__container' : {
+            alignItems : appendImportant(getValue('blockVerticalAlign'))
+        },
+        tablet                          : {
+            '.rri-two-tone-text__container' : {
+                alignItems : appendImportant(getValue('tabletBlockVerticalAlign'))
+            },
+        },
+        mobile                          : {
+            '.rri-two-tone-text__container' : {
+                alignItems : appendImportant(getValue('mobileBlockVerticalAlign'))
+            },
+        }
+    });
 
-	return deepmerge.all(styles)
+    // Horizontal alignment
+    styles.push({
+        '.rri-two-tone-text__container' : {
+            justifyContent : appendImportant(getValue('blockHorizontalAlign'))
+        },
+        tablet                          : {
+            '.rri-two-tone-text__container' : {
+                justifyContent : appendImportant(getValue('tabletBlockHorizontalAlign'))
+            },
+        },
+        mobile                          : {
+            '.rri-two-tone-text__container' : {
+                justifyContent : appendImportant(getValue('mobileBlockHorizontalAlign'))
+            },
+        }
+    });
+
+    return deepmerge.all(styles)
 
 };
 export default createStyles;

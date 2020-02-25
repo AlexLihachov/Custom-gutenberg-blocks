@@ -66,23 +66,23 @@ const save = (props) => {
                                             </div>
                                             <RichText.Content
                                                 tagName = {titleleftTag}
-                                                className = "rri-two-tone-text__title first-line js-parallax rri-two-tone-text__mask"
+                                                className = "rri-two-tone-text__title rri-two-tone-text__first-line js-parallax rri-two-tone-text__mask"
                                                 value = {titleleft}
                                             />
                                             <RichText.Content
                                                 tagName = {titlerightTag}
-                                                className = "rri-two-tone-text__title second-line js-parallax rri-two-tone-text__mask"
+                                                className = "rri-two-tone-text__title rri-two-tone-text__second-line js-parallax rri-two-tone-text__mask"
                                                 value = {titleright}
                                             />
                                         </div>
                                         <RichText.Content
                                             tagName = {titleleftTag}
-                                            className = "rri-two-tone-text__title first-line js-parallax rri-two-tone-text__mask"
+                                            className = "rri-two-tone-text__title rri-two-tone-text__first-line js-parallax rri-two-tone-text__mask"
                                             value = {titleleft}
                                         />
                                         <RichText.Content
                                             tagName = {titlerightTag}
-                                            className = "rri-two-tone-text__title second-line js-parallax rri-two-tone-text__mask"
+                                            className = "rri-two-tone-text__title rri-two-tone-text__second-line js-parallax rri-two-tone-text__mask"
                                             value = {titleright}
                                         />
                                     </div>
