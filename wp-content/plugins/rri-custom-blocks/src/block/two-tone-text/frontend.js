@@ -4,17 +4,23 @@
 import domReady from '@wordpress/dom-ready';
 
 domReady(() => {
-	const element = document.querySelector('.rri-two-tone-text');
+    jQuery('.js-parallax').addClass('is-show');
+
+    const element = document.querySelector('.rri-two-tone-text');
+
 
     if(element){
-		jQuery('.js-parallax').addClass('is-show');
-		jQuery('.rri-two-tone-text__third-main').css("width", width + "%")
 
-		const width = element.dataset.width;
+        const width = element.dataset.width;
+        const widthSecond = (100 - width)/2;
+
+        jQuery('.rri-two-tone-text__third').css("width", widthSecond + "%");
+        jQuery('.rri-two-tone-text__third-main').css("width", width + "%");
+
 
         let Visible = function(target){
-            let firstLine  = document.querySelectorAll('.first-line');
-            let secondLine = document.querySelectorAll('.second-line');
+            let firstLine  = document.querySelectorAll('.rri-two-tone-text__first-line');
+            let secondLine = document.querySelectorAll('.rri-two-tone-text__second-line');
             const speed    = target.dataset.speed;
 
             let targetPosition = {

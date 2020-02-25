@@ -44,12 +44,12 @@ img {
   }
 
   &__grid {
-    display        : flex;
-    justify-content: center;
-    position       : relative;
-    font-size      : 0;
-    margin-left    : -40px;
-    letter-spacing : normal;
+    display         : flex;
+    justify-content : center;
+    position        : relative;
+    font-size       : 0;
+    margin-left     : -40px;
+    letter-spacing  : normal;
 
     @media (max-width : 1023px) {
       flex-direction : column;
@@ -173,15 +173,20 @@ img {
     }
 
 
-    &.first-line {
+    &.rri-two-tone-text__first-line {
       top   : 50%;
-      right : 70%;
+      right : 85%;
 
       @media (min-width : 1024px) {
         margin-top : -5rem;
       }
+
       @media (max-width : 1023px) and (min-width : 514px) {
         margin-top : -40px;
+      }
+
+      @media (max-width : 1023px) {
+        right : 70%;
       }
 
       @media (max-width : 513px) {
@@ -190,14 +195,19 @@ img {
 
     }
 
-    &.second-line {
+    &.rri-two-tone-text__second-line {
       top  : 50%;
-      left : 70%;
+      left : 85%;
+
       @media (min-width : 1024px) {
         margin-top : 3rem;
       }
       @media (max-width : 1023px) and (min-width : 514px) {
         margin-top : 30px;
+      }
+
+      @media (max-width : 1023px) {
+        left : 70%;
       }
 
       @media (max-width : 513px) {

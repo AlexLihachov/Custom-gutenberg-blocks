@@ -41,14 +41,6 @@ import {withSelect} from '@wordpress/data'
  * Tabs Render
  */
 
-addFilter('stackable.two-tone-text.edit.inspector.layout.before', 'stackable/two-tone-text', (output, props) => {
-    return (
-        <Fragment>
-            {output}
-        </Fragment>
-    )
-});
-
 addFilter('stackable.two-tone-text.edit.inspector.style.before', 'stackable/two-tone-text', (output, props) => {
     const {setAttributes}                                                          = props;
     const {settings, titleleftTag, titleleftColor, titlerightTag, titlerightColor} = props.attributes;
@@ -76,14 +68,14 @@ addFilter('stackable.two-tone-text.edit.inspector.style.before', 'stackable/two-
                     value = {(settings.imagewidth)}
                     step = {1}
                     onChange = {(value) => {
-                        const settingsClone = cloneDeep(settings);
+                        const settingsClone      = cloneDeep(settings);
                         settingsClone.imagewidth = value;
                         setAttributes({
                             settings : settingsClone
                         });
                     }}
                     min = {20}
-                    max = {100}
+                    max = {85}
                 />
             </PanelBody>
             <PanelBody title = {__('Title left', i18n)}>
@@ -196,81 +188,83 @@ class Edit extends Component{
                         <div className = "rri-two-tone-text__container"
                              onMouseDown = {this.handleInnerClick}
                              role = "button">
-                            <ImageUploadPlaceholder
-                                classNAme = "rri-two-tone-text__parallax-src"
-                                imageID = {twoTone.image.id}
-                                imageURL = {twoTone.image.url}
-                                onRemove = {() => {
-                                    const twoToneDataClone = cloneDeep(twoTone);
-                                    twoTone.image.id       = '';
-                                    twoTone.image.url      = '';
-                                    setAttributes({
-                                        twoTone : twoToneDataClone
-                                    });
-                                }}
-                                onChange = {image => {
-                                    const twoToneDataClone     = cloneDeep(twoTone);
-                                    twoToneDataClone.image.id  = image.id;
-                                    twoToneDataClone.image.url = image.url;
-                                    setAttributes({
-                                        twoTone : twoToneDataClone
-                                    });
-                                }}
-                            />
-                            <div className = "rri-two-tone-text__grid-text">
-                                <RichText
-                                    tagName = {titleleftTag}
-                                    className = "rri-two-tone-text__edit-text first-line"
-                                    value = {twoTone.titleleft}
-                                    onChange = {titleleft => {
-                                        const twoToneDataClone     = cloneDeep(twoTone);
-                                        twoToneDataClone.titleleft = titleleft;
-                                        setAttributes({
-                                            titleleft : twoToneDataClone
-                                        });
-                                    }}
-                                    placeholder = {__('Title Left', i18n)}
-                                    keepPlaceholderOnFocus
-                                />
-
-                                <RichText
-                                    tagName = {titlerightTag}
-                                    className = "rri-two-tone-text__edit-text second-line"
-                                    value = {twoTone.titleright}
-                                    onChange = {titleright => {
-                                        const twoToneDataClone      = cloneDeep(twoTone);
-                                        twoToneDataClone.titleright = titleright;
+                            <div className = " rri-two-tone-text__third-main">
+                                <ImageUploadPlaceholder
+                                    classNAme = "rri-two-tone-text__parallax-src"
+                                    imageID = {twoTone.image.id}
+                                    imageURL = {twoTone.image.url}
+                                    onRemove = {() => {
+                                        const twoToneDataClone = cloneDeep(twoTone);
+                                        twoTone.image.id       = '';
+                                        twoTone.image.url      = '';
                                         setAttributes({
                                             twoTone : twoToneDataClone
                                         });
                                     }}
-                                    placeholder = {__('Title Right', i18n)}
-                                    keepPlaceholderOnFocus
+                                    onChange = {image => {
+                                        const twoToneDataClone     = cloneDeep(twoTone);
+                                        twoToneDataClone.image.id  = image.id;
+                                        twoToneDataClone.image.url = image.url;
+                                        setAttributes({
+                                            twoTone : twoToneDataClone
+                                        });
+                                    }}
                                 />
-
-                                <div className = "rri-two-tone-text__edit-text rri-two-tone-text__btn rri-two-tone-text__link"
-                                     onClick = {this.handleClick}>
+                                <div className = "rri-two-tone-text__grid-text">
                                     <RichText
-                                        tagName = "span"
-                                        value = {twoTone.link.text}
-                                        onChange = {text => {
+                                        tagName = {titleleftTag}
+                                        className = "rri-two-tone-text__edit-text rri-two-tone-text__first-line"
+                                        value = {twoTone.titleleft}
+                                        onChange = {titleleft => {
                                             const twoToneDataClone     = cloneDeep(twoTone);
-                                            twoToneDataClone.link.text = text;
+                                            twoToneDataClone.titleleft = titleleft;
+                                            setAttributes({
+                                                titleleft : twoToneDataClone
+                                            });
+                                        }}
+                                        placeholder = {__('Title Left', i18n)}
+                                        keepPlaceholderOnFocus
+                                    />
+
+                                    <RichText
+                                        tagName = {titlerightTag}
+                                        className = "rri-two-tone-text__edit-text rri-two-tone-text__second-line"
+                                        value = {twoTone.titleright}
+                                        onChange = {titleright => {
+                                            const twoToneDataClone      = cloneDeep(twoTone);
+                                            twoToneDataClone.titleright = titleright;
                                             setAttributes({
                                                 twoTone : twoToneDataClone
                                             });
                                         }}
-                                        placeholder = {__('URL', i18n)}
+                                        placeholder = {__('Title Right', i18n)}
                                         keepPlaceholderOnFocus
                                     />
-                                    {this.state.openUrlPopover && <UrlInputPopover
-                                        value = {twoTone.link.url}
-                                        newTab = {twoTone.link.newTab}
-                                        noFollow = {twoTone.link.noFollow}
-                                        onChange = {value => this.onChangeUrl(value)}
-                                        onChangeNewTab = {value => this.onChangeNewTab(value)}
-                                        onChangeNoFollow = {value => this.onChangeNoFollow(value)}
-                                    />}
+
+                                    <div className = "rri-two-tone-text__edit-text rri-two-tone-text__btn rri-two-tone-text__link"
+                                         onClick = {this.handleClick}>
+                                        <RichText
+                                            tagName = "span"
+                                            value = {twoTone.link.text}
+                                            onChange = {text => {
+                                                const twoToneDataClone     = cloneDeep(twoTone);
+                                                twoToneDataClone.link.text = text;
+                                                setAttributes({
+                                                    twoTone : twoToneDataClone
+                                                });
+                                            }}
+                                            placeholder = {__('URL', i18n)}
+                                            keepPlaceholderOnFocus
+                                        />
+                                        {this.state.openUrlPopover && <UrlInputPopover
+                                            value = {twoTone.link.url}
+                                            newTab = {twoTone.link.newTab}
+                                            noFollow = {twoTone.link.noFollow}
+                                            onChange = {value => this.onChangeUrl(value)}
+                                            onChangeNewTab = {value => this.onChangeNewTab(value)}
+                                            onChangeNoFollow = {value => this.onChangeNoFollow(value)}
+                                        />}
+                                    </div>
                                 </div>
                             </div>
                         </div>
