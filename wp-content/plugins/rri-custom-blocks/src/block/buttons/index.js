@@ -1,5 +1,5 @@
 /**
- * BLOCK: Two-Tone Text.
+ * BLOCK: Buttons.
  */
 
 /**

@@ -1,15 +1,3 @@
-/**
- * WordPress dependencies
- */
-import {__} from '@wordpress/i18n';
-import {i18n} from '../../constants';
-import {
-    createAllCombinationAttributes,
-    createBackgroundAttributes,
-    createImageAttributes,
-    createImageBackgroundAttributes, createResponsiveAttributes, createTypographyAttributes
-} from "../../util";
-
 export const schema = {
     buttons : {
         type    : 'array',
@@ -26,6 +14,5 @@ export const schema = {
     },
 
 };
-
 
 export default schema;
