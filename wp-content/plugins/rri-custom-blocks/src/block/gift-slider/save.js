@@ -3,7 +3,6 @@
  */
 import {withBlockStyles, withUniqueClass} from '../../higher-order';
 import {BlockContainer} from '../../components';
-import classnames from 'classnames';
 
 /**
  * WordPress dependencies
@@ -15,7 +14,7 @@ import createStyles from "./style";
 
 const save = (props) => {
 	const {className, attributes} = props;
-	const {slides_data, settings, abovetitleTag, titleTag} = attributes;
+	const {slides_data, settings} = attributes;
 
 	return (
 		<BlockContainer.Save
@@ -25,7 +24,7 @@ const save = (props) => {
 				<Fragment>
 					<div className="rri-gift-slider__inner"
 						 data-settings={JSON.stringify(settings)}>
-						{slides_data.map((slide, index) => {
+						{slides_data.map((slide) => {
 							const linkTarget = slide.link.newTab ? '_blank' : '_self';
 							const rel = ['noopener', 'noreferrer'];
 
@@ -36,12 +35,12 @@ const save = (props) => {
 								<div className="rri-gift-slide">
 									<div className="rri-gift-slide__content">
 										<RichText.Content
-											tagName={abovetitleTag}
+											tagName="h3"
 											className="rri-gift-slide__above-title"
 											value={slide.above_title}
 										/>
 										<RichText.Content
-											tagName={titleTag}
+											tagName="h2"
 											className="rri-gift-slide__title"
 											value={slide.name}
 										/>

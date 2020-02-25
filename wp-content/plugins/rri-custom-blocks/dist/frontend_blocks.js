@@ -435,16 +435,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(function () {
+  jQuery('.js-parallax').addClass('is-show');
   var element = document.querySelector('.rri-two-tone-text');
 
   if (element) {
-    jQuery('.js-parallax').addClass('is-show');
-    jQuery('.rri-two-tone-text__third-main').css("width", width + "%");
     var width = element.dataset.width;
+    var widthSecond = (100 - width) / 2;
+    jQuery('.rri-two-tone-text__third').css("width", widthSecond + "%");
+    jQuery('.rri-two-tone-text__third-main').css("width", width + "%");
 
     var Visible = function Visible(target) {
-      var firstLine = document.querySelectorAll('.first-line');
-      var secondLine = document.querySelectorAll('.second-line');
+      var firstLine = document.querySelectorAll('.rri-two-tone-text__first-line');
+      var secondLine = document.querySelectorAll('.rri-two-tone-text__second-line');
       var speed = target.dataset.speed;
       var targetPosition = {
         top: window.pageYOffset + target.getBoundingClientRect().top,
