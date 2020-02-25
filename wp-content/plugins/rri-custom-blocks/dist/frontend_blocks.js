@@ -61,7 +61,7 @@ var frontend_blocks =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 419);
+/******/ 	return __webpack_require__(__webpack_require__.s = 414);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -115,12 +115,12 @@ function domReady(callback) {
 
 /***/ }),
 
-/***/ 419:
+/***/ 414:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(415);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfill__);
 /**
  * All frontend scripts required by our blocks should be included here.
@@ -133,7 +133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 
-var context = __webpack_require__(421); // Import.
+var context = __webpack_require__(416); // Import.
 
 
 context.keys().forEach(function (key) {
@@ -142,7 +142,7 @@ context.keys().forEach(function (key) {
 
 /***/ }),
 
-/***/ 420:
+/***/ 415:
 /***/ (function(module, exports) {
 
 /**
@@ -155,17 +155,17 @@ if (window.NodeList && !window.NodeList.prototype.forEach) {
 
 /***/ }),
 
-/***/ 421:
+/***/ 416:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./accordion/frontend.js": 422,
-	"./buttons/frontend.js": 423,
-	"./generic-slider/frontend.js": 424,
-	"./gift-slider/frontend.js": 425,
-	"./hero-slider/frontend.js": 426,
-	"./two-tone-text/frontend.js": 427,
-	"./video-popup/frontend.js": 428
+	"./accordion/frontend.js": 417,
+	"./buttons/frontend.js": 418,
+	"./generic-slider/frontend.js": 419,
+	"./gift-slider/frontend.js": 420,
+	"./hero-slider/frontend.js": 421,
+	"./two-tone-text/frontend.js": 422,
+	"./video-popup/frontend.js": 423
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -181,11 +181,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 421;
+webpackContext.id = 416;
 
 /***/ }),
 
-/***/ 422:
+/***/ 417:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -278,14 +278,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(in
 
 /***/ }),
 
-/***/ 423:
+/***/ 418:
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
 
-/***/ 424:
+/***/ 419:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -308,7 +308,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 425:
+/***/ 420:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -398,14 +398,33 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 426:
-/***/ (function(module, exports) {
+/***/ 421:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(19);
+/**
+ * WordPress dependencies
+ */
 
+Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(function () {
+  var $sliders = jQuery('.rri-hero-slider__wrapper');
+
+  if (typeof jQuery.fn.slick === 'function' && $sliders.length) {
+    $sliders.each(function (i, item) {
+      var settings = Object.assign({}, jQuery(this).data('settings'), {
+        prevArrow: jQuery(item).find('.rri-hero-slider__arrow--prev'),
+        nextArrow: jQuery(item).find('.rri-hero-slider__arrow--next')
+      });
+      jQuery(item).find('.rri-hero-slider__inner').slick(settings);
+    });
+  }
+});
 
 /***/ }),
 
-/***/ 427:
+/***/ 422:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -464,12 +483,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 428:
+/***/ 423:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(424);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bigpicture__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__ = __webpack_require__(19);
 /**
@@ -519,7 +538,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 429:
+/***/ 424:
 /***/ (function(module, exports) {
 
 // BigPicture.js | license MIT | henrygd.me/bigpicture

@@ -1,0 +1,53 @@
+//.wrap {
+//	max-width: 100% !important;
+//	width: 100% !important;
+//	padding: 0 !important;
+//}
+//
+//.entry-content {
+//	max-width: 100% !important;
+//	width: 100% !important;
+//	padding: 0 !important;
+//}
+
+.rri-hero-slider {
+	$b: &;
+
+	&.wp-block-rri-hero-slider {
+		display: flex;
+		align-items: stretch;
+		//Default slider height
+		min-height: 80vh;
+
+		.rri-inner-block {
+			width: 100%;
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
+
+		// Adaptive height for admin panel settings
+		.rri-block-content, .slick-list, .slick-track, #{$b}__wrapper, #{$b}__inner {
+			height: 100%;
+		}
+
+		.slick-slide {
+			display: flex;
+		}
+
+		#{$b}__inner {
+			margin: 0;
+		}
+	}
+}
+
+
+.rri-hero-slide {
+	$b: &;
+	&.slick-slide {
+		#{$b}__content {
+			position: relative;
+			top: 28%;
+			padding: 0 20px;
+		}
+	}
+}
