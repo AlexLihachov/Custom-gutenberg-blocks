@@ -1,0 +1,79 @@
+.rri-buttons__item {
+  display: inline-block;
+  padding: 8px 16px;
+  overflow: visible;
+  text-align: center;
+  border-radius: 3px;
+  -webkit-transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  -o-transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+.rri-buttons__item * {
+  text-decoration: none;
+}
+.rri-buttons__item span {
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.rri-buttons__item_secondary {
+  border: 2px solid #14AECF;
+}
+.rri-buttons__item_secondary:hover {
+  background-color: #14AECF;
+}
+.rri-buttons__item_secondary:hover span {
+  color: #FFF;
+}
+.rri-buttons__item_secondary span {
+  color: #14AECF;
+}
+.rri-buttons__item_primary {
+  border: 2px solid #14AECF;
+  background-color: #14AECF;
+}
+.rri-buttons__item_primary:hover {
+  background-color: #FFF;
+}
+.rri-buttons__item_primary:hover span {
+  color: #14AECF;
+}
+.rri-buttons__item_primary span {
+  color: #FFF;
+}
+.rri-buttons__item_large {
+  min-width: 167px;
+  margin-top: 40px;
+  padding: 14.5px 29.5px;
+}
+.rri-buttons__item_large span {
+  font-size: 14px;
+  line-height: 17px;
+}
+.rri-buttons__item_medium {
+  min-width: 119px;
+  margin-top: 30px;
+  padding: 10px 20px;
+}
+.rri-buttons__item_medium span {
+  font-size: 12px;
+  line-height: 14px;
+}
+.rri-buttons__item_small {
+  min-width: 95px;
+  margin-top: 20px;
+  padding: 7px 14px;
+}
+.rri-buttons__item_small span {
+  font-size: 10px;
+  line-height: 12px;
+}
+.rri-buttons__item:not(:first-child) {
+  margin-left: 20px;
+}
+
+/*# sourceMappingURL=style.css.map */
