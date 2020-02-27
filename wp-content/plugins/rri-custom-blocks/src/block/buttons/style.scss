@@ -1,5 +1,8 @@
-$main_color : #14AECF;
-$white_color : #FFF;
+$main_color : #14aecf;
+$dark_color : #102028;
+$dark_border_color : rgba(16, 32, 40, .36);
+$light_border_color : rgba(255, 255, 255, .4);
+$white_color : #ffffff;
 
 .rri-buttons__item {
     display                : inline-block;
@@ -12,85 +15,133 @@ $white_color : #FFF;
     transition             : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
     will-change            : transform;
     -webkit-font-smoothing : antialiased;
-    box-shadow             : 0 2px 6px rgba(0, 0, 0, 0.07);
-    
+
     * {
         text-decoration : none;
     }
-    
+
     span {
         font-size      : 12px;
         line-height    : 1.5;
         letter-spacing : 0.5px;
         text-transform : uppercase;
     }
-    
+
     &_secondary {
-        border : 2px solid $main_color;
-        
+        border     : 2px solid $main_color;
+        box-shadow : 0 2px 6px rgba(0, 0, 0, 0.07);
+
         &:hover {
             background-color : $main_color;
-            
+
             span {
                 color : $white_color;
             }
         }
-        
+
         span {
             color : $main_color;
         }
     }
-    
+
     &_primary {
         border           : 2px solid $main_color;
         background-color : $main_color;
-        
+        box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.07);
+
         &:hover {
             background-color : $white_color;
-            
+
             span {
                 color : $main_color;
             }
         }
-        
+
         span {
             color : $white_color;
         }
     }
-    
+
+    &_transparent_dark {
+        border           : 2px solid $dark_border_color;
+        background-color : transparent;
+        box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.07);
+
+        &:hover {
+            border-color : $dark_color;
+        }
+
+        span {
+            color : $dark_color;
+        }
+    }
+
+    &_transparent_light {
+        border           : 2px solid $light_border_color;
+        background-color : transparent;
+
+        &:hover {
+            border-color : $white_color;
+        }
+
+        span {
+            color : $white_color;
+        }
+    }
+
+    &_transparent_over_image {
+        border           : 2px solid $light_border_color;
+        background-color : transparent;
+        box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.07);
+
+        &:hover {
+            border           : 2px solid $main_color;
+            background-color : $main_color;
+
+            span {
+                color : $white_color;
+            }
+        }
+
+        span {
+            color : $white_color;
+        }
+    }
+
+
     &_large {
         min-width  : 167px;
         margin-top : 40px;
         padding    : 14.5px 29.5px;
-        
+
         span {
             font-size   : 14px;
             line-height : 17px;
         }
     }
-    
+
     &_medium {
         min-width  : 119px;
         margin-top : 30px;
         padding    : 10px 20px;
-        
+
         span {
             font-size   : 12px;
             line-height : 14px;
         }
     }
-    
+
     &_small {
         min-width  : 95px;
         margin-top : 20px;
         padding    : 7px 14px;
-        
+
         span {
             font-size   : 10px;
             line-height : 12px;
         }
     }
-    
+
     &:not(:first-child) {
         margin-left : 20px;
     }
