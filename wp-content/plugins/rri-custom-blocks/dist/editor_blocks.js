@@ -44449,7 +44449,7 @@ var settings = {
     // 'advanced-column-spacing': {
     // 	columnGap: false,
     // },
-    'advanced-responsive': true,
+    // 'advanced-responsive': true,
     // 'block-background': true,
     // 'block-separators': true,
     // 'block-title': true,
@@ -46606,9 +46606,8 @@ var settings = {
   // Stackable modules.
   modules: {
     'advanced-general': true,
-    'advanced-block-spacing': true,
-    // Just in premium version
-    'advanced-responsive': true
+    'advanced-block-spacing': true // 'advanced-responsive'    : true,
+
   }
 };
 
@@ -47129,7 +47128,7 @@ var settings = {
     // 'advanced-column-spacing': {
     // 	columnGap: false,
     // },
-    'advanced-responsive': true,
+    // 'advanced-responsive': true,
     'block-background': true,
     'block-separators': true,
     // 'block-title': true,
@@ -48112,9 +48111,8 @@ var settings = {
   // Stackable modules.
   modules: {
     'advanced-general': true,
-    'advanced-block-spacing': true,
-    // Just in premium version
-    'advanced-responsive': true
+    'advanced-block-spacing': true // 'advanced-responsive': true,
+
   }
 };
 
@@ -48600,8 +48598,8 @@ var settings = {
   save: __WEBPACK_IMPORTED_MODULE_1__save__["a" /* default */],
   modules: {
     'advanced-general': true,
-    'advanced-block-spacing': true,
-    'advanced-responsive': true
+    'advanced-block-spacing': true // 'advanced-responsive': true,
+
   }
 };
 
@@ -49439,9 +49437,8 @@ var settings = {
   modules: {
     'advanced-general': true,
     'advanced-block-spacing': true,
-    // Just in premium version
-    'advanced-column-spacing': true,
-    'advanced-responsive': true,
+    // 'advanced-column-spacing': true,
+    // 'advanced-responsive': true,
     'block-background': true,
     'block-separators': true,
     'block-title': true,
@@ -52241,7 +52238,7 @@ var settings = {
     'advanced-block-spacing': true,
     // Just in premium version
     // 'advanced-column-spacing': true,
-    'advanced-responsive': true,
+    // 'advanced-responsive': true,
     'block-background': true,
     'block-separators': true,
     'block-title': true,
