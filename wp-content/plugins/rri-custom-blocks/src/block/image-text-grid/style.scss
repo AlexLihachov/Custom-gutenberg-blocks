@@ -1,0 +1,164 @@
+$sub-title-color: #102028;
+$text-color: #38484F;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.rri-image-text-grid {
+  width: 95%;
+  max-width: 1120px;
+  margin: auto;
+  @media screen and (min-width: 768px) {
+	width: 100%;
+  }
+
+  .rri-grid-row {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+
+	&.reverse {
+	  @media screen and (min-width: 768px) {
+		flex-direction: row-reverse;
+	  }
+	}
+
+	@media screen and (min-width: 768px) {
+	  flex-direction: row;
+	}
+
+	.rri-grid-block {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  width: 100%;
+	  height: 250px;
+
+
+	  @media screen and (min-width: 768px) {
+		width: 50%;
+		height: 395px;
+	  }
+
+	  &_slider {
+		order: 1;
+		@media screen and (min-width: 768px) {
+		  order: initial;
+		}
+
+		&.elem1 {
+		  .slick-dots {
+			display: none;
+		  }
+		}
+	  }
+
+	  &__slider {
+		width: 100%;
+
+		.slick-dotted.slick-slider {
+		  margin-bottom: 0;
+		}
+
+		.slick-dots {
+		  bottom: 15px;
+		  margin: 0;
+
+		  li {
+			margin: 0;
+		  }
+
+		  button:before {
+			font-size: 25px;
+		  }
+		}
+
+		.slick-prev, .slick-next {
+		  z-index: 9;
+
+		  &:before {
+			content: "";
+			display: block;
+			width: 10px;
+			height: 17px;
+		  }
+		}
+
+		.slick-prev {
+		  left: 40px;
+
+		  &:before {
+			background-image: url("../src/icons/images/left.svg");
+		  }
+		}
+
+		.slick-next {
+		  right: 40px;
+
+		  &:before {
+			background-image: url("../src/icons/images/right.svg");
+		  }
+		}
+
+
+		.slick-slide {
+		  display: flex;
+		  justify-content: center;
+		  width: 100%;
+		  height: 250px;
+
+		  @media screen and (min-width: 768px) {
+			height: 395px;
+		  }
+
+		  img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		  }
+
+		  p {
+			position: absolute;
+			bottom: 7%;
+			color: $text-color;
+			text-align: center;
+		  }
+		}
+	  }
+
+	  &_more-info {
+		order: 2;
+		@media screen and (min-width: 768px) {
+		  order: initial;
+		}
+	  }
+
+	  &__more-info {
+		width: 100%;
+		@media screen and (min-width: 768px) {
+		  width: auto;
+		}
+	  }
+
+	  &__sub-title {
+		margin-bottom: 10px;
+		font-weight: bold;
+		font-size: 18px;
+		color: $sub-title-color;
+
+	  }
+
+	  &__text {
+		margin-top: 20px;
+		font-size: 18px;
+		color: $text-color;
+		line-height: 27px;
+	  }
+
+
+	}
+  }
+}
