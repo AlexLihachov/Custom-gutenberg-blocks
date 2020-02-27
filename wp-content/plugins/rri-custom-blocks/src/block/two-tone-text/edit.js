@@ -134,7 +134,14 @@ class Edit extends Component{
         this.onChangeUrl      = this.onChangeUrl.bind(this);
         this.onChangeNewTab   = this.onChangeNewTab.bind(this);
         this.onChangeNoFollow = this.onChangeNoFollow.bind(this);
+        this.handleFocusOutside = this.handleFocusOutside.bind(this)
     }
+
+    handleFocusOutside () {
+        this.setState({
+            openUrlPopover: null,
+        })
+    };
 
     handleClick(){
         this.setState({
