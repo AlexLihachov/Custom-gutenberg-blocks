@@ -270,7 +270,7 @@ var init = function init(el) {
 };
 
 var initAll = function initAll() {
-  document.querySelectorAll('.rri-accordion').forEach(function (el) {
+  document.querySelectorAll('.rri-accordion:not(.rri-accordion--design-plain)').forEach(function (el) {
     return init(el);
   });
 };
