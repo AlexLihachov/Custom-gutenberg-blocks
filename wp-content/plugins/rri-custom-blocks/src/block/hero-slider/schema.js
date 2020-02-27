@@ -15,15 +15,16 @@ export const schema = {
 					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
 					id: ''
 				},
-				button: {
-					url: 'https://google.com',
-					newTab: true,
-					noFollow: false,
-					text: 'Buy Now'
-				},
 				params: {
-					buttonSize: 'small',
 					align: 'left'
+				},
+				button: {
+					url: '',
+					newTab: false,
+					noFollow: false,
+					text: 'Link',
+					design: 'primary',
+					size: 'small'
 				}
 			},
 			{
@@ -33,15 +34,16 @@ export const schema = {
 					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
 					id: ''
 				},
-				button: {
-					url: 'https://google.com',
-					newTab: true,
-					noFollow: false,
-					text: 'Buy Now'
-				},
 				params: {
-					buttonSize: 'small',
 					align: 'left'
+				},
+				button: {
+					url: '',
+					newTab: false,
+					noFollow: false,
+					text: 'Link',
+					design: 'primary',
+					size: 'small'
 				}
 			},
 			{
@@ -51,15 +53,16 @@ export const schema = {
 					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
 					id: ''
 				},
-				button: {
-					url: 'https://google.com',
-					newTab: true,
-					noFollow: false,
-					text: 'Buy Now'
-				},
 				params: {
-					buttonSize: 'small',
 					align: 'left'
+				},
+				button: {
+					url: '',
+					newTab: false,
+					noFollow: false,
+					text: 'Link',
+					design: 'primary',
+					size: 'small'
 				}
 			}
 		],
