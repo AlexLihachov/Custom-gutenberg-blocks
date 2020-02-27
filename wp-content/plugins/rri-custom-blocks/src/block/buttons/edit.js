@@ -187,6 +187,7 @@ class Edit extends Component {
                                         ]);
 
                                     return (
+                                        <div className="rri-buttons__item-container">
                                         <div className={itemClasses}
                                              key={index}
                                              onClick={() => this.setState({openUrlPopover: index})} >
@@ -211,6 +212,7 @@ class Edit extends Component {
                                                 onChangeNewTab={value => this.onChangeNewTab(value, index)}
                                                 onChangeNoFollow={value => this.onChangeNoFollow(value, index)}
                                             />}
+                                        </div>
                                         </div>
                                     );
                                 }
