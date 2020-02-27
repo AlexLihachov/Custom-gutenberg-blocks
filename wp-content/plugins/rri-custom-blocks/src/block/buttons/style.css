@@ -9,6 +9,7 @@
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
   will-change: transform;
   -webkit-font-smoothing: antialiased;
+  box-sizing: padding-box;
 }
 .rri-buttons__item * {
   text-decoration: none;
@@ -84,7 +85,6 @@
 }
 .rri-buttons__item_large {
   min-width: 167px;
-  margin-top: 40px;
   padding: 14.5px 29.5px;
 }
 .rri-buttons__item_large span {
@@ -93,7 +93,6 @@
 }
 .rri-buttons__item_medium {
   min-width: 119px;
-  margin-top: 30px;
   padding: 10px 20px;
 }
 .rri-buttons__item_medium span {
@@ -102,14 +101,16 @@
 }
 .rri-buttons__item_small {
   min-width: 95px;
-  margin-top: 20px;
   padding: 7px 14px;
 }
 .rri-buttons__item_small span {
   font-size: 10px;
   line-height: 12px;
 }
-.rri-buttons__item:not(:first-child) {
+.rri-buttons__item-container {
+  display: inline-block;
+}
+.rri-buttons__item-container:not(:first-child) {
   margin-left: 20px;
 }
 
