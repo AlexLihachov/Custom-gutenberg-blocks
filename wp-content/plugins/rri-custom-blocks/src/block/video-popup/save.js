@@ -49,7 +49,9 @@ const save = props => {
 					{ /* eslint-disable-next-line */}
 					<a href="#" className="rri-video-popup__overlay"/>
 					<span className="rri-video-popup__play-button">
-						{getPlayButton(playButtonType)}
+						<i className="icon icon-Play-2"/>
+						{/* Currently use icon from theme */}
+						{/*{getPlayButton(playButtonType)}*/}
 					</span>
 				</DivBackground>
 			</Fragment>

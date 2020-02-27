@@ -58,14 +58,8 @@ class PanelTabs extends Component {
 
 		this.tabsToUse = this.props.tabs || ['layout', 'style', 'advanced'];
 
-		if(this.props.blockProps.name !== "rri/buttons"){
-			this.state = {
-				activeTab : this.props.initialTab ? this.props.initialTab : this.tabsToUse[0],
-			};
-		} else{
-			this.state = {
-				activeTab : this.props.initialTab ? this.props.initialTab : this.tabsToUse[1],
-			};
+		this.state = {
+			activeTab: this.props.initialTab ? this.props.initialTab : this.tabsToUse[ 1 ],
 		}
 
 		this.onButtonPanelClick = this.onButtonPanelClick.bind(this);

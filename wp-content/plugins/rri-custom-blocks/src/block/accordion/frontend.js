@@ -83,7 +83,7 @@ const init = el => {
 };
 
 export const initAll = () => {
-	document.querySelectorAll('.rri-accordion').forEach(el => init(el));
+	document.querySelectorAll('.rri-accordion:not(.rri-accordion--design-plain)').forEach(el => init(el));
 };
 
 domReady(initAll);

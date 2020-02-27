@@ -106,7 +106,7 @@ export const settings = {
 		'advanced-block-spacing': true,
 		// Just in premium version
 		// 'advanced-column-spacing': true,
-		'advanced-responsive': true,
+		// 'advanced-responsive': true,
 		'block-background': true,
 		'block-separators': true,
 		'block-title': true,
