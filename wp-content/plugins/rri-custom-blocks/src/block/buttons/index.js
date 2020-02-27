@@ -1,5 +1,5 @@
 /**
- * BLOCK: Two-Tone Text.
+ * BLOCK: Buttons.
  */
 
 /**
@@ -43,7 +43,5 @@ export const settings = {
     modules : {
         'advanced-general'       : true,
         'advanced-block-spacing' : true,
-        // Just in premium version
-        'advanced-responsive'    : true,
     }
 };

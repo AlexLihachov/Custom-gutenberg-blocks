@@ -8,9 +8,7 @@ import {
 	BlockContainer,
 	AdvancedRangeControl,
 	DragImages,
-	UrlInputPopover,
-	TypographyControlHelper,
-	HeadingButtonsControl, ColorPaletteControl
+	UrlInputPopover
 } from '../../components';
 
 import {
@@ -18,7 +16,6 @@ import {
 	withSetAttributeHook,
 	withTabbedInspector,
 	withBlockStyles,
-	withClickOpenInspector,
 } from '../../higher-order';
 
 import classnames from 'classnames';
@@ -54,7 +51,7 @@ addFilter('stackable.gift-slider.edit.inspector.layout.before', 'stackable/gift-
 
 addFilter('stackable.gift-slider.edit.inspector.style.before', 'stackable/gift-slider', (output, props) => {
 	const {setAttributes} = props;
-	const {slides_data, settings, abovetitleTag, titleTag, abovetitleColor, titleColor, numberColor} = props.attributes;
+	const {slides_data, settings} = props.attributes;
 
 	return (
 		<Fragment>
@@ -134,60 +131,6 @@ addFilter('stackable.gift-slider.edit.inspector.style.before', 'stackable/gift-s
 			</PanelBody>
 			<PanelBody title={__('Ordering', i18n)} initialOpen={false}>
 				<DragImages items={slides_data} setAttributes={setAttributes} propName="slides_data"/>
-			</PanelBody>
-			<PanelBody title={__('Above Title', i18n)} initialOpen={false}>
-				<TypographyControlHelper
-					attrNameTemplate="abovetitle%s"
-					setAttributes={setAttributes}
-					blockAttributes={props.attributes}
-				/>
-				<HeadingButtonsControl
-					value={abovetitleTag}
-					onChange={value => setAttributes({
-						abovetitleTag: value
-					})}
-				/>
-				<ColorPaletteControl
-					value={abovetitleColor}
-					onChange={value => setAttributes({
-						abovetitleColor: value
-					})}
-					label={__('Above title Color', i18n)}
-				/>
-			</PanelBody>
-			<PanelBody title={__('Title', i18n)} initialOpen={false}>
-				<TypographyControlHelper
-					attrNameTemplate="title%s"
-					setAttributes={setAttributes}
-					blockAttributes={props.attributes}
-				/>
-				<HeadingButtonsControl
-					value={titleTag}
-					onChange={value => setAttributes({
-						titleTag: value
-					})}
-				/>
-				<ColorPaletteControl
-					value={titleColor}
-					onChange={value => setAttributes({
-						titleColor: value
-					})}
-					label={__('Title Color', i18n)}
-				/>
-			</PanelBody>
-			<PanelBody title={__('Number', i18n)} initialOpen={false}>
-				<TypographyControlHelper
-					attrNameTemplate="number%s"
-					setAttributes={setAttributes}
-					blockAttributes={props.attributes}
-				/>
-				<ColorPaletteControl
-					value={numberColor}
-					onChange={value => setAttributes({
-						numberColor: value
-					})}
-					label={__('Number Color', i18n)}
-				/>
 			</PanelBody>
 		</Fragment>
 	);
@@ -357,7 +300,7 @@ class Edit extends Component {
 
 	render() {
 		const {className, setAttributes, attributes} = this.props;
-		const {slides_data, abovetitleTag, titleTag} = attributes;
+		const {slides_data} = attributes;
 		const mainClasses = classnames([className]);
 
 		return (
@@ -375,7 +318,7 @@ class Edit extends Component {
 									<div className="rri-gift-slide">
 										<div className="rri-gift-slide__content">
 											<RichText
-												tagName={abovetitleTag}
+												tagName="h3"
 												className="rri-gift-slide__above-title"
 												value={slide.above_title}
 												onChange={(value) => {
@@ -387,7 +330,7 @@ class Edit extends Component {
 												}}
 											/>
 											<RichText
-												tagName={titleTag}
+												tagName="h2"
 												className="rri-gift-slide__title"
 												value={slide.name}
 												onChange={(value) => {

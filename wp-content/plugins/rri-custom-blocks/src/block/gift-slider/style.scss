@@ -18,7 +18,7 @@ body .rri-gift-slider.wp-block-rri-gift-slider {
 		flex-wrap: wrap;
 		align-items: center;
 		background: #c5b475;
-		padding: 100px 0 100px 10%;
+		padding: 80px 0 100px 10%;
 		z-index: 1;
 
 		@media screen and (max-width: 420px) {
@@ -31,7 +31,7 @@ body .rri-gift-slider.wp-block-rri-gift-slider {
 		flex: 0 0 100%;
 		max-width: 100%;
 
-		margin-bottom: 30px;
+		margin-bottom: 40px;
 		padding: 0;
 
 		font: {
@@ -41,6 +41,7 @@ body .rri-gift-slider.wp-block-rri-gift-slider {
 		letter-spacing: 8.89px;
 		text-transform: uppercase;
 		white-space: nowrap;
+		line-height: 1;
 		color: #191919;
 
 		@media screen and (max-width: 420px) {
@@ -67,6 +68,7 @@ body .rri-gift-slider.wp-block-rri-gift-slider {
 			weight: bold;
 		};
 		letter-spacing: 6.56px;
+		line-height: 1;
 		white-space: nowrap;
 		color: #ffffff;
 
@@ -97,6 +99,7 @@ body .rri-gift-slider.wp-block-rri-gift-slider {
 			weight: bold;
 		};
 		letter-spacing: 3.15px;
+		line-height: 1;
 		color: #191919;
 		white-space: nowrap;
 
@@ -122,6 +125,7 @@ body .rri-gift-slider.wp-block-rri-gift-slider {
 		color: #fff;
 		text-transform: uppercase;
 		box-shadow: none;
+		line-height: 1;
 
 		@media screen and (max-width: 420px) {
 			padding: 8px 14px;

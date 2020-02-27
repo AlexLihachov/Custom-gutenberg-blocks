@@ -5,7 +5,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   height: 663px;
   background-size: cover;
   background-color: #2b2b2b;
@@ -25,14 +25,14 @@
   font-weight: 700;
   font-family: Roboto, sans-serif;
 }
-.rri-two-tone-text .editor-rich-text .rri-two-tone-text__edit-text.first-line {
+.rri-two-tone-text .editor-rich-text .rri-two-tone-text__edit-text.rri-two-tone-text__first-line {
   right: 100px;
 }
-.rri-two-tone-text .editor-rich-text .rri-two-tone-text__edit-text.second-line {
+.rri-two-tone-text .editor-rich-text .rri-two-tone-text__edit-text.rri-two-tone-text__second-line {
   left: 100px;
 }
 .rri-two-tone-text .rri-two-tone-text__btn.rri-two-tone-text__link {
-  border-color: #fff;
+  border-color: #ffffff;
 }
 
 /*# sourceMappingURL=editor.css.map */
