@@ -9,7 +9,6 @@
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
   will-change: transform;
   -webkit-font-smoothing: antialiased;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
 }
 .rri-buttons__item * {
   text-decoration: none;
@@ -21,29 +20,67 @@
   text-transform: uppercase;
 }
 .rri-buttons__item_secondary {
-  border: 2px solid #14AECF;
+  border: 2px solid #14aecf;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
 }
 .rri-buttons__item_secondary:hover {
-  background-color: #14AECF;
+  background-color: #14aecf;
 }
 .rri-buttons__item_secondary:hover span {
-  color: #FFF;
+  color: #ffffff;
 }
 .rri-buttons__item_secondary span {
-  color: #14AECF;
+  color: #14aecf;
 }
 .rri-buttons__item_primary {
-  border: 2px solid #14AECF;
-  background-color: #14AECF;
+  border: 2px solid #14aecf;
+  background-color: #14aecf;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
 }
 .rri-buttons__item_primary:hover {
-  background-color: #FFF;
+  background-color: #ffffff;
 }
 .rri-buttons__item_primary:hover span {
-  color: #14AECF;
+  color: #14aecf;
 }
 .rri-buttons__item_primary span {
-  color: #FFF;
+  color: #ffffff;
+}
+.rri-buttons__item_transparent_dark {
+  border: 2px solid rgba(16, 32, 40, 0.36);
+  background-color: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+.rri-buttons__item_transparent_dark:hover {
+  border-color: #102028;
+}
+.rri-buttons__item_transparent_dark span {
+  color: #102028;
+}
+.rri-buttons__item_transparent_light {
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+}
+.rri-buttons__item_transparent_light:hover {
+  border-color: #ffffff;
+}
+.rri-buttons__item_transparent_light span {
+  color: #ffffff;
+}
+.rri-buttons__item_transparent_over_image {
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+.rri-buttons__item_transparent_over_image:hover {
+  border: 2px solid #14aecf;
+  background-color: #14aecf;
+}
+.rri-buttons__item_transparent_over_image:hover span {
+  color: #ffffff;
+}
+.rri-buttons__item_transparent_over_image span {
+  color: #ffffff;
 }
 .rri-buttons__item_large {
   min-width: 167px;
