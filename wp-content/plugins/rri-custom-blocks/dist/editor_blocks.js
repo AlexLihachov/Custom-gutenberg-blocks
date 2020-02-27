@@ -14290,9 +14290,9 @@ var showOptions = function showOptions(blockProps) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return playButtonTypes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getPlayButton; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return showOptions; });
+/* unused harmony export playButtonTypes */
+/* unused harmony export getPlayButton */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return showOptions; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__images_play_circle_svg__ = __webpack_require__(410);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__images_play_normal_svg__ = __webpack_require__(411);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__images_play_outline_svg__ = __webpack_require__(412);
@@ -21393,7 +21393,7 @@ function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("
 var createStyles = function createStyles(props) {
   var getValue = Object(__WEBPACK_IMPORTED_MODULE_0__util__["a" /* __getValue */])(props.attributes);
 
-  var show = Object(__WEBPACK_IMPORTED_MODULE_2__util__["c" /* showOptions */])(props);
+  var show = Object(__WEBPACK_IMPORTED_MODULE_2__util__["a" /* showOptions */])(props);
 
   _objectDestructuringEmpty(props.attributes);
 
@@ -21422,28 +21422,25 @@ var createStyles = function createStyles(props) {
       height: getValue('height') !== '' ? getValue('height', '%spx !important') : undefined,
       borderRadius: show.borderRadius ? getValue('borderRadius') !== '' ? getValue('borderRadius', '%spx') : undefined : undefined
     },
-    '.rri-video-popup__play-button svg': {
-      fill: getValue('playButtonColor') !== '' ? getValue('playButtonColor', '%s !important') : undefined,
-      height: getValue('playButtonSize') !== '' ? getValue('playButtonSize', '%spx') : undefined,
-      width: getValue('playButtonSize') !== '' ? getValue('playButtonSize', '%spx') : undefined,
+    '.rri-video-popup__play-button i': {
+      color: getValue('playButtonColor') !== '' ? getValue('playButtonColor', '%s !important') : undefined,
+      fontSize: getValue('playButtonSize') !== '' ? getValue('playButtonSize', '%spx') : undefined,
       opacity: getValue('playButtonOpacity') !== '' ? getValue('playButtonOpacity') : undefined
     },
     tablet: {
       '.rri-video-popup__wrapper': {
         height: getValue('tabletHeight') !== '' ? getValue('tabletHeight', '%spx !important') : undefined
       },
-      '.rri-video-popup__play-button svg': {
-        height: getValue('tabletPlayButtonSize') !== '' ? getValue('tabletPlayButtonSize', '%spx') : undefined,
-        width: getValue('tabletPlayButtonSize') !== '' ? getValue('tabletPlayButtonSize', '%spx') : undefined
+      '.rri-video-popup__play-button i': {
+        fontSize: getValue('tabletPlayButtonSize') !== '' ? getValue('tabletPlayButtonSize', '%spx') : undefined
       }
     },
     mobile: {
       '.rri-video-popup__wrapper': {
         height: getValue('mobileHeight') !== '' ? getValue('mobileHeight', '%spx !important') : undefined
       },
-      '.rri-video-popup__play-button svg': {
-        height: getValue('mobilePlayButtonSize') !== '' ? getValue('mobilePlayButtonSize', '%spx') : undefined,
-        width: getValue('mobilePlayButtonSize') !== '' ? getValue('mobilePlayButtonSize', '%spx') : undefined
+      '.rri-video-popup__play-button i': {
+        fontSize: getValue('mobilePlayButtonSize') !== '' ? getValue('mobilePlayButtonSize', '%spx') : undefined
       }
     }
   });
@@ -53259,7 +53256,7 @@ Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_hooks__["addFilter"])('stackable.v
       showBlockTitle = _props$attributes$sho === void 0 ? false : _props$attributes$sho,
       _props$attributes$sho2 = _props$attributes.showBlockDescription,
       showBlockDescription = _props$attributes$sho2 === void 0 ? false : _props$attributes$sho2;
-  var show = Object(__WEBPACK_IMPORTED_MODULE_2__util__["c" /* showOptions */])(props);
+  var show = Object(__WEBPACK_IMPORTED_MODULE_2__util__["a" /* showOptions */])(props);
   return wp.element.createElement(__WEBPACK_IMPORTED_MODULE_10__wordpress_element__["Fragment"], null, output, wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__wordpress_components__["PanelBody"], {
     title: Object(__WEBPACK_IMPORTED_MODULE_7__wordpress_i18n__["__"])('General', __WEBPACK_IMPORTED_MODULE_11__constants__["a" /* i18n */])
   }, wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components__["A" /* ImageControl */], {
@@ -53387,23 +53384,7 @@ Object(__WEBPACK_IMPORTED_MODULE_5__wordpress_hooks__["addFilter"])('stackable.v
     title: Object(__WEBPACK_IMPORTED_MODULE_7__wordpress_i18n__["__"])('Play Button', __WEBPACK_IMPORTED_MODULE_11__constants__["a" /* i18n */]),
     id: "play-button",
     initialOpen: false
-  }, wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__wordpress_components__["SelectControl"], {
-    label: Object(__WEBPACK_IMPORTED_MODULE_7__wordpress_i18n__["__"])('Button Style', __WEBPACK_IMPORTED_MODULE_11__constants__["a" /* i18n */]),
-    value: playButtonType,
-    options: __WEBPACK_IMPORTED_MODULE_2__util__["b" /* playButtonTypes */].map(function (_ref) {
-      var value = _ref.value,
-          label = _ref.label;
-      return {
-        value: value,
-        label: label
-      };
-    }),
-    onChange: function onChange(newSize) {
-      setAttributes({
-        playButtonType: newSize
-      });
-    }
-  }), wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components__["J" /* ResponsiveControl */], {
+  }, wp.element.createElement(__WEBPACK_IMPORTED_MODULE_0__components__["J" /* ResponsiveControl */], {
     attrNameTemplate: "%sPlayButtonSize",
     setAttributes: setAttributes,
     blockAttributes: props.attributes
@@ -53458,7 +53439,9 @@ var edit = function edit(props) {
         blockProps: props
       }, wp.element.createElement("span", {
         className: "rri-video-popup__play-button"
-      }, Object(__WEBPACK_IMPORTED_MODULE_2__util__["a" /* getPlayButton */])(playButtonType))));
+      }, wp.element.createElement("i", {
+        className: "icon icon-Play-2"
+      }))));
     }
   });
 };
@@ -53612,7 +53595,9 @@ var save = function save(props) {
         className: "rri-video-popup__overlay"
       }), wp.element.createElement("span", {
         className: "rri-video-popup__play-button"
-      }, Object(__WEBPACK_IMPORTED_MODULE_3__util__["a" /* getPlayButton */])(playButtonType))));
+      }, wp.element.createElement("i", {
+        className: "icon icon-Play-2"
+      }))));
     }
   });
 };
