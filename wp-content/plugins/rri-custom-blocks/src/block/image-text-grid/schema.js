@@ -14,7 +14,7 @@ export const schema = {
 				reverse: '',
 				sliders: [
 					{
-						name: __('Name Sliders', i18n),
+						name: __('Image Name', i18n),
 						url: '',
 						id: ''
 					}
@@ -23,11 +23,10 @@ export const schema = {
 			{
 				sub_title: __('Sub title', i18n),
 				description: __('Description', i18n),
-				name: __('Name Sliders', i18n),
 				reverse: 'reverse',
 				sliders: [
 					{
-						name: __('Name Sliders', i18n),
+						name: __('Image Name', i18n),
 						url: '',
 						id: ''
 					}
@@ -37,16 +36,10 @@ export const schema = {
 			{
 				sub_title: __('Sub title', i18n),
 				description: __('Description', i18n),
-				name: __('Name Sliders', i18n),
 				reverse: '',
 				sliders: [
 					{
-						name: __('Name Sliders', i18n),
-						url: '',
-						id: ''
-					},
-					{
-						name: __('Name Sliders', i18n),
+						name: __('Image Name', i18n),
 						url: '',
 						id: ''
 					}
