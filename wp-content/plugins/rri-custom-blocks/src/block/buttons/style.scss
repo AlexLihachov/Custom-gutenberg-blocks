@@ -16,11 +16,7 @@ $white_color : #ffffff;
         transition             : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
         will-change            : transform;
         -webkit-font-smoothing : antialiased;
-
-        box-sizing             : padding-box;
-
-        * {
-            text-decoration : none;
+        text-decoration        : none;
         }
 
         span {
