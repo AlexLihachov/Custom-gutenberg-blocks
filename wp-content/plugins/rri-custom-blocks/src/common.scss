@@ -58,6 +58,30 @@ $box-vert-padding: 60px;
 	align-items: center;
 }
 
+@mixin breakpoints($media) {
+	@if $media == xs {
+		@media only screen and (min-width: 520px) {
+			@content;
+		}
+	} @else if $media == s {
+		@media only screen and (min-width: 768px) {
+			@content;
+		}
+	} @else if $media == m {
+		@media only screen and (min-width: 1024px) {
+			@content;
+		}
+	} @else if $media == l {
+		@media only screen and (min-width: 1440px) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: $media) {
+			@content;
+		}
+	}
+}
+
 // New standardized block styles.
 .rri-main-block {
 	margin-top: 35px;

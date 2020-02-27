@@ -1,75 +1,156 @@
 $main_color : #14aecf;
+$dark_color : #102028;
+$dark_border_color : rgba(16, 32, 40, .36);
+$light_border_color : rgba(255, 255, 255, .4);
 $white_color : #ffffff;
 
-.rri-buttons__item {
-  display                : inline-block;
-  padding                : 8px 16px;
-  text-align             : center;
-  -webkit-transition     : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-  -o-transition          : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-  transition             : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
-  will-change            : transform;
-  -webkit-font-smoothing : antialiased;
-  overflow               : visible;
-  border-radius          : 3px;
+.rri-buttons {
+    &__item {
+        display                : inline-block;
+        padding                : 8px 16px;
+        overflow               : visible;
+        text-align             : center;
+        border-radius          : 3px;
+        -webkit-transition     : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+        -o-transition          : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+        transition             : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+        will-change            : transform;
+        -webkit-font-smoothing : antialiased;
 
-  span {
-    font-size      : 12px;
-    line-height    : 1.5;
-    letter-spacing : 0.5px;
-    text-transform : uppercase;
-  }
+        box-sizing             : padding-box;
 
-  &_secondary {
-    border : 1px solid $main_color;
+        * {
+            text-decoration : none;
+        }
 
-    &:hover {
-      background-color : $main_color;
+        span {
+            font-size      : 12px;
+            line-height    : 1.5;
+            letter-spacing : 0.5px;
+            text-transform : uppercase;
+        }
 
-      span {
-        color : $white_color;
-      }
+        &_secondary {
+            border     : 2px solid $main_color;
+            box-shadow : 0 2px 6px rgba(0, 0, 0, 0.07);
+
+            &:hover {
+                background-color : $main_color;
+
+                span {
+                    color : $white_color;
+                }
+            }
+
+            span {
+                color : $main_color;
+            }
+        }
+
+        &_primary {
+            border           : 2px solid $main_color;
+            background-color : $main_color;
+            box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.07);
+
+            &:hover {
+                background-color : $white_color;
+
+                span {
+                    color : $main_color;
+                }
+            }
+
+            span {
+                color : $white_color;
+            }
+        }
+
+        &_transparent_dark {
+            border           : 2px solid $dark_border_color;
+            background-color : transparent;
+            box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.07);
+
+            &:hover {
+                border-color : $dark_color;
+            }
+
+            span {
+                color : $dark_color;
+            }
+        }
+
+        &_transparent_light {
+            border           : 2px solid $light_border_color;
+            background-color : transparent;
+
+            &:hover {
+                border-color : $white_color;
+            }
+
+            span {
+                color : $white_color;
+            }
+        }
+
+        &_transparent_over_image {
+            border           : 2px solid $light_border_color;
+            background-color : transparent;
+            box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.07);
+
+            &:hover {
+                border           : 2px solid $main_color;
+                background-color : $main_color;
+
+                span {
+                    color : $white_color;
+                }
+            }
+
+            span {
+                color : $white_color;
+            }
+        }
+
+        &_large {
+            min-width : 167px;
+            padding   : 14.5px 29.5px;
+
+            span {
+                font-size   : 14px;
+                line-height : 17px;
+            }
+        }
+
+        &_medium {
+            min-width : 119px;
+            padding   : 10px 20px;
+
+            span {
+                font-size   : 12px;
+                line-height : 14px;
+            }
+        }
+
+        &_small {
+            min-width : 95px;
+            padding   : 7px 14px;
+
+            span {
+                font-size   : 10px;
+                line-height : 12px;
+            }
+        }
+
     }
 
-    span {
-      color : $main_color;
+    &__item-container {
+        display : inline-block;
+
+        &:not(:first-child) {
+            margin-left : 20px;
+        }
     }
-  }
-
-  &_primary {
-    border           : 1px solid $main_color;
-    background-color : $main_color;
-
-    &:hover {
-      background-color : $white_color;
-
-      span {
-        color : $main_color;
-      }
-    }
-
-    span {
-      color : $white_color;
-    }
-  }
-
-  &_large {
-    min-width  : 167px;
-    margin-top : 40px;
-  }
-
-  &_medium {
-    min-width  : 119px;
-    margin-top : 30px;
-  }
-
-  &_small {
-    min-width  : 95px;
-    margin-top : 20px;
-  }
-
-  &:not(:first-child) {
-    margin-left : 20px;
-  }
 }
+
+
 

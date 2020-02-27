@@ -1,14 +1,18 @@
 .rri-buttons__item {
   display: inline-block;
   padding: 8px 16px;
+  overflow: visible;
   text-align: center;
+  border-radius: 3px;
   -webkit-transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
   -o-transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
   will-change: transform;
   -webkit-font-smoothing: antialiased;
-  overflow: visible;
-  border-radius: 3px;
+  box-sizing: padding-box;
+}
+.rri-buttons__item * {
+  text-decoration: none;
 }
 .rri-buttons__item span {
   font-size: 12px;
@@ -17,7 +21,8 @@
   text-transform: uppercase;
 }
 .rri-buttons__item_secondary {
-  border: 1px solid #14aecf;
+  border: 2px solid #14aecf;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
 }
 .rri-buttons__item_secondary:hover {
   background-color: #14aecf;
@@ -29,8 +34,9 @@
   color: #14aecf;
 }
 .rri-buttons__item_primary {
-  border: 1px solid #14aecf;
+  border: 2px solid #14aecf;
   background-color: #14aecf;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
 }
 .rri-buttons__item_primary:hover {
   background-color: #ffffff;
@@ -41,19 +47,70 @@
 .rri-buttons__item_primary span {
   color: #ffffff;
 }
+.rri-buttons__item_transparent_dark {
+  border: 2px solid rgba(16, 32, 40, 0.36);
+  background-color: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+.rri-buttons__item_transparent_dark:hover {
+  border-color: #102028;
+}
+.rri-buttons__item_transparent_dark span {
+  color: #102028;
+}
+.rri-buttons__item_transparent_light {
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+}
+.rri-buttons__item_transparent_light:hover {
+  border-color: #ffffff;
+}
+.rri-buttons__item_transparent_light span {
+  color: #ffffff;
+}
+.rri-buttons__item_transparent_over_image {
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+.rri-buttons__item_transparent_over_image:hover {
+  border: 2px solid #14aecf;
+  background-color: #14aecf;
+}
+.rri-buttons__item_transparent_over_image:hover span {
+  color: #ffffff;
+}
+.rri-buttons__item_transparent_over_image span {
+  color: #ffffff;
+}
 .rri-buttons__item_large {
   min-width: 167px;
-  margin-top: 40px;
+  padding: 14.5px 29.5px;
+}
+.rri-buttons__item_large span {
+  font-size: 14px;
+  line-height: 17px;
 }
 .rri-buttons__item_medium {
   min-width: 119px;
-  margin-top: 30px;
+  padding: 10px 20px;
+}
+.rri-buttons__item_medium span {
+  font-size: 12px;
+  line-height: 14px;
 }
 .rri-buttons__item_small {
   min-width: 95px;
-  margin-top: 20px;
+  padding: 7px 14px;
 }
-.rri-buttons__item:not(:first-child) {
+.rri-buttons__item_small span {
+  font-size: 10px;
+  line-height: 12px;
+}
+.rri-buttons__item-container {
+  display: inline-block;
+}
+.rri-buttons__item-container:not(:first-child) {
   margin-left: 20px;
 }
 

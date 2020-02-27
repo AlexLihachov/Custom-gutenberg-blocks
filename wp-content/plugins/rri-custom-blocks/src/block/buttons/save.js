@@ -16,10 +16,6 @@ import createStyles from "./style";
 const save = (props) => {
     const {className, attributes} = props;
     const {buttons}               = attributes;
-    const itemClasses             = classnames([
-        'rri-buttons__container',
-        `rri-buttons__item`
-    ]);
 
     return (
         <BlockContainer.Save
@@ -27,7 +23,7 @@ const save = (props) => {
             blockProps = {props}
             render = {() => (
                 <Fragment>
-                    <div>
+                    <div className="rri-buttons__container">
                         {buttons.map((button, index) => {
                             const itemClasses
                                       = classnames([
@@ -51,7 +47,7 @@ const save = (props) => {
                             }
 
                             return (
-
+                                <div className="rri-buttons__item-container">
                                 <a className = {itemClasses}
                                    key = {index}
                                    href = {url_link}
@@ -63,13 +59,12 @@ const save = (props) => {
                                         value = {url_text}
                                     />
                                 </a>
+                                </div>
                             );
                         })}
                     </div>
                 </Fragment>
-            )
-            } />
-
+            )} />
     );
 };
 
