@@ -42,7 +42,7 @@ import {withSelect} from '@wordpress/data';
 addFilter('stackable.buttons.edit.inspector.style.before', 'stackable/buttons', (output, props) => {
     const {setAttributes} = props;
     const {buttons} = props.attributes;
-    
+
     return (
         <Fragment>
             {output}
@@ -52,7 +52,7 @@ addFilter('stackable.buttons.edit.inspector.style.before', 'stackable/buttons', 
                     value={buttons.length}
                     onChange={(value) => {
                         const button_data_clone = cloneDeep(buttons);
-                        
+
                         if (buttons.length < value) {
                             button_data_clone.push({
                                 url: '',
@@ -65,7 +65,7 @@ addFilter('stackable.buttons.edit.inspector.style.before', 'stackable/buttons', 
                         } else {
                             button_data_clone.pop();
                         }
-                        
+
                         setAttributes({
                             buttons: button_data_clone,
                         });
@@ -74,14 +74,17 @@ addFilter('stackable.buttons.edit.inspector.style.before', 'stackable/buttons', 
                     max={2}
                 />
             </PanelBody>
-            
+
             {buttons.map((button, index) => {
                 return (
-                    <PanelBody title={__(`Button ${index}`, i18n)} initialOpen={false}>
+                    <PanelBody title={__(`Button_${index}`, i18n)} initialOpen={false}>
                         <SelectControl label={__('Design', i18n)}
                                        options={[
                                            {value: 'primary', label: __('Primary', i18n)},
                                            {value: 'secondary', label: __('Secondary', i18n)},
+                                           {value: 'transparent_dark', label: __('Transparent Dark', i18n)},
+                                           {value: 'transparent_light', label: __('Transparent Light', i18n)},
+                                           {value: 'transparent_over_image', label: __('Transparent over image', i18n)},
                                        ]}
                                        value={button.design}
                                        onChange={(value) => {
@@ -110,7 +113,7 @@ addFilter('stackable.buttons.edit.inspector.style.before', 'stackable/buttons', 
                     </PanelBody>
                 );
             })}
-        
+
         </Fragment>
     );
 });
@@ -124,7 +127,13 @@ class Edit extends Component {
         };
         this.handleFocusOutside = this.handleFocusOutside.bind(this)
     }
-    
+
+    handleFocusOutside () {
+        this.setState({
+            openUrlPopover: null,
+        })
+    };
+
     onChangeUrl = (value, index) => {
         const {setAttributes, attributes} = this.props;
         const buttonsClone = cloneDeep(attributes.buttons);
@@ -133,7 +142,7 @@ class Edit extends Component {
             buttons: buttonsClone,
         });
     };
-    
+
     onChangeNewTab = (value, index) => {
         const {setAttributes, attributes} = this.props;
         const buttonsClone = cloneDeep(attributes.buttons);
@@ -142,7 +151,7 @@ class Edit extends Component {
             buttons: buttonsClone,
         });
     };
-    
+
     onChangeNoFollow = (value, index) => {
         const {setAttributes, attributes} = this.props;
         const buttonsClone = cloneDeep(attributes.buttons);
@@ -151,18 +160,12 @@ class Edit extends Component {
             buttons: buttonsClone,
         });
     };
-    
-    handleFocusOutside () {
-        this.setState({
-            openUrlPopover: null,
-        })
-    };
-    
+
     render() {
         const {className, setAttributes, attributes} = this.props;
         const {buttons} = attributes;
         const mainClasses = classnames([className]);
-        
+
         return (
             <BlockContainer.Edit
                 className={mainClasses}
@@ -182,8 +185,9 @@ class Edit extends Component {
                                             `rri-buttons__item_${button.design}`,
                                             `rri-buttons__item_${button.size}`,
                                         ]);
-                                    
+
                                     return (
+                                        <div className="rri-buttons__item-container">
                                         <div className={itemClasses}
                                              key={index}
                                              onClick={() => this.setState({openUrlPopover: index})} >
@@ -208,6 +212,7 @@ class Edit extends Component {
                                                 onChangeNewTab={value => this.onChangeNewTab(value, index)}
                                                 onChangeNoFollow={value => this.onChangeNoFollow(value, index)}
                                             />}
+                                        </div>
                                         </div>
                                     );
                                 }
