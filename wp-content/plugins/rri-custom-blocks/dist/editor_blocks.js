@@ -18574,17 +18574,9 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PanelTabs).apply(this, arguments));
     _this.tabsToUse = _this.props.tabs || ['layout', 'style', 'advanced'];
-
-    if (_this.props.blockProps.name !== "rri/buttons") {
-      _this.state = {
-        activeTab: _this.props.initialTab ? _this.props.initialTab : _this.tabsToUse[0]
-      };
-    } else {
-      _this.state = {
-        activeTab: _this.props.initialTab ? _this.props.initialTab : _this.tabsToUse[1]
-      };
-    }
-
+    _this.state = {
+      activeTab: _this.props.initialTab ? _this.props.initialTab : _this.tabsToUse[1]
+    };
     _this.onButtonPanelClick = _this.onButtonPanelClick.bind(_assertThisInitialized(_this));
     _this.updateSidebarPanelTab = _this.updateSidebarPanelTab.bind(_assertThisInitialized(_this));
     _this.select = _this.select.bind(_assertThisInitialized(_this));
