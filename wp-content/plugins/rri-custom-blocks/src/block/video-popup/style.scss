@@ -77,6 +77,11 @@
 	i {
 		color: #fff;
 		font-size: 40px;
+
+		&.icon-Play-1 {
+			border: 2px solid rgba(255, 255, 255, .4);
+			border-radius: 30px;
+		}
 	}
 }
 .rri-video-popup--button-outline,

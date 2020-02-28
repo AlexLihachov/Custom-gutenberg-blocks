@@ -2,6 +2,7 @@
  * External dependencies
  */
 import {createBackgroundStyleSet, __getValue} from '../../util';
+import {hex_to_rgba} from "./util";
 import deepmerge from 'deepmerge';
 
 /**
@@ -45,6 +46,7 @@ export const createStyles = props => {
 			color: getValue('playButtonColor') !== '' ? getValue('playButtonColor', '%s !important') : undefined,
 			fontSize: getValue('playButtonSize') !== '' ? getValue('playButtonSize', '%spx') : undefined,
 			opacity: getValue('playButtonOpacity') !== '' ? getValue('playButtonOpacity') : undefined,
+			borderColor: getValue('playButtonColor') ? hex_to_rgba(getValue('playButtonColor'), 0.4) : undefined
 		},
 		tablet: {
 			'.rri-video-popup__wrapper': {
