@@ -159,7 +159,7 @@ addFilter('stackable.video-popup.edit.inspector.style.before', 'stackable/video-
 					min={0}
 					max={50}
 					allowReset={true}
-					placeholder="12"
+					placeholder="0"
 					className="rri--help-tip-general-border-radius"
 				/>
 				}
@@ -192,20 +192,17 @@ addFilter('stackable.video-popup.edit.inspector.style.before', 'stackable/video-
 				id="play-button"
 				initialOpen={false}
 			>
-
-				{/* Currently use icon from theme */}
-
-				{/*<SelectControl*/}
-				{/*	label={__('Button Style', i18n)}*/}
-				{/*	value={playButtonType}*/}
-				{/*	options={playButtonTypes.map(({value, label}) => ({*/}
-				{/*		value,*/}
-				{/*		label,*/}
-				{/*	}))}*/}
-				{/*	onChange={newSize => {*/}
-				{/*		setAttributes({playButtonType: newSize})*/}
-				{/*	}}*/}
-				{/*/>*/}
+				<SelectControl
+					label={__('Button Style', i18n)}
+					value={playButtonType}
+					options={playButtonTypes.map(({value, label}) => ({
+						value,
+						label,
+					}))}
+					onChange={newSize => {
+						setAttributes({playButtonType: newSize})
+					}}
+				/>
 				<ResponsiveControl
 					attrNameTemplate="%sPlayButtonSize"
 					setAttributes={setAttributes}
@@ -273,9 +270,7 @@ const edit = props => {
 					blockProps={props}
 				>
 					<span className="rri-video-popup__play-button">
-						<i className="icon icon-Play-2"/>
-						{/* Currently use icon from theme */}
-						{/*{getPlayButton(playButtonType)}*/}
+						{getPlayButton(playButtonType)}
 					</span>
 				</DivBackground>
 			</Fragment>

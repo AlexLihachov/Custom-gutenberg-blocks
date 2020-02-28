@@ -73,6 +73,11 @@ export const schema = {
 		default: '#000000',
 	},
 
+	previewBackgroundMediaUrl: {
+		type: 'string',
+		default: `${window.rriData.srcUrl}/src/block/video-popup/images/Video-popup-placeholder.jpg`
+	},
+
 	hoverEffect: {
 		type: 'string',
 		default: '',
