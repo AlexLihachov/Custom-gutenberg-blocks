@@ -48895,13 +48895,13 @@ Object(__WEBPACK_IMPORTED_MODULE_13__wordpress_hooks__["addFilter"])('stackable.
     initialOpen: true,
     selected: design,
     options: Object(__WEBPACK_IMPORTED_MODULE_13__wordpress_hooks__["applyFilters"])('stackable.accordion.edit.layouts', [{
-      label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Basic', __WEBPACK_IMPORTED_MODULE_8__constants__["a" /* i18n */]),
-      value: 'basic',
-      image: __WEBPACK_IMPORTED_MODULE_0__images_basic_png__["a" /* default */]
-    }, {
       label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Plain', __WEBPACK_IMPORTED_MODULE_8__constants__["a" /* i18n */]),
       value: 'plain',
       image: __WEBPACK_IMPORTED_MODULE_1__images_plain_png__["a" /* default */]
+    }, {
+      label: Object(__WEBPACK_IMPORTED_MODULE_12__wordpress_i18n__["__"])('Basic', __WEBPACK_IMPORTED_MODULE_8__constants__["a" /* i18n */]),
+      value: 'basic',
+      image: __WEBPACK_IMPORTED_MODULE_0__images_basic_png__["a" /* default */]
     }]),
     onChange: function onChange(design) {
       var updatedState = {

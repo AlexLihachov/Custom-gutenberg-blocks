@@ -65,11 +65,11 @@ addFilter('stackable.accordion.edit.inspector.layout.before', 'stackable/accordi
 				selected={design}
 				options={applyFilters('stackable.accordion.edit.layouts', [
 					{
-						label: __('Basic', i18n), value: 'basic', image: ImageDesignBasic,
-					},
-					{
 						label: __('Plain', i18n), value: 'plain', image: ImageDesignPlain,
 					},
+					{
+						label: __('Basic', i18n), value: 'basic', image: ImageDesignBasic,
+					}
 				])}
 				onChange={design => {
 					const updatedState = {

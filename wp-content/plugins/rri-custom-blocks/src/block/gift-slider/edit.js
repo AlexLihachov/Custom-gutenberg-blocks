@@ -150,13 +150,13 @@ class Edit extends Component {
 		this.animatedSlides = this.animatedSlides.bind(this);
 		this.removeAnimatedSlides = this.removeAnimatedSlides.bind(this);
 		this.toggleSlidesClasses = this.toggleSlidesClasses.bind(this);
-		this.handleFocusOutside = this.handleFocusOutside.bind(this)
+		this.handleFocusOutside = this.handleFocusOutside.bind(this);
 	}
 
 	handleFocusOutside() {
 		this.setState({
 			openUrlPopover: null,
-		})
+		});
 	}
 
 	onChangeUrl(value, index) {
