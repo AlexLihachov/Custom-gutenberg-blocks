@@ -1,0 +1,136 @@
+$text_color : #38484f;
+$white_color : #ffffff;
+
+
+.rri-number-counter__item-border {
+    width         : 100px;
+    height        : 100px;
+    border        : 2px solid blue;
+    border-radius : 50%;
+    text-align    : center;
+    line-height   : 100px;
+}
+
+.rri-number-counter {
+    background-size     : cover;
+    background-position : 50%;
+    position            : relative;
+    padding             : 200px 0;
+
+    &__element {
+        position        : relative;
+        display         : flex;;
+        align-items     : center;
+        justify-content : center;
+        margin-bottom   : 14px;
+
+        &_large {
+            width  : 214px;
+            height : 214px;
+
+            .rri-number-counter__count {
+                font-size   : 65px;
+                line-height : 100px;
+                font-weight : bold;
+                margin      : 0;
+            }
+
+            .rri-number-counter__count-circle {
+                stroke-dasharray  : 653px;
+                stroke-dashoffset : 653px;
+            }
+
+            .rri-number-counter__circle-container {
+                position : absolute;
+                width    : 214px;
+                height   : 214px;
+            }
+        }
+
+
+        &_small {
+            width  : 129px;
+            height : 129px;
+
+            .rri-number-counter__count {
+                font-size   : 38px;
+                line-height : 100px;
+                font-weight : bold;
+                margin      : 0;
+                color       : #38484f;
+            }
+
+            .rri-number-counter__count-circle {
+                stroke-dasharray  : 389px;
+                stroke-dashoffset : 389px;
+            }
+
+            .rri-number-counter__circle-container {
+                position : absolute;
+                width    : 129px;
+                height   : 129px;
+            }
+        }
+
+    }
+
+    &__circle {
+        position  : absolute;
+        left      : 0;
+        transform : rotate(-90deg);
+    }
+
+    &__item {
+        display  : inline-block;
+        margin   : 0 20px 50px 20px;
+        position : relative;
+        z-index  : 3;
+    }
+
+    &__container {
+        display         : flex;
+        flex-wrap       : wrap;
+        align-items     : flex-start;
+        justify-content : center;
+
+        &_white {
+            .rri-number-counter__count-title,
+            .rri-number-counter__count {
+                color : $white_color;
+            }
+        }
+    }
+
+    &__count-title {
+        font-size      : 16px;
+        font-weight    : bold;
+        letter-spacing : 0.5px;
+        line-height    : 26px;
+        text-align     : center;
+        color          : $text_color;
+    }
+
+    &__image {
+        width: 100px;
+        height : 100px;
+        object-fit: cover;
+    }
+
+    &__image-container {
+        margin-right : 20px;
+    }
+
+    &:before {
+        content  : "";
+        position : absolute;
+        top      : 0;
+        left     : 0;
+        right    : 0;
+        bottom   : 0;
+        z-index  : 2;
+    }
+
+    &.rri-main-block {
+        padding : 200px 0;
+    }
+}

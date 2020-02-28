@@ -61,12 +61,12 @@ var frontend_blocks =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 419);
+/******/ 	return __webpack_require__(__webpack_require__.s = 428);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 19:
+/***/ 17:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -115,12 +115,12 @@ function domReady(callback) {
 
 /***/ }),
 
-/***/ 419:
+/***/ 428:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(429);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfill__);
 /**
  * All frontend scripts required by our blocks should be included here.
@@ -133,7 +133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 
-var context = __webpack_require__(421); // Import.
+var context = __webpack_require__(430); // Import.
 
 
 context.keys().forEach(function (key) {
@@ -142,7 +142,7 @@ context.keys().forEach(function (key) {
 
 /***/ }),
 
-/***/ 420:
+/***/ 429:
 /***/ (function(module, exports) {
 
 /**
@@ -155,17 +155,19 @@ if (window.NodeList && !window.NodeList.prototype.forEach) {
 
 /***/ }),
 
-/***/ 421:
+/***/ 430:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./accordion/frontend.js": 422,
-	"./buttons/frontend.js": 423,
-	"./generic-slider/frontend.js": 424,
-	"./gift-slider/frontend.js": 425,
-	"./hero-slider/frontend.js": 426,
-	"./two-tone-text/frontend.js": 427,
-	"./video-popup/frontend.js": 428
+	"./accordion/frontend.js": 431,
+	"./buttons/frontend.js": 432,
+	"./generic-slider/frontend.js": 433,
+	"./gift-slider/frontend.js": 434,
+	"./hero-slider/frontend.js": 435,
+	"./image-text-grid/frontend.js": 436,
+	"./number-counter/frontend.js": 437,
+	"./two-tone-text/frontend.js": 438,
+	"./video-popup/frontend.js": 439
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -181,17 +183,17 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 421;
+webpackContext.id = 430;
 
 /***/ }),
 
-/***/ 422:
+/***/ 431:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initAll", function() { return initAll; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(17);
 /**
  * WordPress dependencies
  */
@@ -270,7 +272,7 @@ var init = function init(el) {
 };
 
 var initAll = function initAll() {
-  document.querySelectorAll('.rri-accordion').forEach(function (el) {
+  document.querySelectorAll('.rri-accordion:not(.rri-accordion--design-plain)').forEach(function (el) {
     return init(el);
   });
 };
@@ -278,19 +280,47 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(in
 
 /***/ }),
 
-/***/ 423:
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ 424:
+/***/ 432:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(17);
+/**
+ * WordPress dependencies
+ */
+
+Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(function () {
+  jQuery(window).resize(function () {
+    jQuery('.rri-buttons__item-container').each(function () {
+      var width = jQuery(this).parent().width();
+      var widthChild = jQuery(this).width();
+      var widthChildSiblings = jQuery(this).siblings().width();
+      var widthSum = widthChild + widthChildSiblings + 20;
+
+      if (width < widthSum) {
+        jQuery(this).next().css({
+          "margin-left": "0",
+          "margin-top": "20px"
+        });
+      } else {
+        jQuery(this).next().css({
+          "margin-left": "20px",
+          "margin-top": "0"
+        });
+      }
+    });
+  });
+});
+
+/***/ }),
+
+/***/ 433:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(17);
 /**
  * WordPress dependencies
  */
@@ -308,12 +338,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 425:
+/***/ 434:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(17);
 /**
  * WordPress dependencies
  */
@@ -398,12 +428,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 426:
+/***/ 435:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(17);
 /**
  * WordPress dependencies
  */
@@ -424,12 +454,56 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 427:
+/***/ 436:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(17);
+/**
+ * WordPress dependencies
+ */
+
+Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(function () {
+  var $sliders = jQuery('.rri-image-text-grid');
+
+  if (typeof jQuery.fn.slick === 'function' && $sliders.length) {
+    $sliders.each(function (i, item) {
+      jQuery(item).find('.rri-grid-block__slider').not('.slick-initialized').slick({
+        dots: true,
+        responsive: [{
+          breakpoint: 768,
+          settings: {
+            arrows: false
+          }
+        }]
+      });
+    });
+  }
+});
+
+/***/ }),
+
+/***/ 437:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(17);
+/**
+ * WordPress dependencies
+ */
+
+Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(function () {});
+
+/***/ }),
+
+/***/ 438:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__ = __webpack_require__(17);
 /**
  * WordPress dependencies
  */
@@ -485,14 +559,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 428:
+/***/ 439:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(440);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bigpicture__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__ = __webpack_require__(17);
 /**
  * External dependencies
  */
@@ -540,7 +614,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 429:
+/***/ 440:
 /***/ (function(module, exports) {
 
 // BigPicture.js | license MIT | henrygd.me/bigpicture

@@ -1,0 +1,26 @@
+.editor-block-list__layout {
+  .rri-image-text-grid {
+	.rri-image-upload-has-placeholder {
+	  height: 100%;
+	}
+
+	.rri-image-upload-placeholder {
+	  background-size: 100% 100%;
+	  width: 100%;
+	}
+
+	.rri-grid-row .rri-grid-block__slider .slick-slide p {
+	  position: relative;
+	  bottom: 0;
+	}
+
+	.slick-slide {
+	  .editor-rich-text {
+		position: absolute;
+		z-index: 999;
+		bottom: 45px;
+	  }
+
+	}
+  }
+}

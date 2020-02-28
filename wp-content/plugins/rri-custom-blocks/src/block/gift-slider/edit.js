@@ -65,9 +65,9 @@ addFilter('stackable.gift-slider.edit.inspector.style.before', 'stackable/gift-s
 
 						if (slides_data.length < value) {
 							slider_data_clone.push({
-								above_title: __('Above title', i18n),
-								name: __('Name', i18n),
-								number: __('Number', i18n),
+								above_title: '',
+								name: '',
+								number: '',
 								image: {
 									url: '',
 									id: ''
@@ -76,7 +76,7 @@ addFilter('stackable.gift-slider.edit.inspector.style.before', 'stackable/gift-s
 									url: '',
 									newTab: false,
 									noFollow: false,
-									text: 'Learn more'
+									text: ''
 
 								}
 							});
@@ -144,26 +144,19 @@ class Edit extends Component {
 		};
 		this.sliderRef = createRef();
 		this.decreasesSlides = false;
-		this.handleClick = this.handleClick.bind(this);
-		this.handleInnerClick = this.handleInnerClick.bind(this);
 		this.onChangeUrl = this.onChangeUrl.bind(this);
 		this.onChangeNewTab = this.onChangeNewTab.bind(this);
 		this.onChangeNoFollow = this.onChangeNoFollow.bind(this);
 		this.animatedSlides = this.animatedSlides.bind(this);
 		this.removeAnimatedSlides = this.removeAnimatedSlides.bind(this);
 		this.toggleSlidesClasses = this.toggleSlidesClasses.bind(this);
+		this.handleFocusOutside = this.handleFocusOutside.bind(this)
 	}
 
-	handleClick(ev) {
+	handleFocusOutside() {
 		this.setState({
-			openUrlPopover: true
-		});
-	}
-
-	handleInnerClick(ev) {
-		this.setState({
-			openUrlPopover: false
-		});
+			openUrlPopover: null,
+		})
 	}
 
 	onChangeUrl(value, index) {
@@ -311,13 +304,13 @@ class Edit extends Component {
 					<Fragment>
 						<div className="rri-gift-slider__inner"
 							 ref={this.sliderRef}
-							 onMouseDown={this.handleInnerClick}
 						>
 							{slides_data.map((slide, index) => {
 								return (
 									<div className="rri-gift-slide">
 										<div className="rri-gift-slide__content">
 											<RichText
+												placeholder={__('Above Title', i18n)}
 												tagName="h3"
 												className="rri-gift-slide__above-title"
 												value={slide.above_title}
@@ -328,8 +321,10 @@ class Edit extends Component {
 														slides_data: slider_data_clone
 													});
 												}}
+												keepPlaceholderOnFocus
 											/>
 											<RichText
+												placeholder={__('Title', i18n)}
 												tagName="h2"
 												className="rri-gift-slide__title"
 												value={slide.name}
@@ -340,8 +335,10 @@ class Edit extends Component {
 														slides_data: slider_data_clone
 													});
 												}}
+												keepPlaceholderOnFocus
 											/>
 											<RichText
+												placeholder={__('Number', i18n)}
 												tagName="p"
 												className="rri-gift-slide__number"
 												value={slide.number}
@@ -352,10 +349,12 @@ class Edit extends Component {
 														slides_data: slider_data_clone
 													});
 												}}
+												keepPlaceholderOnFocus
 											/>
 											<div className="rri-gift-slide__cta"
-												 onClick={this.handleClick}>
+												 onClick={() => this.setState({openUrlPopover: index})}>
 												<RichText
+													placeholder={__('Learn more', i18n)}
 													tagName="span"
 													className="rri-gift-slide__cta-text"
 													value={slide.link.text}
@@ -366,8 +365,9 @@ class Edit extends Component {
 															slides_data: slider_data_clone
 														});
 													}}
+													keepPlaceholderOnFocus
 												/>
-												{this.state.openUrlPopover && <UrlInputPopover
+												{this.state.openUrlPopover === index && <UrlInputPopover
 													value={slide.link.url}
 													newTab={slide.link.newTab}
 													noFollow={slide.link.noFollow}
