@@ -44,6 +44,6 @@ export const settings = {
 	modules: {
 		'advanced-general': true,
 		'advanced-block-spacing': true,
-		'advanced-responsive': true,
+		// 'advanced-responsive': true,
 	}
 };
