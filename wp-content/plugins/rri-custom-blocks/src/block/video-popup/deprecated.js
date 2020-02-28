@@ -28,7 +28,7 @@ const deprecatedSave_1_15_6 = props => {
 		backgroundType = '',
 		backgroundOpacity,
 		design = 'basic',
-		borderRadius = 12,
+		borderRadius = 0,
 		shadow = 3,
 	} = props.attributes;
 
@@ -53,7 +53,7 @@ const deprecatedSave_1_15_6 = props => {
 		'--rri-background-color': backgroundImageURL || backgroundColorType === 'gradient' ? backgroundColor : undefined,
 		'--rri-background-color2': backgroundColorType === 'gradient' && backgroundColor2 ? backgroundColor2 : undefined,
 		'--rri-background-direction': backgroundColorType === 'gradient' ? `${ backgroundColorDirection }deg` : undefined,
-		borderRadius: design !== 'plain' && borderRadius !== 12 ? borderRadius : undefined,
+		borderRadius: design !== 'plain' && borderRadius !== 0 ? borderRadius : undefined,
 	};
 
 	return (
@@ -136,7 +136,7 @@ const deprecatedSchema_1_15_6 = {
 	},
 	borderRadius: {
 		type: 'number',
-		default: 12,
+		default: 0,
 	},
 	shadow: {
 		type: 'number',
@@ -214,7 +214,7 @@ const deprecatedSchema_1_11 = {
 	},
 	borderRadius: {
 		type: 'number',
-		default: 12,
+		default: 0,
 	},
 	shadow: {
 		type: 'number',
@@ -243,7 +243,7 @@ const deprecatedSave_1_11 = props => {
 		backgroundColor,
 		backgroundOpacity,
 		design = 'basic',
-		borderRadius = 12,
+		borderRadius = 0,
 		shadow = 3,
 	} = props.attributes;
 
@@ -264,7 +264,7 @@ const deprecatedSave_1_11 = props => {
 		backgroundColor: backgroundColor ? backgroundColor : undefined,
 		backgroundImage: backgroundImageURL ? `url(${ backgroundImageURL })` : undefined,
 		'--rri-background-color': backgroundImageURL ? backgroundColor : undefined,
-		borderRadius: design !== 'plain' && borderRadius !== 12 ? borderRadius : undefined,
+		borderRadius: design !== 'plain' && borderRadius !== 0 ? borderRadius : undefined,
 	};
 
 	const playButton = {
@@ -534,7 +534,7 @@ const deprecated = [
 				align: 'center',
 				playButtonColor: '#ffffff',
 				design: 'basic',
-				borderRadius: 12,
+				borderRadius: 0,
 				shadow: 3,
 			}
 		},

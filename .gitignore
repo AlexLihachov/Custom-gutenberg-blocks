@@ -39,6 +39,7 @@ wp-content/plugins/simple-301-redirects
 wp-content/plugins/sx-easy-going-smtp
 wp-content/plugins/sx-photo-gallery
 wp-content/plugins/wordpress-seo
+wp-content/plugins/custom-contact-forms/
 
 # ignore default wordpress themes
 wp-content/themes/twenty*/

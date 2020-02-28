@@ -134,7 +134,14 @@ class Edit extends Component{
         this.onChangeUrl      = this.onChangeUrl.bind(this);
         this.onChangeNewTab   = this.onChangeNewTab.bind(this);
         this.onChangeNoFollow = this.onChangeNoFollow.bind(this);
+        this.handleFocusOutside = this.handleFocusOutside.bind(this)
     }
+
+    handleFocusOutside () {
+        this.setState({
+            openUrlPopover: null,
+        })
+    };
 
     handleClick(){
         this.setState({
@@ -212,14 +219,14 @@ class Edit extends Component{
                                 />
                                 <div className = "rri-two-tone-text__grid-text">
                                     <RichText
-                                        tagName = {titleleftTag}
+                                        tagName = {titleleftTag || "h3"}
                                         className = "rri-two-tone-text__edit-text rri-two-tone-text__first-line"
                                         value = {twoTone.titleleft}
                                         onChange = {titleleft => {
                                             const twoToneDataClone     = cloneDeep(twoTone);
                                             twoToneDataClone.titleleft = titleleft;
                                             setAttributes({
-                                                titleleft : twoToneDataClone
+                                                twoTone : twoToneDataClone
                                             });
                                         }}
                                         placeholder = {__('Title Left', i18n)}
@@ -227,7 +234,7 @@ class Edit extends Component{
                                     />
 
                                     <RichText
-                                        tagName = {titlerightTag}
+                                        tagName = {titlerightTag || "h3"}
                                         className = "rri-two-tone-text__edit-text rri-two-tone-text__second-line"
                                         value = {twoTone.titleright}
                                         onChange = {titleright => {

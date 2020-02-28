@@ -20,17 +20,17 @@ import {i18n} from '../../constants';
  */
 import {SliderIcon} from '../../icons';
 
-export const name = 'rri/gift-slider';
+export const name = 'rri/image-text-grid';
 
 export const settings = {
-	title: __('Gift slider', i18n),
-	description: __('Gift slider', i18n),
+	title: __('Image Text Grid', i18n),
+	description: __('Image Text Grid', i18n),
 	icon: SliderIcon,
 	category: 'rri-blocks',
 	keywords: [
-		__('Slider', i18n),
-		__('Slick', i18n),
-		__('Gift', i18n),
+		__('Image', i18n),
+		__('Text', i18n),
+		__('Grid', i18n),
 		__('RRI', i18n)
 	],
 	supports: {
@@ -44,6 +44,5 @@ export const settings = {
 	modules: {
 		'advanced-general': true,
 		'advanced-block-spacing': true,
-		// 'advanced-responsive': true,
 	}
 };
