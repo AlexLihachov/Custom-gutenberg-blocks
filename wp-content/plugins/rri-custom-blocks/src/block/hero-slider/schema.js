@@ -9,8 +9,8 @@ export const schema = {
 		type: 'array',
 		default: [
 			{
-				title: __('Lorem et dolor ipsum', i18n),
-				copy: __('Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean vehicula lacus sit amet fringilla.', i18n),
+				title: '',
+				copy: '',
 				image: {
 					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
 					id: ''
@@ -22,14 +22,14 @@ export const schema = {
 					url: '',
 					newTab: false,
 					noFollow: false,
-					text: 'Link',
+					text: '',
 					design: 'primary',
 					size: 'small'
 				}
 			},
 			{
-				title: __('Lorem et dolor ipsum 2', i18n),
-				copy: __('Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean vehicula lacus sit amet fringilla.', i18n),
+				title: '',
+				copy: '',
 				image: {
 					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
 					id: ''
@@ -41,14 +41,14 @@ export const schema = {
 					url: '',
 					newTab: false,
 					noFollow: false,
-					text: 'Link',
+					text: '',
 					design: 'primary',
 					size: 'small'
 				}
 			},
 			{
-				title: __('Lorem et dolor ipsum 3', i18n),
-				copy: __('Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean vehicula lacus sit amet fringilla.', i18n),
+				title: '',
+				copy: '',
 				image: {
 					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
 					id: ''
@@ -60,7 +60,7 @@ export const schema = {
 					url: '',
 					newTab: false,
 					noFollow: false,
-					text: 'Link',
+					text: '',
 					design: 'primary',
 					size: 'small'
 				}
@@ -75,6 +75,9 @@ export const schema = {
 			infinite: false,
 			autoplaySpeed: 0,
 			autoplay: false,
+			pauseOnFocus: false,
+			pauseOnHover: false,
+			accessibility: false,
 			speed: 300,
 			dots: true,
 			arrows: true,

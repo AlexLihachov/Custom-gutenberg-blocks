@@ -70,8 +70,8 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 						if (slides_data.length < value) {
 							slider_data_clone.push(
 								{
-									title: __('Lorem et dolor ipsum', i18n),
-									copy: __('Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean vehicula lacus sit amet fringilla.', i18n),
+									title: '',
+									copy: '',
 									image: {
 										url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
 										id: ''
@@ -83,7 +83,7 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 										url: '',
 										newTab: false,
 										noFollow: false,
-										text: 'Link',
+										text: '',
 										design: 'primary',
 										size: 'small'
 									}
@@ -222,8 +222,18 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 class Edit extends Component {
 	constructor() {
 		super(...arguments);
+		this.state = {
+			openUrlPopover: false
+		};
 		this.sliderRef = createRef();
 		this.decreasesSlides = false;
+		this.handleFocusOutside = this.handleFocusOutside.bind(this)
+	}
+
+	handleFocusOutside() {
+		this.setState({
+			openUrlPopover: null,
+		});
 	}
 
 	componentDidMount() {
@@ -294,6 +304,7 @@ class Edit extends Component {
 											<div className="rri-hero-slide__content">
 												<RichText
 													tagName="h2"
+													placeholder={__('Title', i18n)}
 													className="rri-hero-slide__title"
 													value={title}
 													onChange={(value) => {
@@ -303,9 +314,11 @@ class Edit extends Component {
 															slides_data: slider_data_clone
 														});
 													}}
+													keepPlaceholderOnFocus
 												/>
 												<RichText
 													tagName='p'
+													placeholder={__('Copy', i18n)}
 													className="rri-hero-slide__copy"
 													value={copy}
 													onChange={(value) => {
@@ -315,10 +328,13 @@ class Edit extends Component {
 															slides_data: slider_data_clone
 														});
 													}}
+													keepPlaceholderOnFocus
 												/>
-												<div className={ctaClasses}>
+												<div className={ctaClasses}
+													 onClick={() => this.setState({openUrlPopover: index})}>
 													<RichText
 														tagName="span"
+														placeholder={__('Link Text', i18n)}
 														className="rri-hero-slide__cta-text"
 														value={button.text}
 														onChange={(value) => {
@@ -328,6 +344,7 @@ class Edit extends Component {
 																slides_data: slider_data_clone
 															});
 														}}
+														keepPlaceholderOnFocus
 													/>
 												</div>
 											</div>

@@ -50,13 +50,13 @@ const save = (props) => {
 												className="rri-hero-slide__copy"
 												value={copy}
 											/>
-											<a href="/" target="_blank" className={ctaClasses}>
+											<div className={ctaClasses}>
 												<RichText.Content
 													tagName="span"
 													className="rri-hero-slide__cta-text"
 													value={button.text}
 												/>
-											</a>
+											</div>
 										</div>
 									</div>
 								</div>

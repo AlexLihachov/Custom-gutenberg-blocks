@@ -221,6 +221,10 @@ var toggleAccordion = function toggleAccordion(el) {
 };
 
 var forceCloseAccordion = function forceCloseAccordion(el) {
+  if (el.classList.contains('rri-accordion--design-plain')) {
+    return;
+  }
+
   el.classList.remove('rri-accordion--open');
   el.setAttribute('aria-expanded', 'false');
 };
