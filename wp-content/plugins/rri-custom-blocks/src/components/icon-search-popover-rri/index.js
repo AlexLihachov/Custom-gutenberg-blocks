@@ -34,7 +34,7 @@ const IconSearchPopoverRRI = withState( {
               setState,
           } = props;
     const results = searchIconName( value );
-console.log(results);
+
     return (
         <Popover
             className="rri-icon-popover"
