@@ -1,0 +1,256 @@
+$colorBlack: #191919;
+$colorWhite: #fff;
+$colorBlue: #14AECF;
+$proximaBold: "Proxima Nova Bold", "Helvetica Neue", "Arial Narrow", sans-serif;
+$proxima: "Proxima Nova", "Helvetica Neue", "Arial Narrow", sans-serif;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.rri-gallery01 {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+
+  &__title {
+	font-family: $proximaBold;
+	font-size: 24px;
+	color: $colorBlack;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+  }
+
+  &__subtext {
+	max-width: 700px;
+	width: 90%;
+	margin: 20px auto;
+	font-family: $proxima;
+	font-size: 16px;
+	line-height: 16px;
+	color: $colorBlack;
+	text-align: center;
+  }
+
+  &-grid {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	position: relative;
+	@media screen and (min-width: 768px) {
+	  flex-direction: row;
+	  justify-content: space-between;
+	}
+	@media screen and (min-width: 1024px) {
+	  display: block;
+	}
+
+
+	.rri-gallery01-block {
+	  background: red;
+	  position: relative;
+	  width: 100%;
+	  max-width: 375px;
+	  height: 260px;
+	  margin: 0 auto 20px;
+	  overflow: hidden;
+
+	  @media screen and (min-width: 768px) {
+		width: 49%;
+		max-width: inherit;
+		height: 30vw;
+		float: left;
+		margin: 0;
+		margin-bottom: 15px;
+	  }
+
+	  @media screen and (min-width: 1024px) {
+		width: 24.5%;
+		height: 20vw;
+		max-height: 243px;
+		margin-right: 2.5px;
+		margin-left: 2.5px;
+		margin-bottom: 5px;
+	  }
+
+
+
+
+
+	  &:last-child {
+		float: none;
+		position: relative;
+		left: 2px;
+	  }
+
+	  &_big {
+		@media screen and (min-width: 1024px) {
+		  width: 49.5%;
+		  max-width: initial;
+		  height: 40.44vw;
+		  max-height: 491px;
+		}
+
+		@media screen and (min-width: 1110px) {
+		  width: 49.4%;
+		  height: 40.4vw;
+		}
+
+		@media screen and (min-width: 1246px) {
+		  height: 40.3vw;
+		}
+
+
+
+		.rri-gallery01-block-info {
+		  @media screen and (min-width: 1024px) {
+			margin: 20px;
+			font-size: 18px;
+		  }
+		  @media screen and (min-width: 1024px) {
+			.rri-gallery01-block-info__name {
+			  font-size: 30px;
+			}
+		  }
+		}
+
+		.rri-gallery01-block__more-info {
+		  @media screen and (min-width: 1024px) {
+			width: 85%;
+			font-size: 20px;
+			line-height: 37px;
+		  }
+		  p {
+			display: none;
+			@media screen and (min-width: 768px) {
+			  display: block;
+			}
+		  }
+
+		  img {
+			width: 60px;
+			@media screen and (min-width: 768px) {
+			  margin-top: 25px;
+			}
+		  }
+		}
+
+	  }
+
+
+	  a {
+		position: absolute;
+		top: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+	  }
+
+	  &__picture {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: 0.5s;
+	  }
+
+	  &-info {
+		position: relative;
+		z-index: 9;
+		margin: 15px;
+		font-family: $proxima;
+		font-size: 14px;
+		color: $colorWhite;
+		text-align: right;
+
+		&__name {
+		  font-family: $proximaBold;
+		  text-transform: uppercase;
+		  font-size: 18px;
+		}
+	  }
+
+	  &__more-info {
+		position: absolute;
+		top: 40%;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 9;
+		opacity: 0;
+		transition: 0.5s;
+		width: 85%;
+		margin: auto;
+		font-family: $proximaBold;
+		font-size: 12px;
+		line-height: 22px;
+		color: $colorWhite;
+		text-transform: uppercase;
+		text-align: center;
+
+
+		p {
+		  display: none;
+		  @media screen and (min-width: 768px) {
+			display: block;
+		  }
+		}
+
+		img {
+
+		  width: 50px;
+
+		  @media screen and (min-width: 768px) {
+			margin-top: 10px;
+		  }
+
+		}
+	  }
+
+	  &:hover {
+		.rri-gallery01-block__more-info {
+		  opacity: 1;
+		}
+
+		.rri-gallery01-block__picture {
+		  filter: blur(5px);
+		}
+	  }
+
+	}
+
+  }
+
+  &__load-more {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 143px;
+	height: 44px;
+	margin: 30px auto 0;
+	background: none;
+	border: 1px solid $colorBlue;
+	font-family: $proximaBold;
+	font-size: 14px;
+	color: $colorBlue;
+	text-transform: uppercase;
+	outline: none;
+	cursor: pointer;
+
+	&:hover {
+	  border: 2px solid $colorBlue;
+	}
+  }
+}
