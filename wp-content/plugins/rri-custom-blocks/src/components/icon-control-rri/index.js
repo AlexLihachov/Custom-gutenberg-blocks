@@ -9,8 +9,7 @@ import {withInstanceId, withState} from '@wordpress/compose';
  * External dependencies
  */
 
-import {fab} from '../icon-search-popover-rri/fonts';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {icon} from '../icon-search-popover-rri/fonts';
 import {i18n} from '../../constants';
 import {omit} from 'lodash';
 import {IconSearchPopoverRRI} from '../../components';
@@ -30,12 +29,12 @@ export const isValidIconValue = value => {
     }
 
     const prefix = value.match( /^\w*/ )[ 0 ];
-    if ( ! [ 'fab' ].includes( prefix ) ) {
+    if ( ! [ 'icon' ].includes( prefix ) ) {
         return false
     }
 
     const icons = {
-        fab
+        icon
     };
     const matches = Object.values( icons[ prefix ] ).filter( icon => icon.iconName === iconArray[ 1 ] );
     return matches.length > 0
@@ -66,7 +65,6 @@ const IconControlRRI = withInstanceId( withState( {
               setState,
           } = props;
 
-    const selectedIcon = getIconArray( props.value );
     const isValidIcon = isValidIconValue( props.value );
 
     return (
@@ -93,8 +91,8 @@ const IconControlRRI = withInstanceId( withState( {
                             }
                         } }
                     >
-                        { isValidIcon && <FontAwesomeIcon icon={ selectedIcon } /> }
-                        { ! isValidIcon && <FontAwesomeIcon icon={ [ 'far', 'smile' ] } style={ { opacity: 0.3 } } /> }
+                        { isValidIcon && <span className={ props.value } ></span> }
+                        { ! isValidIcon && <span className="icon icon-Plus" style={ { opacity: 0.3 } } /> }
                     </Button>
                     { openPopover &&
                     <IconSearchPopoverRRI

@@ -9,60 +9,57 @@ export const schema = {
 		type: 'array',
 		default: [
 			{
-				title: '',
-				copy: '',
+				title: __('Lorem et dolor ipsum', i18n),
+				copy: __('Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean vehicula lacus sit amet fringilla.', i18n),
 				image: {
 					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
 					id: ''
 				},
-				params: {
-					align: 'left'
-				},
 				button: {
-					url: '',
-					newTab: false,
+					url: 'https://google.com',
+					newTab: true,
 					noFollow: false,
-					text: '',
-					design: 'primary',
-					size: 'small'
+					text: 'Buy Now'
+				},
+				params: {
+					buttonSize: 'small',
+					align: 'left'
 				}
 			},
 			{
-				title: '',
-				copy: '',
+				title: __('Lorem et dolor ipsum 2', i18n),
+				copy: __('Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean vehicula lacus sit amet fringilla.', i18n),
 				image: {
 					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
 					id: ''
 				},
-				params: {
-					align: 'left'
-				},
 				button: {
-					url: '',
-					newTab: false,
+					url: 'https://google.com',
+					newTab: true,
 					noFollow: false,
-					text: '',
-					design: 'primary',
-					size: 'small'
+					text: 'Buy Now'
+				},
+				params: {
+					buttonSize: 'small',
+					align: 'left'
 				}
 			},
 			{
-				title: '',
-				copy: '',
+				title: __('Lorem et dolor ipsum 3', i18n),
+				copy: __('Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean vehicula lacus sit amet fringilla.', i18n),
 				image: {
 					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
 					id: ''
 				},
-				params: {
-					align: 'left'
-				},
 				button: {
-					url: '',
-					newTab: false,
+					url: 'https://google.com',
+					newTab: true,
 					noFollow: false,
-					text: '',
-					design: 'primary',
-					size: 'small'
+					text: 'Buy Now'
+				},
+				params: {
+					buttonSize: 'small',
+					align: 'left'
 				}
 			}
 		],
@@ -75,9 +72,6 @@ export const schema = {
 			infinite: false,
 			autoplaySpeed: 0,
 			autoplay: false,
-			pauseOnFocus: false,
-			pauseOnHover: false,
-			accessibility: false,
 			speed: 300,
 			dots: true,
 			arrows: true,

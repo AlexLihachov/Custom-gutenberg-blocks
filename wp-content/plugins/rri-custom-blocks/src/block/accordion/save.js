@@ -69,8 +69,8 @@ const save = props => {
 											 backgroundAttrName="container%s"
 											 blockProps={props}
 											 showBackground={show.headerBackground}
-											 role={design !== 'plain' && 'button'}
-											 tabIndex={design !== 'plain' && '0'}
+											 role="button"
+											 tabIndex="0"
 										 >
 											 <RichText.Content
 												 tagName={titleTag || 'h4'}
