@@ -14,5 +14,8 @@
   z-index: 999;
   bottom: 45px;
 }
+.editor-block-list__layout .rri-image-text-grid .slick-next, .editor-block-list__layout .rri-image-text-grid .slick-prev {
+  font-size: 0;
+}
 
 /*# sourceMappingURL=editor.css.map */

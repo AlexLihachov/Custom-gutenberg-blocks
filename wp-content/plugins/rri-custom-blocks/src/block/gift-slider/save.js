@@ -27,6 +27,10 @@ const save = (props) => {
 						{slides_data.map((slide) => {
 							const linkTarget = slide.link.newTab ? '_blank' : '_self';
 							const rel = ['noopener', 'noreferrer'];
+							const above_title = slide.above_title !== '' ? slide.above_title : 'Above title';
+							const name = slide.name !== '' ? slide.name : 'Title';
+							const number = slide.number !== '' ? slide.number : 'Number';
+							const button_text = slide.link.text !== '' ? slide.link.text : 'Click here';
 
 							if (slide.link.noFollow) {
 								rel.push('nofollow')
@@ -37,19 +41,19 @@ const save = (props) => {
 										<RichText.Content
 											tagName="h3"
 											className="rri-gift-slide__above-title"
-											value={slide.above_title}
+											value={above_title}
 										/>
 										<RichText.Content
 											tagName="h2"
 											className="rri-gift-slide__title"
-											value={slide.name}
+											value={name}
 										/>
-										<p className="rri-gift-slide__number">{slide.number}</p>
+										<p className="rri-gift-slide__number">{number}</p>
 										<a className="rri-gift-slide__cta"
 										   href={slide.link.url}
 										   target={linkTarget}
 										   rel={rel.join(' ') || undefined}
-										>{slide.link.text}</a>
+										>{button_text}</a>
 										<img className="rri-gift-slide__image"
 											 src={slide.image.url}
 											 alt={slide.title}/>

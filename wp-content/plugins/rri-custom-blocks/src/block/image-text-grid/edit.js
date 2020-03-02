@@ -293,6 +293,7 @@ class Edit extends Component {
 																onChange={(value) => {
 																	const row_data_clone = cloneDeep(row_data);
 																	row_data_clone[index].sliders[indexSlide].name = value;
+																	console.log(row_data_clone)
 																	setAttributes({
 																		row_data: row_data_clone
 																	});
