@@ -61,7 +61,7 @@ var frontend_blocks =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 428);
+/******/ 	return __webpack_require__(__webpack_require__.s = 433);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -115,12 +115,12 @@ function domReady(callback) {
 
 /***/ }),
 
-/***/ 428:
+/***/ 433:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(429);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill__ = __webpack_require__(434);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfill___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfill__);
 /**
  * All frontend scripts required by our blocks should be included here.
@@ -133,7 +133,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  */
 
 
-var context = __webpack_require__(430); // Import.
+var context = __webpack_require__(435); // Import.
 
 
 context.keys().forEach(function (key) {
@@ -142,7 +142,7 @@ context.keys().forEach(function (key) {
 
 /***/ }),
 
-/***/ 429:
+/***/ 434:
 /***/ (function(module, exports) {
 
 /**
@@ -155,19 +155,19 @@ if (window.NodeList && !window.NodeList.prototype.forEach) {
 
 /***/ }),
 
-/***/ 430:
+/***/ 435:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./accordion/frontend.js": 431,
-	"./buttons/frontend.js": 432,
-	"./generic-slider/frontend.js": 433,
-	"./gift-slider/frontend.js": 434,
-	"./hero-slider/frontend.js": 435,
-	"./image-text-grid/frontend.js": 436,
-	"./number-counter/frontend.js": 437,
-	"./two-tone-text/frontend.js": 438,
-	"./video-popup/frontend.js": 439
+	"./accordion/frontend.js": 436,
+	"./buttons/frontend.js": 437,
+	"./generic-slider/frontend.js": 438,
+	"./gift-slider/frontend.js": 439,
+	"./hero-slider/frontend.js": 440,
+	"./image-text-grid/frontend.js": 441,
+	"./number-counter/frontend.js": 442,
+	"./two-tone-text/frontend.js": 443,
+	"./video-popup/frontend.js": 444
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -183,11 +183,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 430;
+webpackContext.id = 435;
 
 /***/ }),
 
-/***/ 431:
+/***/ 436:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -284,7 +284,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(in
 
 /***/ }),
 
-/***/ 432:
+/***/ 437:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -319,7 +319,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 433:
+/***/ 438:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -342,7 +342,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 434:
+/***/ 439:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -432,7 +432,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 435:
+/***/ 440:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -458,7 +458,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 436:
+/***/ 441:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -488,7 +488,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 437:
+/***/ 442:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -502,7 +502,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 438:
+/***/ 443:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -563,12 +563,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 439:
+/***/ 444:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture__ = __webpack_require__(445);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bigpicture___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bigpicture__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__ = __webpack_require__(17);
 /**
@@ -618,7 +618,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__wordpress_dom_ready__["a" /* default */])(fu
 
 /***/ }),
 
-/***/ 440:
+/***/ 445:
 /***/ (function(module, exports) {
 
 // BigPicture.js | license MIT | henrygd.me/bigpicture
