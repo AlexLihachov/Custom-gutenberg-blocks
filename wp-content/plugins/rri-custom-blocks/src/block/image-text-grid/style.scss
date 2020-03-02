@@ -139,8 +139,10 @@ body {
 
 	  &__more-info {
 		width: 100%;
+		text-align: center;
 		@media screen and (min-width: 768px) {
 		  width: auto;
+		  text-align: left;
 		}
 	  }
 
