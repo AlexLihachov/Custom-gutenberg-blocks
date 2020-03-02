@@ -1,0 +1,347 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "RRI";
+  src: url("/wp-content/themes/dev-rri-2020/assets/fonts/RRI.woff2?uzuw8t") format("woff2"), url("/wp-content/themes/dev-rri-2020/assets/fonts/RRI.ttf?uzuw8t") format("truetype"), url("/wp-content/themes/dev-rri-2020/assets/fonts/RRI.woff?uzuw8t") format("woff"), url("/wp-content/themes/dev-rri-2020/assets/fonts/RRI.svg?uzuw8t#RRI") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "RRI" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Tony-Robbins:before {
+  content: "";
+}
+
+.icon-Repeat:before {
+  content: "";
+}
+
+.icon-Overlay:before {
+  content: "";
+}
+
+.icon-Add-Above:before {
+  content: "";
+}
+
+.icon-Add-Below:before {
+  content: "";
+}
+
+.icon-Admin-Page:before {
+  content: "";
+}
+
+.icon-Apple-podcasts:before {
+  content: "";
+}
+
+.icon-Border-Settings:before {
+  content: "";
+}
+
+.icon-Bottom .path1:before {
+  content: "";
+  color: #504f4f;
+}
+
+.icon-Bottom .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: white;
+}
+
+.icon-Cart:before {
+  content: "";
+}
+
+.icon-Chevron-Down:before {
+  content: "";
+}
+
+.icon-Chevron-Left:before {
+  content: "";
+}
+
+.icon-Chevron-Right:before {
+  content: "";
+}
+
+.icon-Chevron-Up:before {
+  content: "";
+}
+
+.icon-Clip:before {
+  content: "";
+}
+
+.icon-Close:before {
+  content: "";
+}
+
+.icon-Cog:before {
+  content: "";
+}
+
+.icon-Color:before {
+  content: "";
+}
+
+.icon-Dividers:before {
+  content: "";
+}
+
+.icon-Download:before {
+  content: "";
+}
+
+.icon-Facebook-Messenger:before {
+  content: "";
+}
+
+.icon-Facebook:before {
+  content: "";
+}
+
+.icon-Gizmotron:before {
+  content: "";
+}
+
+.icon-HTML:before {
+  content: "";
+}
+
+.icon-Image:before {
+  content: "";
+}
+
+.icon-Instagram:before {
+  content: "";
+}
+
+.icon-Left .path1:before {
+  content: "";
+  color: #504f4f;
+}
+
+.icon-Left .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: white;
+}
+
+.icon-Linkedin:before {
+  content: "";
+}
+
+.icon-List:before {
+  content: "";
+}
+
+.icon-Login:before {
+  content: "";
+}
+
+.icon-Menu:before {
+  content: "";
+}
+
+.icon-Phone:before {
+  content: "";
+}
+
+.icon-Play-1:before {
+  content: "";
+}
+
+.icon-Play-2:before {
+  content: "";
+}
+
+.icon-Plus:before {
+  content: "";
+}
+
+.icon-Podcast:before {
+  content: "";
+}
+
+.icon-Quote-Closed:before {
+  content: "";
+}
+
+.icon-Quote-Open:before {
+  content: "";
+}
+
+.icon-Right .path1:before {
+  content: "";
+  color: #504f4f;
+}
+
+.icon-Right .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: white;
+}
+
+.icon-Search:before {
+  content: "";
+}
+
+.icon-Share:before {
+  content: "";
+}
+
+.icon-Spacings:before {
+  content: "";
+}
+
+.icon-Spotify:before {
+  content: "";
+}
+
+.icon-Structure:before {
+  content: "";
+}
+
+.icon-Tidal:before {
+  content: "";
+}
+
+.icon-Top .path1:before {
+  content: "";
+  color: #504f4f;
+}
+
+.icon-Top .path2:before {
+  content: "";
+  margin-left: -1em;
+  color: white;
+}
+
+.icon-Trash:before {
+  content: "";
+}
+
+.icon-Twitter:before {
+  content: "";
+}
+
+.icon-Views:before {
+  content: "";
+}
+
+.icon-pencil:before {
+  content: "";
+}
+
+.icon-image:before {
+  content: "";
+}
+
+.icon-cog:before {
+  content: "";
+}
+
+.icon-cogs:before {
+  content: "";
+}
+
+.icon-star-empty:before {
+  content: "";
+}
+
+.icon-star-half:before {
+  content: "";
+}
+
+.icon-star-full:before {
+  content: "";
+}
+
+.icon-heart:before {
+  content: "";
+}
+
+.icon-file-pdf:before {
+  content: "";
+}
+
+.icon-file-word:before {
+  content: "";
+}
+
+.icon-file-excel:before {
+  content: "";
+}
+
+.rri-icon-popover__iconlist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: flex-start;
+  margin-top: 5px;
+  height: 250px;
+  overflow: auto;
+}
+.rri-icon-popover__iconlist button {
+  background: none;
+  padding: 5px;
+  height: auto;
+  border-color: transparent;
+  box-shadow: none;
+}
+.rri-icon-popover__iconlist svg {
+  width: 30px !important;
+  height: 30px;
+  margin: 0;
+  box-sizing: content-box;
+  border-radius: 4px;
+}
+.rri-icon-popover__iconlist .components-base-control__help {
+  font-style: italic;
+}
+
+.rri-icon-popover__label-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.rri-icon-popover__label-container .components-base-control__field {
+  margin-bottom: 0;
+}
+.rri-icon-popover__label-container .rri-icon-popover__input {
+  flex: 1;
+}
+.rri-icon-popover__label-container .components-range-control__reset {
+  margin-left: 8px;
+}
+
+.components-button .icon {
+  font-size: 22px;
+}
+
+/*# sourceMappingURL=editor.css.map */

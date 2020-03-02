@@ -13,6 +13,7 @@ import SVGArrowIcon from './images/arrow.svg';
 import {
 	ColorPaletteControl,
 	DesignPanelBody,
+	ProControlButton,
 	ContentAlignControl,
 	BackgroundControlsHelper,
 	BlockContainer,
@@ -24,7 +25,8 @@ import {
 	HeadingButtonsControl,
 	FourRangeControl,
 	PanelSpacingBody,
-	DivBackground
+	DivBackground,
+	AdvancedPanelBody
 } from '../../components';
 
 import {
@@ -65,28 +67,15 @@ addFilter('stackable.accordion.edit.inspector.layout.before', 'stackable/accordi
 				selected={design}
 				options={applyFilters('stackable.accordion.edit.layouts', [
 					{
-						label: __('Plain', i18n), value: 'plain', image: ImageDesignPlain,
+						label: __('Basic', i18n), value: 'basic', image: ImageDesignBasic,
 					},
 					{
-						label: __('Basic', i18n), value: 'basic', image: ImageDesignBasic,
-					}
+						label: __('Plain', i18n), value: 'plain', image: ImageDesignPlain,
+					},
 				])}
-				onChange={design => {
-					const updatedState = {
-						design
-					};
-
-					if (design === 'plain') {
-						updatedState.showArrow = false;
-						updatedState.openStart = true;
-						props.isOpen = null;
-					} else {
-						updatedState.showArrow = true;
-					}
-
-					setAttributes(updatedState);
-				}}
+				onChange={design => setAttributes({design})}
 			>
+				{<ProControlButton/>}
 			</DesignPanelBody>
 		</Fragment>
 	)
@@ -122,26 +111,23 @@ addFilter('stackable.accordion.edit.inspector.style.before', 'stackable/accordio
 	return (
 		<Fragment>
 			{output}
-			<PanelBody title={__('General', i18n)}>
-				{design !== 'plain' &&
-				<Fragment>
-					<ToggleControl
-						label={__('Close adjacent on open', i18n)}
-						checked={onlyOnePanelOpen}
-						onChange={onlyOnePanelOpen => setAttributes({onlyOnePanelOpen})}
-						className="rri--help-tip-accordion-adjacent-open"
-					/>
-					<ToggleControl
-						label={__('Open at the start', i18n)}
-						checked={openStart}
-						onChange={openStart => setAttributes({openStart})}
-					/>
-					<ToggleControl
-						label={__('Reverse arrow', i18n)}
-						checked={reverseArrow}
-						onChange={reverseArrow => setAttributes({reverseArrow})}
-					/>
-				</Fragment>}
+			<AdvancedPanelBody title={__('General', i18n)}>
+				<ToggleControl
+					label={__('Close adjacent on open', i18n)}
+					checked={onlyOnePanelOpen}
+					onChange={onlyOnePanelOpen => setAttributes({onlyOnePanelOpen})}
+					className="rri--help-tip-accordion-adjacent-open"
+				/>
+				<ToggleControl
+					label={__('Open at the start', i18n)}
+					checked={openStart}
+					onChange={openStart => setAttributes({openStart})}
+				/>
+				<ToggleControl
+					label={__('Reverse arrow', i18n)}
+					checked={reverseArrow}
+					onChange={reverseArrow => setAttributes({reverseArrow})}
+				/>
 				{show.borderRadius &&
 				<AdvancedRangeControl
 					label={__('Border Radius', i18n)}
@@ -170,7 +156,7 @@ addFilter('stackable.accordion.edit.inspector.style.before', 'stackable/accordio
 					setAttributes={setAttributes}
 					blockAttributes={props.attributes}
 				/>
-			</PanelBody>
+			</AdvancedPanelBody>
 
 			{(show.headerBackground || show.containerBackground) &&
 			<PanelAdvancedSettings
@@ -225,7 +211,6 @@ addFilter('stackable.accordion.edit.inspector.style.before', 'stackable/accordio
 				</ResponsiveControl>
 			</PanelAdvancedSettings>
 
-			{design !== 'plain' &&
 			<PanelAdvancedSettings
 				title={__('Arrow', i18n)}
 				id="arrow"
@@ -251,7 +236,7 @@ addFilter('stackable.accordion.edit.inspector.style.before', 'stackable/accordio
 					onChange={arrowColor => setAttributes({arrowColor})}
 					label={__('Color', i18n)}
 				/>
-			</PanelAdvancedSettings>}
+			</PanelAdvancedSettings>
 
 			{show.border &&
 			<PanelAdvancedSettings
@@ -322,7 +307,7 @@ addFilter('stackable.accordion.edit.inspector.style.before', 'stackable/accordio
 				}
 			</PanelSpacingBody>
 		</Fragment>
-	);
+	)
 });
 
 const TEMPLATE = [['core/paragraph', {content: descriptionPlaceholder('long')}]];
@@ -348,10 +333,9 @@ const edit = props => {
 		className,
 		'rri-accordion--v2',
 		`rri-accordion--design-${design}`,
-		{
-			'rri-accordion--open': (props.isOpen === null || design === 'plain') ? openStart : props.isOpen
-		}
-	]);
+	], applyFilters('stackable.accordion.mainclasses', {
+		'rri-accordion--open': props.isOpen === null ? openStart : props.isOpen,
+	}, props));
 
 	const itemClasses = classnames([
 		'rri-accordion__item',
@@ -362,29 +346,6 @@ const edit = props => {
 	], applyFilters('stackable.accordion.headingclasses', {
 		[`rri--shadow-${shadow}`]: design === 'basic' && shadow !== '',
 	}, design, props));
-
-	function handleClick() {
-		if (props.openTimeout) {
-			clearTimeout(props.openTimeout)
-		}
-		const newOpenTimeout = setTimeout(() => {
-			props.setState({isOpen: !props.isOpen})
-		}, 150)
-		props.setState({openTimeout: newOpenTimeout})
-	}
-
-	function handleDoubleClick() {
-		if (props.openTimeout) {
-			clearTimeout(props.openTimeout)
-		}
-	}
-
-	function handleKeyPress() {
-		if (props.openTimeout) {
-			clearTimeout(props.openTimeout)
-		}
-		props.setState({isOpen: !openStart})
-	}
 
 	return (
 		<BlockContainer.Edit className={mainClasses} blockProps={props} render={() => (
@@ -400,11 +361,28 @@ const edit = props => {
 						backgroundAttrName="container%s"
 						blockProps={props}
 						showBackground={show.headerBackground}
-						onClick={design !== 'plain' && handleClick}
-						onDoubleClick={design !== 'plain' && handleDoubleClick}
-						onKeyPress={design !== 'plain' && handleKeyPress}
-						role={design !== 'plain' && 'button'}
-						tabIndex={design !== 'plain' && '0'}
+						onClick={() => {
+							if (props.openTimeout) {
+								clearTimeout(props.openTimeout)
+							}
+							const newOpenTimeout = setTimeout(() => {
+								props.setState({isOpen: !props.isOpen})
+							}, 150)
+							props.setState({openTimeout: newOpenTimeout})
+						}}
+						onDoubleClick={() => {
+							if (props.openTimeout) {
+								clearTimeout(props.openTimeout)
+							}
+						}}
+						onKeyPress={() => {
+							if (props.openTimeout) {
+								clearTimeout(props.openTimeout)
+							}
+							props.setState({isOpen: !openStart})
+						}}
+						role="button"
+						tabIndex="0"
 					>
 						<RichText
 							tagName={titleTag || 'h4'}

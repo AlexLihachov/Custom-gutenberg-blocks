@@ -59,7 +59,7 @@ const deprecatedSchema_1_17_3 = {
     },
     borderRadius: {
         type: 'number',
-        default: 0,
+        default: 12,
     },
     shadow: {
         type: 'number',
@@ -164,7 +164,7 @@ const deprecatedSave_1_17_3 = props => {
         align,
         columns,
         design = 'basic',
-        borderRadius = 0,
+        borderRadius = 12,
         shadow = 3,
         imageHoverEffect = '',
         overlayOpacity = 7,
@@ -276,7 +276,7 @@ const deprecatedSave_1_17_3_ = ( hasTitleStyle = true, hasDescriptionStyle = tru
         align,
         columns,
         design = 'basic',
-        borderRadius = 0,
+        borderRadius = 12,
         shadow = 3,
         imageHoverEffect = '',
         overlayOpacity = 7,
@@ -864,7 +864,7 @@ const deprecated = [
             return {
                 ...attributes,
                 design: 'basic',
-                borderRadius: 0,
+                borderRadius: 12,
                 shadow: 3,
                 className: className ? className : undefined,
                 align: [ 'aligncenter', 'alignwide', 'alignfull' ].includes( attributes.className ) ? attributes.className.replace( /^align/, '' ) : attributes.align,

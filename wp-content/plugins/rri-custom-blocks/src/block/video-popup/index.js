@@ -73,11 +73,6 @@ export const schema = {
 		default: '#000000',
 	},
 
-	previewBackgroundMediaUrl: {
-		type: 'string',
-		default: `${window.rriData.srcUrl}/src/block/video-popup/images/Video-popup-placeholder.jpg`
-	},
-
 	hoverEffect: {
 		type: 'string',
 		default: '',
@@ -111,7 +106,7 @@ export const settings = {
 		'advanced-block-spacing': true,
 		// Just in premium version
 		// 'advanced-column-spacing': true,
-		// 'advanced-responsive': true,
+		'advanced-responsive': true,
 		'block-background': true,
 		'block-separators': true,
 		'block-title': true,

@@ -166,7 +166,7 @@ addFilter('stackable.image-box.edit.inspector.style.before', 'stackable/image-bo
 					min={0}
 					max={50}
 					allowReset={true}
-					placeholder="0"
+					placeholder="12"
 					className="rri--help-tip-general-border-radius"
 				/>
 				}

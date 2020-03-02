@@ -28,7 +28,6 @@ import SVGTestimonialIcon from './images/testimonial-icon.svg';
 import SVGVideoPopupIcon from './images/video-popup-icon.svg';
 import SVGUngroupContainerIcon from './images/ungroup-container-icon.svg';
 import SVGSliderIcon from './images/slider-icon.svg';
-import SVGNumberCounterIcon from './images/number-counter-icon.svg';
 
 /**
  * WordPress dependencies
@@ -151,10 +150,6 @@ export const UngroupContainerIcon = () => {
 
 export const SliderIcon = () => {
 	return colorizeIcon(<SVGSliderIcon width="20" height="20"/>)
-};
-
-export const NumberCounterIcon = () => {
-	return colorizeIcon(<SVGNumberCounterIcon width="20" height="20"/>)
 };
 
 export const GhostButtonIcon = () => <ButtonIcon/>;
