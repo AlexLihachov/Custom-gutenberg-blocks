@@ -277,9 +277,8 @@ export const settings = {
 	modules: {
 		'advanced-general': true,
 		'advanced-block-spacing': true,
-		// Just in premium version
-		'advanced-column-spacing': true,
-		'advanced-responsive': true,
+		// 'advanced-column-spacing': true,
+		// 'advanced-responsive': true,
 		'block-background': true,
 		'block-separators': true,
 		'block-title': true,

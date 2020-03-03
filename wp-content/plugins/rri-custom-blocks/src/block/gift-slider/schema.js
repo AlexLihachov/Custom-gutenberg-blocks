@@ -9,9 +9,9 @@ export const schema = {
 		type: 'array',
 		default: [
 			{
-				above_title: __('Above title', i18n),
-				name: __('Name', i18n),
-				number: __('Number', i18n),
+				above_title: '',
+				name: '',
+				number: '',
 				image: {
 					url: '',
 					id: ''
@@ -20,7 +20,7 @@ export const schema = {
 					url: '',
 					newTab: false,
 					noFollow: false,
-					text: 'Learn more'
+					text: ''
 
 				}
 			}
@@ -36,8 +36,10 @@ export const schema = {
 			verticalSwiping: true,
 			touchMove: true,
 			pauseOnFocus: false,
+			pauseOnHover: false,
 			autoplaySpeed: 0,
-			autoplay: false
+			autoplay: false,
+			accessibility: false
 		}
 	}
 };
