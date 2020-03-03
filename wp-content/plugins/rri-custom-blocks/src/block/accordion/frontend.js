@@ -26,6 +26,9 @@ const toggleAccordion = el => {
 };
 
 const forceCloseAccordion = el => {
+	if (el.classList.contains('rri-accordion--design-plain')) {
+		return;
+	}
 	el.classList.remove('rri-accordion--open');
 	el.setAttribute('aria-expanded', 'false');
 };
@@ -83,7 +86,7 @@ const init = el => {
 };
 
 export const initAll = () => {
-	document.querySelectorAll('.rri-accordion').forEach(el => init(el));
+	document.querySelectorAll('.rri-accordion:not(.rri-accordion--design-plain)').forEach(el => init(el));
 };
 
 domReady(initAll);
