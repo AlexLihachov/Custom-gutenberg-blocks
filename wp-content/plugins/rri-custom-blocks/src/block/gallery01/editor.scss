@@ -5,30 +5,11 @@ $proximaBold: "Proxima Nova Bold", "Helvetica Neue", "Arial Narrow", sans-serif;
 $proxima: "Proxima Nova", "Helvetica Neue", "Arial Narrow", sans-serif;
 .editor-block-list__layout {
   .rri-gallery01 {
-	&-grid {
-	  .rri-gallery01-block {
-		background-color: red;
-		@media screen and (min-width: 1024px) {
-		  width: 23.5%;
-		  height: 15vw;
-		}
-		@media screen and (min-width: 1392px) {
-		  width: 24.5%;
-		  height: 243px;
-		}
-		&_big {
-		  @media screen and (min-width: 1024px) {
-		  width: 48.3%;
-		  height: 30.3vw;
-		}
-
-		  @media screen and (min-width: 1392px) {
-		  width: 49.4%;
-		  height: 491px;
-		}
-
-		}
-	  }
+	.rri-gallery01-block-info, .rri-gallery01-block__more-info {
+	  pointer-events: all;
+	}
+	.rri-gallery01-block__picture {
+	  background-size: cover;
 	}
 	.rri-gallery01__load-more {
 	  display: flex;
@@ -49,6 +30,10 @@ $proxima: "Proxima Nova", "Helvetica Neue", "Arial Narrow", sans-serif;
 	  &:hover {
 		border: 2px solid $colorBlue;
 	  }
+	}
+	.rri-image-upload-remove {
+	  margin-top: -10px;
+	  margin-right: -10px;
 	}
   }
 }

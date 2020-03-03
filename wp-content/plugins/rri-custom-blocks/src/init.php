@@ -48,6 +48,19 @@ function rri_blocks_frontend_assets() {
 		array( 'jquery' ),
 		true
 	);
+
+	wp_enqueue_style(
+		'lightbox-styles',
+		plugins_url( 'src/plugins/lightbox/css/lightbox.css', dirname( __FILE__ ) )
+	);
+
+
+	wp_enqueue_script(
+		'lightbox-script',
+		plugins_url( 'src/plugins/lightbox/js/lightbox.js', dirname( __FILE__ ) ),
+		array( 'jquery' ),
+		true
+	);
 }
 
 add_action( 'enqueue_block_assets', 'rri_blocks_frontend_assets' );

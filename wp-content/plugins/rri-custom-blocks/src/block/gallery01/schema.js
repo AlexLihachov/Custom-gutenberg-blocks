@@ -12,6 +12,8 @@ export const schema = {
 				title: __('Title', i18n),
 				description: __('Description', i18n),
 				load_more: __('Load more', i18n),
+				open_lightbox: false,
+				open_link: false,
 
 			}
 
@@ -22,64 +24,82 @@ export const schema = {
 		default: [
 			{
 				name: __('Name', i18n),
-				sub_title: __('Sub title', i18n),
+				sub_title: __('Company Name', i18n),
 				description: __('Description', i18n),
+				link: '',
+				linkNewTab: false,
 				url: '',
 				id: ''
 			},
 			{
 				name: __('Name', i18n),
-				sub_title: __('Sub title', i18n),
+				sub_title: __('Company Name', i18n),
 				description: __('Description', i18n),
+				link: '',
+				linkNewTab: false,
 				url: '',
 				id: ''
 			},
 			{
 				name: __('Name', i18n),
-				sub_title: __('Sub title', i18n),
+				sub_title: __('Company Name', i18n),
 				description: __('Description', i18n),
+				link: '',
+				linkNewTab: false,
 				url: '',
 				id: ''
 			},
 			{
 				name: __('Name', i18n),
-				sub_title: __('Sub title', i18n),
+				sub_title: __('Company Name', i18n),
 				description: __('Description', i18n),
+				link: '',
+				linkNewTab: false,
 				url: '',
 				id: ''
 			},
 			{
 				name: __('Name', i18n),
-				sub_title: __('Sub title', i18n),
+				sub_title: __('Company Name', i18n),
 				description: __('Description', i18n),
+				link: '',
+				linkNewTab: false,
 				url: '',
 				id: ''
 			},
 			{
 				name: __('Name', i18n),
-				sub_title: __('Sub title', i18n),
+				sub_title: __('Company Name', i18n),
 				description: __('Description', i18n),
+				link: '',
+				linkNewTab: false,
 				url: '',
 				id: ''
 			},
 			{
 				name: __('Name', i18n),
-				sub_title: __('Sub title', i18n),
+				sub_title: __('Company Name', i18n),
 				description: __('Description', i18n),
+				link: '',
+				linkNewTab: false,
 				url: '',
 				id: ''
 			},
 			{
 				name: __('Name', i18n),
-				sub_title: __('Sub title', i18n),
+				sub_title: __('Company Name', i18n),
 				description: __('Description', i18n),
+				link: '',
+				linkNewTab: false,
 				url: '',
 				id: ''
 			},
 			{
 				name: __('Name', i18n),
-				sub_title: __('Sub title', i18n),
+				sub_title: __('Company Name', i18n),
 				description: __('Description', i18n),
+				link: '',
+				linkNewTab: false,
 				url: '',
 				id: ''
 			}

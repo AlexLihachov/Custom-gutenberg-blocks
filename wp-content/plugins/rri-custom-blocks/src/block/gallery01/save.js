@@ -13,9 +13,11 @@ import {compose} from '@wordpress/compose';
 import {Fragment} from '@wordpress/element';
 import createStyles from "./style";
 
+
+
 const save = (props) => {
 	const {className, attributes} = props;
-	const {header_data, elem_data } = attributes;
+	const {header_data, elem_data} = attributes;
 
 	return (
 		<BlockContainer.Save
@@ -39,18 +41,40 @@ const save = (props) => {
 							{elem_data.map((elem, index) => {
 								return (
 									<div className={index === 0 ? "rri-gallery01-block rri-gallery01-block_big" : "rri-gallery01-block rri-gallery01-block_small"}>
-										<a href="">
-											<img className="rri-gallery01-block__picture" src="img/Image.png" alt=""/>
-											<div className="rri-gallery01-block-info">
-												<p className="rri-gallery01-block-info__name">John Smith</p>
-												<p className="rri-gallery01-block-info__work">Company Name, CEO</p>
-											</div>
-											<div className="rri-gallery01-block__more-info">
-												<p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-													auctor enim in nisl dapibus pulvinar fusce luctus dolor…”</p>
-												<img src="img/Plus.png" alt=""/>
-											</div>
-										</a>
+										{header_data.open_link === false && header_data.open_lightbox === false &&
+										<img className="rri-gallery01-block__picture" src={elem.url}/>}
+										{header_data.open_lightbox === true &&
+										<a href={elem.url} data-lightbox={index}>
+											<img className="rri-gallery01-block__picture" src={elem.url}/>
+										</a>}
+										{header_data.open_link === true &&
+										<a href={elem.link}>
+											<img className="rri-gallery01-block__picture" src={elem.url}/>
+										</a>}
+										<div className="rri-gallery01-block-info">
+											<RichText.Content
+												tagName="p"
+												className="rri-gallery01-block-info__name"
+												value={elem.name}
+											/>
+											<RichText.Content
+												tagName="p"
+												className="rri-gallery01-block-info__work"
+												value={elem.sub_title}
+											/>
+										</div>
+										<div className="rri-gallery01-block__more-info">
+											<RichText.Content
+												tagName="p"
+												value={elem.description}
+											/>
+											{header_data.open_link === false || header_data.open_lightbox === false &&
+											<div className="rri-gallery01-block__more-info-no"></div>}
+											{header_data.open_lightbox === true &&
+											<div className="rri-gallery01-block__more-info-plus"></div>}
+											{header_data.open_link === true &&
+											<div className="rri-gallery01-block__more-info-play"></div>}
+										</div>
 									</div>
 								)
 							})}
