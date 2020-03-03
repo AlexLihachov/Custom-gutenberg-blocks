@@ -1,0 +1,42 @@
+$colorBlack: #191919;
+$colorWhite: #fff;
+$colorBlue: #14AECF;
+$proximaBold: "Proxima Nova Bold", "Helvetica Neue", "Arial Narrow", sans-serif;
+$proxima: "Proxima Nova", "Helvetica Neue", "Arial Narrow", sans-serif;
+.editor-block-list__layout {
+  .rri-gallery01 {
+	.rri-gallery01-block {
+	  display: block;
+	}
+	.rri-gallery01-block-info, .rri-gallery01-block__more-info {
+	  pointer-events: all;
+	}
+	.rri-gallery01-block__picture {
+	  background-size: cover;
+	}
+	.rri-gallery01__load-more {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  width: 143px;
+	  height: 44px;
+	  margin: 30px auto 0;
+	  background: none;
+	  border: 2px solid $colorBlue;
+	  font-family: $proximaBold;
+	  font-size: 14px;
+	  color: $colorBlue;
+	  text-transform: uppercase;
+	  outline: none;
+	  cursor: pointer;
+
+	  &:hover {
+		border: 2px solid $colorBlue;
+	  }
+	}
+	.rri-image-upload-remove {
+	  margin-top: -10px;
+	  margin-right: -10px;
+	}
+  }
+}
