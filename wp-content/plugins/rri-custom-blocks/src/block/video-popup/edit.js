@@ -159,7 +159,7 @@ addFilter('stackable.video-popup.edit.inspector.style.before', 'stackable/video-
 					min={0}
 					max={50}
 					allowReset={true}
-					placeholder="0"
+					placeholder="12"
 					className="rri--help-tip-general-border-radius"
 				/>
 				}

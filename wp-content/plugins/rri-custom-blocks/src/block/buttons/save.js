@@ -23,7 +23,7 @@ const save = (props) => {
             blockProps = {props}
             render = {() => (
                 <Fragment>
-                    <div className="rri-buttons__container">
+                    <div className = "rri-buttons__container">
                         {buttons.map((button, index) => {
                             const itemClasses
                                       = classnames([
@@ -32,11 +32,15 @@ const save = (props) => {
                                 `rri-buttons__item_${button.size}`
                             ]);
 
-                            const url_text = button.text;
-                            const url_link = button.url;
-                            const newTab   = button.newTab;
-                            const noFollow = button.noFollow;
-                            const rel      = [];
+                            const url_text   = button.text;
+                            const url_link   = button.url;
+                            const newTab     = button.newTab;
+                            const noFollow   = button.noFollow;
+                            const rel        = [];
+                            const iconToggle = button.iconToggle;
+                            const icon       = classnames([
+                                `${button.icon}`
+                            ]);
 
                             if(newTab){
                                 rel.push('noopener');
@@ -47,18 +51,21 @@ const save = (props) => {
                             }
 
                             return (
-                                <div className="rri-buttons__item-container">
-                                <a className = {itemClasses}
-                                   key = {index}
-                                   href = {url_link}
-                                   target = {newTab ? '_blank' : undefined}
-                                   rel = {rel.join(' ') || undefined}
-                                >
-                                    <RichText.Content
-                                        tagName = "span"
-                                        value = {url_text}
-                                    />
-                                </a>
+                                <div className = "rri-buttons__item-container">
+                                    <a className = {itemClasses}
+                                       key = {index}
+                                       href = {url_link}
+                                       target = {newTab ? '_blank' : undefined}
+                                       rel = {rel.join(' ') || undefined}
+                                    >
+                                        <RichText.Content
+                                            tagName = "span"
+                                            value = {url_text}
+                                        />
+                                        {iconToggle && (
+                                            <span className = {icon}></span>
+                                        )}
+                                    </a>
                                 </div>
                             );
                         })}

@@ -160,7 +160,7 @@ export const settings = {
 		// 'advanced-column-spacing': {
 		// 	columnGap: false,
 		// },
-		// 'advanced-responsive': true,
+		'advanced-responsive': true,
 		// 'block-background': true,
 		// 'block-separators': true,
 		// 'block-title': true,

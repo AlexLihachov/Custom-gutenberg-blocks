@@ -1,0 +1,124 @@
+.rri-buttons__item {
+  display: inline-flex;
+  padding: 8px 16px;
+  overflow: visible;
+  align-items: center;
+  border-radius: 3px;
+  justify-content: center;
+  -webkit-transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  -o-transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 1.2;
+}
+.rri-buttons__item span {
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.rri-buttons__item_secondary {
+  border: 2px solid #14aecf;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+.rri-buttons__item_secondary:hover {
+  background-color: #14aecf;
+}
+.rri-buttons__item_secondary:hover span {
+  color: #ffffff;
+}
+.rri-buttons__item_secondary span {
+  color: #14aecf;
+}
+.rri-buttons__item_primary {
+  border: 2px solid #14aecf;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  background-color: #14aecf;
+}
+.rri-buttons__item_primary:hover {
+  background-color: #ffffff;
+}
+.rri-buttons__item_primary:hover span {
+  color: #14aecf;
+}
+.rri-buttons__item_primary span {
+  color: #ffffff;
+}
+.rri-buttons__item_transparent_dark {
+  border: 2px solid rgba(16, 32, 40, 0.36);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  background-color: transparent;
+}
+.rri-buttons__item_transparent_dark:hover {
+  border-color: #102028;
+}
+.rri-buttons__item_transparent_dark span {
+  color: #102028;
+}
+.rri-buttons__item_transparent_light {
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+}
+.rri-buttons__item_transparent_light:hover {
+  border-color: #ffffff;
+}
+.rri-buttons__item_transparent_light span {
+  color: #ffffff;
+}
+.rri-buttons__item_transparent_over {
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  background-color: transparent;
+}
+.rri-buttons__item_transparent_over:hover {
+  border: 2px solid #14aecf;
+  background-color: #14aecf;
+}
+.rri-buttons__item_transparent_over:hover span {
+  color: #ffffff;
+}
+.rri-buttons__item_transparent_over span {
+  color: #ffffff;
+}
+.rri-buttons__item_large {
+  padding: 14px 29px;
+  min-width: 167px;
+}
+.rri-buttons__item_large span {
+  font-size: 14px;
+}
+.rri-buttons__item_large .icon {
+  font-size: 19px;
+  margin-left: 10px;
+}
+.rri-buttons__item_medium {
+  padding: 9px 20px;
+  min-width: 119px;
+}
+.rri-buttons__item_medium span {
+  font-size: 12px;
+}
+.rri-buttons__item_medium .icon {
+  font-size: 14px;
+  margin-left: 8px;
+}
+.rri-buttons__item_small {
+  padding: 7px 14px;
+  min-width: 95px;
+}
+.rri-buttons__item_small span {
+  font-size: 10px;
+}
+.rri-buttons__item_small .icon {
+  font-size: 12px;
+  margin-left: 6px;
+}
+.rri-buttons__item-container {
+  display: inline-block;
+}
+.rri-buttons__item-container:not(:first-child) {
+  margin-left: 20px;
+}
+
+/*# sourceMappingURL=style.css.map */
