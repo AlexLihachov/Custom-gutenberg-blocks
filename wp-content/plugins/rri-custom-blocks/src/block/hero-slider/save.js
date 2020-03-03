@@ -4,6 +4,7 @@
 import {withBlockStyles, withUniqueClass} from '../../higher-order';
 import {BlockContainer} from '../../components';
 import classnames from 'classnames';
+import {HeroSliderLeftArrow, HeroSliderRightArrow} from '../../icons';
 
 /**
  * WordPress dependencies
@@ -25,8 +26,11 @@ const save = (props) => {
 				<div className="rri-hero-slider__wrapper" data-settings={JSON.stringify(settings)}>
 					<div className="rri-hero-slider__inner">
 						{slides_data.map((item) => {
-							const {title, copy, button} = item;
+							const {button} = item;
 							const {align} = item.params;
+							const title = item.title !== '' ? item.title : 'Title';
+							const copy = item.copy !== '' ? item.copy : 'Copy';
+							const button_text = button.text !== '' ? button.text : 'Click here';
 							const slideClasses = classnames(['rri-hero-slide', `rri-hero-slide--${align}`]);
 							const ctaClasses = classnames([
 								'rri-hero-slide__cta',
@@ -54,7 +58,7 @@ const save = (props) => {
 												<RichText.Content
 													tagName="span"
 													className="rri-hero-slide__cta-text"
-													value={button.text}
+													value={button_text}
 												/>
 											</div>
 										</div>
@@ -63,9 +67,11 @@ const save = (props) => {
 							);
 						})}
 					</div>
-					<div className="rri-hero-slider__arrows">
-						<div className="rri-hero-slider__arrow rri-hero-slider__arrow--prev"/>
-						<div className="rri-hero-slider__arrow rri-hero-slider__arrow--next"/>
+					<div className="rri-hero-slider__arrow rri-hero-slider__arrow--prev">
+						<HeroSliderLeftArrow/>
+					</div>
+					<div className="rri-hero-slider__arrow rri-hero-slider__arrow--next">
+						<HeroSliderRightArrow/>
 					</div>
 				</div>
 			)}

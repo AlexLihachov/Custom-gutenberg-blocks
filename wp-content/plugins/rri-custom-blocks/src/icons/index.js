@@ -29,6 +29,8 @@ import SVGVideoPopupIcon from './images/video-popup-icon.svg';
 import SVGUngroupContainerIcon from './images/ungroup-container-icon.svg';
 import SVGSliderIcon from './images/slider-icon.svg';
 import SVGNumberCounterIcon from './images/number-counter-icon.svg';
+import SVGHeroSliderLeftArrow from './images/hero-slider-left-arrow.svg';
+import SVGHeroSliderRightArrow from './images/hero-slider-right-arrow.svg';
 
 /**
  * WordPress dependencies
@@ -158,3 +160,6 @@ export const NumberCounterIcon = () => {
 };
 
 export const GhostButtonIcon = () => <ButtonIcon/>;
+
+export const HeroSliderLeftArrow = () => <SVGHeroSliderLeftArrow/>;
+export const HeroSliderRightArrow = () => <SVGHeroSliderRightArrow/>;

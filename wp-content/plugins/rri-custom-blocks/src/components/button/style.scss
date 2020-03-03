@@ -1,0 +1,153 @@
+$main_color : #14aecf;
+$dark_color : #102028;
+$dark_border_color : rgba(16, 32, 40, .36);
+$light_border_color : rgba(255, 255, 255, .4);
+$white_color : #ffffff;
+
+.rri-buttons {
+	&__item {
+		display                : inline-flex;
+		padding                : 8px 16px;
+		overflow               : visible;
+		align-items            : center;
+		border-radius          : 3px;
+		justify-content        : center;
+		-webkit-transition     : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+		-o-transition          : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+		transition             : all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) !important;
+		will-change            : transform;
+		-webkit-font-smoothing : antialiased;
+		text-decoration        : none;
+		font-size              : 12px;
+		line-height            : 1.2;
+
+		span {
+			letter-spacing : 0.5px;
+			text-transform : uppercase;
+		}
+
+		&_secondary {
+			border     : 2px solid $main_color;
+			box-shadow : 0 2px 6px rgba(0, 0, 0, 0.07);
+
+			&:hover {
+				background-color : $main_color;
+
+				span {
+					color : $white_color;
+				}
+			}
+
+			span {
+				color : $main_color;
+			}
+		}
+
+		&_primary {
+			border           : 2px solid $main_color;
+			box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.07);
+			background-color : $main_color;
+
+			&:hover {
+				background-color : $white_color;
+
+				span {
+					color : $main_color;
+				}
+			}
+
+			span {
+				color : $white_color;
+			}
+		}
+
+		&_transparent_dark {
+			border           : 2px solid $dark_border_color;
+			box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.07);
+			background-color : transparent;
+
+			&:hover {
+				border-color : $dark_color;
+			}
+
+			span {
+				color : $dark_color;
+			}
+		}
+
+		&_transparent_light {
+			border           : 2px solid $light_border_color;
+			background-color : transparent;
+
+			&:hover {
+				border-color : $white_color;
+			}
+
+			span {
+				color : $white_color;
+			}
+		}
+
+		&_transparent_over {
+			border           : 2px solid $light_border_color;
+			box-shadow       : 0 2px 6px rgba(0, 0, 0, 0.07);
+			background-color : transparent;
+
+			&:hover {
+				border           : 2px solid $main_color;
+				background-color : $main_color;
+
+				span {
+					color : $white_color;
+				}
+			}
+
+			span {
+				color : $white_color;
+			}
+		}
+
+		&_large {
+			padding     : 14px 29px;
+			min-width   : 167px;
+
+			span {
+				font-size : 14px;
+			}
+
+			.icon {
+				font-size   : 19px;
+				margin-left : 10px;
+			}
+		}
+
+		&_medium {
+			padding     : 9px 20px;
+			min-width   : 119px;
+
+			span {
+				font-size : 12px;
+			}
+
+			.icon {
+				font-size   : 14px;
+				margin-left : 8px;
+			}
+		}
+
+		&_small {
+			padding     : 7px 14px;
+			min-width   : 95px;
+
+			span {
+				font-size : 10px;
+			}
+
+			.icon {
+				font-size   : 12px;
+				margin-left : 6px;
+			}
+		}
+
+	}
+}
