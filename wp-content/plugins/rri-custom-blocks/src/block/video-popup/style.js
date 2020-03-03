@@ -2,6 +2,7 @@
  * External dependencies
  */
 import {createBackgroundStyleSet, __getValue} from '../../util';
+import {hex_to_rgba} from "./util";
 import deepmerge from 'deepmerge';
 
 /**
@@ -41,28 +42,26 @@ export const createStyles = props => {
 			height: getValue('height') !== '' ? getValue('height', '%spx !important') : undefined,
 			borderRadius: show.borderRadius ? (getValue('borderRadius') !== '' ? getValue('borderRadius', '%spx') : undefined) : undefined,
 		},
-		'.rri-video-popup__play-button svg': {
-			fill: getValue('playButtonColor') !== '' ? getValue('playButtonColor', '%s !important') : undefined,
-			height: getValue('playButtonSize') !== '' ? getValue('playButtonSize', '%spx') : undefined,
-			width: getValue('playButtonSize') !== '' ? getValue('playButtonSize', '%spx') : undefined,
+		'.rri-video-popup__play-button i': {
+			color: getValue('playButtonColor') !== '' ? getValue('playButtonColor', '%s !important') : undefined,
+			fontSize: getValue('playButtonSize') !== '' ? getValue('playButtonSize', '%spx') : undefined,
 			opacity: getValue('playButtonOpacity') !== '' ? getValue('playButtonOpacity') : undefined,
+			borderColor: getValue('playButtonColor') ? hex_to_rgba(getValue('playButtonColor'), 0.4) : undefined
 		},
 		tablet: {
 			'.rri-video-popup__wrapper': {
 				height: getValue('tabletHeight') !== '' ? getValue('tabletHeight', '%spx !important') : undefined,
 			},
-			'.rri-video-popup__play-button svg': {
-				height: getValue('tabletPlayButtonSize') !== '' ? getValue('tabletPlayButtonSize', '%spx') : undefined,
-				width: getValue('tabletPlayButtonSize') !== '' ? getValue('tabletPlayButtonSize', '%spx') : undefined,
+			'.rri-video-popup__play-button i': {
+				fontSize: getValue('tabletPlayButtonSize') !== '' ? getValue('tabletPlayButtonSize', '%spx') : undefined
 			},
 		},
 		mobile: {
 			'.rri-video-popup__wrapper': {
 				height: getValue('mobileHeight') !== '' ? getValue('mobileHeight', '%spx !important') : undefined,
 			},
-			'.rri-video-popup__play-button svg': {
-				height: getValue('mobilePlayButtonSize') !== '' ? getValue('mobilePlayButtonSize', '%spx') : undefined,
-				width: getValue('mobilePlayButtonSize') !== '' ? getValue('mobilePlayButtonSize', '%spx') : undefined,
+			'.rri-video-popup__play-button i': {
+				fontSize: getValue('mobilePlayButtonSize') !== '' ? getValue('mobilePlayButtonSize', '%spx') : undefined
 			},
 		},
 	});
