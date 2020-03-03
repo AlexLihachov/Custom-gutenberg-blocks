@@ -25,6 +25,8 @@ import {
 import classnames from 'classnames';
 import {i18n} from '../../constants';
 
+import {HeroSliderLeftArrow, HeroSliderRightArrow} from '../../icons';
+
 /**
  * Internal dependencies
  */
@@ -353,9 +355,11 @@ class Edit extends Component {
 								);
 							})}
 						</div>
-						<div className="rri-hero-slider__arrows">
-							<div className="rri-hero-slider__arrow rri-hero-slider__arrow--prev"/>
-							<div className="rri-hero-slider__arrow rri-hero-slider__arrow--next"/>
+						<div className="rri-hero-slider__arrow rri-hero-slider__arrow--prev">
+							<HeroSliderLeftArrow/>
+						</div>
+						<div className="rri-hero-slider__arrow rri-hero-slider__arrow--next">
+							<HeroSliderRightArrow/>
 						</div>
 					</div>
 				)}

@@ -1,6 +1,10 @@
-.entry-content>*, .entry-summary>*, .page-content>* {
-	padding: 0 !important;
-}
+@import "common";
+
+//.entry-content>*, .entry-summary>*, .page-content>* {
+//	width: 100% !important;
+//	max-width: 100% !important;
+//	padding: 0 !important;
+//}
 
 .rri-hero-slider {
 	$b: &;
@@ -36,24 +40,33 @@
 		// Slick
 		.slick-slide {
 			display: flex;
+			align-items: stretch;
+			justify-content: center;
 		}
 
 		.slick-dots {
 			padding: 0;
-			bottom: 7.4%;
+			bottom: 50px;
 			line-height: 0;
+
+			@include breakpoints(s) {
+				bottom: 34px;
+			}
 		}
 
 		.slick-dots li {
 			width: 10px;
 			height: 10px;
 			padding: 0;
+			margin: 0 10px;
 
 			border-radius: 30px;
 			background: #96A2A7;
 		}
 
 		.slick-dots li.slick-active {
+			width: 12px;
+			height: 12px;
 			background: #fff;
 		}
 
@@ -66,6 +79,34 @@
 			display: none;
 		}
 	}
+
+	&__arrow {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+
+		width: 22px;
+		height: 42px;
+
+		cursor: pointer;
+
+		svg {
+			width: 22px;
+			height: 42px;
+		}
+
+		path {
+			stroke-width: 2px;
+		}
+
+		&--prev {
+			left: 5.48%;
+		}
+
+		&--next {
+			right: 5.48%;
+		}
+	}
 }
 
 
@@ -73,59 +114,132 @@
 	$b: &;
 
 	&.slick-slide {
+
 		background: {
 			repeat: no-repeat;
 			size: cover;
 		};
 
 		#{$b}__wrapper {
-			padding: 0 5%;
+			width: 100%;
+			max-width: 90%;
+			flex: 0 0 90%;
+			padding: 72px 0;
+
+			display: flex;
+			align-items: center;
+
+			@include breakpoints(s) {
+				max-width: 68.75%;
+				flex: 0 0 68.75%;
+				padding: 56px 0;
+			}
+
+			@include breakpoints(m) {
+				max-width: 47.5%;
+				flex: 0 0 47.5%;
+			}
 		}
 
 		#{$b}__content {
 			position: relative;
-			top: 28%;
+			bottom: 2.514%;
+
+			width: 100%;
+			max-width: 100%;
+			flex: 0 0 100%;
+
+			@include breakpoints(s) {
+				max-width: 83.15%;
+				flex: 0 0 83.15%;
+
+				bottom: 2.564%;
+			}
+
+			@include breakpoints(m) {
+				max-width: 66.3%;
+				flex: 0 0 66.3%;
+			}
 		}
 
 		#{$b}__title {
+			margin: 0;
+			padding: 0;
+
 			font: {
-				family: 'Proxima Nova Semibold';
+				family: 'Proxima Nova Bold';
 				size: 60px;
-				weight: 600;
+				weight: normal;
 			};
 			line-height: 0.9333333333;
 			color: #FFFFFF;
 			text-transform: uppercase;
+
+			@include breakpoints(l) {
+				font-size: 80px;
+				line-height: 0.925;
+			}
 		}
 
 		#{$b}__copy {
+			margin: 20px 0 0;
+			padding: 0;
+
 			font: {
-				family: 'Proxima Nova Regular';
+				family: 'Proxima Nova';
 				size: 16px;
+				weight: normal;
 			};
 			line-height: 1.8125;
 			letter-spacing: 0.5px;
 			color: #FFFFFF;
+
+			@include breakpoints(l) {
+				font-size: 18px;
+				line-height: 1.5;
+			}
+
+			&:first-child {
+				margin-top: 0;
+			}
 		}
 
 		#{$b}__cta {
+			margin: 30px 0 0;
+			padding: 0;
 
+			@include breakpoints(l) {
+				margin: 35px 0 0;
+			}
+
+			&:first-child {
+				margin-top: 0;
+			}
 		}
 	}
 
 	// Modifiers
 	&--left {
-		justify-content: flex-start;
 		text-align: left;
+
+		#{$b}__wrapper {
+			justify-content: flex-start;
+		}
 	}
 
 	&--center {
-		justify-content: center;
 		text-align: center;
+
+		#{$b}__wrapper {
+			justify-content: center;
+		}
 	}
 
 	&--right {
-		justify-content: flex-end;
 		text-align: right;
+
+		#{$b}__wrapper {
+			justify-content: flex-end;
+		}
 	}
 }

@@ -9,6 +9,7 @@ export {default as BackgroundControlsHelper} from './background-controls-helper'
 export {default as BaseControlMultiLabel} from './base-control-multi-label';
 export {default as BlendModeControl} from './blend-mode-control';
 export {default as BlockContainer} from './block-container';
+export {default as Button} from './button';
 export {default as BlockStyles} from './block-styles';
 export {default as ButtonIconPopoverControl} from './button-icon-popover-control';
 export {default as ContentAlignControl} from './content-align-control';

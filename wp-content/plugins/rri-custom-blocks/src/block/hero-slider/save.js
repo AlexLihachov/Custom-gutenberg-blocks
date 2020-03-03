@@ -4,6 +4,7 @@
 import {withBlockStyles, withUniqueClass} from '../../higher-order';
 import {BlockContainer} from '../../components';
 import classnames from 'classnames';
+import {HeroSliderLeftArrow, HeroSliderRightArrow} from '../../icons';
 
 /**
  * WordPress dependencies
@@ -66,9 +67,11 @@ const save = (props) => {
 							);
 						})}
 					</div>
-					<div className="rri-hero-slider__arrows">
-						<div className="rri-hero-slider__arrow rri-hero-slider__arrow--prev"/>
-						<div className="rri-hero-slider__arrow rri-hero-slider__arrow--next"/>
+					<div className="rri-hero-slider__arrow rri-hero-slider__arrow--prev">
+						<HeroSliderLeftArrow/>
+					</div>
+					<div className="rri-hero-slider__arrow rri-hero-slider__arrow--next">
+						<HeroSliderRightArrow/>
 					</div>
 				</div>
 			)}
