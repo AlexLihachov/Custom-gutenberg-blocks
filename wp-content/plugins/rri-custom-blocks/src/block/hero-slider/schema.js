@@ -24,7 +24,8 @@ export const schema = {
 					noFollow: false,
 					text: '',
 					design: 'primary',
-					size: 'small'
+					size: 'small',
+					iconToggle: false,
 				}
 			},
 			{
@@ -43,7 +44,8 @@ export const schema = {
 					noFollow: false,
 					text: '',
 					design: 'primary',
-					size: 'small'
+					size: 'small',
+					iconToggle: false,
 				}
 			},
 			{
@@ -62,7 +64,8 @@ export const schema = {
 					noFollow: false,
 					text: '',
 					design: 'primary',
-					size: 'small'
+					size: 'small',
+					iconToggle: false,
 				}
 			}
 		],

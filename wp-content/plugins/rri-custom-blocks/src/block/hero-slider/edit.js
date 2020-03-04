@@ -8,18 +8,15 @@ import {
 	BlockContainer,
 	AdvancedRangeControl,
 	DragImages,
-	UrlInputPopover,
-	TypographyControlHelper,
-	HeadingButtonsControl,
-	ColorPaletteControl
+	Button,
+	IconControlRRI
 } from '../../components';
 
 import {
 	withUniqueClass,
 	withSetAttributeHook,
 	withTabbedInspector,
-	withBlockStyles,
-	withClickOpenInspector,
+	withBlockStyles
 } from '../../higher-order';
 
 import classnames from 'classnames';
@@ -41,7 +38,6 @@ import {__} from '@wordpress/i18n';
 import {addFilter} from '@wordpress/hooks';
 import {Component, Fragment, createRef} from '@wordpress/element';
 import {compose} from '@wordpress/compose';
-import {withSelect} from '@wordpress/data';
 
 /**
  * Tabs Render
@@ -87,7 +83,8 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 										noFollow: false,
 										text: '',
 										design: 'primary',
-										size: 'small'
+										size: 'small',
+										iconToggle: false,
 									}
 								}
 							);
@@ -185,7 +182,10 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 						<SelectControl label={__('Design', i18n)}
 									   options={[
 										   {value: 'primary', label: __('Primary', i18n)},
-										   {value: 'secondary', label: __('Secondary', i18n)}
+										   {value: 'secondary', label: __('Secondary', i18n)},
+										   {value: 'transparent_dark', label: __('Transparent Dark', i18n)},
+										   {value: 'transparent_light', label: __('Transparent Light', i18n)},
+										   {value: 'transparent_over', label: __('Transparent over image', i18n)},
 									   ]}
 									   value={button.design}
 									   onChange={(value) => {
@@ -200,7 +200,7 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 									   options={[
 										   {value: 'small', label: __('Small', i18n)},
 										   {value: 'medium', label: __('Medium', i18n)},
-										   {value: 'large', label: __('Large', i18n)}
+										   {value: 'large', label: __('Large', i18n)},
 									   ]}
 									   value={button.size}
 									   onChange={(value) => {
@@ -211,6 +211,30 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 										   });
 									   }}
 						/>
+						<ToggleControl
+							label={__('Icon', i18n)}
+							checked={button.iconToggle}
+							onChange={() => {
+								const slides_data_clone = cloneDeep(slides_data);
+								slides_data_clone[index].button.iconToggle = !slides_data_clone[index].button.iconToggle;
+								setAttributes({
+									slides_data: slides_data_clone
+								});
+							}}
+						/>
+						{button.iconToggle && (
+							<IconControlRRI
+								label={__('Icon', i18n)}
+								value={button.icon}
+								onChange={(value) => {
+									const slides_data_clone = cloneDeep(slides_data);
+									slides_data_clone[index].button.icon = value;
+									setAttributes({
+										slides_data: slides_data_clone
+									});
+								}}
+							/>
+						)}
 					</PanelBody>
 				);
 			})}
@@ -225,16 +249,26 @@ class Edit extends Component {
 	constructor() {
 		super(...arguments);
 		this.state = {
-			openUrlPopover: false
+			openUrlPopover: null
 		};
 		this.sliderRef = createRef();
 		this.decreasesSlides = false;
-		this.handleFocusOutside = this.handleFocusOutside.bind(this)
+		this.handleFocusOutside = this.handleFocusOutside.bind(this);
+		this.handleButtonChange = this.handleButtonChange.bind(this);
 	}
 
 	handleFocusOutside() {
 		this.setState({
-			openUrlPopover: null,
+			openUrlPopover: null
+		});
+	}
+
+	handleButtonChange(value, index, type) {
+		const {attributes, setAttributes} = this.props;
+		const slides_data_clone = cloneDeep(attributes.slides_data);
+		slides_data_clone[index].button[type] = value;
+		setAttributes({
+			slides_data: slides_data_clone
 		});
 	}
 
@@ -291,11 +325,6 @@ class Edit extends Component {
 								const {title, copy, button} = item;
 								const {align} = item.params;
 								const slideClasses = classnames(['rri-hero-slide', `rri-hero-slide--${align}`]);
-								const ctaClasses = classnames([
-									'rri-hero-slide__cta',
-									`rri-hero-slide__cta--${button.size}`,
-									`rri-hero-slide__cta--${button.design}`
-								]);
 
 								return (
 									<div className={slideClasses}
@@ -332,23 +361,15 @@ class Edit extends Component {
 													}}
 													keepPlaceholderOnFocus
 												/>
-												<div className={ctaClasses}
-													 onClick={() => this.setState({openUrlPopover: index})}>
-													<RichText
-														tagName="span"
-														placeholder={__('Link Text', i18n)}
-														className="rri-hero-slide__cta-text"
-														value={button.text}
-														onChange={(value) => {
-															const slider_data_clone = cloneDeep(slides_data);
-															slider_data_clone[index].button.text = value;
-															setAttributes({
-																slides_data: slider_data_clone
-															});
-														}}
-														keepPlaceholderOnFocus
-													/>
-												</div>
+												<Button
+													{...button}
+													index={index}
+													isEdit={true}
+													openUrlPopover={this.state.openUrlPopover}
+													handleClick={() => this.setState({openUrlPopover: index})}
+													handleChange={this.handleButtonChange}
+													className="rri-hero-slide__cta"
+												/>
 											</div>
 										</div>
 									</div>
@@ -373,12 +394,5 @@ export default compose(
 	withSetAttributeHook,
 	withTabbedInspector(),
 	withBlockStyles(createStyles, {editorMode: true}),
-	// withSelect((select, {clientId}) => {
-	// 	const {getBlock} = select('core/block-editor');
-	// 	const block = getBlock(clientId);
-	// 	return {
-	// 		hasInnerBlocks: !!(block && block.innerBlocks.length),
-	// 	}
-	// }),
 	withFocusOutside,
 )(Edit);

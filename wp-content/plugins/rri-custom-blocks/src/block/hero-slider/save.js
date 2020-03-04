@@ -5,6 +5,7 @@ import {withBlockStyles, withUniqueClass} from '../../higher-order';
 import {BlockContainer} from '../../components';
 import classnames from 'classnames';
 import {HeroSliderLeftArrow, HeroSliderRightArrow} from '../../icons';
+import {Button} from "../../components";
 
 /**
  * WordPress dependencies
@@ -32,11 +33,7 @@ const save = (props) => {
 							const copy = item.copy !== '' ? item.copy : 'Copy';
 							const button_text = button.text !== '' ? button.text : 'Click here';
 							const slideClasses = classnames(['rri-hero-slide', `rri-hero-slide--${align}`]);
-							const ctaClasses = classnames([
-								'rri-hero-slide__cta',
-								`rri-hero-slide__cta--${button.size}`,
-								`rri-hero-slide__cta--${button.design}`
-							]);
+
 
 							return (
 								<div className={slideClasses} style={{
@@ -54,13 +51,7 @@ const save = (props) => {
 												className="rri-hero-slide__copy"
 												value={copy}
 											/>
-											<div className={ctaClasses}>
-												<RichText.Content
-													tagName="span"
-													className="rri-hero-slide__cta-text"
-													value={button_text}
-												/>
-											</div>
+											<Button {...button} className="rri-hero-slide__cta" />
 										</div>
 									</div>
 								</div>

@@ -1,10 +1,10 @@
 @import "common";
 
-//.entry-content>*, .entry-summary>*, .page-content>* {
-//	width: 100% !important;
-//	max-width: 100% !important;
-//	padding: 0 !important;
-//}
+.entry-content>*, .entry-summary>*, .page-content>* {
+	width: 100% !important;
+	max-width: 100% !important;
+	padding: 0 !important;
+}
 
 .rri-hero-slider {
 	$b: &;
@@ -206,7 +206,6 @@
 
 		#{$b}__cta {
 			margin: 30px 0 0;
-			padding: 0;
 
 			@include breakpoints(l) {
 				margin: 35px 0 0;
