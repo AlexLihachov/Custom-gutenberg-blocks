@@ -1,18 +1,16 @@
 /**
  * WordPress dependencies
  */
-import {__} from '@wordpress/i18n';
-import {i18n} from '../../constants';
 
 export const schema = {
 	slides_data: {
 		type: 'array',
 		default: [
 			{
-				title: '',
-				copy: '',
+				title: 'Lorem et dolor ipsum',
+				copy: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean vehicula lacus sit amet fringilla.',
 				image: {
-					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
+					url: `${window.rriData.srcUrl}/src/block/hero-slider/images/hero-slider-placeholder-1.png`,
 					id: ''
 				},
 				params: {
@@ -22,47 +20,50 @@ export const schema = {
 					url: '',
 					newTab: false,
 					noFollow: false,
-					text: '',
+					text: 'Buy now',
 					design: 'primary',
-					size: 'small'
+					size: 'medium',
+					iconToggle: false,
 				}
 			},
 			{
-				title: '',
-				copy: '',
+				title: 'Lorem et dolor ipsum',
+				copy: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean vehicula lacus sit amet fringilla.',
 				image: {
-					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
+					url: `${window.rriData.srcUrl}/src/block/hero-slider/images/hero-slider-placeholder-2.jpg`,
 					id: ''
 				},
 				params: {
-					align: 'left'
+					align: 'center'
 				},
 				button: {
 					url: '',
 					newTab: false,
 					noFollow: false,
-					text: '',
+					text: 'Buy now',
 					design: 'primary',
-					size: 'small'
+					size: 'medium',
+					iconToggle: false,
 				}
 			},
 			{
-				title: '',
-				copy: '',
+				title: 'Lorem et dolor ipsum',
+				copy: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit aenean vehicula lacus sit amet fringilla.',
 				image: {
-					url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
+					url: `${window.rriData.srcUrl}/src/block/hero-slider/images/hero-slider-placeholder-3.jpg`,
 					id: ''
 				},
 				params: {
-					align: 'left'
+					align: 'right'
 				},
 				button: {
 					url: '',
 					newTab: false,
 					noFollow: false,
-					text: '',
+					text: 'Buy now',
 					design: 'primary',
-					size: 'small'
+					size: 'medium',
+					iconToggle: false,
 				}
 			}
 		],
@@ -73,14 +74,17 @@ export const schema = {
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			infinite: false,
-			autoplaySpeed: 0,
+			autoplaySpeed: 4500,
 			autoplay: false,
 			pauseOnFocus: false,
 			pauseOnHover: false,
 			accessibility: false,
-			speed: 300,
+			speed: 400,
 			dots: true,
 			arrows: true,
+			draggable: false,
+			swipe: false,
+			fade: true,
 			responsive: [
 				{
 					breakpoint: 768,
