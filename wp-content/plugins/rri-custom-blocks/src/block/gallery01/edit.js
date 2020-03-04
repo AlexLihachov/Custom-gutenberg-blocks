@@ -67,12 +67,15 @@ addFilter('stackable.gallery01.edit.inspector.style.before', 'stackable/gallery0
 
 						if (elem_data.length < value) {
 							elem_data_clone.push({
-								name: __('Name', i18n),
-								sub_title: __('Company Name', i18n),
-								description: __('Description', i18n),
+								name: "",
+								sub_title: "",
+								description: "",
+								placeholder_name: __('John Smith', i18n),
+								placeholder_sub_title: __('Company Name, CEO', i18n),
+								placeholder_description: __('“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor enim in nisl dapibus pulvinar fusce luctus dolor…”', i18n),
 								link: '',
 								linkNewTab: false,
-								url: '',
+								url: `${window.rriData.srcUrl}/src/block/gallery01/images/2.png`,
 								id: ''
 							});
 						} else {
@@ -188,6 +191,7 @@ class Edit extends Component {
 							<div className="rri-gallery01__subtext">
 								<RichText
 									tagName="p"
+									placeholder={header_data.placeholder_description}
 									value={header_data.description}
 									onChange={(value) => {
 										const header_data_clone = cloneDeep(header_data);
@@ -200,9 +204,8 @@ class Edit extends Component {
 							</div>
 							<div className="rri-gallery01-grid">
 								{elem_data.map((elem, index) => {
-								return (
-									<div className={index === 0 ? "rri-gallery01-block rri-gallery01-block_big" : "rri-gallery01-block rri-gallery01-block_small"}>
-
+									return (
+										<div className={index === 0 ? "rri-gallery01-block rri-gallery01-block_big" : "rri-gallery01-block rri-gallery01-block_small"}>
 											<ImageUploadPlaceholder
 												imageID={elem.id}
 												className="rri-gallery01-block__picture"
@@ -228,6 +231,7 @@ class Edit extends Component {
 												<RichText
 													tagName="p"
 													className="rri-gallery01-block-info__name"
+													placeholder={elem.placeholder_name}
 													value={elem.name}
 													onChange={(value) => {
 														const elem_data_clone = cloneDeep(elem_data);
@@ -240,6 +244,7 @@ class Edit extends Component {
 												<RichText
 													tagName="p"
 													className="rri-gallery01-block-info__work"
+													placeholder={elem.placeholder_sub_title}
 													value={elem.sub_title}
 													onChange={(value) => {
 														const elem_data_clone = cloneDeep(elem_data);
@@ -253,6 +258,7 @@ class Edit extends Component {
 											<div className="rri-gallery01-block__more-info">
 												<RichText
 													tagName="p"
+													placeholder={elem.placeholder_description}
 													value={elem.description}
 													onChange={(value) => {
 														const elem_data_clone = cloneDeep(elem_data);
@@ -262,23 +268,25 @@ class Edit extends Component {
 														});
 													}}
 												/>
-												{header_data.open_link === false || header_data.open_lightbox === false  && <div className="rri-gallery01-block__more-info-no"></div>}
-												{header_data.open_lightbox === true  && <div className="rri-gallery01-block__more-info-plus"></div>}
-												{header_data.open_link === true  && <div className="rri-gallery01-block__more-info-play" onClick={() => this.setState({openUrlPopover: index})}></div>}
+												{header_data.open_link === false || header_data.open_lightbox === false &&
+												<div className="rri-gallery01-block__more-info-no"></div>}
+												{header_data.open_lightbox === true &&
+												<div className="rri-gallery01-block__more-info-plus"></div>}
+												{header_data.open_link === true &&
+												<div className="rri-gallery01-block__more-info-play"
+													 onClick={() => this.setState({openUrlPopover: index})}></div>}
 											</div>
-
-										{header_data.open_link === true ?
-										this.state.openUrlPopover === index && <UrlInputPopover
-											value={elem.link}
-											newTab={elem.linkNewTab}
-											onChange={value => this.onChangeUrl(value, index)}
-										/>: null}
-									</div>
-								)
+											{header_data.open_link === true ?
+												this.state.openUrlPopover === index && <UrlInputPopover
+													value={elem.link}
+													newTab={elem.linkNewTab}
+													onChange={value => this.onChangeUrl(value, index)}
+												/> : null}
+										</div>
+									)
 								})}
 
 							</div>
-
 							<RichText
 								tagName="button"
 								className="rri-gallery01__load-more"
@@ -291,7 +299,6 @@ class Edit extends Component {
 									});
 								}}
 							/>
-
 						</div>
 					</Fragment>
 				)}/>
