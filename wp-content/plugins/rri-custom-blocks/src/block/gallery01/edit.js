@@ -178,7 +178,7 @@ class Edit extends Component {
 						<div className="rri-gallery01">
 							<RichText
 								tagName="p"
-								className="rri-gallery01__title"s
+								className="rri-gallery01__title"
 								value={header_data.title}
 								onChange={(value) => {
 									const header_data_clone = cloneDeep(header_data);
