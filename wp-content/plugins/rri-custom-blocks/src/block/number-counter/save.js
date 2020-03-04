@@ -17,15 +17,18 @@ const save = (props) => {
     const {className, attributes} = props;
     const {numbers, settings}     = attributes;
     const bg                      = settings.bg;
-    const bgtrue                  = bg ? "rri-number-counter__container_white" : "";
+    const bgtrue                  = bg ? "rri-number-counter_white" : "";
     const itemsClasses            = classnames([
         'rri-number-counter__container',
-        `${bgtrue}`,
+    ]);
+    const mainClasses                            = classnames([
+        className,
+        bgtrue
     ]);
 
     return (
         <BlockContainer.Save
-            className = {className}
+            className = {mainClasses}
             blockProps = {props}
             render = {() => (
                 <Fragment>

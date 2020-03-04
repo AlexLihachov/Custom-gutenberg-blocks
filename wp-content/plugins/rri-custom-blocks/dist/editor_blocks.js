@@ -54034,10 +54034,10 @@ function (_Component) {
       var numbers = attributes.numbers,
           settings = attributes.settings;
       this.NumberRef = Object(__WEBPACK_IMPORTED_MODULE_10__wordpress_element__["createRef"])();
-      var mainClasses = __WEBPACK_IMPORTED_MODULE_3_classnames___default()([className]);
       var bg = settings.bg;
-      var bgtrue = bg ? "rri-number-counter__container_white" : "";
-      var itemsClasses = __WEBPACK_IMPORTED_MODULE_3_classnames___default()(['rri-number-counter__container', "".concat(bgtrue)]);
+      var bgtrue = bg ? "rri-number-counter_white" : "";
+      var mainClasses = __WEBPACK_IMPORTED_MODULE_3_classnames___default()([className, bgtrue]);
+      var itemsClasses = __WEBPACK_IMPORTED_MODULE_3_classnames___default()(['rri-number-counter__container']);
       return wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components__["j" /* BlockContainer */].Edit, {
         className: mainClasses,
         blockProps: this.props,
@@ -54174,10 +54174,11 @@ var save = function save(props) {
   var numbers = attributes.numbers,
       settings = attributes.settings;
   var bg = settings.bg;
-  var bgtrue = bg ? "rri-number-counter__container_white" : "";
-  var itemsClasses = __WEBPACK_IMPORTED_MODULE_2_classnames___default()(['rri-number-counter__container', "".concat(bgtrue)]);
+  var bgtrue = bg ? "rri-number-counter_white" : "";
+  var itemsClasses = __WEBPACK_IMPORTED_MODULE_2_classnames___default()(['rri-number-counter__container']);
+  var mainClasses = __WEBPACK_IMPORTED_MODULE_2_classnames___default()([className, bgtrue]);
   return wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__components__["j" /* BlockContainer */].Save, {
-    className: className,
+    className: mainClasses,
     blockProps: props,
     render: function render() {
       return wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__wordpress_element__["Fragment"], null, wp.element.createElement("div", {
