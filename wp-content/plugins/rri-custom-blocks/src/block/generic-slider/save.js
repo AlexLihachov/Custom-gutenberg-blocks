@@ -30,10 +30,11 @@ const save = (props) => {
 								'rri-generic-slide',
 								`rri-generic-slide${index}`,
 							]);
-							const title = slide.title;
-							const quote = slide.quote;
-							const author = slide.author;
+							const title = slide.title !== '' ? slide.title : 'Title';
+							const quote = slide.quote !== '' ? slide.quote : 'Quote';
+							const author = slide.author !== '' ? slide.author : 'Author';
 							const imageUrl = slide.image.url;
+
 							return (
 								<div
 									className={itemClasses}
