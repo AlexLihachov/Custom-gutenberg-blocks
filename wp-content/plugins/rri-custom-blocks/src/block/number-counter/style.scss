@@ -16,8 +16,25 @@ $white_color : #ffffff;
     position            : relative;
     max-width           : none;
     background-size     : cover;
-    background-image    : url("./images/ocean-wave-1656579.jpg");
     background-position : 50%;
+
+    &_white {
+        background-image : url("./images/ocean-wave-1656579.jpg");
+
+        .rri-number-counter__count-title,
+        .icon,
+        .rri-number-counter__count {
+            color : $white_color;
+        }
+
+        &.rri-main-block {
+            background-image : url("./images/ocean-wave-1656579.jpg");
+        }
+
+        &:before {
+            background : linear-gradient(180deg, rgba(8, 26, 42, 0.63) 0%, rgba(8, 26, 42, 0.55) 50.75%, rgba(8, 26, 42, 0.62) 100%);
+        }
+    }
 
     @media screen and (min-width : $break-medium) {
         padding : 245px 0;
@@ -52,11 +69,8 @@ $white_color : #ffffff;
             }
 
             .rri-number-counter__count {
-                margin      : 0;
-                display     : inline-flex;
                 font-size   : 65px;
                 line-height : 100px;
-                font-weight : bold;
             }
 
             .icon {
@@ -93,12 +107,8 @@ $white_color : #ffffff;
             }
 
             .rri-number-counter__count {
-                color       : $text_color;
-                margin      : 0;
-                display     : inline-flex;
                 font-size   : 38px;
                 line-height : 100px;
-                font-weight : bold;
             }
 
             .icon {
@@ -129,14 +139,6 @@ $white_color : #ffffff;
         max-width       : 1140px;
         align-items     : flex-start;
         justify-content : center;
-
-        &_white {
-            .rri-number-counter__count-title,
-            .icon,
-            .rri-number-counter__count {
-                color : $white_color;
-            }
-        }
     }
 
     &__count-title {
@@ -158,24 +160,28 @@ $white_color : #ffffff;
         margin-right : 20px;
     }
 
+    &__count {
+        color       : $text_color;
+        margin      : 0;
+        display     : inline-flex;
+        font-weight : bold;
+    }
+
     &:before {
-        top        : 0;
-        left       : 0;
-        right      : 0;
-        bottom     : 0;
-        content    : "";
-        z-index    : 2;
-        position   : absolute;
-        background : linear-gradient(180deg, rgba(8, 26, 42, 0.63) 0%, rgba(8, 26, 42, 0.55) 50.75%, rgba(8, 26, 42, 0.62) 100%);
+        top      : 0;
+        left     : 0;
+        right    : 0;
+        bottom   : 0;
+        content  : "";
+        z-index  : 2;
+        position : absolute;
     }
 
     &.rri-main-block {
-        padding          : 145px 0;
-        background-image : url("./images/ocean-wave-1656579.jpg");
-        max-width        : none;
+        padding   : 145px 0;
+        max-width : none;
         @media screen and (min-width : $break-medium) {
             padding : 245px 0;
         }
-
     }
 }
