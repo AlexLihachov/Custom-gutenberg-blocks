@@ -57,11 +57,12 @@ addFilter('stackable.number-counter.edit.inspector.style.before', 'stackable/num
                                 count         : 1,
                                 use           : "circle",
                                 text          : "",
-                                size          : "large",
-                                circle_size   : "214",
-                                circle_indent : "107",
-                                circle_radius : "104",
-                                circle_offset : 653,
+                                size          : "small",
+                                percent       : true,
+                                circle_size   : "129",
+                                circle_indent : "64",
+                                circle_radius : "62",
+                                circle_offset : 389,
                                 iconColor     : "#38484f"
                             });
                         } else{
@@ -228,11 +229,11 @@ class Edit extends Component{
                                     const itemClasses    =
                                               classnames([
                                                   'rri-number-counter__item',
+                                                  `rri-number-counter__item_${number.size}`
                                               ]);
                                     const elementClasses =
                                               classnames([
                                                   'rri-number-counter__element',
-                                                  `rri-number-counter__element_${number.size}`
                                               ]);
                                     const icon           = classnames([
                                         `${number.icon}`
@@ -304,7 +305,7 @@ class Edit extends Component{
                                                         numbers : numbersClone
                                                     });
                                                 }}
-                                                placeholder = {__('Lorem', i18n)}
+                                                placeholder = {__('Lorem ipsum dolor sit amet consecte', i18n)}
                                                 keepPlaceholderOnFocus
                                             />
                                         </div>

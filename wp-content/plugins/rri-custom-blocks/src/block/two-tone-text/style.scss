@@ -44,12 +44,12 @@ img {
   }
 
   &__grid {
-    display         : flex;
-    justify-content : center;
-    position        : relative;
-    font-size       : 0;
-    margin-left     : -40px;
-    letter-spacing  : normal;
+    display        : flex;
+    justify-content: center;
+    position       : relative;
+    font-size      : 0;
+    margin-left    : -40px;
+    letter-spacing : normal;
 
     @media (max-width : 1023px) {
       flex-direction : column;
