@@ -67,12 +67,15 @@ addFilter('stackable.gallery01.edit.inspector.style.before', 'stackable/gallery0
 
 						if (elem_data.length < value) {
 							elem_data_clone.push({
-								name: __('Name', i18n),
-								sub_title: __('Company Name', i18n),
-								description: __('Description', i18n),
+								name: "",
+								sub_title: "",
+								description: "",
+								placeholder_name: __('John Smith', i18n),
+								placeholder_sub_title: __('Company Name, CEO', i18n),
+								placeholder_description: __('“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla auctor enim in nisl dapibus pulvinar fusce luctus dolor…”', i18n),
 								link: '',
 								linkNewTab: false,
-								url: '',
+								url: `${window.rriData.srcUrl}/src/block/gallery01/images/2.png`,
 								id: ''
 							});
 						} else {
@@ -175,7 +178,7 @@ class Edit extends Component {
 						<div className="rri-gallery01">
 							<RichText
 								tagName="p"
-								className="rri-gallery01__title"
+								className="rri-gallery01__title"s
 								value={header_data.title}
 								onChange={(value) => {
 									const header_data_clone = cloneDeep(header_data);
@@ -188,6 +191,7 @@ class Edit extends Component {
 							<div className="rri-gallery01__subtext">
 								<RichText
 									tagName="p"
+									placeholder={header_data.placeholder_description}
 									value={header_data.description}
 									onChange={(value) => {
 										const header_data_clone = cloneDeep(header_data);
@@ -228,6 +232,7 @@ class Edit extends Component {
 												<RichText
 													tagName="p"
 													className="rri-gallery01-block-info__name"
+													placeholder={elem.placeholder_name}
 													value={elem.name}
 													onChange={(value) => {
 														const elem_data_clone = cloneDeep(elem_data);
@@ -240,6 +245,7 @@ class Edit extends Component {
 												<RichText
 													tagName="p"
 													className="rri-gallery01-block-info__work"
+													placeholder={elem.placeholder_sub_title}
 													value={elem.sub_title}
 													onChange={(value) => {
 														const elem_data_clone = cloneDeep(elem_data);
@@ -253,6 +259,7 @@ class Edit extends Component {
 											<div className="rri-gallery01-block__more-info">
 												<RichText
 													tagName="p"
+													placeholder={elem.placeholder_description}
 													value={elem.description}
 													onChange={(value) => {
 														const elem_data_clone = cloneDeep(elem_data);

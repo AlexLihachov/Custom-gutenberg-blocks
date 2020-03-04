@@ -34,7 +34,7 @@ const save = (props) => {
 						<div className="rri-gallery01__subtext">
 							<RichText.Content
 								tagName="p"
-								value={header_data.description}
+								value={header_data.description !=="" ? header_data.description : header_data.placeholder_description}
 							/>
 						</div>
 						<div className="rri-gallery01-grid">
@@ -55,18 +55,18 @@ const save = (props) => {
 											<RichText.Content
 												tagName="p"
 												className="rri-gallery01-block-info__name"
-												value={elem.name}
+												value={elem.name !== "" ? elem.name : elem.placeholder_name}
 											/>
 											<RichText.Content
 												tagName="p"
 												className="rri-gallery01-block-info__work"
-												value={elem.sub_title}
+												value={elem.sub_title !== "" ? elem.sub_title : elem.placeholder_sub_title}
 											/>
 										</div>
 										<div className="rri-gallery01-block__more-info">
 											<RichText.Content
 												tagName="p"
-												value={elem.description}
+												value={elem.description !== "" ? elem.description : elem.placeholder_description}
 											/>
 											{header_data.open_link === false || header_data.open_lightbox === false &&
 											<div className="rri-gallery01-block__more-info-no"></div>}
