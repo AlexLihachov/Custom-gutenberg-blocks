@@ -35,11 +35,11 @@ const save = (props) => {
                             const itemClasses    =
                                       classnames([
                                           'rri-number-counter__item',
+                                          `rri-number-counter__item_${number.size}`
                                       ]);
                             const elementClasses =
                                       classnames([
                                           'rri-number-counter__element',
-                                          `rri-number-counter__element_${number.size}`
                                       ]);
                             const count          = number.count;
                             const use            = number.use;
