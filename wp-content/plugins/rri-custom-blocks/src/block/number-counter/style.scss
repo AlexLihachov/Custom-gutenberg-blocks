@@ -1,39 +1,62 @@
 $text_color : #38484f;
 $white_color : #ffffff;
-
+@import "common";
 
 .rri-number-counter__item-border {
     width         : 100px;
     height        : 100px;
     border        : 2px solid blue;
-    border-radius : 50%;
     text-align    : center;
     line-height   : 100px;
+    border-radius : 50%;
 }
 
 .rri-number-counter {
-    background-size     : cover;
-    background-position : 50%;
+    padding             : 145px 0;
     position            : relative;
-    padding             : 200px 0;
+    max-width           : none;
+    background-size     : cover;
+    background-image    : url("./images/ocean-wave-1656579.jpg");
+    background-position : 50%;
+
+    @media screen and (min-width : $break-medium) {
+        padding : 245px 0;
+    }
 
     &__element {
+        display         : flex;
         position        : relative;
-        display         : flex;;
         align-items     : center;
+        margin          : 0 auto 14px auto;
         justify-content : center;
-        margin-bottom   : 14px;
+    }
+
+    &__circle {
+        left      : 0;
+        position  : absolute;
+        transform : rotate(-90deg);
+    }
+
+    &__item {
+        margin   : 0 20px 50px 20px;
+        z-index  : 3;
+        display  : inline-block;
+        position : relative;
 
         &_large {
-            width  : 214px;
-            height : 214px;
+            width : 265px;
+
+            .rri-number-counter__element {
+                width  : 214px;
+                height : 214px;
+            }
 
             .rri-number-counter__count {
+                margin      : 0;
                 display     : inline-flex;
                 font-size   : 65px;
                 line-height : 100px;
                 font-weight : bold;
-                margin      : 0;
             }
 
             .icon {
@@ -50,24 +73,32 @@ $white_color : #ffffff;
             }
 
             .rri-number-counter__circle-container {
-                position : absolute;
                 width    : 214px;
                 height   : 214px;
+                position : absolute;
             }
+
+            .rri-number-counter__count-title {
+                font-size : 18px;
+            }
+
         }
 
-
         &_small {
-            width  : 129px;
-            height : 129px;
+            width : 196px;
+
+            .rri-number-counter__element {
+                width  : 129px;
+                height : 129px;
+            }
 
             .rri-number-counter__count {
+                color       : $text_color;
+                margin      : 0;
                 display     : inline-flex;
                 font-size   : 38px;
                 line-height : 100px;
                 font-weight : bold;
-                margin      : 0;
-                color       : $text_color;
             }
 
             .icon {
@@ -83,30 +114,19 @@ $white_color : #ffffff;
             }
 
             .rri-number-counter__circle-container {
-                position : absolute;
                 width    : 129px;
                 height   : 129px;
+                position : absolute;
             }
         }
 
     }
 
-    &__circle {
-        position  : absolute;
-        left      : 0;
-        transform : rotate(-90deg);
-    }
-
-    &__item {
-        display  : inline-block;
-        margin   : 0 20px 50px 20px;
-        position : relative;
-        z-index  : 3;
-    }
-
     &__container {
+        margin          : 0 auto;
         display         : flex;
         flex-wrap       : wrap;
+        max-width       : 1140px;
         align-items     : flex-start;
         justify-content : center;
 
@@ -120,12 +140,12 @@ $white_color : #ffffff;
     }
 
     &__count-title {
-        font-size      : 16px;
-        font-weight    : bold;
-        letter-spacing : 0.5px;
-        line-height    : 26px;
-        text-align     : center;
         color          : $text_color;
+        font-size      : 16px;
+        text-align     : center;
+        font-weight    : bold;
+        line-height    : 26px;
+        letter-spacing : 0.5px;
     }
 
     &__image {
@@ -139,16 +159,23 @@ $white_color : #ffffff;
     }
 
     &:before {
-        content  : "";
-        position : absolute;
-        top      : 0;
-        left     : 0;
-        right    : 0;
-        bottom   : 0;
-        z-index  : 2;
+        top        : 0;
+        left       : 0;
+        right      : 0;
+        bottom     : 0;
+        content    : "";
+        z-index    : 2;
+        position   : absolute;
+        background : linear-gradient(180deg, rgba(8, 26, 42, 0.63) 0%, rgba(8, 26, 42, 0.55) 50.75%, rgba(8, 26, 42, 0.62) 100%);
     }
 
     &.rri-main-block {
-        padding : 200px 0;
+        padding          : 145px 0;
+        background-image : url("./images/ocean-wave-1656579.jpg");
+        max-width        : none;
+        @media screen and (min-width : $break-medium) {
+            padding : 245px 0;
+        }
+
     }
 }
