@@ -28,17 +28,24 @@ export const createStyles = (props) => {
 	// Block width
 	styles.push({
 		'.rri-generic-slide__wrapper': {
-			maxWidth: appendImportant(getValue('blockWidth', '%spx'))
+			maxWidth: `${getValue('blockWidth') - 30 - 160}px !important`
 		},
 		tablet: {
 			'.rri-generic-slide__wrapper': {
-				maxWidth: appendImportant(getValue('tabletBlockWidth', '%spx'))
+				maxWidth: `${getValue('tabletBlockWidth') - 35}px !important`
 			}
 		},
 		mobile: {
 			'.rri-generic-slide__wrapper': {
-				maxWidth: appendImportant(getValue('mobileBlockWidth', '%spx'))
+				maxWidth: `${getValue('mobileBlockWidth') - 35}px !important`
 			}
+		}
+	});
+
+	// Arrows depend on block width
+	styles.push({
+		'.rri-generic-slider__arrows': {
+			maxWidth: `${getValue('blockWidth')}px !important`
 		}
 	});
 

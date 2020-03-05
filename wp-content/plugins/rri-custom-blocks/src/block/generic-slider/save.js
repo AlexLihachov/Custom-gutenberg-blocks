@@ -2,7 +2,7 @@
  * External dependencies
  */
 import {withBlockStyles, withUniqueClass} from '../../higher-order';
-import {BlockContainer} from '../../components';
+import {BlockContainer, Button} from '../../components';
 import classnames from 'classnames';
 
 /**
@@ -26,10 +26,7 @@ const save = (props) => {
 				<Fragment>
 					<div className="rri-generic-slider__inner">
 						{slidesData.map((slide, index) => {
-							const itemClasses = classnames([
-								'rri-generic-slide',
-								`rri-generic-slide${index}`,
-							]);
+							const {button} = slide;
 							const title = slide.title !== '' ? slide.title : 'Title';
 							const quote = slide.quote !== '' ? slide.quote : 'Quote';
 							const author = slide.author !== '' ? slide.author : 'Author';
@@ -37,7 +34,7 @@ const save = (props) => {
 
 							return (
 								<div
-									className={itemClasses}
+									className="rri-generic-slide"
 									key={index}
 									style={{
 										backgroundImage: `url(${imageUrl})`
@@ -59,11 +56,18 @@ const save = (props) => {
 												className="rri-generic-slide__author"
 												value={author}
 											/>
+											<div className="rri-generic-slide__cta">
+												<Button {...button}/>
+											</div>
 										</div>
 									</div>
 								</div>
 							);
 						})}
+					</div>
+					<div className="rri-generic-slider__arrows">
+						<div className="rri-generic-slider__arrow rri-generic-slider__arrow--left"/>
+						<div className="rri-generic-slider__arrow rri-generic-slider__arrow--right"/>
 					</div>
 				</Fragment>
 			)}

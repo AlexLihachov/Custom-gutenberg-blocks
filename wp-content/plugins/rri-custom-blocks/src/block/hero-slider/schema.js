@@ -1,7 +1,3 @@
-/**
- * WordPress dependencies
- */
-
 export const schema = {
 	slides_data: {
 		type: 'array',

@@ -1,19 +1,55 @@
-.rri-generic-slider .rri-image-upload-placeholder {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+.rri-generic-slider.wp-block-rri-generic-slider {
+	.rri-image-upload-placeholder {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 
-	background-size: cover;
-	background-position: center;
-	background-color: #2B2B2B;
+		background-size: cover;
+		background-position: center;
+		background-color: #2B2B2B;
 
-	&:hover {
-		background-color: #323232;
+		&:hover {
+			background-color: #323232;
+		}
 	}
-}
 
-.rri-generic-slide {
-	position: relative;
+	div.rri-generic-slider__arrows {
+		padding: 0 10px;
+	}
+
+	div.rri-generic-slider__arrow {
+		width: 13px;
+		height: 24px;
+	}
+
+	div.rri-generic-slide.slick-slide {
+		position: relative;
+		padding: 65px 35px;
+		text-align: left;
+
+		.rri-generic-slide__wrapper {
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		.rri-generic-slide__copy {
+			max-width: 50%;
+			flex: 0 0 50%;
+		}
+
+		.rri-generic-slide__quote {
+			font-size: 18px;
+			margin: 0;
+		}
+
+		.rri-generic-slide__author {
+			font-size: 18px;
+		}
+
+		.rri-generic-slide__cta {
+			margin: 18px 0 0;
+		}
+	}
 }

@@ -7,7 +7,9 @@ import {
 	ImageUploadPlaceholder,
 	BlockContainer,
 	AdvancedRangeControl,
-	DragImages
+	DragImages,
+	Button,
+	IconControlRRI
 } from '../../components';
 
 import {
@@ -15,27 +17,25 @@ import {
 	withSetAttributeHook,
 	withTabbedInspector,
 	withBlockStyles,
-	withClickOpenInspector,
 } from '../../higher-order';
 
 import classnames from 'classnames';
-import {i18n} from '../../constants'
+import {i18n} from '../../constants';
 
 /**
  * Internal dependencies
  */
-import createStyles from './style'
+import createStyles from './style';
 
 /**
  * WordPress dependencies
  */
-import {RichText} from '@wordpress/block-editor'
-import {PanelBody, withFocusOutside, ToggleControl} from '@wordpress/components'
-import {__} from '@wordpress/i18n'
-import {addFilter} from '@wordpress/hooks'
-import {Component, Fragment, createRef} from '@wordpress/element'
-import {compose} from '@wordpress/compose'
-import {withSelect} from '@wordpress/data'
+import {RichText} from '@wordpress/block-editor';
+import {PanelBody, withFocusOutside, ToggleControl, SelectControl} from '@wordpress/components';
+import {__} from '@wordpress/i18n';
+import {addFilter} from '@wordpress/hooks';
+import {Component, Fragment, createRef} from '@wordpress/element';
+import {compose} from '@wordpress/compose';
 
 /**
  * Tabs Render
@@ -65,12 +65,21 @@ addFilter('stackable.generic-slider.edit.inspector.style.before', 'stackable/gen
 
 						if (slidesData.length < value) {
 							sliderDataClone.push({
-								title: __('Title', i18n),
-								quote: __('Quote', i18n),
-								author: __('Author', i18n),
+								title: '',
+								quote: '',
+								author: '',
 								image: {
 									url: '',
 									id: ''
+								},
+								button: {
+									url: '',
+									newTab: false,
+									noFollow: false,
+									text: '',
+									design: 'primary',
+									size: 'medium',
+									iconToggle: false,
 								}
 							});
 						} else {
@@ -149,6 +158,69 @@ addFilter('stackable.generic-slider.edit.inspector.style.before', 'stackable/gen
 					}}
 				/>
 			</PanelBody>
+			{slidesData.map((item, index) => {
+				const {button} = item;
+				return (
+					<PanelBody title={__(`Slide ${index + 1}`, i18n)} initialOpen={false}>
+						<SelectControl label={__('Design', i18n)}
+									   options={[
+										   {value: 'primary', label: __('Primary', i18n)},
+										   {value: 'secondary', label: __('Secondary', i18n)},
+										   {value: 'transparent_dark', label: __('Transparent Dark', i18n)},
+										   {value: 'transparent_light', label: __('Transparent Light', i18n)},
+										   {value: 'transparent_over', label: __('Transparent over image', i18n)},
+									   ]}
+									   value={button.design}
+									   onChange={(value) => {
+										   const slidesDataClone = cloneDeep(slidesData);
+										   slidesDataClone[index].button.design = value;
+										   setAttributes({
+											   slidesData: slidesDataClone
+										   });
+									   }}
+						/>
+						<SelectControl label={__('Size', i18n)}
+									   options={[
+										   {value: 'small', label: __('Small', i18n)},
+										   {value: 'medium', label: __('Medium', i18n)},
+										   {value: 'large', label: __('Large', i18n)},
+									   ]}
+									   value={button.size}
+									   onChange={(value) => {
+										   const slidesDataClone = cloneDeep(slidesData);
+										   slidesDataClone[index].button.size = value;
+										   setAttributes({
+											   slidesData: slidesDataClone
+										   });
+									   }}
+						/>
+						<ToggleControl
+							label={__('Icon', i18n)}
+							checked={button.iconToggle}
+							onChange={() => {
+								const slidesDataClone = cloneDeep(slidesData);
+								slidesDataClone[index].button.iconToggle = !slidesDataClone[index].button.iconToggle;
+								setAttributes({
+									slidesData: slidesDataClone
+								});
+							}}
+						/>
+						{button.iconToggle && (
+							<IconControlRRI
+								label={__('Icon', i18n)}
+								value={button.icon}
+								onChange={(value) => {
+									const slidesDataClone = cloneDeep(slidesData);
+									slidesDataClone[index].button.icon = value;
+									setAttributes({
+										slidesData: slidesDataClone
+									});
+								}}
+							/>
+						)}
+					</PanelBody>
+				);
+			})}
 			<PanelBody title={__('Ordering', i18n)} initialOpen={false}>
 				<DragImages items={slidesData} setAttributes={setAttributes} propName="slidesData"/>
 			</PanelBody>
@@ -160,44 +232,64 @@ class Edit extends Component {
 	constructor() {
 		super(...arguments);
 		this.state = {
-			selectedBox: null,
+			openUrlPopover: null
 		};
 		this.sliderRef = createRef();
-		this.handleFocusOutside = this.handleFocusOutside.bind(this);
 		this.decreasesSlides = false;
+		this.handleFocusOutside = this.handleFocusOutside.bind(this);
+		this.handleButtonChange = this.handleButtonChange.bind(this);
 	}
 
 	handleFocusOutside() {
 		this.setState({
-			selectedBox: null,
+			openUrlPopover: null
+		});
+	}
+
+	handleButtonChange(value, index, type) {
+		const {attributes, setAttributes} = this.props;
+		const slidesDataClone = cloneDeep(attributes.slidesData);
+		slidesDataClone[index].button[type] = value;
+		setAttributes({
+			slidesData: slidesDataClone
 		});
 	}
 
 	componentDidMount() {
-		jQuery(this.sliderRef.current).slick(this.props.attributes.settings);
+		const $slider = jQuery(this.sliderRef.current);
+		const settings = Object.assign({}, this.props.attributes.settings, {
+			prevArrow: $slider.find('.rri-generic-slider__arrow--left'),
+			nextArrow: $slider.find('.rri-generic-slider__arrow--right'),
+		});
+
+		$slider.find('.rri-generic-slider__inner').slick(settings);
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
+		const $slider = jQuery(this.sliderRef.current);
 		const isAddNewSlides = prevProps.attributes.slidesData.length < this.props.attributes.slidesData.length;
 		const isDifferentSettings = !isEqual(prevProps.attributes.settings, this.props.attributes.settings);
-		const slideNode = this.sliderRef.current;
+		const settings = Object.assign({}, this.props.attributes.settings, {
+			prevArrow: $slider.find('.rri-generic-slider__arrow--left'),
+			nextArrow: $slider.find('.rri-generic-slider__arrow--right'),
+		});
 
 		if (isAddNewSlides || isDifferentSettings) {
-			jQuery(slideNode).slick('destroy');
-			jQuery(slideNode).slick(this.props.attributes.settings);
+			$slider.find('.rri-generic-slider__inner').slick('destroy');
+			$slider.find('.rri-generic-slider__inner').slick(settings);
 
 		} else if (this.decreasesSlides) {
-			jQuery(slideNode).slick(this.props.attributes.settings);
+			$slider.find('.rri-generic-slider__inner').slick(settings);
 			this.decreasesSlides = false;
 		}
 	}
 
 	getSnapshotBeforeUpdate(prevProps, prevState) {
 		const isRemovedSlides = prevProps.attributes.slidesData.length > this.props.attributes.slidesData.length;
-		const slideNode = this.sliderRef.current;
+		const $slider = jQuery(this.sliderRef.current);
 
 		if (isRemovedSlides) {
-			jQuery(slideNode).slick('destroy');
+			$slider.find('.rri-generic-slider__inner').slick('destroy');
 			this.decreasesSlides = true;
 		}
 	}
@@ -212,26 +304,17 @@ class Edit extends Component {
 				className={mainClasses}
 				blockProps={this.props}
 				render={() => (
-					<Fragment>
-						<div className="rri-generic-slider__inner" ref={this.sliderRef}>
+					<div ref={this.sliderRef}>
+						<div className="rri-generic-slider__inner">
 							{slidesData.map((slide, index) => {
-								const itemClasses = classnames([
-									'rri-generic-slide',
-									`rri-generic-slide${index}`,
-								]);
+								const {button, image} = slide;
 
 								return (
-									<div className={itemClasses}
-										 key={index}
-										 onMouseDown={() => {
-											 this.setState({selectedBox: index});
-										 }}
-										 role="button"
-										 tabIndex="0">
+									<div className="rri-generic-slide">
 										<div className="rri-generic-slide__wrapper">
 											<ImageUploadPlaceholder
-												imageID={slide.image.id}
-												imageURL={slide.image.url}
+												imageID={image.id}
+												imageURL={image.url}
 												onRemove={() => {
 													const sliderDataClone = cloneDeep(slidesData);
 													sliderDataClone[index].image.id = '';
@@ -293,13 +376,27 @@ class Edit extends Component {
 													placeholder={__('Author', i18n)}
 													keepPlaceholderOnFocus
 												/>
+												<div className="rri-generic-slide__cta">
+													<Button
+														{...button}
+														index={index}
+														isEdit={true}
+														openUrlPopover={this.state.openUrlPopover}
+														handleClick={() => this.setState({openUrlPopover: index})}
+														handleChange={this.handleButtonChange}
+													/>
+												</div>
 											</div>
 										</div>
 									</div>
 								);
 							})}
 						</div>
-					</Fragment>
+						<div className="rri-generic-slider__arrows">
+							<div className="rri-generic-slider__arrow rri-generic-slider__arrow--left"/>
+							<div className="rri-generic-slider__arrow rri-generic-slider__arrow--right"/>
+						</div>
+					</div>
 				)}/>
 		);
 	}
@@ -311,17 +408,5 @@ export default compose(
 	withSetAttributeHook,
 	withTabbedInspector(),
 	withBlockStyles(createStyles, {editorMode: true}),
-	withClickOpenInspector([
-		['.rri-generic-slide__titles', 'title'],
-		['.rri-generic-slide__quote', 'quote'],
-		['.rri-generic-slide__author', 'author'],
-	]),
-	withSelect((select, {clientId}) => {
-		const {getBlock} = select('core/block-editor');
-		const block = getBlock(clientId);
-		return {
-			hasInnerBlocks: !!(block && block.innerBlocks.length),
-		}
-	}),
 	withFocusOutside,
 )(Edit);

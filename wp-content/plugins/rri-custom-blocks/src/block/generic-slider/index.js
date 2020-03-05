@@ -7,6 +7,7 @@
  */
 import edit from './edit';
 import save from './save';
+import schema from './schema';
 
 /**
  * WordPress dependencies
@@ -18,35 +19,6 @@ import {i18n} from '../../constants';
  * External dependencies
  */
 import {SliderIcon} from '../../icons';
-
-export const schema = {
-	slidesData: {
-		type: 'array',
-		default: [
-			{
-				title: '',
-				quote: '',
-				author: '',
-				image: {
-					url: '',
-					id: ''
-				}
-			}
-		]
-	},
-
-	settings: {
-		type: 'object',
-		default: {
-			infinite: true,
-			adaptiveHeight: true,
-			autoplay: false,
-			autoplaySpeed: 0,
-			speed: 300,
-			slidesToShow: 1
-		}
-	}
-};
 
 export const name = 'rri/generic-slider';
 
