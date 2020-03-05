@@ -1,0 +1,23 @@
+$colorWhite: #ffffff;
+$colorGray: #E5E5E5;
+$colorBlueLight: #14AECF;
+$proximaBold: "Proxima Nova Bold", "Helvetica Neue", "Arial Narrow", sans-serif;
+.tabs {
+  &__tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 374px;
+	height: 53px;
+	margin-bottom: 17px;
+	outline: none;
+	background: $colorWhite;
+	border: 1px solid $colorGray;
+	border-radius: 0;
+	font-family: $proximaBold;
+	font-size: 15px;
+	color: $colorBlueLight;
+	letter-spacing: 0.5px;
+  }
+}
