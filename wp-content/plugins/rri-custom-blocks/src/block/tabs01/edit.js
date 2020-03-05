@@ -125,12 +125,7 @@ class Edit extends Component {
 								{tabs_data.map((tab, index) => {
 									return (
 								<div data-id={index} className={index === 0 ? `tabs__content tabs__content_${index} visible` : `tabs__content tabs__content_${index}`}>
-									<InnerBlocks
-										templateLock={false}
-										renderAppender={() =>  !props.hasInnerBlocks ? <InnerBlocks.ButtonBlockAppender/> :
-											<InnerBlocks.DefaultBlockAppender/>}
-									/>
-
+									<InnerBlocks/>
 								</div>
 									)
 								})}
