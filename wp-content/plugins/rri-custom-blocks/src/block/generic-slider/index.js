@@ -24,9 +24,9 @@ export const schema = {
 		type: 'array',
 		default: [
 			{
-				title: __('Title', i18n),
-				quote: __('Quote', i18n),
-				author: __('Author', i18n),
+				title: '',
+				quote: '',
+				author: '',
 				image: {
 					url: '',
 					id: ''

@@ -1,11 +1,5 @@
 @import "common";
 
-//.entry-content>*, .entry-summary>*, .page-content>* {
-//	width: 100% !important;
-//	max-width: 100% !important;
-//	padding: 0 !important;
-//}
-
 .rri-hero-slider {
 	$b: &;
 
@@ -114,11 +108,7 @@
 	$b: &;
 
 	&.slick-slide {
-
-		background: {
-			repeat: no-repeat;
-			size: cover;
-		};
+		opacity: 1 !important;
 
 		#{$b}__wrapper {
 			width: 100%;
@@ -163,40 +153,68 @@
 		}
 
 		#{$b}__title {
-			margin: 0;
-			padding: 0;
+			overflow: hidden;
 
-			font: {
-				family: 'Proxima Nova Bold';
-				size: 60px;
-				weight: normal;
-			};
-			line-height: 0.9333333333;
-			color: #FFFFFF;
-			text-transform: uppercase;
+			h2 {
+				margin: 0;
+				padding: 0;
 
-			@include breakpoints(l) {
-				font-size: 80px;
-				line-height: 0.925;
+				font: {
+					family: 'Tungsten Medium', 'Proxima Nova Bold', 'Proxima Nova';
+					size: 60px;
+					weight: normal;
+				};
+				line-height: 0.9333333333;
+				color: #FFFFFF;
+				text-transform: uppercase;
+				transform: translateY(100%);
+
+				@include breakpoints(l) {
+					font-size: 80px;
+					line-height: 0.925;
+				}
+			}
+
+			&.animated h2 {
+				transition-delay: 200ms;
+				transition-duration: 600ms;
+				transition-property: transform;
+				transition-timing-function: ease-in-out;
+				transform: translateY(0);
+
 			}
 		}
 
 		#{$b}__copy {
+			overflow: hidden;
 			margin: 20px 0 0;
-			padding: 0;
 
-			font: {
-				family: 'Proxima Nova';
-				size: 16px;
-				weight: normal;
-			};
-			line-height: 1.8125;
-			letter-spacing: 0.5px;
-			color: #FFFFFF;
+			p {
+				margin: 0;
+				padding: 0;
+				font: {
+					family: 'Proxima Nova';
+					size: 16px;
+					weight: normal;
+				};
+				line-height: 1.8125;
+				letter-spacing: 0.5px;
+				color: #FFFFFF;
+				transform: translateY(-100%);
 
-			@include breakpoints(l) {
-				font-size: 18px;
-				line-height: 1.5;
+				@include breakpoints(l) {
+					font-size: 18px;
+					line-height: 1.5;
+				}
+			}
+
+			&.animated p {
+				transition-delay: 200ms;
+				transition-duration: 600ms;
+				transition-property: transform;
+				transition-timing-function: ease-in-out;
+				transform: translateY(0);
+
 			}
 
 			&:first-child {
@@ -206,7 +224,7 @@
 
 		#{$b}__cta {
 			margin: 30px 0 0;
-			padding: 0;
+			opacity: 0;
 
 			@include breakpoints(l) {
 				margin: 35px 0 0;
@@ -215,6 +233,51 @@
 			&:first-child {
 				margin-top: 0;
 			}
+
+			&.animated {
+				transition-delay: 200ms;
+				transition-duration: 800ms;
+				transition-property: opacity;
+				transition-timing-function: ease-out;
+				opacity: 1;
+			}
+		}
+
+		#{$b}__bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+
+			background: {
+				repeat: no-repeat;
+				size: cover;
+			};
+			will-change: transform;
+			animation-duration: 5s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+			animation-timing-function: linear;
+			transform: translateX(10%) translateY(10%) scale(1.2);
+		}
+	}
+
+	&.slick-slide:nth-child(odd) {
+		#{$b}__bg {
+			transform: translateX(10%) translateY(10%) scale(1.2);
+		}
+		#{$b}__bg.animated {
+			animation-name: background-image-animation-odd;
+		}
+	}
+
+	&.slick-slide:nth-child(even) {
+		#{$b}__bg {
+			transform: translateX(0) translateY(10%) scale(1.2);
+		}
+		#{$b}__bg.animated {
+			animation-name: background-image-animation-even;
 		}
 	}
 
@@ -241,5 +304,23 @@
 		#{$b}__wrapper {
 			justify-content: flex-end;
 		}
+	}
+}
+
+@keyframes background-image-animation-odd {
+	0% {
+		transform: translateX(10%) translateY(10%) scale(1.2);
+	}
+	100% {
+		transform: translateX(0) translateY(0) scale(1.2);
+	}
+}
+
+@keyframes background-image-animation-even {
+	0% {
+		transform: translateX(0) translateY(10%) scale(1.2);
+	}
+	100% {
+		transform: translateX(10%) translateY(0) scale(1.2);
 	}
 }

@@ -1,6 +1,7 @@
 /**
  * WordPress dependencies
  */
+import {__} from '@wordpress/i18n';
 import {Component} from '@wordpress/element';
 import {RichText} from '@wordpress/block-editor';
 
@@ -9,22 +10,18 @@ import {RichText} from '@wordpress/block-editor';
  */
 import classnames from 'classnames';
 import {i18n} from '../../constants';
-
 import {UrlInputPopover} from '../../components';
 
 class Button extends Component {
 	constructor() {
 		super(...arguments);
-		this.state = {
-			openUrlPopover: false
-		};
 	}
 
 	render() {
 		let output = '';
-		const {
-			isEdit, design, size, text, url, newTab, noFollow, iconToggle, icon,
-			onTextChange, onChangeUrl, onChangeNewTab, onChangeNoFollow
+		let {
+			index, isEdit, design, size, text, url, newTab, noFollow, iconToggle, icon, openUrlPopover, className,
+			handleClick, handleChange
 		} = this.props;
 		const rel = [];
 
@@ -41,35 +38,44 @@ class Button extends Component {
 				'rri-buttons__item',
 				`rri-buttons__item_${design}`,
 				`rri-buttons__item_${size}`,
+				className
 			]);
 
-		// Edit Html
+		/**
+		 * Edit html
+		 * */
+
 		if (isEdit) {
 			output = (
-				<div className={itemClasses} onClick={() => this.setState({openUrlPopover: true})}>
+				<div className={itemClasses} onClick={handleClick}>
 					<RichText
 						tagName="span"
+						placeholder={__('Click Here', i18n)}
 						className="rri-gift-slide__cta-text"
 						value={text}
-						onChange={(value) => onTextChange(value)}
-
+						onChange={(value) => handleChange(value, index, 'text')}
 						keepPlaceholderOnFocus
 					/>
 					{iconToggle && (
 						<span className={icon}/>
 					)}
-					{this.state.openUrlPopover && <UrlInputPopover
+					{openUrlPopover === index && <UrlInputPopover
 						value={url}
 						newTab={newTab}
 						noFollow={noFollow}
-						onChange={(value) => onChangeUrl(value)}
-						onChangeNewTab={(value) => onChangeNewTab(value)}
-						onChangeNoFollow={(value) => onChangeNoFollow(value)}
+						onChange={(value) => handleChange(value, index, 'url')}
+						onChangeNewTab={(value) => handleChange(value, index, 'newTab')}
+						onChangeNoFollow={(value) => handleChange(value, index, 'noFollow')}
 					/>}
 				</div>
 			);
 		} else {
-			// Save html
+
+			/**
+			 * Save html
+			 * */
+			text = text !== '' ? text : 'Click here';
+
 			output = (
 				<a className={itemClasses}
 				   href={url}
@@ -92,6 +98,7 @@ class Button extends Component {
 }
 
 Button.defaultProps = {
+	index: 0,
 	url: '',
 	newTab: false,
 	noFollow: false,
@@ -101,14 +108,12 @@ Button.defaultProps = {
 	iconToggle: false,
 	icon: '',
 	isEdit: false,
-	onTextChange: () => {
+	openUrlPopover: false,
+	className: '',
+	handleClick: () => {
 	},
-	onChangeUrl: () => {
-	},
-	onChangeNewTab: () => {
-	},
-	onChangeNoFollow: () => {
-	},
+	handleChange: () => {
+	}
 };
 
 export default Button;

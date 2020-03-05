@@ -8,18 +8,15 @@ import {
 	BlockContainer,
 	AdvancedRangeControl,
 	DragImages,
-	UrlInputPopover,
-	TypographyControlHelper,
-	HeadingButtonsControl,
-	ColorPaletteControl
+	Button,
+	IconControlRRI
 } from '../../components';
 
 import {
 	withUniqueClass,
 	withSetAttributeHook,
 	withTabbedInspector,
-	withBlockStyles,
-	withClickOpenInspector,
+	withBlockStyles
 } from '../../higher-order';
 
 import classnames from 'classnames';
@@ -41,7 +38,6 @@ import {__} from '@wordpress/i18n';
 import {addFilter} from '@wordpress/hooks';
 import {Component, Fragment, createRef} from '@wordpress/element';
 import {compose} from '@wordpress/compose';
-import {withSelect} from '@wordpress/data';
 
 /**
  * Tabs Render
@@ -75,7 +71,7 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 									title: '',
 									copy: '',
 									image: {
-										url: 'https://local.test.com/wp-content/uploads/2020/02/Image.png',
+										url: `${window.rriData.srcUrl}/src/block/hero-slider/images/hero-slider-placeholder-1.png`,
 										id: ''
 									},
 									params: {
@@ -87,7 +83,8 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 										noFollow: false,
 										text: '',
 										design: 'primary',
-										size: 'small'
+										size: 'medium',
+										iconToggle: false,
 									}
 								}
 							);
@@ -101,17 +98,6 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 					}}
 					min={1}
 					max={20}
-				/>
-				<ToggleControl
-					label={__('Infinite Loop?', i18n)}
-					checked={settings.infinite}
-					onChange={() => {
-						const settingsClone = cloneDeep(settings);
-						settingsClone.infinite = !settingsClone.infinite;
-						setAttributes({
-							settings: settingsClone
-						});
-					}}
 				/>
 				<ToggleControl
 					label={__('Hide Controls?', i18n)}
@@ -129,35 +115,6 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 							settings: settingsClone
 						});
 					}}
-				/>
-				<AdvancedRangeControl
-					label={__('Autoplay (second)', i18n)}
-					value={(settings.autoplaySpeed / 1000)}
-					step={0.3}
-					onChange={(value) => {
-						const settingsClone = cloneDeep(settings);
-						settingsClone.autoplay = value > 0;
-						settingsClone.autoplaySpeed = value * 1000;
-						setAttributes({
-							settings: settingsClone
-						});
-					}}
-					min={0}
-					max={4.5}
-				/>
-				<AdvancedRangeControl
-					label={__('Speed (second)', i18n)}
-					value={(settings.speed / 1000)}
-					step={0.3}
-					onChange={(value) => {
-						const settingsClone = cloneDeep(settings);
-						settingsClone.speed = value * 1000;
-						setAttributes({
-							settings: settingsClone
-						});
-					}}
-					min={0}
-					max={4.5}
 				/>
 			</PanelBody>
 
@@ -185,7 +142,10 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 						<SelectControl label={__('Design', i18n)}
 									   options={[
 										   {value: 'primary', label: __('Primary', i18n)},
-										   {value: 'secondary', label: __('Secondary', i18n)}
+										   {value: 'secondary', label: __('Secondary', i18n)},
+										   {value: 'transparent_dark', label: __('Transparent Dark', i18n)},
+										   {value: 'transparent_light', label: __('Transparent Light', i18n)},
+										   {value: 'transparent_over', label: __('Transparent over image', i18n)},
 									   ]}
 									   value={button.design}
 									   onChange={(value) => {
@@ -200,7 +160,7 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 									   options={[
 										   {value: 'small', label: __('Small', i18n)},
 										   {value: 'medium', label: __('Medium', i18n)},
-										   {value: 'large', label: __('Large', i18n)}
+										   {value: 'large', label: __('Large', i18n)},
 									   ]}
 									   value={button.size}
 									   onChange={(value) => {
@@ -211,6 +171,30 @@ addFilter('stackable.hero-slider.edit.inspector.style.before', 'stackable/hero-s
 										   });
 									   }}
 						/>
+						<ToggleControl
+							label={__('Icon', i18n)}
+							checked={button.iconToggle}
+							onChange={() => {
+								const slides_data_clone = cloneDeep(slides_data);
+								slides_data_clone[index].button.iconToggle = !slides_data_clone[index].button.iconToggle;
+								setAttributes({
+									slides_data: slides_data_clone
+								});
+							}}
+						/>
+						{button.iconToggle && (
+							<IconControlRRI
+								label={__('Icon', i18n)}
+								value={button.icon}
+								onChange={(value) => {
+									const slides_data_clone = cloneDeep(slides_data);
+									slides_data_clone[index].button.icon = value;
+									setAttributes({
+										slides_data: slides_data_clone
+									});
+								}}
+							/>
+						)}
 					</PanelBody>
 				);
 			})}
@@ -225,26 +209,70 @@ class Edit extends Component {
 	constructor() {
 		super(...arguments);
 		this.state = {
-			openUrlPopover: false
+			openUrlPopover: null
 		};
 		this.sliderRef = createRef();
 		this.decreasesSlides = false;
-		this.handleFocusOutside = this.handleFocusOutside.bind(this)
+		this.handleFocusOutside = this.handleFocusOutside.bind(this);
+		this.handleButtonChange = this.handleButtonChange.bind(this);
+		this.addAnimations = this.addAnimations.bind(this);
+		this.removeAnimations = this.removeAnimations.bind(this);
 	}
 
 	handleFocusOutside() {
 		this.setState({
-			openUrlPopover: null,
+			openUrlPopover: null
+		});
+	}
+
+	addAnimations($slider) {
+		$slider.find('.slick-current .rri-hero-slide__bg').addClass('animated');
+		$slider.find('.slick-current .rri-hero-slide__title').addClass('animated');
+		$slider.find('.slick-current .rri-hero-slide__copy').addClass('animated');
+		$slider.find('.slick-current .rri-hero-slide__cta').addClass('animated');
+	}
+
+	removeAnimations($slider) {
+		$slider.find('.slick-current .rri-hero-slide__bg').removeClass('animated');
+		$slider.find('.slick-current .rri-hero-slide__title').removeClass('animated');
+		$slider.find('.slick-current .rri-hero-slide__copy').removeClass('animated');
+		$slider.find('.slick-current .rri-hero-slide__cta').removeClass('animated');
+	}
+
+	handleButtonChange(value, index, type) {
+		const {attributes, setAttributes} = this.props;
+		const slides_data_clone = cloneDeep(attributes.slides_data);
+		slides_data_clone[index].button[type] = value;
+		setAttributes({
+			slides_data: slides_data_clone
 		});
 	}
 
 	componentDidMount() {
+		const self = this;
 		const $slider = jQuery(this.sliderRef.current);
 		const settings = Object.assign({}, this.props.attributes.settings, {
 			prevArrow: $slider.find('.rri-hero-slider__arrow--prev'),
 			nextArrow: $slider.find('.rri-hero-slider__arrow--next'),
 		});
+
+		// Init handler
+		$slider.find('.rri-hero-slider__inner').on('init', function () {
+			self.addAnimations($slider);
+		});
+
+		// Setup
 		$slider.find('.rri-hero-slider__inner').slick(settings);
+
+		// Change handlers
+		$slider.find('.rri-hero-slider__inner').on('beforeChange', function (event, slick, currentSlide) {
+			self.removeAnimations($slider);
+
+		});
+
+		$slider.find('.rri-hero-slider__inner').on('afterChange', function (event, slick, currentSlide) {
+			self.addAnimations($slider);
+		});
 	}
 
 	getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -260,11 +288,23 @@ class Edit extends Component {
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		const $slider = jQuery(this.sliderRef.current);
 		const isAddNewSlides = prevProps.attributes.slides_data.length < this.props.attributes.slides_data.length;
-		const isDifferentSettings = !isEqual(prevProps.attributes.settings, this.props.attributes.settings);
 		const settings = Object.assign({}, this.props.attributes.settings, {
 			prevArrow: $slider.find('.rri-hero-slider__arrow--prev'),
 			nextArrow: $slider.find('.rri-hero-slider__arrow--next'),
 		});
+		let isDifferentSettings = false;
+
+		// Check is changes settings
+		if (!isEqual(prevProps.attributes.settings, this.props.attributes.settings)) {
+			isDifferentSettings = true;
+		} else if (isAddNewSlides === false && this.decreasesSlides === false) {
+			for (let i = 0; i < prevProps.attributes.slides_data.length; i++) {
+				if (!isEqual(prevProps.attributes.slides_data[i].params, this.props.attributes.slides_data[i].params)) {
+					isDifferentSettings = true;
+					break;
+				}
+			}
+		}
 
 		if (isAddNewSlides || isDifferentSettings) {
 			$slider.find('.rri-hero-slider__inner').slick('destroy');
@@ -277,7 +317,7 @@ class Edit extends Component {
 
 	render() {
 		const {className, setAttributes, attributes} = this.props;
-		const {slides_data} = attributes;
+		const {slides_data, hideControls} = attributes;
 		const mainClasses = classnames([className]);
 
 		return (
@@ -288,65 +328,72 @@ class Edit extends Component {
 					<div className="rri-hero-slider__wrapper" ref={this.sliderRef}>
 						<div className="rri-hero-slider__inner">
 							{slides_data.map((item, index) => {
-								const {title, copy, button} = item;
+								const {title, copy, button, image} = item;
 								const {align} = item.params;
 								const slideClasses = classnames(['rri-hero-slide', `rri-hero-slide--${align}`]);
-								const ctaClasses = classnames([
-									'rri-hero-slide__cta',
-									`rri-hero-slide__cta--${button.size}`,
-									`rri-hero-slide__cta--${button.design}`
-								]);
 
 								return (
-									<div className={slideClasses}
-										 style={{
-											 backgroundImage: `url(${item.image.url})`
-										 }}>
+									<div className={slideClasses}>
+										<ImageUploadPlaceholder
+											imageID={image.id}
+											imageURL={image.url}
+											onRemove={() => {
+												const slider_data_clone = cloneDeep(slides_data);
+												slider_data_clone[index].image.id = '';
+												slider_data_clone[index].image.url = '';
+												setAttributes({
+													slides_data: slider_data_clone
+												});
+											}}
+											onChange={image => {
+												const slider_data_clone = cloneDeep(slides_data);
+												slider_data_clone[index].image.id = image.id;
+												slider_data_clone[index].image.url = image.url;
+												setAttributes({
+													slides_data: slider_data_clone
+												});
+											}}
+										/>
 										<div className="rri-hero-slide__wrapper">
 											<div className="rri-hero-slide__content">
-												<RichText
-													tagName="h2"
-													placeholder={__('Title', i18n)}
-													className="rri-hero-slide__title"
-													value={title}
-													onChange={(value) => {
-														const slider_data_clone = cloneDeep(slides_data);
-														slider_data_clone[index].title = value;
-														setAttributes({
-															slides_data: slider_data_clone
-														});
-													}}
-													keepPlaceholderOnFocus
-												/>
-												<RichText
-													tagName='p'
-													placeholder={__('Copy', i18n)}
-													className="rri-hero-slide__copy"
-													value={copy}
-													onChange={(value) => {
-														const slider_data_clone = cloneDeep(slides_data);
-														slider_data_clone[index].copy = value;
-														setAttributes({
-															slides_data: slider_data_clone
-														});
-													}}
-													keepPlaceholderOnFocus
-												/>
-												<div className={ctaClasses}
-													 onClick={() => this.setState({openUrlPopover: index})}>
+												<div className="rri-hero-slide__title">
 													<RichText
-														tagName="span"
-														placeholder={__('Link Text', i18n)}
-														className="rri-hero-slide__cta-text"
-														value={button.text}
+														tagName="h2"
+														placeholder={__('Title', i18n)}
+														value={title}
 														onChange={(value) => {
 															const slider_data_clone = cloneDeep(slides_data);
-															slider_data_clone[index].button.text = value;
+															slider_data_clone[index].title = value;
 															setAttributes({
 																slides_data: slider_data_clone
 															});
 														}}
 														keepPlaceholderOnFocus
+													/>
+												</div>
+												<div className="rri-hero-slide__copy">
+													<RichText
+														tagName='p'
+														placeholder={__('Copy', i18n)}
+														value={copy}
+														onChange={(value) => {
+															const slider_data_clone = cloneDeep(slides_data);
+															slider_data_clone[index].copy = value;
+															setAttributes({
+																slides_data: slider_data_clone
+															});
+														}}
+														keepPlaceholderOnFocus
+													/>
+												</div>
+												<div className="rri-hero-slide__cta">
+													<Button
+														{...button}
+														index={index}
+														isEdit={true}
+														openUrlPopover={this.state.openUrlPopover}
+														handleClick={() => this.setState({openUrlPopover: index})}
+														handleChange={this.handleButtonChange}
 													/>
 												</div>
 											</div>
@@ -355,12 +402,16 @@ class Edit extends Component {
 								);
 							})}
 						</div>
-						<div className="rri-hero-slider__arrow rri-hero-slider__arrow--prev">
-							<HeroSliderLeftArrow/>
-						</div>
-						<div className="rri-hero-slider__arrow rri-hero-slider__arrow--next">
-							<HeroSliderRightArrow/>
-						</div>
+						{hideControls === false && (
+							<Fragment>
+								<div className="rri-hero-slider__arrow rri-hero-slider__arrow--prev">
+									<HeroSliderLeftArrow/>
+								</div>
+								<div className="rri-hero-slider__arrow rri-hero-slider__arrow--next">
+									<HeroSliderRightArrow/>
+								</div>
+							</Fragment>
+						)}
 					</div>
 				)}
 			/>
@@ -373,12 +424,5 @@ export default compose(
 	withSetAttributeHook,
 	withTabbedInspector(),
 	withBlockStyles(createStyles, {editorMode: true}),
-	// withSelect((select, {clientId}) => {
-	// 	const {getBlock} = select('core/block-editor');
-	// 	const block = getBlock(clientId);
-	// 	return {
-	// 		hasInnerBlocks: !!(block && block.innerBlocks.length),
-	// 	}
-	// }),
 	withFocusOutside,
 )(Edit);

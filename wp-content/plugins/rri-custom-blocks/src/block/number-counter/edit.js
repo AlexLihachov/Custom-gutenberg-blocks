@@ -210,12 +210,15 @@ class Edit extends Component{
         const {className, setAttributes, attributes} = this.props;
         const {numbers, settings}                    = attributes;
         this.NumberRef                               = createRef();
-        const mainClasses                            = classnames([className]);
         const bg                                     = settings.bg;
-        const bgtrue                                 = bg ? "rri-number-counter__container_white" : "";
-        const itemsClasses                           = classnames([
+        const bgtrue                                 = bg ? "rri-number-counter_white" : "";
+        const mainClasses                            = classnames([
+            className,
+            bgtrue
+        ]);
+
+        const itemsClasses = classnames([
             'rri-number-counter__container',
-            `${bgtrue}`,
         ]);
 
         return (
