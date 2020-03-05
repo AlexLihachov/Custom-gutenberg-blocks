@@ -3,7 +3,11 @@
 body .rri-gift-slider.wp-block-rri-gift-slider {
 	width: 100%;
 
+    .slick-list.draggable {
+    	height: inherit!important;
+      }
 	.rri-gift-slide {
+	  width: 100%!important;
 		margin: 0;
 		border: 0 !important;
 		outline: 0;
